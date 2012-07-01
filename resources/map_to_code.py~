@@ -1,0 +1,50 @@
+import json
+import sys
+
+fi = open(sys.argv[1],'r')
+con = fi.read()
+fi.close()
+
+j = json.loads(con)
+
+layers = j["layers"]
+
+bits = 4
+
+def toCode(data):
+    #Get binary array
+    bar = [i!=0 for i in data]
+    far = ""
+    for i in range(0,len(bar),bits):
+        x = 0
+        for q in range(bits):
+            x*=2
+            if (len(bar) > i+q):
+                x += bar[i+q]
+        far += hex(x)[2:]
+    return far
+def toMap(map_string,w,h):
+    bar = []
+    for i in map_string:
+        dec = int(i,16)
+        tar = []
+        tar.append(dec%2)
+        dec/=2
+        tar.append(dec%2)
+        dec/=2
+        tar.append(dec%2)
+        dec/=2
+        tar.append(dec%2)
+        dec/=2
+        tar.reverse()
+        bar.extend(tar)
+    string = ""
+    for x in range(w):
+        for y in range(h):
+            string += str(bar[x*h+y])
+        string += "\n"
+    return string
+for layer in layers:
+    print layer["name"],toCode(layer["data"])
+    if sys.argv[2] == "-v":
+        print toMap(toCode(layer["data"]),j["width"],j["height"])

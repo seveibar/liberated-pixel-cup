@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Dirt" tilewidth="32" tileheight="32">
+  <image source="tile_dirt.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <layer name="tile_dirt" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztl8sOxCAIRbvv///vbBsDCI4KtuckTWZUKNcX9LoAfNzO521o2jS9o/NQbS49cWh90fi1+c0gMv+9Mb01td61W39031ljW1+30F5tj0djiZyLbJ2jaPMTvRdO1K9p9mj35orKSPql35Kdp+0EvPu/d4+fqt/Cm9feqN1iJIdWqHUqPqvJ1pet30PFmABO58tn6cS7ZGa80e+HHfTyTyRP9eK36uRs/Vb/Kl/t+Mx6cKRPG6/ZSPo9diuZuf6WT2mtb2P8LqLnP+r3+V/zWwlrj474eq7xLL8rmR2nta8qskq/1p79/Tcz/1vvAPgKkXq5Su4fsbP6//WxAy03R2w9fZ56MIN2/a0aVbL1+O35yN7/zziebW27ZOvRFZmH3Uhae09rr/VH6x4AAAAAAAAAAAAAAAAY5wc86xB2
+  </data>
+ </layer>
+</map>

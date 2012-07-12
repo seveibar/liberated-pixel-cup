@@ -1,16 +1,22 @@
 class Animation {
-  static final int WALKING = 1;
-  FrameMap walking;
+  static final int WALK = 1;
+  static final int SLASH = 2;
+  List<FrameMap> frameMapIndex;
   Animation(properties){
+    frameMapIndex = new List<FrameMap>(3);
     loadProperties(properties);
   }
   void loadProperties(properties){
     properties.forEach((k,v){
       switch(k){
-        case "walking":
+        case "walk":
           loadAnimation(v,(animation){
-            //TODO set walking animation equal to animation
-            walking = animation;
+            frameMapIndex[WALK] = animation;
+          });
+          break;
+        case "slash":
+          loadAnimation(v,(animation){
+            frameMapIndex[SLASH] = animation;
           });
           break;
       }
@@ -26,8 +32,9 @@ class Animation {
   void render(html.CanvasRenderingContext2D c,int animation,int orientation,int frame){
     c.save();
     c.translate(-32,-32);
-    if (walking!=null){
-      walking.render(c, orientation,frame);
+    FrameMap fmap = frameMapIndex[animation];
+    if (fmap!=null){
+      fmap.render(c, orientation,frame);
     }
     c.restore();
   }

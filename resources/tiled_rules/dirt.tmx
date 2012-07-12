@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="16" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="AutomappingRadius" value="2"/>
+ </properties>
+ <tileset firstgid="1" name="tile_dirt" tilewidth="32" tileheight="32">
+  <image source="../tile_dirt.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="tile_grass" tilewidth="32" tileheight="32">
+  <image source="../tile_grass.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="tile_grass_offset" tilewidth="32" tileheight="32">
+  <tileoffset x="16" y="16"/>
+  <image source="../tile_grass_offset.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <layer name="regions" width="16" height="16" visible="0" opacity="0.43">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgkEXCDEOQT21Aiv3Y3EGOflky9WPjkwOwmUcsmxKzqOVubOFHjlvI0Y+NTwmgZ/gDAOshDtg=
+  </data>
+ </layer>
+ <layer name="input_set" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJytUjEOADEIYucN/f83byUEYq7VxAGjArYAcCRxiSmYBdP6Fb/wb4f7Sdjz7zxllrZjuu+Eb0L50lulnsaXtPte9b+hm6E2aXEvyVvz77o3/2Pj9/sROVpf8v8Bs3YL0g==
+  </data>
+ </layer>
+ <layer name="output_floor1" width="16" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzNkVEKgCAQRPe/exiWhdn975Z+9RiWIhBsYGEe6LrumJmFWrPdKg4XcBCOtRZwcjjJefLflGvtD6z7Uuk+3vo1Td/H7HLXE7PJ8Mxc5x8p/T+zCfARnvl4PUbqgD/hN/i101sXi/IHFQ==
+  </data>
+ </layer>
+ <layer name="output_floor2" width="16" height="16" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgwGIUqBXnGquGJpAhApmSFDBjKEIAJssAFk=
+  </data>
+ </layer>
+</map>

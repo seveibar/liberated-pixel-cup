@@ -8,6 +8,7 @@
 #source("web.dart");
 #source("res.dart");
 #source("TileManager.dart");
+#source("OverlayManager.dart");
 #source("World.dart");
 #source("rand.dart");
 
@@ -23,6 +24,8 @@
 final int GRAPHIC_BLOCK_SIZE = 32;
 final int CHUNK_SIZE = 8;
 final int CHUNK_JOIN = 10;
+
+final bool DEBUG = true;
 
 int patch_size;
 
@@ -46,13 +49,14 @@ num RESOLUTION = 1;
 
 UIManager event;
 
+World world;
+
 void main() {
   new Game();
 }
 class Game {
   html.CanvasElement canvas;
   html.CanvasRenderingContext2D context;
-  World world;
   Game(){
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),

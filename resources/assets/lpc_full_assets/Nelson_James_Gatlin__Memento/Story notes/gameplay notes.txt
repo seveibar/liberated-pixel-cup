@@ -1,0 +1,65 @@
+-something has caused this [time] compression to happen faster, bringing the end of days within our lifetime.
+-as time is being squished together,that elements of the future and the past are going to bleed into each other
+-towards the end of a cycle, I would imagine very drastic and unusual things tobe going on, which could result in some really neat environments (futuristic stuff or even dinosaurs, whatever we want,maybe even a digital camera ;P )..
+
+-In extremely rare instances, a very small region of spacetime will compress more than the area around it, and in order to return to equilibrium, it will uncompress to match the rest of the area again. If an individual happens to be in this area, they experience all of the stuff that they would have experienced had the compression of time progressed that far normally. However, their mind can't really handle it, because it is basically shoving many different lifetimes into their head all at once. A momento is an object which was also present when this unusual compression occurred, it appears within all the lifetimes that they experienced. When the individual interacts with it, it brings back memories of what is going to happen at any point of the compression. ie. The glasses don't really change how someone sees something, but they provoke intense memories in that character, essentially of how the future looks. 
+-Momentos won't allow you to just see the future whenever you want. You are seeing memories, which you've basically forgotten and they have to be triggered by something else. The Momento is your mental link to the memories, and the trigger is what actually causes you to remember it (maybe a familiar face or item). In addition, I imagine each Momento resulting in different types of memories: like the glasses would give visual memories, probably more skewed by the persons mind.
+
+-every time yourelive one of these memories, it takes that time away from the time you have to stop the end of the universe. You go through maybe some small memory cutscene, and we subtract a noticeable amount of time from the countdown clock. Important memories will be obvious, so you don't miss them, but we can have a decent number of small but cool memories, more than the player can actually view in one run through of the game. It adds replay value, give us more character building moments, and introduces choice for the player.
+-each type of momento to express memories in a different way
+(charlie)
+
+
+-rather than have a timer to the End of the World, have it where as you learn more, the world crumbles more. That way it isn't a hard timer, but one based on your own progress. You'd never have to stop playing before you're ready--key events would be driven by the player
+-the character does not immediately realize anything out of the ordinary about his glasses, just an odd quirk here or there, things others don't notice, things at the edges of his vision. as he picks up clues to the real nature of himself and his glasses, he sees more and more with them (and therefore, the world gets more and more fantastical--or more and more corrupt, since it also means the world is falling apart) until eventually you can only (bear to?) use them in bursts, short contexts where it doesn't drive you mad, to pick up very specific clues by the time of the endgame.
+(clay)
+
+
+
+*************************
+SKYPE IDEAS SUMMARIZED
+(many of these are incompatible with one another, but some are not--they're all just ideas floating at the moment)
+
+APPROACHING ENDGAME:
+-hard game timer (an actual time limit)
+-player-driven game timer (the more you advance the game, the closer the end comes)
+
+USING MEMENTOS:
+-only associated character can use memento as special item
+-resources required to use mementos
+--time as a resource
+----restorable by memento?
+----restorable by items?
+----restorable by clues?
+--sanity as a resource
+-different functionality depending on game progress
+--toward endgame, difficult to use mementos
+----fog/mist
+----world corruption
+--toward start of game, difficult to use mementos
+----few clues (don't know what to look for)
+
+MEMENTO USES:
+-all mementos can be used to experience all points of time at specific locations
+--associated with that character's multiple lifetimes
+--different aspects depending on memento
+--memories/future echoes of character's lives
+-each memento has a different use
+--glasses find clues, camera records them, brush changes universe (?), key unlocks end of universe (?)
+--temporal trails showing paths taken in previous cycles (watch Donnie Darko for examples of this)
+
+
+
+
+
+
+
+
+
+
+******************
+9:10 CST 23.6.12
+clay:
+i'm currently just pulling stuff written in other files to this one because it fits here
+also summarizing the skype discussion
+if i left things off, please add them

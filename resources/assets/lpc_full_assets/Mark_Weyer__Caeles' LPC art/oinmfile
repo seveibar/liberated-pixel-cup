@@ -1,0 +1,86 @@
+#
+#  Copyright 2012 by Mark Weyer
+#  Licensed under the OINM license version 0
+#  or (at your option) under the Creative Commons Attribution ShareAlike license version 3.0
+#  or (at your option) under the GNU General Public License version 3
+#
+
+< canopy.ml
+  oinm4ocaml -ocamlcopt-options "-I /usr/lib/ocaml/sdl" -used-libs "sdl.cmxa sdlloader.cmxa bigarray.cmxa" -program canopy canopy.ml
+{}
+
+%generated canopy
+
+< canopy leaves.png
+  ./canopy base
+> canopy_base.ppm
+
+< canopy_base.ppm
+  convert -transparent black canopy_base.ppm canopy_base.png
+> canopy_base.png
+
+< canopy canopy_base.png
+  ./canopy south
+> canopy_south.ppm canopy_south_shadow.pgm
+
+< canopy_south.ppm
+  convert -transparent black canopy_south.ppm canopy_south.png
+> canopy_south.png
+
+< canopy_south_shadow.pgm canopy_northsouth_shadow.ppm
+  pnmtopng -alpha canopy_south_shadow.pgm canopy_northsouth_shadow.ppm \> canopy_south_shadow.png
+> canopy_south_shadow.png
+
+< canopy canopy_base.png
+  ./canopy north
+> canopy_north.ppm canopy_north_shadow.pgm
+
+< canopy_north.ppm
+  convert -transparent black canopy_north.ppm canopy_north.png
+> canopy_north.png
+
+< canopy_north_shadow.pgm canopy_northsouth_shadow.ppm
+  pnmtopng -alpha canopy_north_shadow.pgm canopy_northsouth_shadow.ppm \> canopy_north_shadow.png
+> canopy_north_shadow.png
+
+< canopy canopy_base.png
+  ./canopy east
+> canopy_east.ppm canopy_east_shadow.pgm
+
+< canopy_east.ppm
+  convert -transparent black canopy_east.ppm canopy_east.png
+> canopy_east.png
+
+< canopy_east_shadow.pgm canopy_eastwest_shadow.ppm
+  pnmtopng -alpha canopy_east_shadow.pgm canopy_eastwest_shadow.ppm \> canopy_east_shadow.png
+> canopy_east_shadow.png
+
+< canopy canopy_base.png
+  ./canopy west
+> canopy_west.ppm canopy_west_shadow.pgm
+
+< canopy_west.ppm
+  convert -transparent black canopy_west.ppm canopy_west.png
+> canopy_west.png
+
+< canopy_west_shadow.pgm canopy_eastwest_shadow.ppm
+  pnmtopng -alpha canopy_west_shadow.pgm canopy_eastwest_shadow.ppm \> canopy_west_shadow.png
+> canopy_west_shadow.png
+
+
+
+< mockup.ml
+  oinm4ocaml -ocamlcopt-options "-I /usr/lib/ocaml/sdl" -used-libs "sdl.cmxa sdlloader.cmxa bigarray.cmxa" -program mockup mockup.ml
+{}
+
+%generated mockup
+
+< mockup
+< canopy_base.png canopy_north.png canopy_south.png canopy_west.png canopy_east.png
+< birdbath.png dirt.png grass.png platformtree.png princess.png signpost.png signpost_shadow.png vehicle_all.png
+  rm -f mockup?????.ppm
+  ./mockup
+  convert -delay 4 -loop 0 mockup?????.ppm mockup.gif
+  rm -f mockup?????.ppm
+> mockup.gif
+

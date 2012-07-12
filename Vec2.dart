@@ -29,6 +29,11 @@ class Vec2 {
     y -= b;
     return this;
   }
+  Vec2 sub(Vec2 v){
+    x -= v.x;
+    y -= v.y;
+    return this;
+  }
   Vec2 multiplyScalar(num a){
     x *= a;
     y *= a;

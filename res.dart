@@ -1,12 +1,18 @@
 class res {
   static final int TILE_TYPES = 18;
-  static loadImage(name,callback){
+  static loadImage(name,[callback=null]){
     name = "resources/$name";
     html.ImageElement img = new html.Element.tag("img");
     img.on.load.add((e){
       callback(img);
     });
+    img.on.error.add((e){
+      img.src = "resources/error.png";
+      callback(img);
+    });
+    callback = (callback == null)?(a){}:callback;
     img.src = name;
+    return img;
   }
   static List<html.ImageElement> loadSplitImage(name,callback,[int px = 32,int py = 32]){
     name = "resources/$name";

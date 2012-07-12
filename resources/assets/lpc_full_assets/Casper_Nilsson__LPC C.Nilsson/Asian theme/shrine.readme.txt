@@ -1,0 +1,4 @@
+Use this tileset for shrines on land or on water, for bridges, or as a fence.
+Some of the shadows can be used with other tilesets.
+
+I hope to expand the roof tiles in the future. More work needs to be done.

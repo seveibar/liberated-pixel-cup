@@ -1,0 +1,115 @@
+
+General:
+--------
+For versatility, I made some things work in eight directions, not just four.
+According to the perspective of the base assets, the diagonal directions are
+2:1, not 1:1.
+
+
+birdbath.png:
+-------------
+Sorry, I couldn't resist. Behold the liberated pixel bird bath. I removed the
+handles from the cup lest cats try to climb them.
+Tiles 1,1-4,1 and 5,1-9,1 are a cyclic animation.
+
+
+canopy_east.png:
+----------------
+This is for growing a leafy platform onto a platformtree. More precisely it is
+for growing to the right.
+The first column (width 96) is for extending an existing right-reaching branch.
+The second (width 64) and third (width 96) column are for starting a branch
+from a canopy seed.
+Likewise, the following columns are for starting a branch from different
+situations. The situations are, in order: A down-reaching branch which goes on,
+an up-reaching branch which goes on, a seed which already has branches going
+up and down, a down-reaching branch which ends at the starting point of the
+growing branch, and an up-reaching branch which ends likewise.
+These do not cover all situations, e.g. a seed already having branches going up
+and left but not down. In general, the branch starting tile will have to be
+subdivided into four 16x16 tiles.
+
+canopy_north.png:
+-----------------
+Like canopy_east.png, but for branches growing up.
+It is organized in rows, not columns, but the order of rows is the same as the
+order of columns in canopy_east.png.
+Effectively, this image has a tile size of 32x16.
+
+canopy_south.png:
+-----------------
+Like canopy_north.png, but for branches growing down.
+
+canopy_west.png:
+-----------------
+Like canopy_east.png, but for branches growing to the left.
+
+
+leaves.png:
+-----------
+This is not intended for direct use. It is a source file of the canopy_*.png
+
+
+platformtree.png:
+-----------------
+This is the trunk of the platform tree.
+Use tile 0,0 at top, then a sequence of 0,2 and finally 0,3 (or 1,3 for a
+small shadow) at the bottom. Canopy seed can be overlaid with 1,2 or 1,1 at the
+top. Alternative canopy seeds from the canopy_*.png can be used like 1,1 even
+in the middle of the trunk if 0,1 is overlaid afterwards. A top canopy seed
+should be overlaid with 1,0.
+
+
+signpost.png:
+-------------
+Obviosly, the tiles 0,0 and 0,1 are the pole and the remaining tiles give the
+directions. If the signpost should have more than one arrow, use a vertical
+offset of at least 9 pixels.
+
+signpost_shadow.png:
+--------------------
+This file is separate from signpost.png, because signposts are an overlay of
+different tiles, possibly with vertical offset. Only posts with 1 or two arrow
+directions are supported. In row i and column j you have the shadow for a
+signpost with directions i and j, where
+0 is east
+1 is southeast
+2 is south
+3 is southwest
+4 is west
+5 is northwest
+6 is north
+7 is northeast
+consequently, single direction signpost shadows are on the diagonal.
+
+
+vehicle_all.png:
+----------------
+Each row of the spritesheet represents one direction with 24 frames.
+The first 8 frames are the "driving forward" animation.
+The other frames are for turning. The idea is that the vehicle turns 45 degree
+per frame, clockwise in columns 16-23 and counterclockwise in columns 8-15.
+Of course, during such turning the row changes. The columns should be used
+subsequently (modulo 8 that is) so that the engine runs on smoothly.
+Frames are 64x96
+
+
+water_attack.png:
+-----------------
+Firing to the right: You start with something small, like tile 0,0 next to
+tile 15,1. Then you expand this to the left while moving it to the right at
+the same speed. Stop expanding when shooting finishes. Once the stream hits
+something, shorten it from the right at the same speed again (still moving).
+Expanding to the right is what row 0 is for, shortening from the left is row 1.
+Middle tiles are 15,0 or 0,1 (they are identical).
+Firing to the left: The same, only backwards in time.
+Firing in other direction: The same with other rows.
+
+
+*_shadow.png:
+-------------
+Use like the respective non-shadow image.
+The shadow is in a separate file for two reasons:
+- So that the object's elevation is variable.
+- I am not entirely sure these objects should have shadows at all.
+

@@ -7,12 +7,17 @@ class res {
       callback(img);
     });
     img.on.error.add((e){
-      img.src = "resources/error.png";
-      callback(img);
+      //img.src = "resources/error.png";
+      callback(new html.ImageElement());
     });
     callback = (callback == null)?(a){}:callback;
     img.src = name;
     return img;
+  }
+  static loadFile(String name,[callback=null]){
+    name = "resources/$name";
+    callback = (callback == null)?(a){}:callback;
+    web.load(name,callback);
   }
   static List<html.ImageElement> loadSplitImage(name,callback,[int px = 32,int py = 32]){
     name = "resources/$name";

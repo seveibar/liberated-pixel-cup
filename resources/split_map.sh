@@ -1,8 +1,8 @@
 #Gotta have 'convert' AKA Image Magick
 
 #loop through tiles
-rm -r map
-mkdir map
-convert $1 -crop $2x$2 \
-    -set filename:nam "map/%[fx:page.x/$2]x%[fx:page.y/$2]" \
+rm -r $2
+mkdir $2
+convert $1 -crop $3x$3 \
+    -set filename:nam "$2/%[fx:page.x/$3]x%[fx:page.y/$3]" \
     "%[filename:nam].png"

@@ -1,7 +1,8 @@
 class TileManager {
   Map<int,html.ImageElement> renderChunks;
   Map<int,Vec2> renderChunkCoordinates;
-  TileManager(){
+  String location;
+  TileManager(this.location){
     renderChunks = new Map<int,html.ImageElement>();
     renderChunkCoordinates = new Map<int,Vec2>();
   }
@@ -28,8 +29,8 @@ class TileManager {
         }
       }
     }
-  } 
+  }
   html.ImageElement generateTileChunk(int sx,int sy,[callback=null]){
-    return res.loadImage("map/${(sx/CHUNK_SIZE).toInt()}x${(sy/CHUNK_SIZE).toInt()}.png", callback);
+    return res.loadImage("$location/${(sx/CHUNK_SIZE).toInt()}x${(sy/CHUNK_SIZE).toInt()}.png", callback);
   }
 }

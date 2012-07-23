@@ -17,7 +17,7 @@ class Vec2 {
   Vec2 add(Vec2 v){
     x += v.x;
     y += v.y;
-    return v;
+    return this;
   }
   Vec2 addTo(num a,num b){
     x += a;
@@ -39,6 +39,14 @@ class Vec2 {
     y *= a;
     return this;
   }
+  Vec2 multiplyX(num a){
+    x *= a;
+    return this;
+  }
+  Vec2 multiplyY(num a){
+    y *= a;
+    return this;
+  }
   Vec2 divideScalar(num a){
     a=a==0?.0001:a;
     x/=a;
@@ -47,6 +55,14 @@ class Vec2 {
   }
   Vec2 negate(){
     multiplyScalar(-1);
+    return this;
+  }
+  Vec2 negateX(){
+    multiplyX(-1);
+    return this;
+  }
+  Vec2 negateY(){
+    multiplyY(-1);
     return this;
   }
   num dot(Vec2 v){

@@ -36,7 +36,14 @@ final Map binaryHexMap = const{
   "c":const[1,1,0,0],"d":const[1,1,0,1],"e":const[1,1,1,0],"f":const[1,1,1,1]
 };
 
-Map<String,List<GameObject>> tags;
+Map<String,Map<String,Function>> tagEvents;
+
+Map<String,bool> removalOnDeath = const{
+  "wander":true
+};
+
+Map<String,List<GameObject>> tags; //These are the same thing (dirty work around)
+Map<String,List<GameObject>> tagMap;// <<<<<
 Map<String,Object> classMap;
 Map<String,Animation> animationMap;
 
@@ -62,7 +69,15 @@ class Game {
         "spawn":(p)=>new SpawnPoint(p),
         "avatar":(p)=>new Avatar(p)
     };
+    tagEvents = {
+        "wander":{
+          "collide":(Avatar avatar){
+            avatar.prop["destination"] = avatar.clone().addTo(Math.random() * 100 - 50,Math.random() * 100 - 50);
+          }
+        }
+    };
     tags = {};
+    tagMap = tags;
     animationMap = new Map<String,Animation>();
     event = new UIManager();
     canvas = html.document.query("#canvas");

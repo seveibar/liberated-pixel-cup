@@ -35,6 +35,9 @@ class GameObject extends Vec2 {
         this.freq = v;
         this.timeToSpawn = v;
         break;
+      case "limit":
+        this.limit = v;
+        break;
       case "emit":
       case "emission":
         this.emission = v;

@@ -4,7 +4,8 @@
       "type": "animation",
       "name": "princess",
       "walk": "characters/female/walk.png",
-      "slash":"characters/female/slash.png"
+      "slash":"characters/female/slash.png",
+      "death":"characters/female/hurt.png"
     },
     {
       "type": "avatar",
@@ -19,6 +20,7 @@
   ],
   "maps": {
     "test": {
+      "collision-map":"collision.txt",
       "objects": [
         {
           "type": "spawn",
@@ -37,8 +39,9 @@
           	]
           },
           "freq":60,
+          "limit":10,
           "x": 3000,
-          "y": 1500
+          "y": 1800
         },
         {
           "type": "princess",

@@ -93,6 +93,10 @@ class Vec2 {
   Vec2 clone(){
     return new Vec2(x,y);
   }
+  Vec2 zero(){
+    this.multiplyScalar(0);
+    return this;
+  }
   bool isZero([approx=0.0001]){
     return (lengthSq() < approx);
   }

@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src='jquery.js'></script>
+<script src='script.js'></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <canvas id='canvas'></canvas>
+        </td>
+        <td>
+            <button onclick='setSource("head",-1)'>X</button><button onclick='setSource("head",source.head-1);'>-</button><button onclick='setSource("head",source.head+1);'>Head +</button><br/>
+            <button onclick='setSource("torso",-1)'>X</button><button onclick='setSource("torso",source.torso-1);'>-</button><button onclick='setSource("torso",source.torso+1);'>Torso +</button><br/>
+            <button onclick='setSource("belt",-1)'>X</button><button onclick='setSource("belt",source.belt-1);'>-</button><button onclick='setSource("belt",source.belt+1);'>Belt +</button><br/>
+            <button onclick='setSource("legs",-1)'>X</button><button onclick='setSource("legs",source.legs-1);'>-</button><button onclick='setSource("legs",source.legs+1);'>Legs +</button><br/>
+            <button onclick='setSource("feet",-1)'>X</button><button onclick='setSource("feet",source.feet-1);'>-</button><button onclick='setSource("feet",source.feet+1);'>Feet +</button><br/>
+            <button onclick='setSource("hands",-1)'>X</button><button onclick='setSource("hands",source.hands-1);'>-</button><button onclick='setSource("hands",source.hands+1);'>Hands +</button><br/>
+            <button onclick='setSource("body",-1)'>X</button><button onclick='setSource("body",source.body-1);'>-</button><button onclick='setSource("body",source.body+1);'>Body +</button><br/>
+            <input placeholder='Name' id='name' type='text'/><button onclick='createImage()'>Create</button>
+        </td>
+   </tr>
+</table>
+
+</body>
+</html>
+

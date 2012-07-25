@@ -32,10 +32,12 @@ class World {
       callback();
     });
   }
-  void spawnObject(String type,Map props){
+  GameObject spawnObject(String type,Map props){
     GameObject ob = classMap[type](props);
     ob.tags.add(type);
+    ob.tags.add("uninit");
     addTag(ob,type);
+    addTag(ob,"uninit");
     addObject(ob);
     return ob;
   }
@@ -104,7 +106,6 @@ class World {
     Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
     inc.normalize().multiplyScalar(2);
     player.velocity.add(inc);
-    player.velocity.divideScalar(1.5 * (player.attacking ? 2 : 1));
     
     //Check if player is trying to attack
     if (event.mouseDown){
@@ -121,17 +122,20 @@ class World {
     camera.zoom += (event.key("up") - event.key("down"))/10.0;
     camera.update();
     
-    //Wander Tag
-    if (tags.containsKey("wander")){
-      tags["wander"].forEach((Avatar avatar){
-        if (avatar.prop.containsKey("destination") && avatar.prop["destination"].distanceTo(avatar)>2){
-          Vec2 destination = avatar.prop["destination"];
-          avatar.velocity = destination.clone().sub(avatar).normalize();
-        }else{
-          avatar.prop["destination"] = avatar.clone().addTo(Math.random() * 100 - 50,Math.random() * 100 - 50);
-        }
+    //Uninit Tag (newly spawns)
+    if (tags.containsKey("uninit")){
+      tags["uninit"].forEach((GameObject ob){
+        ob.fireTagEvent("init");
+        ob.removeTag("uninit");
       });
+      tags["uninit"] = new List<GameObject>();
     }
+    
+    //Update All Tags
+    
+    objects.forEach((GameObject g){
+      g.fireTagEvent("update");
+    });
     
     //Actor Tag
     if (tags.containsKey("actor")){
@@ -144,7 +148,12 @@ class World {
               actor.currentAttackTime = 0;
               //print(actor.attackDirection.clone().multiplyScalar(actor.attackRadius).toString());
               //print(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)).toString());
-              damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,100);
+              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,100);
+              for (int i = 0;i<attacked.length;i++){
+                if (!attacked[i].alive){
+                  actor.fireTagEvent("kill");
+                }
+              }
             }
             int timeToAttack = actor.currentAttackTime - actor.attackTime + 6;
             actor.currentFrame += (timeToAttack > 0) ? timeToAttack : 0;
@@ -155,6 +164,7 @@ class World {
               actor.currentOrientation = actor.velocity.getDirection();
             }
           }
+          actor.velocity.divideScalar(1.5 * (actor.attacking ? 2 : 1));
           if (collisionAtVec2(actor.clone().add(actor.velocity))){
             //Figure out if it's on the left or right side
             if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
@@ -212,12 +222,15 @@ class World {
       }
     }
   }
-  void damageBubble(point,radius,damage){
+  List<Avatar> damageBubble(point,radius,damage){
+    List<Avatar> attacked = new List<Avatar>();
     tags["actor"].forEach((Avatar actor){
       if (actor.alive && actor.distanceTo(point) < radius){
+        attacked.add(actor);
         actor.hurt(damage);
       }
     });
+    return attacked;
   }
   void render(html.CanvasRenderingContext2D c){
     c.setTransform(1,0,0,1,0,0);

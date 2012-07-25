@@ -2,16 +2,33 @@
   "objects": [
     {
       "type": "animation",
-      "name": "princess",
-      "walk": "characters/female/walk.png",
-      "slash":"characters/female/slash.png",
-      "death":"characters/female/hurt.png"
+      "name": "citizen0",
+      "walk": "characters/citizen0/walkcycle.png",
+      "slash":"characters/citizen0/slash.png",
+      "death":"characters/citizen0/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "zombie0",
+      "walk": "characters/zombie0/walkcycle.png",
+      "slash":"characters/zombie0/slash.png",
+      "death":"characters/zombie0/hurt.png"
     },
     {
       "type": "avatar",
-      "name": "princess",
+      "name": "citizen",
       "properties": {
-        "animation": "princess",
+        "animation": "citizen0",
+        "tag": [
+      		"actor"
+      	]
+      }
+    },
+    {
+      "type": "avatar",
+      "name": "zombie",
+      "properties": {
+        "animation": "zombie0",
         "tag": [
       		"actor"
       	]
@@ -32,29 +49,42 @@
         },
         {
           "type": "spawn",
-          "emit":"princess",
+          "emit":"citizen",
           "emit-properties":{
           	"tag":[
-          		"ai","wander"
+          		"ai","wander","friendly","nice"
           	]
           },
           "freq":60,
           "limit":10,
-          "x": 3000,
-          "y": 1800
+          "x": 3150,
+          "y": 1600
         },
         {
-          "type": "princess",
+          "type": "spawn",
+          "emit":"zombie",
+          "emit-properties":{
+          	"tag":[
+          		"ai","hostile-wander"
+          	]
+          },
+          "freq":240,
+          "limit":3,
+          "x": 4125,
+          "y": 1500
+        },
+        {
+          "type": "citizen",
           "tag": [
-            "player"
+            "player","friendly"
           ],
           "x": 3000,
           "y": 1700
         },
         {
-          "type": "princess",
+          "type": "citizen",
           "tag": [
-            "ai","wander"
+            "ai","wander","friendly","nice"
           ],
           "x": 3000,
           "y": 1700

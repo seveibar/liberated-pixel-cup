@@ -11,9 +11,11 @@ class Avatar extends GameObject {
   int currentAttackTime = 0;
   int health = 100;
   bool alive = true;
+  
   bool speaking = false;
   num sayTime = 0;
   String speech = "";
+  
   num attackRadius = 32;
   void set attacking(bool b){
     _attacking = b;

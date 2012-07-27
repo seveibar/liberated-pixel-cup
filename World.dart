@@ -1,16 +1,19 @@
 class World {
-  Map dataTree,mapsTree;
+  Map dataTree,mapsTree,currentMapTree;
   TileManager bottomTileManager;
   TileManager topTileManager;
+  List<MenuInterface> menuInterfaces;
   OverlayManager overlay;
   Camera camera;
   List<GameObject> objects;
   List<bool> collisionMap; 
+  List<html.ImageElement> itemImages;
   
   World(){
     objects = new List<GameObject>();
     camera = new Camera(0,0,1);
     overlay = new OverlayManager();
+    menuInterfaces = new List<MenuInterface>();
   }
   void load(String json,callback){
     print("Beginning Parse");
@@ -20,10 +23,13 @@ class World {
     print("Unpacking Game");
     unpackObjects(objectList);
     print("Data Parsed, Loading Test Map");
-    loadMap("test",callback); //TODO remove
+    res.loadSplitImage("items.png",(List<html.ImageElement> imgs){
+      itemImages = imgs;
+      loadMap("test",callback); //TODO remove
+    });
   }
   void loadMap(name,callback){
-    var map = mapsTree[name];
+    var map = currentMapTree = mapsTree[name];
     unpackMapObjects(map["objects"]);
     bottomTileManager = new TileManager("map_bottom");
     topTileManager = new TileManager("map_top");
@@ -34,6 +40,7 @@ class World {
   }
   GameObject spawnObject(String type,Map props){
     GameObject ob = classMap[type](props);
+    ob.type = type;
     ob.tags.add(type);
     ob.tags.add("uninit");
     addTag(ob,type);
@@ -57,6 +64,13 @@ class World {
             Avatar a = new Avatar(list[i]["properties"]);
             a.loadProperties(p);
             return a;
+          };
+          break;
+        case "item":
+          classMap[list[i]['name']] = (p){
+            Item a = new Item(list[i]["properties"]);
+              a.loadProperties(p);
+              return a;
           };
           break;
         default:
@@ -90,12 +104,128 @@ class World {
     objects.add(instance);
   }
   void startCycle(context){
+    //Set camera to player position
+    camera.set(tags["player"][0].x, tags["player"][0].y);
+    
+    if (DEBUG){
+      event.onKeyPress.add((e){
+        if (event.key("space")==1 && menuInterfaces.length == 0){
+          String prompt(String s,[String def = ""]){
+            return html.window.prompt(s, def);
+          }
+          menuInterfaces.add(new MenuInterface("options",{
+            "options":[{
+                         "name":"Place Spawn",
+                         "func":(){
+                           //What kind of spawn?
+                           menuInterfaces.add(new MenuInterface("options",{
+                             "options":[{
+                               "name":"Basic Zombie",
+                               "func":() {
+                                 currentMapTree["objects"].add({
+                                   "type":"spawn",
+                                   "emit":"zombie",
+                                   "emit-properties":{
+                                     "tag":[
+                                            "ai"
+                                      ]
+                                   },
+                                   "freq":240,
+                                   "limit":3,
+                                   "x":tags["player"][0].x,
+                                   "y":tags["player"][0].y
+                                 });
+                                 notify("Basic Zombie Created");
+                               }
+                             },{
+                               "name":"Basic Bee",
+                               "func":() => print("Create basic Bee emitter")
+                             },{
+                               "name":"Night Zombie",
+                               "func":() => print("Create Night Zombie emitter")
+                             },{
+                               "name":"Custom Emitter",
+                               "func":() => currentMapTree["objects"].add({
+                                 "type":"spawn",
+                                 "emit":prompt("Emit Type"),
+                                 "emit-properties":{
+                                   "tag":prompt("Emit Properties (',' delimited)").split(",")
+                                 },
+                                 "freq":Math.parseInt(prompt("Freq (60 = 1 second)")),
+                                 "limit":Math.parseInt(prompt("Limit")),
+                                 "x":tags["player"][0].x.toInt(),
+                                 "y":tags["player"][0].y.toInt()
+                                 
+                               })
+                             }
+                             ]
+                           }));
+                           
+                         }
+                       },{
+                         "name":"Place Object",
+                         "func":(){
+                           menuInterfaces.add(new MenuInterface("options",{
+                             "options":[
+                                        {
+                                         "name":"Custom Object",
+                                         "func":()=>currentMapTree["objects"].add({
+                                           "type":prompt("Type"),
+                                           "tag":prompt("Tags, delimit with ','").split(","),
+                                           "x":tags["player"][0].x.toInt(),
+                                           "y":tags["player"][0].y.toInt()
+                                         })
+                                        }
+                              ] 
+                           }));
+                         }
+                       },{
+                         "name":"Get JSON",
+                         "func":() => print(html.window.open("javascript:document.body.innerHTML='${JSON.stringify(dataTree)}';", "JSON Data",'height=300,width=300'))
+                       }]
+          }));
+        }
+      });
+      event.onClick.add((e){
+        //Do menu stuff
+        if (menuInterfaces.length != 0){
+          event.mouseDown = false;
+        }
+        for (int i = menuInterfaces.length-1;i>=0;i--){
+          if (menuInterfaces[i].clickAt(e.pageX,e.pageY)){
+            menuInterfaces.removeRange(i, 1);
+          }
+        }
+        //Check if player is near items
+        Avatar player = tags["player"][0];
+        tags["item"].some((Item item){
+          if (player.distanceTo(item) < 32){
+            event.mouseDown = false;
+            notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
+            pickUpItem(item);
+            return true;
+          }
+          return false;
+        });
+      });
+    }
+    notify("Game Started");
     bool cycle(int a){
       html.window.requestAnimationFrame(cycle);
       update();
       render(context);
     }
     cycle(0);
+  }
+  html.ImageElement getItemImage(int index){
+    if (itemImages != null){
+      return itemImages[index];
+    }else{
+      return BLANK_IMAGE;
+    }
+  }
+  void pickUpItem(Item item){
+    print("TODO : MAKE PICK UP ITEM");
   }
   void update(){
     
@@ -133,9 +263,7 @@ class World {
     
     //Update All Tags
     
-    objects.forEach((GameObject g){
-      g.fireTagEvent("update");
-    });
+    objects.forEach((GameObject g) => g.fireTagEvent("update"));
     
     //Actor Tag
     if (tags.containsKey("actor")){
@@ -235,14 +363,21 @@ class World {
   void render(html.CanvasRenderingContext2D c){
     c.setTransform(1,0,0,1,0,0);
     c.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    c.save();
     c.translate(SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
     c.scale(camera.animatedZoom,camera.animatedZoom);
     c.translate(-camera.x,-camera.y);
+    c.font = "12px Arial";
     bottomTileManager.render(c,camera);
     objects.forEach((object){
       object.render(c);
     });
     topTileManager.render(c,camera);
     overlay.render(c,camera);
+    c.restore();
+    menuInterfaces.forEach((MenuInterface mi){
+      mi.render(c);
+    });
+    renderNotifications(c);
   }
 }

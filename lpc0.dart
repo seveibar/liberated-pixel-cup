@@ -1,23 +1,29 @@
 #import('dart:html',prefix:"html");
 #import('dart:json');
 
-#source("HiddenCanvas.dart");
-#source("Vec2.dart");
-#source("Camera.dart");
-#source("UIManager.dart");
 #source("web.dart");
 #source("res.dart");
-#source("TileManager.dart");
-#source("OverlayManager.dart");
-#source("World.dart");
-#source("rand.dart");
-
-#source("FrameMap.dart");
-#source("Animation.dart");
 
 #source("GameObject.dart");
 #source("SpawnPoint.dart");
 #source("Avatar.dart");
+#source("Item.dart");
+
+#source("HiddenCanvas.dart");
+#source("Vec2.dart");
+#source("Camera.dart");
+#source("UIManager.dart");
+
+#source("TileManager.dart");
+#source("OverlayManager.dart");
+#source("MenuButton.dart");
+#source("MenuInterface.dart");
+#source("World.dart");
+
+#source("FrameMap.dart");
+#source("Animation.dart");
+
+#source("Notification.dart");
 
 #resource('main.css');
 
@@ -26,10 +32,13 @@ final int CHUNK_SIZE = 8;
 final int CHUNK_JOIN = 10;
 
 final bool DEBUG = true;
+final bool MOBILE = false;
 
 int AGRO_DISTANCE = 256;
 
 int patch_size;
+
+html.ImageElement BLANK_IMAGE;
 
 final Map binaryHexMap = const{
   "0":const[0,0,0,0],"1":const[0,0,0,1],"2":const[0,0,1,0],"3":const[0,0,1,1],
@@ -45,6 +54,13 @@ final List<String> friendlySpeech = const[
    "It's not so scary with you around!",
    "Thanks for the help!"
 ];
+final List<String> meanSpeech = const[
+                                          "Why don't you just go?",
+                                          "Get outta here!",
+                                          "Get out!",
+                                          "Why won't you help us?",
+                                          "It's outsiders like you that caused this!"
+                                       ];
 
 Map<String,Map<String,Function>> tagEvents;
 
@@ -70,7 +86,24 @@ num RESOLUTION = 1;
 
 UIManager event;
 
+List<Notification> notifications;
+
 World world;
+
+
+void renderNotifications(html.CanvasRenderingContext2D c){
+  for (int i = notifications.length-1;i>=0;i--){
+    if (notifications[i].render(c)){
+      notifications.removeRange(i,1);
+    }
+  }
+}
+void notify(String text){
+  notifications.forEach((Notification note){
+    note.y += Notification.HEIGHT;
+  });
+  notifications.add(new Notification(text));
+}
 
 void main() {
   new Game();
@@ -78,6 +111,7 @@ void main() {
 class Game {
   html.CanvasElement canvas;
   html.CanvasRenderingContext2D context;
+  
   Game(){
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),
@@ -193,8 +227,13 @@ class Game {
           }
         }
     };
+    notifications = new List<Notification>();
+    
+    BLANK_IMAGE = new html.ImageElement();
+    
     tags = {};
     tagMap = tags;
+    
     animationMap = new Map<String,Animation>();
     event = new UIManager();
     canvas = html.document.query("#canvas");

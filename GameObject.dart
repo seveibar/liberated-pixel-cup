@@ -1,6 +1,8 @@
 class GameObject extends Vec2 {
   List<String> tags;
   Map<String,Dynamic> prop;
+  String id = "";
+  String type = "";
   GameObject(a,xx,yy):super(xx,yy){
     tags = new List<String>();
     prop = new Map<String,Dynamic>();
@@ -29,7 +31,9 @@ class GameObject extends Vec2 {
         animation = animationMap[v];
         break;
       case "type":
-        
+        break;
+      case "imageIndex":
+        this.image = world.getItemImage(v);
         break;
       case "tag":
         v.forEach((v){
@@ -52,6 +56,9 @@ class GameObject extends Vec2 {
       case "emission-properties":
         this.emission_properties = v;
       break;
+      case "id":
+        this.id = v;
+        break;
       default:
         this.prop[k] = v;
         break;

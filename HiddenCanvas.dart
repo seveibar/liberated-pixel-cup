@@ -33,7 +33,7 @@ class HiddenCanvas {
       hc.getImage((img){
         list[n] = img;
         amt ++;
-        if (amt >= list.length - 1){
+        if (amt >= list.length){
           callback(list);
         }
       });

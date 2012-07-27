@@ -30,9 +30,18 @@
       "properties": {
         "animation": "zombie0",
         "tag": [
-      		"actor"
+      		"actor","hostile-wander"
       	]
       }
+    },{
+    	"type":"item",
+    	"name":"watermelon",
+    	"properties":{
+    		"imageIndex":48,
+    		"tag": [
+    			"item"
+    		]
+    	}
     }
   ],
   "maps": {
@@ -65,7 +74,7 @@
           "emit":"zombie",
           "emit-properties":{
           	"tag":[
-          		"ai","hostile-wander"
+          		"ai"
           	]
           },
           "freq":240,
@@ -88,6 +97,11 @@
           ],
           "x": 3000,
           "y": 1700
+        },
+        {
+        	"type":"watermelon",
+        	"x":3241,
+        	"y":2025
         }
       ]
     }

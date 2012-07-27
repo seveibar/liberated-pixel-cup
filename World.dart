@@ -234,7 +234,7 @@ class World {
     //Player Tag
     Avatar player = tags["player"][0];
     Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
-    inc.normalize().multiplyScalar(2);
+    inc.normalize().multiplyScalar(10);
     player.velocity.add(inc);
     
     //Check if player is trying to attack

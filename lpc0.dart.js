@@ -27,7 +27,7 @@ $$.HashMapImplementation = {"":
   $.setRuntimeTypeInfo(list, ({E: 'K'}));
   t1.list_1 = list;
   t1.i_2 = 0;
-  this.forEach$1(new $.Closure81(t1));
+  this.forEach$1(new $.Closure85(t1));
   return t1.list_1;
  },
  forEach$1: function(f) {
@@ -316,7 +316,7 @@ $$.HashSetImplementation = {"":
  forEach$1: function(f) {
   var t1 = ({});
   t1.f_13 = f;
-  $.forEach(this._backingMap, new $.Closure79(t1));
+  $.forEach(this._backingMap, new $.Closure83(t1));
  },
  contains$1: function(value) {
   return this._backingMap.containsKey$1(value);
@@ -428,7 +428,7 @@ $$.LinkedHashMapImplementation = {"":
  forEach$1: function(f) {
   var t1 = ({});
   t1.f_12 = f;
-  $.forEach(this._list, new $.Closure28(t1));
+  $.forEach(this._list, new $.Closure29(t1));
  },
  getKeys$0: function() {
   var t1 = ({});
@@ -436,7 +436,7 @@ $$.LinkedHashMapImplementation = {"":
   $.setRuntimeTypeInfo(list, ({E: 'K'}));
   t1.list_12 = list;
   t1.index_2 = 0;
-  $.forEach(this._list, new $.Closure82(t1));
+  $.forEach(this._list, new $.Closure86(t1));
   return t1.list_12;
  },
  operator$index$1: function(key) {
@@ -559,7 +559,7 @@ $$.DoubleLinkedQueue = {"":
  get$length: function() {
   var t1 = ({});
   t1.counter_1 = 0;
-  this.forEach$1(new $.Closure27(t1));
+  this.forEach$1(new $.Closure28(t1));
   return t1.counter_1;
  },
  length$0: function() { return this.get$length().$call$0(); },
@@ -734,7 +734,7 @@ $$.ListIterator = {"":
  }
 };
 
-$$.Closure83 = {"":
+$$.Closure87 = {"":
  [],
  super: "Object",
  toString$0: function() {
@@ -766,7 +766,7 @@ $$.ConstantMap = {"":
  forEach$1: function(f) {
   var t1 = ({});
   t1.f_1 = f;
-  $.forEach(this._lib2_keys, new $.Closure26(this, t1));
+  $.forEach(this._lib2_keys, new $.Closure27(this, t1));
  },
  operator$index$1: function(key) {
   if (this.containsKey$1(key) !== true) {
@@ -998,8 +998,8 @@ $$.Game = {"":
   $.world.startCycle$1(this.context);
  },
  Game$0: function() {
-  $.classMap = $.makeLiteralMap(['spawn', new $.Closure(), 'avatar', new $.Closure2()]);
-  $.tagEvents = $.makeLiteralMap(['wander', $.makeLiteralMap(['collide', new $.Closure3(), 'init', new $.Closure4(), 'update', new $.Closure5()]), 'nice', $.makeLiteralMap(['init', new $.Closure6(), 'update', new $.Closure7()]), 'hostile-wander', $.makeLiteralMap(['init', new $.Closure8(), 'update', new $.Closure9()]), 'hostile', $.makeLiteralMap(['init', new $.Closure10(), 'update', new $.Closure11(), 'kill', new $.Closure12()])]);
+  $.classMap = $.makeLiteralMap(['spawn', new $.Closure(), 'avatar', new $.Closure2(), 'node', new $.Closure3()]);
+  $.tagEvents = $.makeLiteralMap(['wander', $.makeLiteralMap(['collide', new $.Closure4(), 'init', new $.Closure5(), 'update', new $.Closure6()]), 'nice', $.makeLiteralMap(['init', new $.Closure7(), 'update', new $.Closure8()]), 'hostile-wander', $.makeLiteralMap(['init', new $.Closure9(), 'update', new $.Closure10()]), 'hostile', $.makeLiteralMap(['init', new $.Closure11(), 'update', new $.Closure12(), 'kill', new $.Closure13()])]);
   var t1 = $.List((void 0));
   $.setRuntimeTypeInfo(t1, ({E: 'Notification'}));
   $.notifications = t1;
@@ -1018,12 +1018,12 @@ $$.Game = {"":
   $.SCREEN_HEIGHT = this.canvas.get$height();
   $.world = $.World$0();
   $.print('Loading World');
-  $.load('game.json', new $.Closure13(this));
+  $.load('game.json', new $.Closure14(this));
  }
 };
 
 $$.GameObject = {"":
- ["type=", "prop?", "tags?"],
+ ["type=", "id", "prop?", "tags?", "y", "x"],
  super: "Vec2",
  removeTag$1: function(tag) {
   $.removeRange(this.tags, $.indexOf$1(this.tags, tag), 1);
@@ -1031,7 +1031,7 @@ $$.GameObject = {"":
  fireTagEvent$1: function(event$) {
   var t1 = ({});
   t1.event_1 = event$;
-  $.forEach(this.tags, new $.Closure61(this, t1));
+  $.forEach(this.tags, new $.Closure63(this, t1));
  },
  debugRender$2: function(c, sep) {
   c.set$fillStyle('#fff');
@@ -1046,6 +1046,15 @@ $$.GameObject = {"":
  debugRender$1: function(c) {
   return this.debugRender$2(c,80)
 },
+ debugRender$1: function(c) {
+  return this.debugRender$2(c,80)
+},
+ render$1: function(c) {
+  c.save$0();
+  c.translate$2(this.x, this.y);
+  this.debugRender$1(c);
+  c.restore$0();
+ },
  setProperty$2: function(k, v) {
     switch (k) {
     case 'x':
@@ -1063,7 +1072,7 @@ $$.GameObject = {"":
       this.image = $.world.getItemImage$1(v);
       break;
     case 'tag':
-      $.forEach(v, new $.Closure45(this));
+      $.forEach(v, new $.Closure47(this));
       break;
     case 'freq':
       this.freq = v;
@@ -1089,7 +1098,7 @@ $$.GameObject = {"":
   }
  },
  loadProperties$1: function(properties) {
-  $.forEach(properties, new $.Closure44(this));
+  $.forEach(properties, new $.Closure46(this));
  },
  operator$index$1: function(k) {
   return $.index(this.prop, k);
@@ -1278,7 +1287,7 @@ $$.HiddenCanvas = {"":
   t1.callback_14 = callback;
   t1.img_2 = $.Element$tag('img');
   var dataURL = this.canvas.toDataURL$1('image/png');
-  $.add$1(t1.img_2.get$on().get$load(), new $.Closure34(t1));
+  $.add$1(t1.img_2.get$on().get$load(), new $.Closure35(t1));
   t1.img_2.set$src(dataURL);
   return t1.img_2;
  },
@@ -1332,7 +1341,7 @@ $$.Vec2 = {"":
  length$0: function() {
   return $.sqrt(this.lengthSq$0());
  },
- get$length: function() { return new $.Closure84(this, 'length$0'); },
+ get$length: function() { return new $.Closure88(this, 'length$0'); },
  lengthSq$0: function() {
   return $.add($.mul(this.x, this.x), $.mul(this.y, this.y));
  },
@@ -1394,7 +1403,7 @@ $$.Vec2 = {"":
   this.y = y;
   return this;
  },
- get$set: function() { return new $.Closure85(this, 'set$2'); },
+ get$set: function() { return new $.Closure89(this, 'set$2'); },
  Vec2$2: function(x, y) {
   this.x = x;
   this.y = y;
@@ -1441,7 +1450,7 @@ $$.UIManager = {"":
  key$1: function(identifier) {
   return $.index(this.keyList, $.index(this.keyMap, identifier));
  },
- get$key: function() { return new $.Closure86(this, 'key$1'); },
+ get$key: function() { return new $.Closure90(this, 'key$1'); },
  setKey$2: function(keyCode, value) {
   $.indexSet(this.keyList, keyCode, value);
  },
@@ -1459,11 +1468,11 @@ $$.UIManager = {"":
   for (var i = 0; i < 255; ++i) {
     $.indexSet(this.keyList, i, 0);
   }
-  $.add$1($.window().get$on().get$keyDown(), new $.Closure19(this));
-  $.add$1($.window().get$on().get$keyUp(), new $.Closure20(this));
-  $.add$1($.window().get$on().get$mouseDown(), new $.Closure21(this));
-  $.add$1($.window().get$on().get$mouseUp(), new $.Closure22(this));
-  $.add$1($.window().get$on().get$mouseMove(), new $.Closure23(this));
+  $.add$1($.window().get$on().get$keyDown(), new $.Closure20(this));
+  $.add$1($.window().get$on().get$keyUp(), new $.Closure21(this));
+  $.add$1($.window().get$on().get$mouseDown(), new $.Closure22(this));
+  $.add$1($.window().get$on().get$mouseUp(), new $.Closure23(this));
+  $.add$1($.window().get$on().get$mouseMove(), new $.Closure24(this));
  }
 };
 
@@ -1599,9 +1608,9 @@ $$.MenuInterface = {"":
  renderOptionsMenu$1: function(c) {
   var t1 = ({});
   t1.c_12 = c;
-  $.forEach(this.buttons, new $.Closure69(t1));
+  $.forEach(this.buttons, new $.Closure72(t1));
  },
- get$renderOptionsMenu: function() { return new $.Closure86(this, 'renderOptionsMenu$1'); },
+ get$renderOptionsMenu: function() { return new $.Closure90(this, 'renderOptionsMenu$1'); },
  render$1: function(c) {
   c.save$0();
   this.renderFunction$1(c);
@@ -1612,7 +1621,7 @@ $$.MenuInterface = {"":
   t1.y_2 = y;
   t1.x_1 = x;
   t1.returner_3 = false;
-  $.some(this.buttons, new $.Closure70(t1));
+  $.some(this.buttons, new $.Closure73(t1));
   return t1.returner_3;
  },
  renderFunction$1: function(arg0) { return this.renderFunction.$call$1(arg0); },
@@ -1629,14 +1638,14 @@ $$.MenuInterface = {"":
         var func = $.index($.index(options, i), 'func');
         $.add$1(this.buttons, $.MenuButton$4(name$, func, $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), i * 40)));
       }
-      $.add$1(this.buttons, $.MenuButton$4('Exit', new $.Closure68(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 40))));
+      $.add$1(this.buttons, $.MenuButton$4('Exit', new $.Closure71(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 40))));
       break;
   }
  }
 };
 
 $$.World = {"":
- ["itemImages!", "collisionMap", "objects", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
+ ["itemImages!", "collisionMap", "map_width", "objects", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
  super: "Object",
  render$1: function(c) {
   var t1 = ({});
@@ -1649,11 +1658,11 @@ $$.World = {"":
   t1.c_1.translate$2($.neg(this.camera.get$x()), $.neg(this.camera.get$y()));
   t1.c_1.set$font('12px Arial');
   this.bottomTileManager.render$2(t1.c_1, this.camera);
-  $.forEach(this.objects, new $.Closure52(t1));
+  $.forEach(this.objects, new $.Closure54(t1));
   this.topTileManager.render$2(t1.c_1, this.camera);
   this.overlay.render$2(t1.c_1, this.camera);
   t1.c_1.restore$0();
-  $.forEach(this.menuInterfaces, new $.Closure53(t1));
+  $.forEach(this.menuInterfaces, new $.Closure55(t1));
   $.renderNotifications(t1.c_1);
  },
  damageBubble$3: function(point, radius, damage) {
@@ -1664,13 +1673,13 @@ $$.World = {"":
   var attacked = $.List((void 0));
   $.setRuntimeTypeInfo(attacked, ({E: 'Avatar'}));
   t1.attacked_4 = attacked;
-  $.forEach($.index($.tags, 'actor'), new $.Closure62(t1));
+  $.forEach($.index($.tags, 'actor'), new $.Closure64(t1));
   return t1.attacked_4;
  },
  update$0: function() {
   var player = $.index($.index($.tags, 'player'), 0);
   var inc = $.Vec2$2($.sub($.event.key$1('d'), $.event.key$1('a')), $.sub($.event.key$1('s'), $.event.key$1('w')));
-  inc.normalize$0().multiplyScalar$1(2);
+  inc.normalize$0().multiplyScalar$1(2 * (1 + $.mul(4, $.event.key$1('shift'))));
   $.add$1(player.get$velocity(), inc);
   if ($.event.get$mouseDown() === true) {
     player.set$attacking(true);
@@ -1686,18 +1695,18 @@ $$.World = {"":
   t1.set$zoom($.add(t1.get$zoom(), $.div($.sub($.event.key$1('up'), $.event.key$1('down')), 10.0)));
   this.camera.update$0();
   if ($.tags.containsKey$1('uninit') === true) {
-    $.forEach($.index($.tags, 'uninit'), new $.Closure57());
+    $.forEach($.index($.tags, 'uninit'), new $.Closure59());
     t1 = $.tags;
     var t2 = $.List((void 0));
     $.setRuntimeTypeInfo(t2, ({E: 'GameObject'}));
     $.indexSet(t1, 'uninit', t2);
   }
-  $.forEach(this.objects, new $.Closure58());
+  $.forEach(this.objects, new $.Closure60());
   if ($.tags.containsKey$1('actor') === true) {
-    $.forEach($.index($.tags, 'actor'), new $.Closure59(this));
+    $.forEach($.index($.tags, 'actor'), new $.Closure61(this));
   }
   if ($.tags.containsKey$1('spawn') === true) {
-    $.forEach($.index($.tags, 'spawn'), new $.Closure60());
+    $.forEach($.index($.tags, 'spawn'), new $.Closure62());
   }
   for (var iter = 0; iter < $.add(1, $.div($.get$length(this.objects), 4)); ++iter) {
     var i0 = $.toInt($.mul($.random(), $.get$length(this.objects)));
@@ -1731,10 +1740,10 @@ $$.World = {"":
   var t1 = ({});
   t1.context_3 = context;
   this.camera.set$2($.index($.index($.tags, 'player'), 0).get$x(), $.index($.index($.tags, 'player'), 0).get$y());
-  $.add$1($.event.get$onKeyPress(), new $.Closure48(this));
-  $.add$1($.event.get$onClick(), new $.Closure49(this));
+  $.add$1($.event.get$onKeyPress(), new $.Closure50(this));
+  $.add$1($.event.get$onClick(), new $.Closure51(this));
   $.notify('Game Started');
-  new $.Closure50(this, t1).$call$1(0);
+  new $.Closure52(this, t1).$call$1(0);
  },
  addObject$1: function(instance) {
   $.add$1(this.objects, instance);
@@ -1745,7 +1754,7 @@ $$.World = {"":
  collisionAt$2: function(x, y) {
   var x = $.toInt($.div(x, 32));
   var y = $.toInt($.add($.div(y, 32), 0.5));
-  return $.index(this.collisionMap, $.add(x, $.mul(y, 200)));
+  return $.index(this.collisionMap, $.add(x, $.mul(y, this.map_width)));
  },
  fmtCollisionMap$1: function(data) {
   var t1 = $.List((void 0));
@@ -1765,6 +1774,7 @@ $$.World = {"":
       $.add$1(t1, $.eqB($.index(hexMap, bseq), 1) && true);
     }
   }
+  this.map_width = $.toInt($.ceil($.sqrt($.get$length(this.collisionMap))));
   $.print('Collision Map Loaded, Size : ' + $.S($.get$length(this.collisionMap)));
  },
  fmtCollisionMap$1$bailout: function(data, state, env0) {
@@ -1793,6 +1803,7 @@ $$.World = {"":
         }
         ++cir;
       }
+      this.map_width = $.toInt($.ceil($.sqrt($.get$length(this.collisionMap))));
       $.print('Collision Map Loaded, Size : ' + $.S($.get$length(this.collisionMap)));
   }
  },
@@ -1806,10 +1817,13 @@ $$.World = {"":
         $.indexSet($.animationMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), $.Animation$1($.index(t1.list_3, box_0.i_1)));
         break;
       case 'avatar':
-        $.indexSet($.classMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), new $.Closure35(box_0, t1));
+        $.indexSet($.classMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), new $.Closure36(box_0, t1));
         break;
       case 'item':
-        $.indexSet($.classMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), new $.Closure36(box_0, t1));
+        $.indexSet($.classMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), new $.Closure37(box_0, t1));
+        break;
+      case 'node':
+        $.indexSet($.classMap, $.index($.index(t1.list_3, box_0.i_1), 'name'), new $.Closure38(box_0, t1));
         break;
       default:
         $.print('Type not found: ' + $.S($.index($.index(t1.list_3, box_0.i_1), 'type')));
@@ -1865,7 +1879,7 @@ $$.World = {"":
   this.unpackMapObjects$1($.index(map, 'objects'));
   this.bottomTileManager = $.TileManager$1('map_bottom');
   this.topTileManager = $.TileManager$1('map_top');
-  $.loadFile($.index(map, 'collision-map'), new $.Closure46(this, t1));
+  $.loadFile($.index(map, 'collision-map'), new $.Closure48(this, t1));
  },
  load$2: function(json, callback) {
   var t1 = ({});
@@ -1877,9 +1891,9 @@ $$.World = {"":
   $.print('Unpacking Game');
   this.unpackObjects$1(objectList);
   $.print('Data Parsed, Loading Test Map');
-  $.loadSplitImage('items.png', new $.Closure30(this, t1), 32, 32);
+  $.loadSplitImage('items.png', new $.Closure31(this, t1), 32, 32);
  },
- get$load: function() { return new $.Closure85(this, 'load$2'); },
+ get$load: function() { return new $.Closure89(this, 'load$2'); },
  World$0: function() {
   var t1 = $.List((void 0));
   $.setRuntimeTypeInfo(t1, ({E: 'GameObject'}));
@@ -1920,20 +1934,20 @@ $$.Animation = {"":
  loadDeathAnimation$2: function(path, callback) {
   var t1 = ({});
   t1.callback_15 = callback;
-  $.loadSplitImage(path, new $.Closure41(t1), 64, 64);
+  $.loadSplitImage(path, new $.Closure43(t1), 64, 64);
  },
  loadSlashAnimation$2: function(path, callback) {
   var t1 = ({});
   t1.callback_16 = callback;
-  $.loadSplitImage(path, new $.Closure42(t1), 64, 64);
+  $.loadSplitImage(path, new $.Closure44(t1), 64, 64);
  },
  loadWalkAnimation$2: function(path, callback) {
   var t1 = ({});
   t1.callback_17 = callback;
-  $.loadSplitImage(path, new $.Closure43(t1), 64, 64);
+  $.loadSplitImage(path, new $.Closure45(t1), 64, 64);
  },
  loadProperties$1: function(properties) {
-  $.forEach(properties, new $.Closure37(this));
+  $.forEach(properties, new $.Closure39(this));
  },
  Animation$1: function(properties) {
   var t1 = $.List(4);
@@ -2756,7 +2770,7 @@ $$.JsonStringifier = {"":
                 this._checkCycle$1(object);
                 $.add$1(this._sb, '{');
                 t1.first_1 = true;
-                object.forEach$1(new $.Closure71(this, t1));
+                object.forEach$1(new $.Closure74(this, t1));
                 $.add$1(this._sb, '}');
                 $.removeLast(this._seen);
                 return;
@@ -2843,7 +2857,7 @@ $$.JsonStringifier = {"":
                                         this._checkCycle$1(object);
                                         $.add$1(this._sb, '{');
                                         t1.first_1 = true;
-                                        object.forEach$1(new $.Closure71(this, t1));
+                                        object.forEach$1(new $.Closure74(this, t1));
                                         $.add$1(this._sb, '}');
                                         $.removeLast(this._seen);
                                         return;
@@ -2878,7 +2892,7 @@ $$.JsonStringifier = {"":
 
 $$.Closure = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(p) {
   return $.SpawnPoint$1(p);
  }
@@ -2886,7 +2900,7 @@ $$.Closure = {"":
 
 $$.Closure2 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(p) {
   return $.Avatar$1(p);
  }
@@ -2894,24 +2908,32 @@ $$.Closure2 = {"":
 
 $$.Closure3 = {"":
  [],
- super: "Closure83",
- $call$1: function(avatar) {
-  $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0().addTo$2($.sub($.mul($.random(), 100), 50), $.sub($.mul($.random(), 100), 50)));
+ super: "Closure87",
+ $call$1: function(p) {
+  return $.GameObject$3(p, 0, 0);
  }
 };
 
 $$.Closure4 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
+ $call$1: function(avatar) {
+  $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0().addTo$2($.sub($.mul($.random(), 100), 50), $.sub($.mul($.random(), 100), 50)));
+ }
+};
+
+$$.Closure5 = {"":
+ [],
+ super: "Closure87",
  $call$1: function(avatar) {
   $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0());
   $.indexSet(avatar.get$prop(), 'waitTime', 0);
  }
 };
 
-$$.Closure5 = {"":
+$$.Closure6 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(avatar) {
   if ($.gtB($.index(avatar.get$prop(), 'waitTime'), 0)) {
     var t1 = avatar.get$prop();
@@ -2934,23 +2956,23 @@ $$.Closure5 = {"":
  }
 };
 
-$$.Closure6 = {"":
+$$.Closure7 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(avatar) {
   avatar.set$sayTime($.mul($.random(), 500));
  }
 };
 
-$$.Closure7 = {"":
+$$.Closure8 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(avatar) {
   var t1 = ({});
   t1.avatar_1 = avatar;
   if ($.ltB(t1.avatar_1.get$sayTime(), 0)) {
     t1.avatar_1.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.Closure78(t1));
+    $.forEach($.index($.tags, 'player'), new $.Closure82(t1));
     var t2 = $.mul($.random(), 500);
     t1.avatar_1.set$sayTime(t2);
   } else {
@@ -2960,9 +2982,9 @@ $$.Closure7 = {"":
  }
 };
 
-$$.Closure78 = {"":
+$$.Closure82 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(player) {
   if ($.ltB(player.distanceTo$1(this.box_0.avatar_1), 80)) {
     var t1 = this.box_0.avatar_1;
@@ -2974,22 +2996,22 @@ $$.Closure78 = {"":
  }
 };
 
-$$.Closure8 = {"":
+$$.Closure9 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(zom) {
   $.indexSet(zom, 'originalPosition', zom.clone$0());
   $.index($.index($.tagEvents, 'wander'), 'init').$call$1(zom);
  }
 };
 
-$$.Closure9 = {"":
+$$.Closure10 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(zom) {
   var t1 = ({});
   t1.zom_3 = zom;
-  $.some($.index($.tags, 'friendly'), new $.Closure77(t1));
+  $.some($.index($.tags, 'friendly'), new $.Closure81(t1));
   $.index($.index($.tagEvents, 'wander'), 'update').$call$1(t1.zom_3);
   if ($.gtB($.index(t1.zom_3, 'originalPosition').distanceTo$1($.index(t1.zom_3, 'destination')), $.AGRO_DISTANCE)) {
     $.indexSet(t1.zom_3, 'destination', $.index(t1.zom_3, 'originalPosition').clone$0().addTo$2($.sub($.mul($.random(), $.AGRO_DISTANCE), $.div($.AGRO_DISTANCE, 2)), $.sub($.mul($.random(), $.AGRO_DISTANCE), $.div($.AGRO_DISTANCE, 2))));
@@ -2997,9 +3019,9 @@ $$.Closure9 = {"":
  }
 };
 
-$$.Closure77 = {"":
+$$.Closure81 = {"":
  ["box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(avatar) {
   if (avatar.get$alive() === true && $.ltB(avatar.distanceTo$1(this.box_2.zom_3), $.AGRO_DISTANCE) && $.ltB($.random(), 0.05)) {
     $.rmTag(this.box_2.zom_3, 'hostile-wander');
@@ -3014,17 +3036,17 @@ $$.Closure77 = {"":
  }
 };
 
-$$.Closure10 = {"":
+$$.Closure11 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(zom) {
   $.indexSet(zom, 'target', (void 0));
  }
 };
 
-$$.Closure11 = {"":
+$$.Closure12 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(zom) {
   if (!$.eqNullB($.index(zom, 'target'))) {
     if ($.index(zom, 'target').get$alive() === true) {
@@ -3052,9 +3074,9 @@ $$.Closure11 = {"":
  }
 };
 
-$$.Closure12 = {"":
+$$.Closure13 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(zom) {
   if ($.index(zom, 'target').get$alive() !== true) {
     zom.removeTag$1('hostile');
@@ -3067,25 +3089,25 @@ $$.Closure12 = {"":
  }
 };
 
-$$.Closure13 = {"":
+$$.Closure14 = {"":
  ["this_4"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(data) {
-  $.world.load$2(data, new $.Closure29(this.this_4));
+  $.world.load$2(data, new $.Closure30(this.this_4));
  }
 };
 
-$$.Closure29 = {"":
+$$.Closure30 = {"":
  ["this_5"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   this.this_5.loadFinish$0();
  }
 };
 
-$$.Closure14 = {"":
+$$.Closure15 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   if ($.eqB(this.box_0.req_2.get$readyState(), 4) && $.eqB(this.box_0.req_2.get$status(), 200)) {
     this.box_0.callback_1.$call$1(this.box_0.req_2.get$responseText());
@@ -3093,9 +3115,9 @@ $$.Closure14 = {"":
  }
 };
 
-$$.Closure15 = {"":
+$$.Closure16 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(k, v) {
   if (this.box_0.first_3 !== true) {
     $.add$1(this.box_0.result_1, ', ');
@@ -3107,171 +3129,171 @@ $$.Closure15 = {"":
  }
 };
 
-$$.Closure16 = {"":
+$$.Closure17 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return this.box_0.closure_1.$call$0();
  }
 };
 
-$$.Closure17 = {"":
+$$.Closure18 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return this.box_0.closure_1.$call$1(this.box_0.arg1_2);
  }
 };
 
-$$.Closure18 = {"":
+$$.Closure19 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return this.box_0.closure_1.$call$2(this.box_0.arg1_2, this.box_0.arg2_3);
  }
 };
 
-$$.Closure19 = {"":
+$$.Closure20 = {"":
  ["this_4"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   var t1 = ({});
   t1.e_1 = e;
   this.this_4.setKey$2(t1.e_1.get$keyCode(), 1);
-  $.forEach(this.this_4.get$onKeyPress(), new $.Closure25(t1));
+  $.forEach(this.this_4.get$onKeyPress(), new $.Closure26(t1));
  }
 };
 
-$$.Closure25 = {"":
+$$.Closure26 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(func) {
   return func.$call$1(this.box_0.e_1);
  }
 };
 
-$$.Closure20 = {"":
+$$.Closure21 = {"":
  ["this_5"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.this_5.setKey$2(e.get$keyCode(), 0);
  }
 };
 
-$$.Closure21 = {"":
+$$.Closure22 = {"":
  ["this_6"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   var t1 = ({});
   t1.e_3 = e;
   this.this_6.mouseDownAt$2(t1.e_3.get$pageX(), t1.e_3.get$pageY());
-  $.forEach(this.this_6.get$onClick(), new $.Closure24(t1));
+  $.forEach(this.this_6.get$onClick(), new $.Closure25(t1));
  }
 };
 
-$$.Closure24 = {"":
+$$.Closure25 = {"":
  ["box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(func) {
   return func.$call$1(this.box_2.e_3);
  }
 };
 
-$$.Closure22 = {"":
+$$.Closure23 = {"":
  ["this_7"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.this_7.mouseUpAt$2(e.get$pageX(), e.get$pageY());
  }
 };
 
-$$.Closure23 = {"":
+$$.Closure24 = {"":
  ["this_8"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.this_8.mouseAt$2(e.get$pageX(), e.get$pageY());
  }
 };
 
-$$.Closure87 = {"":
+$$.Closure91 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   e.preventDefault$0();
  }
 };
 
-$$.Closure88 = {"":
+$$.Closure92 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   e.preventDefault$0();
  }
 };
 
-$$.Closure89 = {"":
+$$.Closure93 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   e.preventDefault$0();
  }
 };
 
-$$.Closure26 = {"":
+$$.Closure27 = {"":
  ["this_2", "box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(key) {
   return this.box_0.f_1.$call$2(key, $.index(this.this_2, key));
  }
 };
 
-$$.Closure27 = {"":
+$$.Closure28 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(element) {
   var counter = $.add(this.box_0.counter_1, 1);
   this.box_0.counter_1 = counter;
  }
 };
 
-$$.Closure28 = {"":
+$$.Closure29 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(entry) {
   this.box_0.f_12.$call$2(entry.get$key(), entry.get$value());
  }
 };
 
-$$.Closure30 = {"":
+$$.Closure31 = {"":
  ["this_2", "box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(imgs) {
   this.this_2.set$itemImages(imgs);
   this.this_2.loadMap$2('test', this.box_0.callback_12);
  }
 };
 
-$$.Closure31 = {"":
+$$.Closure32 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   $.split(this.box_0.img_4, this.box_0.px_2, this.box_0.py_3, this.box_0.callback_13);
  }
 };
 
-$$.Closure32 = {"":
+$$.Closure33 = {"":
  ["box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(n) {
   var t1 = ({});
   t1.n_1 = n;
-  this.box_2.hc_4.getImage$1(new $.Closure33(t1, this.box_2));
+  this.box_2.hc_4.getImage$1(new $.Closure34(t1, this.box_2));
  }
 };
 
-$$.Closure33 = {"":
+$$.Closure34 = {"":
  ["box_0", "box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(img) {
   $.indexSet(this.box_2.list_6, this.box_0.n_1, img);
   var amt = $.add(this.box_2.amt_5, 1);
@@ -3282,17 +3304,17 @@ $$.Closure33 = {"":
  }
 };
 
-$$.Closure34 = {"":
+$$.Closure35 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.box_0.callback_14.$call$1(this.box_0.img_2);
  }
 };
 
-$$.Closure35 = {"":
+$$.Closure36 = {"":
  ["box_0", "box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(p) {
   var a = $.Avatar$1($.index($.index(this.box_2.list_3, this.box_0.i_1), 'properties'));
   a.loadProperties$1(p);
@@ -3300,9 +3322,9 @@ $$.Closure35 = {"":
  }
 };
 
-$$.Closure36 = {"":
+$$.Closure37 = {"":
  ["box_0", "box_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(p) {
   var a = $.Item$1($.index($.index(this.box_2.list_3, this.box_0.i_1), 'properties'));
   a.loadProperties$1(p);
@@ -3310,119 +3332,129 @@ $$.Closure36 = {"":
  }
 };
 
-$$.Closure37 = {"":
+$$.Closure38 = {"":
+ ["box_0", "box_2"],
+ super: "Closure87",
+ $call$1: function(p) {
+  var a = $.GameObject$3($.index($.index(this.box_2.list_3, this.box_0.i_1), 'properties'), 0, 0);
+  a.loadProperties$1(p);
+  return a;
+ }
+};
+
+$$.Closure39 = {"":
  ["this_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(k, v) {
     switch (k) {
     case 'walk':
-      this.this_0.loadWalkAnimation$2(v, new $.Closure38(this.this_0));
+      this.this_0.loadWalkAnimation$2(v, new $.Closure40(this.this_0));
       break;
     case 'slash':
-      this.this_0.loadSlashAnimation$2(v, new $.Closure39(this.this_0));
+      this.this_0.loadSlashAnimation$2(v, new $.Closure41(this.this_0));
       break;
     case 'death':
-      this.this_0.loadDeathAnimation$2(v, new $.Closure40(this.this_0));
+      this.this_0.loadDeathAnimation$2(v, new $.Closure42(this.this_0));
       break;
   }
  }
 };
 
-$$.Closure38 = {"":
+$$.Closure40 = {"":
  ["this_1"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(animation) {
   $.indexSet(this.this_1.get$frameMapIndex(), 1, animation);
  }
 };
 
-$$.Closure39 = {"":
+$$.Closure41 = {"":
  ["this_2"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(animation) {
   $.indexSet(this.this_2.get$frameMapIndex(), 2, animation);
  }
 };
 
-$$.Closure40 = {"":
+$$.Closure42 = {"":
  ["this_3"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(animation) {
   $.indexSet(this.this_3.get$frameMapIndex(), 3, animation);
  }
 };
 
-$$.Closure41 = {"":
+$$.Closure43 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(imgs) {
   this.box_0.callback_15.$call$1($.FrameMap$3(1, 6, imgs));
  }
 };
 
-$$.Closure42 = {"":
+$$.Closure44 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(imgs) {
   this.box_0.callback_16.$call$1($.FrameMap$3(4, 6, imgs));
  }
 };
 
-$$.Closure43 = {"":
+$$.Closure45 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(imgs) {
   this.box_0.callback_17.$call$1($.FrameMap$3(4, 9, imgs));
  }
 };
 
-$$.Closure44 = {"":
+$$.Closure46 = {"":
  ["this_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(k, v) {
   this.this_0.setProperty$2(k, v);
  }
 };
 
-$$.Closure45 = {"":
+$$.Closure47 = {"":
  ["this_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(v) {
   $.addTag(this.this_0, v);
   $.add$1(this.this_0.get$tags(), v);
  }
 };
 
-$$.Closure46 = {"":
+$$.Closure48 = {"":
  ["this_2", "box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(data) {
   this.this_2.fmtCollisionMap$1(data);
   this.box_0.callback_18.$call$0();
  }
 };
 
-$$.Closure47 = {"":
+$$.Closure49 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(a) {
  }
 };
 
-$$.Closure48 = {"":
+$$.Closure50 = {"":
  ["this_4"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_4.get$menuInterfaces()), 0)) {
-    var t1 = new $.Closure64();
-    $.add$1(this.this_4.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.Closure65(this.this_4, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.Closure66(this.this_4, t1)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.Closure67(this.this_4)])]])));
+    var t1 = new $.Closure66();
+    $.add$1(this.this_4.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.Closure67(this.this_4, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.Closure68(this.this_4, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.Closure69(this.this_4)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.Closure70(this.this_4)])]])));
   }
  }
 };
 
-$$.Closure64 = {"":
+$$.Closure66 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(s, def) {
   return $.window().prompt$2(s, def);
  },
@@ -3431,88 +3463,106 @@ $$.Closure64 = {"":
 }
 };
 
-$$.Closure65 = {"":
+$$.Closure67 = {"":
  ["this_6", "prompt_5"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
-  $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Basic Zombie', 'func', new $.Closure73(this.this_6)]), $.makeLiteralMap(['name', 'Basic Bee', 'func', new $.Closure74()]), $.makeLiteralMap(['name', 'Night Zombie', 'func', new $.Closure75()]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.Closure76(this.this_6, this.prompt_5)])]])));
+  $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Basic Zombie', 'func', new $.Closure77(this.this_6)]), $.makeLiteralMap(['name', 'Basic Bee', 'func', new $.Closure78()]), $.makeLiteralMap(['name', 'Night Zombie', 'func', new $.Closure79()]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.Closure80(this.this_6, this.prompt_5)])]])));
  }
 };
 
-$$.Closure73 = {"":
+$$.Closure77 = {"":
  ["this_7"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   $.add$1($.index(this.this_7.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', 'zombie', 'emit-properties', $.makeLiteralMap(['tag', ['ai']]), 'freq', 240, 'limit', 3, 'x', $.index($.index($.tags, 'player'), 0).get$x(), 'y', $.index($.index($.tags, 'player'), 0).get$y()]));
   $.notify('Basic Zombie Created');
  }
 };
 
-$$.Closure74 = {"":
+$$.Closure78 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return $.print('Create basic Bee emitter');
  }
 };
 
-$$.Closure75 = {"":
+$$.Closure79 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return $.print('Create Night Zombie emitter');
  }
 };
 
-$$.Closure76 = {"":
+$$.Closure80 = {"":
  ["this_9", "prompt_8"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return $.add$1($.index(this.this_9.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', this.prompt_8.$call$1('Emit Type'), 'emit-properties', $.makeLiteralMap(['tag', $.split2(this.prompt_8.$call$1('Emit Properties (\',\' delimited)'), ',')]), 'freq', $.parseInt(this.prompt_8.$call$1('Freq (60 = 1 second)')), 'limit', $.parseInt(this.prompt_8.$call$1('Limit')), 'x', $.toInt($.index($.index($.tags, 'player'), 0).get$x()), 'y', $.toInt($.index($.index($.tags, 'player'), 0).get$y())]));
  }
 };
 
-$$.Closure66 = {"":
+$$.Closure68 = {"":
  ["this_11", "prompt_10"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
-  $.add$1(this.this_11.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.Closure72(this.this_11, this.prompt_10)])]])));
+  $.add$1(this.this_11.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.Closure76(this.this_11, this.prompt_10)])]])));
  }
 };
 
-$$.Closure72 = {"":
+$$.Closure76 = {"":
  ["this_13", "prompt_12"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
   return $.add$1($.index(this.this_13.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', this.prompt_12.$call$1('Type'), 'tag', $.split2(this.prompt_12.$call$1('Tags, delimit with \',\''), ','), 'x', $.toInt($.index($.index($.tags, 'player'), 0).get$x()), 'y', $.toInt($.index($.index($.tags, 'player'), 0).get$y())]));
  }
 };
 
-$$.Closure67 = {"":
+$$.Closure69 = {"":
  ["this_14"],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
-  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.stringify(this.this_14.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
+  return $.add$1(this.this_14.get$menuInterfaces(), $.MenuInterface$2('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.Closure75(this.this_14)])]])));
  }
 };
 
-$$.Closure49 = {"":
+$$.Closure75 = {"":
  ["this_15"],
- super: "Closure83",
+ super: "Closure87",
+ $call$0: function() {
+  return $.add$1($.index(this.this_15.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['house'], 'x', $.toInt($.index($.index($.tags, 'player'), 0).get$x()), 'y', $.toInt($.index($.index($.tags, 'player'), 0).get$y())]));
+ }
+};
+
+$$.Closure70 = {"":
+ ["this_16"],
+ super: "Closure87",
+ $call$0: function() {
+  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.stringify(this.this_16.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
+ }
+};
+
+$$.Closure51 = {"":
+ ["this_17"],
+ super: "Closure87",
  $call$1: function(e) {
   var t1 = ({});
-  if (!$.eqB($.get$length(this.this_15.get$menuInterfaces()), 0)) {
+  if (!$.eqB($.get$length(this.this_17.get$menuInterfaces()), 0)) {
     $.event.set$mouseDown(false);
   }
-  var i = $.sub($.get$length(this.this_15.get$menuInterfaces()), 1);
+  var i = $.sub($.get$length(this.this_17.get$menuInterfaces()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(e, 1, t1, i);
   for (; i >= 0; --i) {
-    if ($.index(this.this_15.get$menuInterfaces(), i).clickAt$2(e.get$pageX(), e.get$pageY()) === true) {
-      $.removeRange(this.this_15.get$menuInterfaces(), i, 1);
+    if ($.index(this.this_17.get$menuInterfaces(), i).clickAt$2(e.get$pageX(), e.get$pageY()) === true) {
+      $.removeRange(this.this_17.get$menuInterfaces(), i, 1);
     }
   }
-  t1.player_1 = $.index($.index($.tags, 'player'), 0);
-  $.some($.index($.tags, 'item'), new $.Closure63(this.this_15, t1));
+  if ($.tags.containsKey$1('item') === true) {
+    t1.player_1 = $.index($.index($.tags, 'player'), 0);
+    $.some($.index($.tags, 'item'), new $.Closure65(this.this_17, t1));
+  }
  },
  $call$1$bailout: function(e, state, env0, env1) {
   switch (state) {
@@ -3524,116 +3574,118 @@ $$.Closure49 = {"":
   switch (state) {
     case 0:
       var t1 = ({});
-      if (!$.eqB($.get$length(this.this_15.get$menuInterfaces()), 0)) {
+      if (!$.eqB($.get$length(this.this_17.get$menuInterfaces()), 0)) {
         $.event.set$mouseDown(false);
       }
-      var i = $.sub($.get$length(this.this_15.get$menuInterfaces()), 1);
+      var i = $.sub($.get$length(this.this_17.get$menuInterfaces()), 1);
     case 1:
       state = 0;
       L0: while (true) {
         if (!$.geB(i, 0)) break L0;
-        if ($.index(this.this_15.get$menuInterfaces(), i).clickAt$2(e.get$pageX(), e.get$pageY()) === true) {
-          $.removeRange(this.this_15.get$menuInterfaces(), i, 1);
+        if ($.index(this.this_17.get$menuInterfaces(), i).clickAt$2(e.get$pageX(), e.get$pageY()) === true) {
+          $.removeRange(this.this_17.get$menuInterfaces(), i, 1);
         }
         i = $.sub(i, 1);
       }
-      t1.player_1 = $.index($.index($.tags, 'player'), 0);
-      $.some($.index($.tags, 'item'), new $.Closure63(this.this_15, t1));
+      if ($.tags.containsKey$1('item') === true) {
+        t1.player_1 = $.index($.index($.tags, 'player'), 0);
+        $.some($.index($.tags, 'item'), new $.Closure65(this.this_17, t1));
+      }
   }
  }
 };
 
-$$.Closure63 = {"":
- ["this_16", "box_0"],
- super: "Closure83",
+$$.Closure65 = {"":
+ ["this_18", "box_0"],
+ super: "Closure87",
  $call$1: function(item) {
   if ($.ltB(this.box_0.player_1.distanceTo$1(item), 32)) {
     $.event.set$mouseDown(false);
     $.notify('You found ' + $.S(item.get$prop().containsKey$1('properName') === true ? $.index(item, 'properName') : item.get$type()));
-    this.this_16.pickUpItem$1(item);
+    this.this_18.pickUpItem$1(item);
     return true;
   }
   return false;
  }
 };
 
-$$.Closure50 = {"":
- ["this_17", "box_2"],
- super: "Closure83",
+$$.Closure52 = {"":
+ ["this_19", "box_2"],
+ super: "Closure87",
  $call$1: function(a) {
   $.window().requestAnimationFrame$1(this);
-  this.this_17.update$0();
-  this.this_17.render$1(this.box_2.context_3);
+  this.this_19.update$0();
+  this.this_19.render$1(this.box_2.context_3);
  }
 };
 
-$$.Closure51 = {"":
+$$.Closure53 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(note) {
   note.set$y($.add(note.get$y(), 32));
  }
 };
 
-$$.Closure52 = {"":
+$$.Closure54 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(object) {
   object.render$1(this.box_0.c_1);
  }
 };
 
-$$.Closure53 = {"":
+$$.Closure55 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(mi) {
   mi.render$1(this.box_0.c_1);
  }
 };
 
-$$.Closure54 = {"":
+$$.Closure56 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.box_0.callback_19.$call$1(this.box_0.img_22);
  }
 };
 
-$$.Closure55 = {"":
+$$.Closure57 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(e) {
   this.box_0.callback_19.$call$1($.ImageElement((void 0), (void 0), (void 0)));
  }
 };
 
-$$.Closure56 = {"":
+$$.Closure58 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(a) {
  }
 };
 
-$$.Closure57 = {"":
+$$.Closure59 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(ob) {
   ob.fireTagEvent$1('init');
   ob.removeTag$1('uninit');
  }
 };
 
-$$.Closure58 = {"":
+$$.Closure60 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(g) {
   return g.fireTagEvent$1('update');
  }
 };
 
-$$.Closure59 = {"":
+$$.Closure61 = {"":
  ["this_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(actor) {
   if (actor.get$alive() === true) {
     if (actor.get$attacking() === true) {
@@ -3756,17 +3808,17 @@ $$.Closure59 = {"":
  }
 };
 
-$$.Closure60 = {"":
+$$.Closure62 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(spawn) {
   spawn.update$0();
  }
 };
 
-$$.Closure61 = {"":
+$$.Closure63 = {"":
  ["this_2", "box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(tag) {
   if ($.tagEvents.containsKey$1(tag) === true && $.index($.tagEvents, tag).containsKey$1(this.box_0.event_1) === true) {
     $.index($.index($.tagEvents, tag), this.box_0.event_1).$call$1(this.this_2);
@@ -3774,9 +3826,9 @@ $$.Closure61 = {"":
  }
 };
 
-$$.Closure62 = {"":
+$$.Closure64 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(actor) {
   if (actor.get$alive() === true && $.ltB(actor.distanceTo$1(this.box_0.point_1), this.box_0.radius_2)) {
     $.add$1(this.box_0.attacked_4, actor);
@@ -3785,24 +3837,24 @@ $$.Closure62 = {"":
  }
 };
 
-$$.Closure68 = {"":
+$$.Closure71 = {"":
  [],
- super: "Closure83",
+ super: "Closure87",
  $call$0: function() {
  }
 };
 
-$$.Closure69 = {"":
+$$.Closure72 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(button) {
   return button.render$1(this.box_0.c_12);
  }
 };
 
-$$.Closure70 = {"":
+$$.Closure73 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(button) {
   if (button.clickAt$2(this.box_0.x_1, this.box_0.y_2) === true) {
     this.box_0.returner_3 = true;
@@ -3813,9 +3865,9 @@ $$.Closure70 = {"":
  }
 };
 
-$$.Closure71 = {"":
+$$.Closure74 = {"":
  ["this_2", "box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(key, value) {
   if (this.box_0.first_1 !== true) {
     $.add$1(this.this_2.get$_sb(), ',"');
@@ -3829,25 +3881,25 @@ $$.Closure71 = {"":
  }
 };
 
-$$.Closure79 = {"":
+$$.Closure83 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(key, value) {
   this.box_0.f_13.$call$1(key);
  }
 };
 
-$$.Closure80 = {"":
+$$.Closure84 = {"":
  ["keys_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(k, v) {
   return $.add$1(this.keys_0, k);
  }
 };
 
-$$.Closure81 = {"":
+$$.Closure85 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$2: function(key, value) {
   var t1 = this.box_0.list_1;
   var t2 = this.box_0.i_2;
@@ -3857,9 +3909,9 @@ $$.Closure81 = {"":
  }
 };
 
-$$.Closure82 = {"":
+$$.Closure86 = {"":
  ["box_0"],
- super: "Closure83",
+ super: "Closure87",
  $call$1: function(entry) {
   var t1 = this.box_0.list_12;
   var t2 = this.box_0.index_2;
@@ -3869,13 +3921,13 @@ $$.Closure82 = {"":
  }
 };
 
-Isolate.$defineClass('Closure84', 'Closure83', ['self', 'target'], {
+Isolate.$defineClass('Closure88', 'Closure87', ['self', 'target'], {
 $call$0: function() { return this.self[this.target](); }
 });
-Isolate.$defineClass('Closure85', 'Closure83', ['self', 'target'], {
+Isolate.$defineClass('Closure89', 'Closure87', ['self', 'target'], {
 $call$2: function(p0, p1) { return this.self[this.target](p0, p1); }
 });
-Isolate.$defineClass('Closure86', 'Closure83', ['self', 'target'], {
+Isolate.$defineClass('Closure90', 'Closure87', ['self', 'target'], {
 $call$1: function(p0) { return this.self[this.target](p0); }
 });
 $.mul$slow = function(a, b) {
@@ -3902,7 +3954,7 @@ $.load = function(url, callback) {
   t1.req_2 = $.XMLHttpRequest();
   t1.req_2.open$2('GET', url);
   t1.req_2.setRequestHeader$2('Content-type', 'text/plain');
-  $.add$1(t1.req_2.get$on().get$readyStateChange(), new $.Closure14(t1));
+  $.add$1(t1.req_2.get$on().get$readyStateChange(), new $.Closure15(t1));
   t1.req_2.send$0();
 };
 
@@ -4120,7 +4172,7 @@ $.clear = function(receiver) {
 };
 
 $.notify = function(text) {
-  $.forEach($.notifications, new $.Closure51());
+  $.forEach($.notifications, new $.Closure53());
   $.add$1($.notifications, $.Notification$1(text));
 };
 
@@ -4234,13 +4286,13 @@ $.invokeClosure = function(closure, isolate, numberOfArguments, arg1, arg2) {
   t1.arg1_2 = arg1;
   t1.closure_1 = closure;
   if ($.eqB(numberOfArguments, 0)) {
-    return new $.Closure16(t1).$call$0();
+    return new $.Closure17(t1).$call$0();
   } else {
     if ($.eqB(numberOfArguments, 1)) {
-      return new $.Closure17(t1).$call$0();
+      return new $.Closure18(t1).$call$0();
     } else {
       if ($.eqB(numberOfArguments, 2)) {
-        return new $.Closure18(t1).$call$0();
+        return new $.Closure19(t1).$call$0();
       } else {
         throw $.captureStackTrace($.ExceptionImplementation$1('Unsupported number of arguments for wrapped closure'));
       }
@@ -4551,12 +4603,19 @@ $.loadSplitImage = function(name$, callback, px, py) {
   t1.callback_13 = callback;
   var name$ = 'resources/' + $.S(name$);
   t1.img_4 = $.Element$tag('img');
-  $.add$1(t1.img_4.get$on().get$load(), new $.Closure31(t1));
+  $.add$1(t1.img_4.get$on().get$load(), new $.Closure32(t1));
   t1.img_4.set$src(name$);
 };
 
 $.regExpAttachGlobalNative = function(regExp) {
   regExp._re = $.regExpMakeNative(regExp, true);
+};
+
+$.iterator = function(receiver) {
+  if ($.isJsArray(receiver) === true) {
+    return $.ListIterator$1(receiver);
+  }
+  return receiver.iterator$0();
 };
 
 $.leB = function(a, b) {
@@ -4611,13 +4670,6 @@ $.regExpMakeNative = function(regExp, global) {
     var e = t1;
     throw $.captureStackTrace($.IllegalJSRegExpException$2(pattern, (String(e))));
   }
-};
-
-$.iterator = function(receiver) {
-  if ($.isJsArray(receiver) === true) {
-    return $.ListIterator$1(receiver);
-  }
-  return receiver.iterator$0();
 };
 
 $.splitChars = function(receiver) {
@@ -4682,7 +4734,7 @@ $._emitMap = function(m, result, visiting) {
   $.add$1(t1.visiting_2, m);
   $.add$1(t1.result_1, '{');
   t1.first_3 = true;
-  $.forEach(m, new $.Closure15(t1));
+  $.forEach(m, new $.Closure16(t1));
   $.add$1(t1.result_1, '}');
   $.removeLast(t1.visiting_2);
 };
@@ -5072,7 +5124,7 @@ $.split = function(img, px, py, callback) {
   for (; $.ltB($.get$length(t1.list_6), $.mul($.div(img.get$width(), px), $.div(img.get$height(), py))); ) {
     $.add$1(t1.list_6, (void 0));
   }
-  t1 = new $.Closure32(t1);
+  t1 = new $.Closure33(t1);
   for (var n = 0, y = 0; $.gtB(y, $.neg(img.get$height())); y = y - py) {
     for (var x = 0; $.gtB(x, $.neg(img.get$width())); x = x - px) {
       c.clearRect$4(0, 0, px, py);
@@ -5205,7 +5257,7 @@ $.checkNumbers = function(a, b) {
 $.loadFile = function(name$, callback) {
   var name$ = 'resources/' + $.S(name$);
   if ($.eqNullB(callback)) {
-    var callback = new $.Closure47();
+    var callback = new $.Closure49();
   }
   $.load(name$, callback);
 };
@@ -5222,6 +5274,13 @@ $._DoubleLinkedQueueEntrySentinel$0 = function() {
   var t1 = new $._DoubleLinkedQueueEntrySentinel((void 0), (void 0), (void 0));
   t1.DoubleLinkedQueueEntry$1((void 0));
   t1._DoubleLinkedQueueEntrySentinel$0();
+  return t1;
+};
+
+$.GameObject$3 = function(a, xx, yy) {
+  var t1 = new $.GameObject('', '', (void 0), (void 0), (void 0), (void 0));
+  t1.Vec2$2(xx, yy);
+  t1.GameObject$3(a, xx, yy);
   return t1;
 };
 
@@ -5255,9 +5314,9 @@ $.loadImage = function(name$, callback) {
   t1.callback_19 = callback;
   var name$ = 'resources/' + $.S(name$);
   t1.img_22 = $.Element$tag('img');
-  $.add$1(t1.img_22.get$on().get$load(), new $.Closure54(t1));
-  $.add$1(t1.img_22.get$on().get$error(), new $.Closure55(t1));
-  t1.callback_19 = $.eqNullB(t1.callback_19) ? new $.Closure56() : t1.callback_19;
+  $.add$1(t1.img_22.get$on().get$load(), new $.Closure56(t1));
+  $.add$1(t1.img_22.get$on().get$error(), new $.Closure57(t1));
+  t1.callback_19 = $.eqNullB(t1.callback_19) ? new $.Closure58() : t1.callback_19;
   t1.img_22.set$src(name$);
   return t1.img_22;
 };
@@ -5753,7 +5812,7 @@ $._ElementEventsImpl$1 = function(_ptr) {
 };
 
 $.World$0 = function() {
-  var t1 = new $.World((void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
+  var t1 = new $.World((void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
   t1.World$0();
   return t1;
 };
@@ -6222,7 +6281,7 @@ $.split$bailout = function(img, px, py, callback, state, env0, env1) {
         if (!$.ltB($.get$length(t1.list_6), $.mul($.div(img.get$width(), px), $.div(img.get$height(), py)))) break L0;
         $.add$1(t1.list_6, (void 0));
       }
-      t1 = new $.Closure32(t1);
+      t1 = new $.Closure33(t1);
       var n = 0;
       var y = 0;
       L1: while (true) {
@@ -6585,7 +6644,7 @@ _ConsoleImpl = (typeof console == 'undefined' ? {} : console);
 _ConsoleImpl.error$1 = function(arg) {
   return this.error(arg);
  };
-_ConsoleImpl.get$error = function() { return new $.Closure86(this, 'error$1'); };
+_ConsoleImpl.get$error = function() { return new $.Closure90(this, 'error$1'); };
 $.$defineNativeClass('ConvolverNode', [], {
  normalize$0: function() { return this.normalize.$call$0(); }
 });
@@ -7031,7 +7090,7 @@ $.$defineNativeClass('HTMLAllCollection', ["length?"], {
  tags$1: function(name) {
   return this.tags(name);
  },
- get$tags: function() { return new $.Closure86(this, 'tags$1'); },
+ get$tags: function() { return new $.Closure90(this, 'tags$1'); },
  length$0: function() { return this.length.$call$0(); }
 });
 
@@ -7357,7 +7416,7 @@ $.$defineNativeClass('HTMLMediaElement', ["src!", "readyState?", "error?"], {
  load$0: function() {
   return this.load();
  },
- get$load: function() { return new $.Closure84(this, 'load$0'); },
+ get$load: function() { return new $.Closure88(this, 'load$0'); },
  get$on: function() {
   return $._MediaElementEventsImpl$1(this);
  }
@@ -7967,7 +8026,7 @@ $.$defineNativeClass('Storage', [], {
  length$0: function() { return this.get$length().$call$0(); },
  getKeys$0: function() {
   var keys = [];
-  this.forEach$1(new $.Closure80(keys));
+  this.forEach$1(new $.Closure84(keys));
   return keys;
  },
  forEach$1: function(f) {

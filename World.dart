@@ -6,8 +6,11 @@ class World {
   OverlayManager overlay;
   Camera camera;
   List<GameObject> objects;
+  int map_width;
   List<bool> collisionMap; 
   List<html.ImageElement> itemImages;
+  num time = 6;//24:00 clock
+  num dayLength = 60 * 60;
   
   World(){
     objects = new List<GameObject>();
@@ -73,6 +76,13 @@ class World {
               return a;
           };
           break;
+        case "node":
+          classMap[list[i]['name']] = (p){
+          GameObject a = new GameObject(list[i]["properties"],0,0);
+          a.loadProperties(p);
+          return a;
+          };
+          break;
         default:
           print("Type not found: ${list[i]['type']}");
           break;
@@ -90,12 +100,13 @@ class World {
         collisionMap.add((hexMap[bseq] == 1)?true:false);
       }
     }
+    map_width = Math.sqrt(collisionMap.length).ceil().toInt();
     print("Collision Map Loaded, Size : ${collisionMap.length}");
   }
   bool collisionAt(num x,num y){
     x = (x/GRAPHIC_BLOCK_SIZE).toInt();
     y = (y/GRAPHIC_BLOCK_SIZE+.5).toInt();
-    return collisionMap[x + y  * 200];//TODO replace 200 with width
+    return collisionMap[x + y  * map_width];
   }
   bool collisionAtVec2(Vec2 v){
     return collisionAt(v.x,v.y);
@@ -179,7 +190,24 @@ class World {
                               ] 
                            }));
                          }
-                       },{
+                       },
+                       {
+                        "name":"Place Node",
+                        "func": () => menuInterfaces.add(new MenuInterface("options",{
+                          "options":[
+                                     {
+                                       "name":"House Node",
+                                       "func":() => currentMapTree["objects"].add({
+                                         "type":"node",
+                                         "tag":["house"],
+                                         "x":tags["player"][0].x.toInt(),
+                                         "y":tags["player"][0].y.toInt()                                   
+                                       })
+                                     }
+                          ]
+                        }))
+                       }
+                       ,{
                          "name":"Get JSON",
                          "func":() => print(html.window.open("javascript:document.body.innerHTML='${JSON.stringify(dataTree)}';", "JSON Data",'height=300,width=300'))
                        }]
@@ -197,16 +225,18 @@ class World {
           }
         }
         //Check if player is near items
-        Avatar player = tags["player"][0];
-        tags["item"].some((Item item){
-          if (player.distanceTo(item) < 32){
-            event.mouseDown = false;
-            notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
-            pickUpItem(item);
-            return true;
-          }
-          return false;
-        });
+        if (tags.containsKey("item")){
+          Avatar player = tags["player"][0];
+          tags["item"].some((Item item){
+            if (player.distanceTo(item) < 32){
+              event.mouseDown = false;
+              notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
+              pickUpItem(item);
+              return true;
+            }
+            return false;
+          });
+        }
       });
     }
     notify("Game Started");
@@ -234,7 +264,7 @@ class World {
     //Player Tag
     Avatar player = tags["player"][0];
     Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
-    inc.normalize().multiplyScalar(10);
+    inc.normalize().multiplyScalar(2 * ( 1 + 4 * event.key("shift")));
     player.velocity.add(inc);
     
     //Check if player is trying to attack
@@ -349,6 +379,9 @@ class World {
         }
       }
     }
+    
+    time = (time + 24 / dayLength)%24;
+    //print(time);
   }
   List<Avatar> damageBubble(point,radius,damage){
     List<Avatar> attacked = new List<Avatar>();
@@ -373,8 +406,8 @@ class World {
       object.render(c);
     });
     topTileManager.render(c,camera);
-    overlay.render(c,camera);
     c.restore();
+    overlay.render(c,camera);
     menuInterfaces.forEach((MenuInterface mi){
       mi.render(c);
     });

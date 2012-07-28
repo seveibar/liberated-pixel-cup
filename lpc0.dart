@@ -14,6 +14,8 @@
 #source("Camera.dart");
 #source("UIManager.dart");
 
+#source("Color.dart");
+
 #source("TileManager.dart");
 #source("OverlayManager.dart");
 #source("MenuButton.dart");
@@ -115,7 +117,8 @@ class Game {
   Game(){
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),
-        "avatar":(p)=>new Avatar(p)
+        "avatar":(p)=>new Avatar(p),
+        "node":(p)=>new GameObject(p,0,0)
     };
     tagEvents = {
         "wander":{

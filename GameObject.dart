@@ -64,6 +64,12 @@ class GameObject extends Vec2 {
         break;
     }
   }
+  void render(html.CanvasRenderingContext2D c){
+    c.save();
+    c.translate(x,y);
+    debugRender(c);
+    c.restore();
+  }
   void debugRender(html.CanvasRenderingContext2D c,[sep = 80]){
     if (DEBUG){
       c.fillStyle = "#fff";

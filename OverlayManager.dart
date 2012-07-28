@@ -53,7 +53,6 @@ class OverlayManager {
       c.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     //SUNSET
     }else if (time > SUNSET - 1 && time < SUNSET + 1){
-      print("SUNSET");
       //100% = night, 0% = dusk
       num p = 1- (SUNSET + 1 - time)/2;
       c.globalAlpha = p * .75;

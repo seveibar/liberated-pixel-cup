@@ -504,13 +504,13 @@ $$._DoubleLinkedQueueEntrySentinel = {"":
  ["_element", "_next", "_previous"],
  super: "DoubleLinkedQueueEntry",
  get$element: function() {
-  throw $.captureStackTrace($.CTC8);
+  throw $.captureStackTrace($.CTC10);
  },
  _asNonSentinelEntry$0: function() {
   return;
  },
  remove$0: function() {
-  throw $.captureStackTrace($.CTC8);
+  throw $.captureStackTrace($.CTC10);
  },
  _DoubleLinkedQueueEntrySentinel$0: function() {
   this._link$2(this, this);
@@ -752,7 +752,7 @@ $$.ConstantMap = {"":
   return this._throwImmutable$0();
  },
  _throwImmutable$0: function() {
-  throw $.captureStackTrace($.CTC7);
+  throw $.captureStackTrace($.CTC9);
  },
  toString$0: function() {
   return $.mapToString(this);
@@ -1476,6 +1476,141 @@ $$.UIManager = {"":
  }
 };
 
+$$.Color = {"":
+ ["_b", "_g", "_r"],
+ super: "Object",
+ clone$0: function() {
+  return $.Color$3(this.get$r(), this.get$g(), this.get$b());
+ },
+ blend$2: function(color, w) {
+  if (typeof w !== 'number') return this.blend$2$bailout(color, w, 1, w);
+  var t1 = this.get$r();
+  var t2 = 1 - w;
+  this.set$r($.toInt($.add($.mul(t1, t2), $.mul(color.get$r(), w))));
+  this.set$g($.toInt($.add($.mul(this.get$g(), t2), $.mul(color.get$g(), w))));
+  this.set$b($.toInt($.add($.mul(this.get$b(), t2), $.mul(color.get$b(), w))));
+ },
+ blend$2$bailout: function(color, w, state, env0) {
+  switch (state) {
+    case 1:
+      w = env0;
+      break;
+  }
+  switch (state) {
+    case 0:
+    case 1:
+      state = 0;
+      this.set$r($.toInt($.add($.mul(this.get$r(), $.sub(1, w)), $.mul(color.get$r(), w))));
+      this.set$g($.toInt($.add($.mul(this.get$g(), $.sub(1, w)), $.mul(color.get$g(), w))));
+      this.set$b($.toInt($.add($.mul(this.get$b(), $.sub(1, w)), $.mul(color.get$b(), w))));
+  }
+ },
+ subtract$1: function(x) {
+  if (typeof x !== 'number') return this.subtract$1$bailout(x, 1, x);
+  this.set$r($.sub(this.get$r(), x));
+  this.set$g($.sub(this.get$g(), x));
+  this.set$b($.sub(this.get$b(), x));
+  return this;
+ },
+ subtract$1$bailout: function(x, state, env0) {
+  switch (state) {
+    case 1:
+      x = env0;
+      break;
+  }
+  switch (state) {
+    case 0:
+    case 1:
+      state = 0;
+      this.set$r($.sub(this.get$r(), x));
+      this.set$g($.sub(this.get$g(), x));
+      this.set$b($.sub(this.get$b(), x));
+      return this;
+  }
+ },
+ toString$0: function() {
+  var s = $.toRadixString($.or($.or($.shl(this.get$r(), 16), $.shl(this.get$g(), 8)), this.get$b()), 16);
+  if (typeof s !== 'string') return this.toString$0$bailout(1, s);
+  for (; s.length < 6; ) {
+    s = '0' + s;
+  }
+  return '#' + s;
+ },
+ toString$0$bailout: function(state, env0) {
+  switch (state) {
+    case 1:
+      s = env0;
+      break;
+  }
+  switch (state) {
+    case 0:
+      var s = $.toRadixString($.or($.or($.shl(this.get$r(), 16), $.shl(this.get$g(), 8)), this.get$b()), 16);
+    case 1:
+      state = 0;
+      L0: while (true) {
+        if (!$.ltB($.get$length(s), 6)) break L0;
+        s = '0' + $.S(s);
+      }
+      return '#' + $.S(s);
+  }
+ },
+ get$b: function() {
+  return this._b;
+ },
+ set$b: function(x) {
+  if ($.gtB(x, 255)) {
+    var t1 = 255;
+  } else {
+    t1 = $.ltB(x, 0) ? 0 : x;
+  }
+  this._b = t1;
+ },
+ get$g: function() {
+  return this._g;
+ },
+ set$g: function(x) {
+  if ($.gtB(x, 255)) {
+    var t1 = 255;
+  } else {
+    t1 = $.ltB(x, 0) ? 0 : x;
+  }
+  this._g = t1;
+ },
+ get$r: function() {
+  return this._r;
+ },
+ set$r: function(x) {
+  if ($.gtB(x, 255)) {
+    var t1 = 255;
+  } else {
+    t1 = $.ltB(x, 0) ? 0 : x;
+  }
+  this._r = t1;
+ },
+ Color$3: function(r, g, b) {
+  this.set$r(r);
+  this.set$g(g);
+  this.set$b(b);
+ },
+ Color$fromString$1: function(s) {
+  var ar = $.splitChars(s);
+  if ($.eqB($.get$length(s), 4)) {
+    this.set$r($.parseInt('0x' + $.S($.index(ar, 1))));
+    this.set$r($.add($.shl(this.get$r(), 4), this.get$r()));
+    this.set$g($.parseInt('0x' + $.S($.index(ar, 2))));
+    this.set$g($.add($.shl(this.get$g(), 4), this.get$g()));
+    this.set$b($.parseInt('0x' + $.S($.index(ar, 3))));
+    this.set$b($.add($.shl(this.get$b(), 4), this.get$b()));
+  } else {
+    if ($.eqB($.get$length(s), 7)) {
+      this.set$r($.parseInt('0x' + $.S($.index(ar, 1)) + $.S($.index(ar, 2))));
+      this.set$g($.parseInt('0x' + $.S($.index(ar, 3)) + $.S($.index(ar, 4))));
+      this.set$b($.parseInt('0x' + $.S($.index(ar, 5)) + $.S($.index(ar, 6))));
+    }
+  }
+ }
+};
+
 $$.TileManager = {"":
  ["location", "renderChunkCoordinates", "renderChunks"],
  super: "Object",
@@ -1574,9 +1709,50 @@ $$.TileManager = {"":
 };
 
 $$.OverlayManager = {"":
- [],
+ ["dusk_night", "night_dawn", "SUNSET", "SUNRISE"],
  super: "Object",
  render$2: function(c, camera) {
+  var time = $.world.get$time();
+  var t1 = this.SUNRISE;
+  if ($.gtB(time, $.sub(t1, 1)) && $.ltB(time, $.add(t1, 1))) {
+    var p = $.sub(1, $.div($.sub($.add(t1, 1), time), 2));
+    c.set$globalAlpha(0.75 - p * 0.75);
+    t1 = this.night_dawn;
+    var color1 = $.Color$fromString$1($.index(t1, $.toInt($.floor($.mul(p, $.sub($.get$length(t1), 1))))));
+    color1.blend$2($.Color$fromString$1($.index(t1, $.toInt($.ceil($.mul(p, $.sub($.get$length(t1), 1)))))), $.sub($.mul(p, $.sub($.get$length(t1), 1)), $.floor($.mul(p, $.sub($.get$length(t1), 1)))));
+    color1.subtract$1(128);
+    c.set$fillStyle(color1.toString$0());
+    c.fillRect$4(0, 0, $.SCREEN_WIDTH, $.SCREEN_HEIGHT);
+  } else {
+    if ($.ltB(time, $.sub(t1, 1)) || $.gtB(time, $.add(this.SUNSET, 1))) {
+      if ($.ltB(time, $.sub(t1, 1))) {
+        time = $.add(time, 24);
+      }
+      var ASUNRISE = $.add(t1, 23);
+      var ASUNSET = $.add(this.SUNSET, 1);
+      p = $.div($.sub(ASUNRISE, time), $.sub(ASUNRISE, ASUNSET));
+      c.set$globalAlpha(0.75);
+      var sunset = $.Color$fromString$1($.index(this.night_dawn, 0));
+      t1 = this.dusk_night;
+      sunset.blend$2($.Color$fromString$1($.index(t1, $.sub($.get$length(t1), 1))), p);
+      sunset.subtract$1(128);
+      c.set$fillStyle(sunset.toString$0());
+      c.fillRect$4(0, 0, $.SCREEN_WIDTH, $.SCREEN_HEIGHT);
+    } else {
+      t1 = this.SUNSET;
+      if ($.gtB(time, $.sub(t1, 1)) && $.ltB(time, $.add(t1, 1))) {
+        p = $.sub(1, $.div($.sub($.add(t1, 1), time), 2));
+        c.set$globalAlpha(p * 0.75);
+        t1 = this.dusk_night;
+        color1 = $.Color$fromString$1($.index(t1, $.toInt($.floor($.mul(p, $.sub($.get$length(t1), 1))))));
+        color1.blend$2($.Color$fromString$1($.index(t1, $.toInt($.ceil($.mul(p, $.sub($.get$length(t1), 1)))))), $.sub($.mul(p, $.sub($.get$length(t1), 1)), $.floor($.mul(p, $.sub($.get$length(t1), 1)))));
+        color1.subtract$1(128);
+        c.set$fillStyle(color1.toString$0());
+        c.fillRect$4(0, 0, $.SCREEN_WIDTH, $.SCREEN_HEIGHT);
+      }
+    }
+  }
+  c.set$globalAlpha(1);
  }
 };
 
@@ -1645,7 +1821,7 @@ $$.MenuInterface = {"":
 };
 
 $$.World = {"":
- ["itemImages!", "collisionMap", "map_width", "objects", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
+ ["dayLength", "time?", "itemImages!", "collisionMap", "map_width", "objects", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
  super: "Object",
  render$1: function(c) {
   var t1 = ({});
@@ -1660,8 +1836,8 @@ $$.World = {"":
   this.bottomTileManager.render$2(t1.c_1, this.camera);
   $.forEach(this.objects, new $.Closure54(t1));
   this.topTileManager.render$2(t1.c_1, this.camera);
-  this.overlay.render$2(t1.c_1, this.camera);
   t1.c_1.restore$0();
+  this.overlay.render$2(t1.c_1, this.camera);
   $.forEach(this.menuInterfaces, new $.Closure55(t1));
   $.renderNotifications(t1.c_1);
  },
@@ -1725,6 +1901,7 @@ $$.World = {"":
       }
     }
   }
+  this.time = $.mod($.add(this.time, $.div(24, this.dayLength)), 24);
  },
  pickUpItem$1: function(item) {
   $.print('TODO : MAKE PICK UP ITEM');
@@ -1768,7 +1945,7 @@ $$.World = {"":
     if (ci !== (ci | 0)) throw $.iae(ci);
     t1 = chars.length;
     if (ci < 0 || ci >= t1) throw $.ioore(ci);
-    var hexMap = $.CTC26.operator$index$1(chars[ci]);
+    var hexMap = $.CTC28.operator$index$1(chars[ci]);
     if (!$.eqNullB(hexMap)) {
       t1 = this.collisionMap;
       $.add$1(t1, $.eqB($.index(hexMap, bseq), 1) && true);
@@ -1796,7 +1973,7 @@ $$.World = {"":
         if (!$.ltB(cir, $.mul($.get$length(data), 4))) break L0;
         var ci = $.toInt(cir / 4);
         var bseq = $.mod(cir, 4);
-        var hexMap = $.CTC26.operator$index$1($.index(chars, ci));
+        var hexMap = $.CTC28.operator$index$1($.index(chars, ci));
         if (!$.eqNullB(hexMap)) {
           t1 = this.collisionMap;
           $.add$1(t1, $.eqB($.index(hexMap, bseq), 1) && true);
@@ -2775,7 +2952,7 @@ $$.JsonStringifier = {"":
                 $.removeLast(this._seen);
                 return;
               } else {
-                throw $.captureStackTrace($.CTC29);
+                throw $.captureStackTrace($.CTC31);
               }
             }
           }
@@ -2862,7 +3039,7 @@ $$.JsonStringifier = {"":
                                         $.removeLast(this._seen);
                                         return;
                                       } else {
-                                        throw $.captureStackTrace($.CTC29);
+                                        throw $.captureStackTrace($.CTC31);
                                       }
                                     }
                                 }
@@ -2991,7 +3168,7 @@ $$.Closure82 = {"":
     var t2 = $.toInt($.mul($.random(), 5));
     if (t2 !== (t2 | 0)) throw $.iae(t2);
     if (t2 < 0 || t2 >= 5) throw $.ioore(t2);
-    t1.say$1($.CTC30[t2]);
+    t1.say$1($.CTC32[t2]);
   }
  }
 };
@@ -4164,6 +4341,12 @@ $.removeRange = function(receiver, start, length$) {
   $.set$length(receiver, $.sub(receiverLength, length$));
 };
 
+$.Color$3 = function(r, g, b) {
+  var t1 = new $.Color((void 0), (void 0), (void 0));
+  t1.Color$3(r, g, b);
+  return t1;
+};
+
 $.clear = function(receiver) {
   if ($.isJsArray(receiver) !== true) {
     return receiver.clear$0();
@@ -4429,11 +4612,11 @@ $._numberToString = function(x) {
 };
 
 $.OverlayManager$0 = function() {
-  return new $.OverlayManager();
+  return new $.OverlayManager($.CTC4, $.CTC5, 21, 7);
 };
 
 $.UIManager$0 = function() {
-  var t1 = new $.UIManager($.CTC6, (void 0), (void 0), (void 0), false, (void 0));
+  var t1 = new $.UIManager($.CTC8, (void 0), (void 0), (void 0), false, (void 0));
   t1.UIManager$0();
   return t1;
 };
@@ -4463,6 +4646,13 @@ $.Avatar$1 = function(properties) {
   t1.GameObject$3(properties, 0, 0);
   t1.Avatar$1(properties);
   return t1;
+};
+
+$.or = function(a, b) {
+  if ($.checkNumbers(a, b) === true) {
+    return (a | b) >>> 0;
+  }
+  return a.operator$or$1(b);
 };
 
 $._DocumentEventsImpl$1 = function(_ptr) {
@@ -5083,6 +5273,14 @@ $.ltB = function(a, b) {
   return typeof a === 'number' && typeof b === 'number' ? (a < b) : $.lt$slow(a, b) === true;
 };
 
+$.toRadixString = function(receiver, radix) {
+  if (!(typeof receiver === 'number')) {
+    return receiver.toRadixString$1(radix);
+  }
+  $.checkNum(radix);
+  return receiver.toString(radix);
+};
+
 $.convertDartClosureToJS = function(closure, arity) {
   if (closure === (void 0)) {
     return;
@@ -5309,6 +5507,12 @@ $.index$slow = function(a, index) {
   return a.operator$index$1(index);
 };
 
+$.Color$fromString$1 = function(s) {
+  var t1 = new $.Color((void 0), (void 0), (void 0));
+  t1.Color$fromString$1(s);
+  return t1;
+};
+
 $.loadImage = function(name$, callback) {
   var t1 = ({});
   t1.callback_19 = callback;
@@ -5489,7 +5693,7 @@ $.dynamicFunction = function(name$) {
     return f.methods;
   }
   var methods = ({});
-  var dartMethod = (Object.getPrototypeOf($.CTC32)[name$]);
+  var dartMethod = (Object.getPrototypeOf($.CTC34)[name$]);
   if (!(dartMethod === (void 0))) {
     methods['Object'] = dartMethod;
   }
@@ -5782,7 +5986,7 @@ $.getFunctionForTypeNameOf = function() {
     return $.typeNameInChrome;
   }
   var userAgent = (navigator.userAgent);
-  if ($.contains$1(userAgent, $.CTC31) === true) {
+  if ($.contains$1(userAgent, $.CTC33) === true) {
     return $.typeNameInChrome;
   } else {
     if ($.contains$1(userAgent, 'Firefox') === true) {
@@ -5812,7 +6016,7 @@ $._ElementEventsImpl$1 = function(_ptr) {
 };
 
 $.World$0 = function() {
-  var t1 = new $.World((void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
+  var t1 = new $.World(3600, 6, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
   t1.World$0();
   return t1;
 };
@@ -5965,6 +6169,21 @@ $.setRuntimeTypeInfo = function(target, typeInfo) {
   }
 };
 
+$.shl = function(a, b) {
+  if ($.checkNumbers(a, b) === true) {
+    var a = (a);
+    var b = (b);
+    if (b < 0) {
+      throw $.captureStackTrace($.IllegalArgumentException$1(b));
+    }
+    if (b > 31) {
+      return 0;
+    }
+    return (a << b) >>> 0;
+  }
+  return a.operator$shl$1(b);
+};
+
 $.document = function() {
   return document;;
 };
@@ -6045,41 +6264,6 @@ $.getTypeNameOf = function(obj) {
 
 $.sub = function(a, b) {
   return typeof a === 'number' && typeof b === 'number' ? (a - b) : $.sub$slow(a, b);
-};
-
-$.allMatchesInStringUnchecked$bailout = function(needle, haystack, state, env0, env1, env2) {
-  switch (state) {
-    case 1:
-      length$ = env0;
-      result = env1;
-      patternLength = env2;
-      break;
-  }
-  switch (state) {
-    case 0:
-      var result = $.List((void 0));
-      $.setRuntimeTypeInfo(result, ({E: 'Match'}));
-      var length$ = $.get$length(haystack);
-      var patternLength = $.get$length(needle);
-    case 1:
-      state = 0;
-      var startIndex = 0;
-      L0: while (true) {
-        if (!true) break L0;
-        var position = $.indexOf$2(haystack, needle, startIndex);
-        if ($.eqB(position, -1)) {
-          break;
-        }
-        result.push($.StringMatch$3(position, haystack, needle));
-        var endIndex = $.add(position, patternLength);
-        if ($.eqB(endIndex, length$)) {
-          break;
-        } else {
-          startIndex = $.eqB(position, endIndex) ? $.add(startIndex, 1) : endIndex;
-        }
-      }
-      return result;
-  }
 };
 
 $.renderNotifications$bailout = function(c, state, env0) {
@@ -6348,6 +6532,41 @@ $.buildDynamicMetadata$bailout = function(inputTable, state, env0, env1, env2, e
   }
 };
 
+$.allMatchesInStringUnchecked$bailout = function(needle, haystack, state, env0, env1, env2) {
+  switch (state) {
+    case 1:
+      length$ = env0;
+      result = env1;
+      patternLength = env2;
+      break;
+  }
+  switch (state) {
+    case 0:
+      var result = $.List((void 0));
+      $.setRuntimeTypeInfo(result, ({E: 'Match'}));
+      var length$ = $.get$length(haystack);
+      var patternLength = $.get$length(needle);
+    case 1:
+      state = 0;
+      var startIndex = 0;
+      L0: while (true) {
+        if (!true) break L0;
+        var position = $.indexOf$2(haystack, needle, startIndex);
+        if ($.eqB(position, -1)) {
+          break;
+        }
+        result.push($.StringMatch$3(position, haystack, needle));
+        var endIndex = $.add(position, patternLength);
+        if ($.eqB(endIndex, length$)) {
+          break;
+        } else {
+          startIndex = $.eqB(position, endIndex) ? $.add(startIndex, 1) : endIndex;
+        }
+      }
+      return result;
+  }
+};
+
 $.dynamicBind.$call$4 = $.dynamicBind;
 $.throwNoSuchMethod.$call$3 = $.throwNoSuchMethod;
 $.typeNameInIE.$call$1 = $.typeNameInIE;
@@ -6364,37 +6583,39 @@ Isolate.makeConstantList = function(list) {
   return list;
 };
 $.CTC = Isolate.makeConstantList([]);
-$.CTC9 = Isolate.makeConstantList([0, 0, 0, 0]);
-$.CTC10 = Isolate.makeConstantList([0, 0, 0, 1]);
-$.CTC12 = Isolate.makeConstantList([0, 0, 1, 1]);
-$.CTC11 = Isolate.makeConstantList([0, 0, 1, 0]);
-$.CTC14 = Isolate.makeConstantList([0, 1, 0, 1]);
-$.CTC22 = Isolate.makeConstantList([1, 1, 0, 1]);
+$.CTC12 = Isolate.makeConstantList([0, 0, 0, 1]);
+$.CTC13 = Isolate.makeConstantList([0, 0, 1, 0]);
+$.CTC11 = Isolate.makeConstantList([0, 0, 0, 0]);
+$.CTC15 = Isolate.makeConstantList([0, 1, 0, 0]);
+$.CTC14 = Isolate.makeConstantList([0, 0, 1, 1]);
+$.CTC18 = Isolate.makeConstantList([0, 1, 1, 1]);
 $.CTC2 = new Isolate.$isolateProperties._DeletedKeySentinel();
-$.CTC15 = Isolate.makeConstantList([0, 1, 1, 0]);
-$.CTC13 = Isolate.makeConstantList([0, 1, 0, 0]);
-$.CTC31 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
-$.CTC21 = Isolate.makeConstantList([1, 1, 0, 0]);
-$.CTC16 = Isolate.makeConstantList([0, 1, 1, 1]);
-$.CTC25 = Isolate.makeConstantList(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']);
-$.CTC18 = Isolate.makeConstantList([1, 0, 0, 1]);
-$.CTC23 = Isolate.makeConstantList([1, 1, 1, 0]);
-$.CTC4 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, '^#[_a-zA-Z]\\w*$');
-$.CTC5 = Isolate.makeConstantList(['backspace', 'enter', 'shift', 'ctrl', 'alt', 'capslock', 'esc', 'space', '_0', 'zero', '_1', 'one', '_2', 'two', '_3', 'three', '_4', 'four', '_5', 'five', '_6', 'six', '_7', 'seven', '_8', 'eight', '_9', 'nine', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'semicolon', 'equal', 'comma', 'hyphen', 'dash', 'minus', 'period', 'dot', 'slash', 'forwardslash', 'grave', 'backtick', 'bracketleft', 'backslash', 'bracketright', 'singlequote', 'exclamation', 'at', 'ampersat', 'pound', 'dollar', 'mod', 'modulo', 'percent', 'caret', 'ampersand', 'asterisk', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'colon', 'plus', 'pointbracketleft', 'trianglebracketleft', 'underscore', 'pointbracketright', 'trianglebracketright', 'question', 'questionmark', 'approx', 'tilde', 'curleybraceleft', 'pipe', 'curleybraceright', 'doublequote', 'left', 'up', 'right', 'down', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
-$.CTC19 = Isolate.makeConstantList([1, 0, 1, 0]);
-$.CTC17 = Isolate.makeConstantList([1, 0, 0, 0]);
-$.CTC29 = new Isolate.$isolateProperties.JsonUnsupportedObjectType();
-$.CTC24 = Isolate.makeConstantList([1, 1, 1, 1]);
-$.CTC20 = Isolate.makeConstantList([1, 0, 1, 1]);
-$.CTC32 = new Isolate.$isolateProperties.Object();
-$.CTC26 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC25, {'0': Isolate.$isolateProperties.CTC9, '1': Isolate.$isolateProperties.CTC10, '2': Isolate.$isolateProperties.CTC11, '3': Isolate.$isolateProperties.CTC12, '4': Isolate.$isolateProperties.CTC13, '5': Isolate.$isolateProperties.CTC14, '6': Isolate.$isolateProperties.CTC15, '7': Isolate.$isolateProperties.CTC16, '8': Isolate.$isolateProperties.CTC17, '9': Isolate.$isolateProperties.CTC18, 'a': Isolate.$isolateProperties.CTC19, 'b': Isolate.$isolateProperties.CTC20, 'c': Isolate.$isolateProperties.CTC21, 'd': Isolate.$isolateProperties.CTC22, 'e': Isolate.$isolateProperties.CTC23, 'f': Isolate.$isolateProperties.CTC24}, 16);
-$.CTC6 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC5, {'backspace': 8, 'enter': 13, 'shift': 16, 'ctrl': 17, 'alt': 18, 'capslock': 20, 'esc': 27, 'space': 32, '_0': 48, 'zero': 48, '_1': 49, 'one': 49, '_2': 50, 'two': 50, '_3': 51, 'three': 51, '_4': 52, 'four': 52, '_5': 53, 'five': 53, '_6': 54, 'six': 54, '_7': 55, 'seven': 55, '_8': 56, 'eight': 56, '_9': 57, 'nine': 57, 'a': 65, 'b': 66, 'c': 67, 'd': 68, 'e': 69, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74, 'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87, 'x': 88, 'y': 89, 'z': 90, 'semicolon': 186, 'equal': 187, 'comma': 188, 'hyphen': 189, 'dash': 189, 'minus': 189, 'period': 190, 'dot': 190, 'slash': 191, 'forwardslash': 191, 'grave': 192, 'backtick': 192, 'bracketleft': 219, 'backslash': 220, 'bracketright': 221, 'singlequote': 222, 'exclamation': 49, 'at': 50, 'ampersat': 50, 'pound': 51, 'dollar': 52, 'mod': 53, 'modulo': 53, 'percent': 53, 'caret': 54, 'ampersand': 55, 'asterisk': 56, 'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72, 'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80, 'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88, 'Y': 89, 'Z': 90, 'colon': 186, 'plus': 187, 'pointbracketleft': 188, 'trianglebracketleft': 188, 'underscore': 189, 'pointbracketright': 190, 'trianglebracketright': 190, 'question': 191, 'questionmark': 191, 'approx': 192, 'tilde': 192, 'curleybraceleft': 219, 'pipe': 220, 'curleybraceright': 221, 'doublequote': 222, 'left': 37, 'up': 38, 'right': 39, 'down': 40, 'F1': 112, 'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118, 'F8': 119, 'F9': 120, 'F10': 121, 'F11': 122, 'F12': 123}, 138);
-$.CTC7 = new Isolate.$isolateProperties.IllegalAccessException();
-$.CTC27 = Isolate.makeConstantList(['wander', 'nice', 'hostile', 'hostile-wander']);
-$.CTC28 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC27, {'wander': true, 'nice': true, 'hostile': true, 'hostile-wander': true}, 4);
-$.CTC30 = Isolate.makeConstantList(['Hi!', 'Hiya!', 'Hello!', 'It\'s not so scary with you around!', 'Thanks for the help!']);
+$.CTC16 = Isolate.makeConstantList([0, 1, 0, 1]);
+$.CTC19 = Isolate.makeConstantList([1, 0, 0, 0]);
+$.CTC33 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
+$.CTC29 = Isolate.makeConstantList(['wander', 'nice', 'hostile', 'hostile-wander']);
+$.CTC30 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC29, {'wander': true, 'nice': true, 'hostile': true, 'hostile-wander': true}, 4);
+$.CTC21 = Isolate.makeConstantList([1, 0, 1, 0]);
+$.CTC22 = Isolate.makeConstantList([1, 0, 1, 1]);
+$.CTC27 = Isolate.makeConstantList(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']);
+$.CTC17 = Isolate.makeConstantList([0, 1, 1, 0]);
+$.CTC6 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, '^#[_a-zA-Z]\\w*$');
+$.CTC7 = Isolate.makeConstantList(['backspace', 'enter', 'shift', 'ctrl', 'alt', 'capslock', 'esc', 'space', '_0', 'zero', '_1', 'one', '_2', 'two', '_3', 'three', '_4', 'four', '_5', 'five', '_6', 'six', '_7', 'seven', '_8', 'eight', '_9', 'nine', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'semicolon', 'equal', 'comma', 'hyphen', 'dash', 'minus', 'period', 'dot', 'slash', 'forwardslash', 'grave', 'backtick', 'bracketleft', 'backslash', 'bracketright', 'singlequote', 'exclamation', 'at', 'ampersat', 'pound', 'dollar', 'mod', 'modulo', 'percent', 'caret', 'ampersand', 'asterisk', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'colon', 'plus', 'pointbracketleft', 'trianglebracketleft', 'underscore', 'pointbracketright', 'trianglebracketright', 'question', 'questionmark', 'approx', 'tilde', 'curleybraceleft', 'pipe', 'curleybraceright', 'doublequote', 'left', 'up', 'right', 'down', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
+$.CTC23 = Isolate.makeConstantList([1, 1, 0, 0]);
+$.CTC24 = Isolate.makeConstantList([1, 1, 0, 1]);
+$.CTC31 = new Isolate.$isolateProperties.JsonUnsupportedObjectType();
+$.CTC4 = Isolate.makeConstantList(['#ebddcb', '#d3b7b2', '#bb98ad', '#806593']);
+$.CTC20 = Isolate.makeConstantList([1, 0, 0, 1]);
+$.CTC25 = Isolate.makeConstantList([1, 1, 1, 0]);
+$.CTC34 = new Isolate.$isolateProperties.Object();
+$.CTC26 = Isolate.makeConstantList([1, 1, 1, 1]);
+$.CTC5 = Isolate.makeConstantList(['#3e3e56', '#818fb6', '#b2cdec', '#cbe3f6']);
+$.CTC8 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC7, {'backspace': 8, 'enter': 13, 'shift': 16, 'ctrl': 17, 'alt': 18, 'capslock': 20, 'esc': 27, 'space': 32, '_0': 48, 'zero': 48, '_1': 49, 'one': 49, '_2': 50, 'two': 50, '_3': 51, 'three': 51, '_4': 52, 'four': 52, '_5': 53, 'five': 53, '_6': 54, 'six': 54, '_7': 55, 'seven': 55, '_8': 56, 'eight': 56, '_9': 57, 'nine': 57, 'a': 65, 'b': 66, 'c': 67, 'd': 68, 'e': 69, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74, 'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87, 'x': 88, 'y': 89, 'z': 90, 'semicolon': 186, 'equal': 187, 'comma': 188, 'hyphen': 189, 'dash': 189, 'minus': 189, 'period': 190, 'dot': 190, 'slash': 191, 'forwardslash': 191, 'grave': 192, 'backtick': 192, 'bracketleft': 219, 'backslash': 220, 'bracketright': 221, 'singlequote': 222, 'exclamation': 49, 'at': 50, 'ampersat': 50, 'pound': 51, 'dollar': 52, 'mod': 53, 'modulo': 53, 'percent': 53, 'caret': 54, 'ampersand': 55, 'asterisk': 56, 'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72, 'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80, 'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88, 'Y': 89, 'Z': 90, 'colon': 186, 'plus': 187, 'pointbracketleft': 188, 'trianglebracketleft': 188, 'underscore': 189, 'pointbracketright': 190, 'trianglebracketright': 190, 'question': 191, 'questionmark': 191, 'approx': 192, 'tilde': 192, 'curleybraceleft': 219, 'pipe': 220, 'curleybraceright': 221, 'doublequote': 222, 'left': 37, 'up': 38, 'right': 39, 'down': 40, 'F1': 112, 'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118, 'F8': 119, 'F9': 120, 'F10': 121, 'F11': 122, 'F12': 123}, 138);
+$.CTC9 = new Isolate.$isolateProperties.IllegalAccessException();
+$.CTC28 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC27, {'0': Isolate.$isolateProperties.CTC11, '1': Isolate.$isolateProperties.CTC12, '2': Isolate.$isolateProperties.CTC13, '3': Isolate.$isolateProperties.CTC14, '4': Isolate.$isolateProperties.CTC15, '5': Isolate.$isolateProperties.CTC16, '6': Isolate.$isolateProperties.CTC17, '7': Isolate.$isolateProperties.CTC18, '8': Isolate.$isolateProperties.CTC19, '9': Isolate.$isolateProperties.CTC20, 'a': Isolate.$isolateProperties.CTC21, 'b': Isolate.$isolateProperties.CTC22, 'c': Isolate.$isolateProperties.CTC23, 'd': Isolate.$isolateProperties.CTC24, 'e': Isolate.$isolateProperties.CTC25, 'f': Isolate.$isolateProperties.CTC26}, 16);
+$.CTC32 = Isolate.makeConstantList(['Hi!', 'Hiya!', 'Hello!', 'It\'s not so scary with you around!', 'Thanks for the help!']);
 $.CTC3 = new Isolate.$isolateProperties.NoMoreElementsException();
-$.CTC8 = new Isolate.$isolateProperties.EmptyQueueException();
+$.CTC10 = new Isolate.$isolateProperties.EmptyQueueException();
 $.RESOLUTION = 1;
 $.SCREEN_HEIGHT = (void 0);
 $.tags = (void 0);
@@ -6409,7 +6630,7 @@ $._getTypeNameOf = (void 0);
 $.BLANK_IMAGE = (void 0);
 $.classMap = (void 0);
 $.tagMap = (void 0);
-$.removalOnDeath = Isolate.$isolateProperties.CTC28;
+$.removalOnDeath = Isolate.$isolateProperties.CTC30;
 $.notifications = (void 0);
 var $ = null;
 Isolate.$finishClasses($$);
@@ -6517,7 +6738,7 @@ $.$defineNativeClass('HTMLBodyElement', [], {
 $.$defineNativeClass('HTMLButtonElement', ["value=", "type?"], {
 });
 
-$.$defineNativeClass('WebKitCSSMatrix', [], {
+$.$defineNativeClass('WebKitCSSMatrix', ["b?"], {
  toString$0: function() {
   return this.toString();
  }
@@ -6641,6 +6862,10 @@ $.$defineNativeClass('ClientRectList', ["length?"], {
 });
 
 _ConsoleImpl = (typeof console == 'undefined' ? {} : console);
+_ConsoleImpl.time$1 = function(title) {
+  return this.time(title);
+ };
+_ConsoleImpl.get$time = function() { return new $.Closure90(this, 'time$1'); };
 _ConsoleImpl.error$1 = function(arg) {
   return this.error(arg);
  };
@@ -6789,7 +7014,7 @@ $.$defineNativeClass('HTMLDetailsElement', [], {
 
 $.$defineNativeClass('HTMLDocument', ["readyState?"], {
  query$1: function(selectors) {
-  if ($.CTC4.hasMatch$1(selectors) === true) {
+  if ($.CTC6.hasMatch$1(selectors) === true) {
     return this.$dom_getElementById$1($.substring$1(selectors, 1));
   }
   return this.$dom_querySelector$1(selectors);
@@ -7715,6 +7940,9 @@ $.$defineNativeClass('SQLResultSetRowList', ["length?"], {
 $.$defineNativeClass('SVGAngle', ["value="], {
 });
 
+$.$defineNativeClass('SVGCircleElement', ["r?"], {
+});
+
 $.$defineNativeClass('SVGComponentTransferFunctionElement', ["type?"], {
 });
 
@@ -7819,7 +8047,7 @@ $.$defineNativeClass('SVGLengthList', [], {
 $.$defineNativeClass('SVGMaskElement', ["y?", "x?", "width?", "height?"], {
 });
 
-$.$defineNativeClass('SVGMatrix', [], {
+$.$defineNativeClass('SVGMatrix', ["b?"], {
  translate$2: function(x, y) {
   return this.translate(x,y);
  }
@@ -7904,6 +8132,9 @@ $.$defineNativeClass('SVGPointList', [], {
  clear$0: function() {
   return this.clear();
  }
+});
+
+$.$defineNativeClass('SVGRadialGradientElement', ["r?"], {
 });
 
 $.$defineNativeClass('SVGRect', ["y=", "x=", "width=", "height="], {
@@ -8493,7 +8724,7 @@ $.$defineNativeClass('IDBOpenDBRequest', [], {
  }
 });
 
-// 239 dynamic classes.
+// 241 dynamic classes.
 // 388 classes
 // 34 !leaf
 (function(){

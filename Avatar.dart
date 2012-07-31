@@ -35,6 +35,10 @@ class Avatar extends GameObject {
       currentFrame = 0;
       currentAnimation = Animation.DEATH;
       currentOrientation = 0;
+      this.tags.add("corpse");
+      addTag(this,"corpse");
+      fireTagEvent("die");
+      tagEvents["corpse"]["init"](this);
       alive = false;
       for (int i = this.tags.length-1;i>=0;i--){
         String tag = this.tags[i];

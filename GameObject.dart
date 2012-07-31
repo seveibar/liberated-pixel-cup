@@ -3,6 +3,7 @@ class GameObject extends Vec2 {
   Map<String,Dynamic> prop;
   String id = "";
   String type = "";
+  bool markedForRemoval = false;
   GameObject(a,xx,yy):super(xx,yy){
     tags = new List<String>();
     prop = new Map<String,Dynamic>();
@@ -48,6 +49,9 @@ class GameObject extends Vec2 {
       case "limit":
         this.limit = v;
         break;
+      case "night-only":
+        this.nightOnly = v;
+        break;
       case "emit":
       case "emission":
         this.emission = v;
@@ -79,6 +83,18 @@ class GameObject extends Vec2 {
       c.fillText(string,-.5 * c.measureText(string).width , .5 * sep+10);
     }
   }
+  GameObject findNearest(String tag){
+    num d = 9999;
+    GameObject w;
+    tagMap[tag].some((GameObject o){
+      num a = o.distanceTo(this);
+      if (a < d){
+        w = o;
+        d = a;
+      }
+    });
+    return w;
+  }
   void fireTagEvent(String event){
     this.tags.forEach((tag){
       if (tagEvents.containsKey(tag) && tagEvents[tag].containsKey(event)){
@@ -86,7 +102,40 @@ class GameObject extends Vec2 {
       }
     });
   }
+  void markForRemoval(){
+    //this.markedForRemoval = true;
+    //this.tags = [];
+    remove();
+  }
+  void remove(){
+    this.tags.forEach((String tag){
+      rmTag(this,tag);
+    });
+    bool found = false; 
+    List<GameObject> onscene = world.onscene;
+    List<GameObject> offscene = world.offscene;
+    List<GameObject> objects = world.objects;
+    int index = onscene.indexOf(this);
+    if (index != -1){
+      onscene.removeRange(index, 1);
+    }else{
+      index = offscene.indexOf(this);
+      if (index != -1){
+        offscene.removeRange(index,1);
+      }
+    }
+    index = objects.indexOf(this);
+    if (index != -1){
+      objects.removeRange(index,1);
+    }
+  }
+  bool hasTag(String tag){
+    return this.tags.indexOf(tag) != -1;
+  }
   void removeTag(String tag){
-    this.tags.removeRange(this.tags.indexOf(tag), 1);
+    int index = this.tags.indexOf(tag);
+    if (index!=-1){
+      this.tags.removeRange(index, 1);
+    }
   }
 }

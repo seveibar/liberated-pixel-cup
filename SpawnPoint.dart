@@ -3,12 +3,13 @@ class SpawnPoint extends GameObject {
   int limit = 5;
   int amountSpawned = 0;
   int timeToSpawn = 0;
+  bool nightOnly = false;
   String emission;//Type name of object you want to spawn
   Map<String,Dynamic> emission_properties;
   SpawnPoint(a):super(a,0,0){
   }
   void update(){
-    if (freq > 0 && amountSpawned < limit){
+    if ((!nightOnly || (nightOnly && (world.time>21 || world.time<5))) && freq > 0 && amountSpawned < limit){
       timeToSpawn --;
       if (timeToSpawn <= 0){
         Vec2 ob = world.spawnObject(emission,(emission_properties != null) ? emission_properties : {});

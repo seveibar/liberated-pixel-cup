@@ -13,13 +13,18 @@ class World {
   List<Path> paths;
   List<PathNode> pathnodes;
   num time = 7;//24:00 clock
-  num dayLength = 60 * 60;
+  num dayLength = 60 * 60 * 5;
   bool night_mode = true;
   int totalPopulation = 200;
+  int saved = 0;
   int awakePopulation = 0;
   int dayCount = 0;
+  int zombie_max = 200;
+  int zombie_out = 0;
+  
+  bool paused;
   //List<String> dayName = const["The Beginning","Long Night","","","","","","","","","","","","","",""];
-  GameObject player;
+  Avatar player;
   
   World(){
     objects = new List<GameObject>();
@@ -154,8 +159,10 @@ class World {
   void startCycle(context){
     //Set camera to player position
     player = tags["player"][0];
+    player.removeTag("citizen");
     sortScreenObjects();
     camera.set(player.x,player.y);
+    paused = false;
     
     if (DEBUG){
       List<Vec2> debugPathNodes = new List<Vec2>();
@@ -171,26 +178,15 @@ class World {
                            //What kind of spawn?
                            menuInterfaces.add(new MenuInterface("options",{
                              "options":[{
-                               "name":"Basic Zombie",
+                               "name":"Zombie Node",
                                "func":() {
                                  currentMapTree["objects"].add({
-                                   "type":"spawn",
-                                   "emit":"zombie",
-                                   "night-only":true,
-                                   "emit-properties":{
-                                     "tag":[
-                                            "ai"
-                                      ]
-                                   },
-                                   "freq":240,
-                                   "limit":3,
+                                   "type":"node",
+                                   "tag":["zombie-spawn"],
                                    "x":player.x,
                                    "y":player.y
                                  });
                                }
-                             },{
-                               "name":"Basic Bee",
-                               "func":() => print("Create basic Bee emitter")
                              },{
                                "name":"Custom Emitter",
                                "func":() => currentMapTree["objects"].add({
@@ -285,6 +281,25 @@ class World {
                                      }
                           ]
                         }))
+                       },{
+                         "name":"Advance time one hour",
+                         "func":()=>time+=1
+                       },
+                       {
+                         "name":"Toggle Debug Mode",
+                         "func":(){DEBUG=!DEBUG;}
+                       },
+                       {
+                         "name":"Simulate 2 hours",
+                         "func":(){
+                           for (int i = 0;i<dayLength/12;i++){
+                             update();
+                           }
+                         }
+                       },
+                       {
+                        "name":"Game Over",
+                        "func":()=>GameOver(game.context)
                        }
                        ,{
                          "name":"Get JSON",
@@ -319,9 +334,16 @@ class World {
       });
     }
     bool cycle(int a){
-      html.window.requestAnimationFrame(cycle);
-      update();
-      render(context);
+      if (!paused){
+        html.window.requestAnimationFrame(cycle);
+        update();
+        if (event.key("T")==1){
+          update();
+          update();
+          update();
+        }
+        render(context);
+      }
     }
     cycle(0);
   }
@@ -362,35 +384,44 @@ class World {
     //To avoid sorting all the objects every frame, we'll sort a few every frame,
     //and hope they eventually line up right
     //TODO revise this, maybe have a grid-based system
-    
-    for (int iter = 0;iter < 1 + onscene.length / 4;iter++){
-      int i0 = (Math.random() * onscene.length).toInt();
-      //It's more likely to switch places if i1 is near i0
-      int i1 = (i0 + Math.random() * 6 - 3).toInt() % onscene.length;
-      
-      if (i0 > i1){
-        int a = i0;
-        i0 = i1;
-        i1 = a;
-      }
-      if (i0 != i1){
-        Vec2 a0 = onscene[i0];
-        Vec2 a1 = onscene[i1];
-        if (a0.y > a1.y){
-          onscene[i0] = a1;
-          onscene[i1] = a0;
+    if (onscene.length >= 1){
+      for (int iter = 0;iter < 1 + onscene.length / 4;iter++){
+        int i0 = (Math.random() * onscene.length).toInt();
+        //It's more likely to switch places if i1 is near i0
+        int i1 = (i0 + Math.random() * 6 - 3).toInt() % onscene.length;
+        
+        if (i0 > i1){
+          int a = i0;
+          i0 = i1;
+          i1 = a;
+        }
+        if (i0 != i1){
+          Vec2 a0 = onscene[i0];
+          Vec2 a1 = onscene[i1];
+          if (a0.y > a1.y){
+            onscene[i0] = a1;
+            onscene[i1] = a0;
+          }
         }
       }
     }
   }
   void update(){
     
+    rpatCount += (Math.random() * 64).toInt();
     //Day/Night Cycle Events
     if (night_mode && time>6.5 && time<21){//6:30 is wake up time
       night_mode = false;
       dayCount ++;
       notify("Day $dayCount");
       notify("Total Population : $totalPopulation");
+      
+      if (dayCount > 1){
+        //ON DAY INCREMENT
+        ZOMBIE_WANDER_DISTANCE = (ZOMBIE_WANDER_DISTANCE * 1.5).toInt();
+        ZOMBIE_SPEED += .2;
+        zombie_max += 10;
+      }
       
       //Lost citizens become unlost during the day
       if (tags.containsKey("lost")){
@@ -452,6 +483,29 @@ class World {
         "home":house
       });
       awakePopulation ++;
+    }
+    
+    //Release Zombies (if night)
+    if (night_mode){
+      if (time < 4 || time > 21){
+        if (zombie_out < zombie_max && rpat(32)){
+          zombie_out ++;
+          List<GameObject> zs_list = tags["zombie-spawn"];
+          GameObject zs = zs_list[(zs_list.length * Math.random()).toInt()];
+          Avatar a = spawnObject("zombie",{"x":zs.x,"y":zs.y});
+        }
+      }else if (zombie_out > 0 && rpat(16)){
+        Avatar zom = tags["zombie"][(tags["zombie"].length * Math.random()).toInt()];
+        if (!zom.hasTag("nestbound")){
+          zom.removeTag("hostile");
+          rmTag(zom,"hostile");
+          zom.removeTag("hostile-wander");
+          rmTag(zom,"hostile-wander");
+          zom.tags.add("nestbound");
+          addTag(zom,"nestbound");
+          tagEvents["nestbound"]["init"](zom);
+        }
+      }
     }
     
     
@@ -546,11 +600,16 @@ class World {
             //Figure out if it's on the left or right side
             if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
               actor.add(actor.velocity.negateX());
-            }else if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
-              actor.add(actor.velocity.negateY());
-            }else{
-              actor.add(actor.velocity.negate());
             }
+            if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
+              actor.add(actor.velocity.negateY());
+            }
+            actor.fireTagEvent("collide");
+          }else if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
+            actor.add(actor.velocity.negateX());
+            actor.fireTagEvent("collide");
+          }else if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
+            actor.add(actor.velocity.negateY());
             actor.fireTagEvent("collide");
           }else{
             actor.add(actor.velocity);
@@ -579,6 +638,13 @@ class World {
     
     time = (time + 24 / dayLength)%24;
     //print(time);
+  }
+  int lastSaved = 0;
+  void renderSaved(html.CanvasRenderingContext2D c){
+    if (lastSaved != saved){
+      lastSaved = saved;
+      notify("Saved : $saved");
+    }
   }
   List<Avatar> damageBubble(point,radius,damage){
     List<Avatar> attacked = new List<Avatar>();
@@ -617,13 +683,16 @@ class World {
         c.stroke();
         c.closePath();
       });
-      topTileManager.render(c,camera);
     }
+    topTileManager.render(c,camera);
     c.restore();
     overlay.render(c,camera);
     menuInterfaces.forEach((MenuInterface mi){
       mi.render(c);
     });
     renderNotifications(c);
+    renderSaved(c);
+    
+    //
   }
 }

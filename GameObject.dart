@@ -29,6 +29,17 @@ class GameObject extends Vec2 {
         y = v;
         break;
       case "animation":
+        if (v.endsWith("]")){
+          List<String> vparts = v.split("[");
+          
+          List<String> nparts = vparts[1].split("-");
+          
+          int lowest = Math.parseInt(nparts[0]);
+          int highest = Math.parseInt(nparts[1].substring(0,nparts[1].length-1))+1;
+          
+          v = "${vparts[0]}${(Math.random() * (highest - lowest) + lowest).toInt()}";
+          
+        }
         animation = animationMap[v];
         break;
       case "type":
@@ -103,8 +114,8 @@ class GameObject extends Vec2 {
     });
   }
   void markForRemoval(){
-    //this.markedForRemoval = true;
-    //this.tags = [];
+    this.markedForRemoval = true;
+    this.tags = [];
     remove();
   }
   void remove(){

@@ -18,10 +18,12 @@ class World {
   num time = 7;//24:00 clock
   num dayLength = 60 * 60 * 5;
   bool night_mode = false;
+  
   int totalPopulation = 200;
   int saved = 0;
   int awakePopulation = 0;
   int dayCount = 0;
+  
   int zombie_max = 50;
   int zombie_out = 0;
   int zombies_killed = 0;
@@ -35,10 +37,12 @@ class World {
   List<int> weaponCost;
   List<int> weaponCost2;//For second upgrade
   List<String> weaponName;
+  List<int> weaponStartFrame;
   
   int coin = 0;//Player Money
   
   Animation player_animation;
+  int player_max_health = 100;
   
   bool intro = false;
   int slideTime = 0;
@@ -65,7 +69,7 @@ class World {
     menuInterfaces = new List<MenuInterface>();
     paths = new List<Path>();
     pathnodes = new List<PathNode>();
-    playerWeapons = [true,true,false,false,false,true,true];
+    playerWeapons = [true,true,true,true,true,true,true];
     //[0] = fist
     //[1] = dagger
     //[2] = bow
@@ -77,8 +81,9 @@ class World {
     weaponAttackTypes =   [0,   0,    1,   2,     2,  0,     0  ];
     weaponAttackTime =    [12,  10,  24,  15,    20,  12,   18  ];
     weaponAttackRadius =  [64,  64,   0,  128,  128, 128,  128  ];
-    weaponCost =          [0,  120, 240,  150,   400, 300, 500  ];
-    weaponCost2 =         [0,  120, 240,  150,   400, 300, 500  ];
+    weaponCost =          [0,  120, 240,  150,  400, 300,  500  ];
+    weaponCost2 =         [0,  120, 240,  150,  400, 300,  500  ];
+    weaponStartFrame =    [0,    0,   25,    0,    0,   0,    0  ];
     weaponName =          ["fist","dagger","bow","staff",'spear','rapier','longsword'];
   }
   void load(String json,callback){
@@ -237,6 +242,12 @@ class World {
         
         menuInterfaces.add(new MenuInterface("options",{
           "options":optionMap
+        }));
+        break;
+     case "health":
+        menuInterfaces.add(new MenuInterface("confirm",{
+          "text":"Would you like to buy a health upgrade for 500c?",
+          "func":(){player_max_health+=50;}
         }));
         break;
     }
@@ -713,9 +724,13 @@ class World {
     
     //Check if player is trying to attack
     if (event.mouseDown){
+      if (player.currentAttackTime == 0){
+        player.currentFrame = weaponStartFrame[currentWeapon]*5;
+      }
       player.attacking = true;
       player.attackDirection = event.mouse_position.clone().subTo(SCREEN_WIDTH/2,SCREEN_HEIGHT/2).normalize();
     }else{
+      player.currentAttackTime = 0;
       player.attacking = false;
     }
     
@@ -775,6 +790,7 @@ class World {
                     actor.fireTagEvent("kill");
                   }
                 }
+                audio.play("bump");
               }else if (actor.attackType == 1){
                 //Ranged Attack
                 spawnObject("arrow",{
@@ -783,6 +799,7 @@ class World {
                   "y":actor.y + actor.attackDirection.y * 32,
                   "damage":actor.damage
                 });
+                audio.play("shoot");
               }else if (actor.attackType == 2){
                 //Thrusting attack
                 List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection.clone().multiplyScalar(1.5));
@@ -858,6 +875,15 @@ class World {
       notify("Saved : $saved");
     }
   }
+  void renderCoins(html.CanvasRenderingContext2D c){
+    c.fillStyle = "yellow";
+    c.font = "18px Arial";
+    c.globalAlpha = .75;
+    c.fillText("${coin}c", 15, 18);
+    c.globalAlpha = 1;
+    
+    
+  }
   void giveCoin(Vec2 at,int amt){
     coin += amt;
     spawnObject("floating_text",{"x":at.x,"y":at.y,"text":"+${amt}"});
@@ -919,6 +945,7 @@ class World {
     });
     renderNotifications(c);
     renderSaved(c);
+    renderCoins(c);
     if (intro){
       c.globalAlpha = 1;
       c.fillStyle = "#000";

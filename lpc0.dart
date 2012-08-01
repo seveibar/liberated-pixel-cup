@@ -31,6 +31,8 @@
 
 #source("Notification.dart");
 
+#source("AudioManager.dart");
+
 #resource('main.css');
 
 final int GRAPHIC_BLOCK_SIZE = 32;
@@ -123,6 +125,7 @@ int RENDER_DISTANCE;
 num RESOLUTION = 1;
 
 UIManager event;
+AudioManager audio;
 
 List<Notification> notifications;
 
@@ -299,6 +302,7 @@ class Game {
             }
           },
           "hit":(Avatar citizen){
+            audio.play("hurt");
             if (world.player.attacking){
               niceFactor -= .005;
               ["wander","traveler","lost","following","homebound","scared"].forEach((String tag){
@@ -323,6 +327,11 @@ class Game {
               niceFactor -= .05;
               world.giveCoin(avatar,(10 * Math.random() + 2).toInt());
             }
+          },
+          "collide":(Avatar citizen){
+            if (rpat(120)){
+              citizen.add(citizen.velocity);
+            }
           }
         },
         "player":{
@@ -338,7 +347,10 @@ class Game {
             GameOver(context); 
           },
           "update":(Avatar player){
-            player.health = (player.health < 100) ? player.health + .2 : 100;
+            player.health = (player.health < world.player_max_health) ? player.health + .2 : world.player_max_health;
+            if (world.collisionAtVec2(player)){
+              player.add(player.velocity);
+            }
           }
         },
         "scared":{
@@ -743,6 +755,8 @@ class Game {
     
     tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>()};
     tagMap = tags;
+    
+    audio = new AudioManager();
     
     animationMap = new Map<String,Animation>();
     event = new UIManager();

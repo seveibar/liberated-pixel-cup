@@ -140,13 +140,13 @@
     {
       "type": "animation",
       "name": "weapon5",
-      "size":192,
+      "size": 192,
       "slash": "weapons/rapier.png"
     },
     {
       "type": "animation",
       "name": "weapon6",
-      "size":192,
+      "size": 192,
       "slash": "weapons/longsword.png"
     },
     {
@@ -211,7 +211,7 @@
             "Arm yourselves!",
             "Low prices!"
           ],
-          "menu":"weapons",
+          "menu": "weapons",
           "x": 7650,
           "y": 6500
         },
@@ -223,9 +223,21 @@
             "Weapon Upgrades!",
             "Cheap!"
           ],
-          "menu":"upgrades",
+          "menu": "upgrades",
           "x": 7403,
           "y": 2149
+        },
+        {
+          "type": "salesman",
+          "calls": [
+            "Health Upgrades!",
+            "",
+            "Weapon Upgrades!",
+            "Cheap!"
+          ],
+          "menu": "health",
+          "x": 124,
+          "y": 6830
         },
         {
           "type": "node",
@@ -1306,6 +1318,94 @@
           ],
           "x": 5907,
           "y": 5969
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2156.9011623513766,
+          "y": 6287.7041286761005
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1034.5639337885787,
+          "y": 5331.492935448884
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3474.5330423779715,
+          "y": 5967.309371349424
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2287.9948036857786,
+          "y": 6967.728269677846
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1799.0242409372877,
+          "y": 6850.757706929385
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6892.381774232691,
+          "y": 5499.042413700007
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3921.2054363666985,
+          "y": 7848.395239733176
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3413.2493987955086,
+          "y": 7706.194983514835
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2892.4310732841936,
+          "y": 7844.219368063964
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7047.1484093841445,
+          "y": 7938.384473630521
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7667.970355206136,
+          "y": 7311.0886770127645
         }
       ],
       "paths": [

@@ -15,23 +15,23 @@ class MenuInterface {
           String name = options[i]["name"];
           Function func = options[i]["func"];
           
-          buttons.add(new MenuButton(name,func,SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + i * 40));
+          buttons.add(new MenuButton(name,func,SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + i * 50));
         }
-        buttons.add(new MenuButton("Exit",(){},SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + options.length * 40));
+        buttons.add(new MenuButton("Exit",(){},SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + options.length * 50));
         break;
       case "confirm":
         renderFunction = renderConfirmMenu;
         num cx = SCREEN_WIDTH/2;
         num cy = SCREEN_HEIGHT/2;
-        buttons.add(new MenuButton("Cancel",(){},cx - 200,cy + 200));
-        buttons.add(new MenuButton("Confirm",data["func"],cx + 200,cy + 200));
+        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 200));
+        buttons.add(new MenuButton("Confirm",data["func"],cx + 150,cy + 200));
         break;
       case "broke":
         renderFunction = renderConfirmMenu;
         num cx = SCREEN_WIDTH/2;
         num cy = SCREEN_HEIGHT/2;
-        buttons.add(new MenuButton("Cancel",(){},cx - 200,cy + 200));
-        buttons.add(new MenuButton("Not Enough Coin",(){},cx + 200,cy + 200));
+        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 200));
+        buttons.add(new MenuButton("Not Enough Coin",(){},cx + 150,cy + 200));
         break;
     }
   }

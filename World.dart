@@ -9,7 +9,10 @@ class World {
   List<GameObject> onscene,offscene;
   int map_width;
   List<bool> collisionMap; 
+  
   List<html.ImageElement> itemImages;
+  List<html.ImageElement> uiImages;
+  
   List<Path> paths;
   List<PathNode> pathnodes;
   num time = 7;//24:00 clock
@@ -21,9 +24,23 @@ class World {
   int dayCount = 0;
   int zombie_max = 50;
   int zombie_out = 0;
+  int zombies_killed = 0;
+  
+  List<bool> playerWeapons;
+  int currentWeapon = 0;
+  List<num> weaponDamage;
+  List<num> weaponAttackTime;
+  List<int> weaponAttackTypes;
+  List<num> weaponAttackRadius;
+  List<int> weaponCost;
+  List<int> weaponCost2;//For second upgrade
+  List<String> weaponName;
+  
+  int coin = 0;//Player Money
+  
   Animation player_animation;
   
-  bool intro = true;
+  bool intro = false;
   int slideTime = 0;
   int currentSlide = 0;
   final List<String> slides = const["This is the island of Dartia",
@@ -48,6 +65,21 @@ class World {
     menuInterfaces = new List<MenuInterface>();
     paths = new List<Path>();
     pathnodes = new List<PathNode>();
+    playerWeapons = [true,true,false,false,false,true,true];
+    //[0] = fist
+    //[1] = dagger
+    //[2] = bow
+    //[3] = staff
+    //[4] = spear
+    //[5] = rapier
+    //[6] = longsword
+    weaponDamage =        [25,  34,  20,  34,    75,  45,   70  ];
+    weaponAttackTypes =   [0,   0,    1,   2,     2,  0,     0  ];
+    weaponAttackTime =    [12,  10,  24,  15,    20,  12,   18  ];
+    weaponAttackRadius =  [64,  64,   0,  128,  128, 128,  128  ];
+    weaponCost =          [0,  120, 240,  150,   400, 300, 500  ];
+    weaponCost2 =         [0,  120, 240,  150,   400, 300, 500  ];
+    weaponName =          ["fist","dagger","bow","staff",'spear','rapier','longsword'];
   }
   void load(String json,callback){
     print("Beginning Parse");
@@ -59,7 +91,10 @@ class World {
     print("Data Parsed, Loading Test Map");
     res.loadSplitImage("items.png",(List<html.ImageElement> imgs){
       itemImages = imgs;
-      loadMap("test",callback); //TODO remove
+      res.loadSplitImage("ui.png",(List<html.ImageElement> ui_imgs){
+        uiImages = ui_imgs;
+        loadMap("test",callback); //TODO remove
+      });
     });
   }
   void loadMap(name,callback){
@@ -156,9 +191,81 @@ class World {
   bool collisionAtVec2(Vec2 v){
     return collisionAt(v.x,v.y);
   }
+  void openMenu(String type){
+    print("Opening $type menu");
+    switch(type){
+      case "weapons":
+        List<Map> optionMap = [];
+        for (int nci = 0;nci<playerWeapons.length;nci++){
+          int i = nci;//For closure
+          if (!playerWeapons[i]){
+            optionMap.add({
+              "name":"${weaponName[i].splitChars()[0].toUpperCase().concat(weaponName[i].substring(1))} ${weaponCost[i]}c",
+              "func":()=> coin >= weaponCost[i] ? menuInterfaces.add(new MenuInterface("confirm",{
+                "text":"Would you like to buy the ${weaponName[i]} for ${weaponCost[i]}c?",
+                "func":()=>purchaseWeapon(i)
+              })) : menuInterfaces.add(new MenuInterface("broke",{"text":"You cannot afford the ${weaponName[i]}, come back when you have ${weaponCost[i]}c."}))
+            });
+          }
+        }
+        
+        menuInterfaces.add(new MenuInterface("options",{
+          "options":optionMap
+        }));
+        break;
+      case "upgrades":
+        List<Map> optionMap = [];
+        for (int nci = 0;nci<playerWeapons.length;nci++){
+          int i = nci;//For closure
+          if (playerWeapons[i]){
+            optionMap.add({
+              "name":"${weaponName[i].splitChars()[0].toUpperCase().concat(weaponName[i].substring(1))} Damage ${weaponCost[i]}c",
+              "func":()=> coin >= weaponCost[i] ? menuInterfaces.add(new MenuInterface("confirm",{
+                "text":"Would you like to buy a ${weaponName[i]} damage upgrade for ${weaponCost[i]}c?",
+                "func":()=>purchaseUpgrade("damage",i)
+              })) : menuInterfaces.add(new MenuInterface("broke",{"text":"You cannot afford a ${weaponName[i]} damage upgrade, come back when you have ${weaponCost2[i]}c."}))
+            });
+            optionMap.add({
+              "name":"${weaponName[i].splitChars()[0].toUpperCase().concat(weaponName[i].substring(1))} Attack Rate ${weaponCost2[i]}c",
+              "func":()=> coin >= weaponCost2[i] ? menuInterfaces.add(new MenuInterface("confirm",{
+                "text":"Would you like to buy a ${weaponName[i]} damage upgrade for ${weaponCost2[i]}c?",
+                "func":()=>purchaseUpgrade("rate",i)
+              })) : menuInterfaces.add(new MenuInterface("broke",{"text":"You cannot afford a ${weaponName[i]} attack rate upgrade, come back when you have ${weaponCost2[i]}c."}))
+            });
+          }
+        }
+        
+        menuInterfaces.add(new MenuInterface("options",{
+          "options":optionMap
+        }));
+        break;
+    }
+  }
+  void purchaseWeapon(int weaponID){
+    coin -= weaponCost[weaponID];
+    playerWeapons[weaponID] = true;
+    //weaponCost becomes upgrade cost
+    weaponCost[weaponID] = (weaponCost[weaponID]/2).toInt();
+    weaponCost2[weaponID] = weaponCost[weaponID];
+    notify("Press E to change weapons");
+  }
+  void purchaseUpgrade(String type,int weaponID){
+    switch(type){
+      case "damage":
+        weaponDamage[weaponID] *= 1.25;
+        coin -= weaponCost[weaponID];
+        weaponCost[weaponID]*=2;
+        break;
+      case "rate":
+        weaponAttackTime[weaponID] *= 1.25;
+        coin -= weaponCost2[weaponID];
+        weaponCost2[weaponID]*=2;
+        break;
+    }
+  }
   void addObject(GameObject instance){
     objects.add(instance);
-    offscene.add(instance);
+    onscene.add(instance);
   }
   List<PathNode> getClosePathNodes(Vec2 v){
     List<PathNode> cnodes = new List<PathNode>();
@@ -180,6 +287,24 @@ class World {
     sortScreenObjects();
     camera.set(player.x,player.y);
     paused = false;
+    
+    event.onKeyPress.add((e){
+      if (event.key("E")==1){
+        //Next weapon
+        currentWeapon = (currentWeapon+1)%playerWeapons.length;
+        while(!playerWeapons[currentWeapon]){
+          currentWeapon = (currentWeapon+1)%playerWeapons.length;
+        }
+        if (currentWeapon!=0){
+          player.weaponAnimation = animationMap["weapon$currentWeapon"];
+        }else{
+          player.weaponAnimation = null;
+        }
+        player.damage = weaponDamage[currentWeapon];
+        player.attackTime = weaponAttackTime[currentWeapon];
+        player.attackType = weaponAttackTypes[currentWeapon];
+      }
+    });
     
     if (DEBUG){
       List<Vec2> debugPathNodes = new List<Vec2>();
@@ -323,6 +448,10 @@ class World {
                        {
                         "name":"Game Over",
                         "func":()=>GameOver(game.context)
+                       },
+                       {
+                        "name":"Test Menu",
+                        "func":()=>menuInterfaces.add(new MenuInterface("confirm",{"text":"Would you like to confirm?","func":(){}}))
                        }
                        ,{
                          "name":"Get JSON",
@@ -343,7 +472,6 @@ class World {
         }
         //Check if player is near items
         if (tags.containsKey("item")){
-          Avatar player = tags["player"][0];
           tags["item"].some((Item item){
             if (player.distanceTo(item) < 32){
               event.mouseDown = false;
@@ -356,6 +484,15 @@ class World {
         }
       });
     }
+    event.onKeyPress.add((e){
+      if (event.key("space") == 1 && tags.containsKey("salesman")){
+        tags["salesman"].forEach((Avatar a){
+          if (a.distanceTo(player)<128){
+            openMenu(a["menu"]);
+          }
+        });
+      }
+    });
     bool cycle(int a){
       if (!paused){
         html.window.requestAnimationFrame(cycle);
@@ -382,13 +519,15 @@ class World {
   }
   void sortScreenObjects(){
     //Find objects that are onscreen in offscene and switch
-    for (int iter = (Math.random() * offscene.length).toInt(),times = 0;times < offscene.length/16+1;iter++,times++){
-      int i = iter%offscene.length;
-      if (offscene[i].distanceTo(player) < RENDER_DISTANCE){
-        onscene.add(offscene[i]);
-        offscene.removeRange(i, 1);
-      }else if (offscene[i].markedForRemoval){
-        offscene.removeRange(i, 1);
+    if (offscene.length >= 1){
+      for (int iter = (Math.random() * offscene.length).toInt(),times = 0;times < offscene.length/16+1;iter++,times++){
+        int i = iter%offscene.length;
+        if (offscene[i].distanceTo(player) < RENDER_DISTANCE){
+          onscene.add(offscene[i]);
+          offscene.removeRange(i, 1);
+        }else if (offscene[i].markedForRemoval){
+          offscene.removeRange(i, 1);
+        }
       }
     }
     //Find objects that are offscreen in onscene and switch
@@ -442,7 +581,7 @@ class World {
       if (dayCount > 1){
         //ON DAY INCREMENT
         ZOMBIE_WANDER_DISTANCE = (ZOMBIE_WANDER_DISTANCE * 1.5).toInt();
-        ZOMBIE_SPEED += .2;
+        ZOMBIE_SPEED += .5;
         zombie_max += 10;
       }
       
@@ -531,7 +670,16 @@ class World {
       }
     }
     
-    
+    //Protips
+    if (rpat(1000)){
+      final List<String> protips = [
+          "You can switch weapons with E",
+          "Villagers tend to be meaner when you kill them",
+          "All weapons, upgrades and coins are preserved between games",
+          "Upgrades can be purchased for all weapons"
+      ];
+      notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
+    }
     
     //Tag events
     
@@ -542,7 +690,6 @@ class World {
     
     if (!intro){
       //Player Tag
-      Avatar player = tags["player"][0];
       Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
       inc.normalize().multiplyScalar(2 * ( 1 + 4 * event.key("shift")));
       player.velocity.add(inc);
@@ -616,18 +763,37 @@ class World {
           if (actor.attacking){
             actor.currentAttackTime = actor.currentAttackTime + 1;
             if (actor.currentAttackTime > actor.attackTime){
-              //Assume melee
+              
               actor.currentAttackTime = 0;
-              //print(actor.attackDirection.clone().multiplyScalar(actor.attackRadius).toString());
-              //print(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)).toString());
-              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage);
-              for (int i = 0;i<attacked.length;i++){
-                if (!attacked[i].alive){
-                  actor.fireTagEvent("kill");
+              
+              //TODO use switch here
+              if (actor.attackType == 0){
+                //Melee Attack
+                List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection);
+                for (int i = 0;i<attacked.length;i++){
+                  if (!attacked[i].alive){
+                    actor.fireTagEvent("kill");
+                  }
+                }
+              }else if (actor.attackType == 1){
+                //Ranged Attack
+                spawnObject("arrow",{
+                  "direction":actor.attackDirection.clone().multiplyScalar(128),
+                  "x":actor.x + actor.attackDirection.x * 32,
+                  "y":actor.y + actor.attackDirection.y * 32,
+                  "damage":actor.damage
+                });
+              }else if (actor.attackType == 2){
+                //Thrusting attack
+                List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection.clone().multiplyScalar(1.5));
+                for (int i = 0;i<attacked.length;i++){
+                  if (!attacked[i].alive){
+                    actor.fireTagEvent("kill");
+                  }
                 }
               }
             }
-            int timeToAttack = actor.currentAttackTime - actor.attackTime + 6;
+            int timeToAttack = actor.currentAttackTime - actor.attackTime + Animation.AnimationTime[actor.attackType];
             actor.currentFrame += (timeToAttack > 0) ? timeToAttack : 0;
             actor.currentOrientation = actor.attackDirection.getDirection();
           }else{
@@ -640,17 +806,22 @@ class World {
           if (collisionAtVec2(actor.clone().add(actor.velocity))){
             //Figure out if it's on the left or right side
             if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
-              actor.add(actor.velocity.negateX());
+              //actor.velocity.negateX();
+              actor.velocity.zeroX();
             }
             if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
-              actor.add(actor.velocity.negateY());
+              //actor.velocity.negateY();
+              actor.velocity.zeroY();
             }
+            actor.add(actor.velocity);
             actor.fireTagEvent("collide");
           }else if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
-            actor.add(actor.velocity.negateX());
+            //actor.add(actor.velocity.negateX());
+            actor.add(actor.velocity.zeroX());
             actor.fireTagEvent("collide");
           }else if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
-            actor.add(actor.velocity.negateY());
+            //actor.add(actor.velocity.negateY());
+            actor.add(actor.velocity.zeroY());
             actor.fireTagEvent("collide");
           }else{
             actor.add(actor.velocity);
@@ -687,12 +858,16 @@ class World {
       notify("Saved : $saved");
     }
   }
-  List<Avatar> damageBubble(point,radius,damage){
+  void giveCoin(Vec2 at,int amt){
+    coin += amt;
+    spawnObject("floating_text",{"x":at.x,"y":at.y,"text":"+${amt}"});
+  }
+  List<Avatar> damageBubble(Vec2 point,num radius,num damage,Vec2 direction){
     List<Avatar> attacked = new List<Avatar>();
     tags["actor"].forEach((Avatar actor){
       if (actor.alive && actor.distanceTo(point) < radius){
         attacked.add(actor);
-        actor.hurt(damage);
+        actor.hurt(damage,direction);
       }
     });
     return attacked;

@@ -1,7 +1,7 @@
 class MenuButton extends Vec2{
   String text;
   Function action;
-  num width,height = 32;
+  num width = 128,height = 32;
   MenuButton(this.text,this.action,num x,num y):super(x,y){
     
   }
@@ -10,15 +10,16 @@ class MenuButton extends Vec2{
   }
   void render(html.CanvasRenderingContext2D c){
     c.save();
-    c.font = "18px Arial";
-    if (width == null){
-      width = c.measureText(text).width + 20; 
-    }
     c.translate(x,y);
+    c.drawImage(world.uiImages[25], -64, -16);
+    c.drawImage(world.uiImages[26], -32, -16);
+    c.drawImage(world.uiImages[26], 0, -16);
+    c.drawImage(world.uiImages[27], 32, -16);
+    c.globalAlpha = .75;
+    c.font = "14px Arial";
+    c.textAlign = "center";
     c.fillStyle = "#fff";
-    c.fillRect(-width/2,-height/2,width,height);
-    c.fillStyle = "#000";
-    c.fillText(text,-width/2 + 10,0);
+    c.fillText(text, 0, 4);
     c.restore();
   }
 }

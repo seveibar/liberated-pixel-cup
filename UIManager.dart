@@ -18,7 +18,11 @@ class UIManager {
     if (!MOBILE){
       html.window.on.keyDown.add((e){
         setKey(e.keyCode,1);
-        onKeyPress.forEach((Function func) => func(e));
+        for (int i = onKeyPress.length-1;i>=0;i--){
+          if (onKeyPress[i](e) == true){
+            return;
+          }
+        }
       });
       html.window.on.keyUp.add((e){
         setKey(e.keyCode,0);

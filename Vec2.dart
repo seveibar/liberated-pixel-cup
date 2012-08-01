@@ -97,6 +97,14 @@ class Vec2 {
     this.multiplyScalar(0);
     return this;
   }
+  Vec2 zeroX(){
+    this.x = 0;
+    return this;
+  }
+  Vec2 zeroY(){
+    this.y = 0;
+    return this;
+  }
   bool isZero([approx=0.0001]){
     return (lengthSq() < approx);
   }

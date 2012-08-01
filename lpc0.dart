@@ -7,6 +7,8 @@
 #source("PathNode.dart");
 #source("Path.dart");
 #source("GameObject.dart");
+#source("FloatingText.dart");
+#source("Arrow.dart");
 #source("SpawnPoint.dart");
 #source("Avatar.dart");
 #source("Item.dart");
@@ -106,7 +108,7 @@ Map<String,List<GameObject>> tagMap;// <<<<<
 Map<String,Object> classMap;
 Map<String,Animation> animationMap;
 
-void addTag(GameObject object,String tag) => tags[tag] == null ? tags[tag] = new List<GameObject>.from([object]) : tags[tag].add(object);
+Dynamic addTag(GameObject object,String tag) => tags[tag] == null ? tags[tag] = new List<GameObject>.from([object]) : tags[tag].add(object);
 void rmTag(GameObject object,String tag) {
   int index = tags[tag].indexOf(object);
   if (index!=-1){
@@ -158,8 +160,9 @@ void GameOver(html.CanvasRenderingContext2D c){
     [
      ["Village Population","${world.totalPopulation}"],
      ["Zombie Population","${world.zombie_max}"],
+     ["Zombies Killed","${world.zombies_killed}"],
      ["Villagers Saved","${world.saved}"],
-     ["Days Survived","${world.dayCount}"]
+     ["Days Survived","${world.dayCount}"],
     ].forEach((List<String> not){
       c.textAlign = "left";
       c.fillText(not[0],25,ypos);
@@ -228,7 +231,9 @@ class Game {
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),
         "avatar":(p)=>new Avatar(p),
-        "node":(p)=>new GameObject(p,0,0)
+        "node":(p)=>new GameObject(p,0,0),
+        "arrow":(p)=>new Arrow(p),
+        "floating_text":(p)=>new FloatingText(p)
     };
     tagEvents = {
         "citizen":{
@@ -237,6 +242,7 @@ class Game {
               avatar.armor = 1;
               avatar.damage = 0;
             }
+            avatar.speed = .5 + Math.random() * 1.5;
             avatar["destination"] = avatar.clone();//DIRTY FIX
             avatar["waitTime"] = 0;
             num r = Math.random() + niceFactor;
@@ -292,30 +298,52 @@ class Game {
               }
             }
           },
+          "hit":(Avatar citizen){
+            if (world.player.attacking){
+              niceFactor -= .005;
+              ["wander","traveler","lost","following","homebound","scared"].forEach((String tag){
+                if (citizen.hasTag(tag)){
+                  citizen.removeTag(tag);
+                  rmTag(citizen,tag);
+                }
+              });
+              citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()]);
+              citizen.tags.add("scared");
+              addTag(citizen,"scared");
+              citizen["scaredOf"] = world.player;
+              tagEvents["scared"]["init"](citizen);
+            }
+          },
           "die":(Avatar avatar){
             world.totalPopulation --;
             world.awakePopulation --;
             world.zombie_max ++;
+            niceFactor -= .01;
+            if (world.player.attacking && world.player.distanceTo(avatar)<256){
+              niceFactor -= .05;
+              world.giveCoin(avatar,(10 * Math.random() + 2).toInt());
+            }
           }
         },
         "player":{
           "init":(Avatar player){
             player.damage = 25;
             player.armor = .5;
+            player.speed = 1;
           },
           "die":(Avatar player){
-            notifiy("You have died, please wait");
+            notify("You have died, please wait");
           },
           "decomposed":(Avatar player){
             GameOver(context); 
           },
           "update":(Avatar player){
-            player.health = (player.health < 100) ? player.health + .25 : player.health;
+            player.health = (player.health < 100) ? player.health + .2 : 100;
           }
         },
         "scared":{
           "init":(Avatar citizen){
-            citizen["runDirection"] = citizen.clone().sub(citizen["scaredOf"]).normalize();
+            citizen["runDirection"] = citizen.clone().sub(citizen["scaredOf"]).normalize().multiplyScalar(citizen.speed);
           },
           "update":(Avatar citizen){
             citizen.velocity.add(citizen["runDirection"]);
@@ -340,7 +368,7 @@ class Game {
                 a["pathDirection"] = cnodes[ni].start ? 1 : -1;
                 a["pathIndex"] = cnodes[ni].start ? 0 : cnodes[ni].path.points.length - 1;
                 a["pathPoint"] = cnodes[ni].clone();
-                a["pathMove"] = cnodes[ni].clone().sub(a).normalize().divideScalar(2);
+                a["pathMove"] = cnodes[ni].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
               }else{
                 for (int i = cnodes.length-1;i>=0;i--){
                   if (cnodes[i].house){
@@ -367,7 +395,7 @@ class Game {
           },
           "collide":(Avatar a){
             a["pathPoint"] = a["path"].points[a["pathIndex"]];
-            a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2);
+            a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
             a.add(a["pathMove"]);
           },
           "update":(Avatar a){
@@ -380,7 +408,7 @@ class Game {
                 a["pathPoint"] = a["path"].points[a["pathIndex"]].clone();
                 num d = a.distanceTo(a["pathPoint"])/4;
                 a["pathPoint"].addTo(Math.random() * d - d/2,Math.random() * d - d/2);
-                a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2);
+                a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
               }
             }
           }
@@ -388,7 +416,9 @@ class Game {
         "homebound":{
           "init":(Avatar avatar){
             avatar["collisionCount"] = 0;
-            avatar["homeboundDirection"] = avatar["home"].clone().sub(avatar).normalize().divideScalar(2);
+            //TODO SIMPLIFY
+            GameObject home = avatar["home"];
+            avatar["homeboundDirection"] = home.clone().sub(avatar).normalize().divideScalar(2).multiplyScalar(avatar.speed);
           },
           "update":(Avatar avatar){
             avatar.velocity.add(avatar["homeboundDirection"]);
@@ -406,7 +436,7 @@ class Game {
                 });
                 if (found){
                   avatar["collisionCount"] = 0;
-                  avatar["homeboundDirection"] = avatar["home"].clone().sub(avatar).normalize().divideScalar(2);
+                  avatar["homeboundDirection"] = avatar["home"].clone().sub(avatar).normalize().divideScalar(2).multiplyScalar(avatar.speed);
                 }else{
                   switchTag(avatar,"homebound","lost");
                   avatar.tags.add("wander");
@@ -479,6 +509,7 @@ class Game {
         "corpse":{
           "init":(Avatar avatar){
             avatar["deadTime"] = 0;
+            avatar.speaking = false;
           },
           "update":(Avatar avatar){
             avatar["deadTime"] ++;
@@ -503,8 +534,11 @@ class Game {
             for (int i = (Math.random() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
               int index = i%tags["house"].length;
               if (tags["house"][index].distanceTo(avatar) < 256){
-                avatar.say("Thank you!");
+                if (rpat(2)){
+                  avatar.say(rpat(4) ? "Thank you!" : "Thanks!" );
+                }
                 avatar["home"] = tags["house"][index];
+                world.giveCoin(avatar,(Math.random() * 20 + 5).toInt());
                 iter = 9999;
                 niceFactor += .05;
                 world.saved ++;
@@ -573,6 +607,38 @@ class Game {
               avatar.sayTime = Math.random() * 500;
             }else{
               avatar.sayTime --;
+            }
+          }
+        },
+        "salesman":{
+          "update":(Avatar avatar){
+            if (avatar.sayTime<0){
+              avatar.speaking = false;
+              if (rpat(2)){
+                avatar.say(avatar["calls"][(avatar["calls"].length * Math.random()).toInt()]);
+              }
+              avatar.sayTime = 100+Math.random() * 200;
+            }else{
+              avatar.sayTime --;
+            }
+            if (world.player.distanceTo(avatar) < 128 && notifications.length == 0){
+              notify("Press Space to Interact");
+            }
+          }
+        },
+        "arrow":{
+          "update":(Arrow arrow){
+            arrow.add(arrow["direction"].divideScalar(1.5));
+            if (world.damageBubble(arrow, 32, arrow["damage"], arrow["direction"].clone().normalize()).length>0 || world.collisionAtVec2(arrow) || arrow.distance++ > 12){
+              arrow.remove();
+            }
+          }
+        },
+        "zombie":{
+          "die":(Avatar a){
+            if (player.distanceTo(a) < 256 && player.attacking){
+              world.zombies_killed ++;
+              world.giveCoin(a,(Math.random() * 4 + 1).toInt());
             }
           }
         },
@@ -658,6 +724,15 @@ class Game {
             zom["collisionCount"] ++;
             if (zom["collisionCount"] > 120){
               zom.markForRemoval();
+            }
+          }
+        },
+        "floating_text":{
+          "update":(FloatingText ftext){
+            ftext.time++;
+            ftext.y -= .5;
+            if (ftext.time > 150){
+              ftext.remove();
             }
           }
         }

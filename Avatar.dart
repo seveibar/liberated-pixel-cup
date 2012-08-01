@@ -1,7 +1,6 @@
 class Avatar extends GameObject {
-  //Animation animation;
   int currentAnimation = Animation.WALK;
-  int currentOrientation = 0;
+  int currentOrientation = 2;
   //0 - forward,1 - left, 2 - down, 3 - right
   num currentFrame = 0;
   Vec2 velocity;
@@ -9,11 +8,13 @@ class Avatar extends GameObject {
   Vec2 attackDirection;
   
   num damage=25,armor=1;
+  int attackType = 0;
   int attackTime = 12;
   int currentAttackTime = 0;
   int timeSinceHealthChange = 0;
   num health = 100;
   bool alive = true;
+  num speed = 1;
   
   bool speaking = false;
   num sayTime = 0;
@@ -22,19 +23,23 @@ class Avatar extends GameObject {
   num attackRadius = 32;
   void set attacking(bool b){
     _attacking = b;
-    currentAnimation = b ? Animation.SLASH : Animation.WALK;
+    currentAnimation = b ? Animation.AnimationTypes[attackType] : Animation.WALK;
   }
   bool get attacking() => _attacking;
   Animation animation;
+  Animation weaponAnimation;
   Avatar(properties):super(properties,0,0){
     velocity = new Vec2(0,0);
-    this.tags.add("avatar");
-    addTag(this,"avatar");
+    //this.tags.add("avatar");
+    //addTag(this,"avatar");
   }
   
-  void hurt(int damage){
+  void hurt(int damage,Vec2 direction){
     fireTagEvent("hit");
     health -= damage * armor;
+    if (damage > 10){
+      this.velocity.add(direction.multiplyScalar(damage/2));
+    }
     timeSinceHealthChange = 120;
     if (alive && health <= 0){
       currentFrame = 0;
@@ -69,6 +74,9 @@ class Avatar extends GameObject {
     c.translate(x,y);
     debugRender(c);
     animation.render(c,currentAnimation,currentOrientation,(currentFrame/5).toInt());
+    if (weaponAnimation!=null){
+      weaponAnimation.render(c,currentAnimation,currentOrientation,(currentFrame/5).toInt());
+    }
     //Draw Health Bar
     //OPTIMIZE
     if (timeSinceHealthChange>=0){

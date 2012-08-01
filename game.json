@@ -5,63 +5,110 @@
       "name": "citizen0",
       "walk": "characters/citizen0/walkcycle.png",
       "slash": "characters/citizen0/slash.png",
-      "death": "characters/citizen0/hurt.png"
+      "death": "characters/citizen0/hurt.png",
+      "shoot": "characters/citizen0/bow.png",
+      "thrust": "characters/citizen0/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen1",
       "walk": "characters/citizen1/walkcycle.png",
       "slash": "characters/citizen1/slash.png",
-      "death": "characters/citizen1/hurt.png"
+      "death": "characters/citizen1/hurt.png",
+      "shoot": "characters/citizen1/bow.png",
+      "thrust": "characters/citizen1/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen2",
       "walk": "characters/citizen2/walkcycle.png",
       "slash": "characters/citizen2/slash.png",
-      "death": "characters/citizen2/hurt.png"
+      "death": "characters/citizen2/hurt.png",
+      "shoot": "characters/citizen2/bow.png",
+      "thrust": "characters/citizen2/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen3",
       "walk": "characters/citizen3/walkcycle.png",
       "slash": "characters/citizen3/slash.png",
-      "death": "characters/citizen3/hurt.png"
+      "death": "characters/citizen3/hurt.png",
+      "shoot": "characters/citizen3/bow.png",
+      "thrust": "characters/citizen3/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen4",
       "walk": "characters/citizen4/walkcycle.png",
       "slash": "characters/citizen4/slash.png",
-      "death": "characters/citizen4/hurt.png"
+      "death": "characters/citizen4/hurt.png",
+      "shoot": "characters/citizen4/bow.png",
+      "thrust": "characters/citizen4/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen5",
       "walk": "characters/citizen5/walkcycle.png",
       "slash": "characters/citizen5/slash.png",
-      "death": "characters/citizen5/hurt.png"
+      "death": "characters/citizen5/hurt.png",
+      "shoot": "characters/citizen5/bow.png",
+      "thrust": "characters/citizen5/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen6",
       "walk": "characters/citizen6/walkcycle.png",
       "slash": "characters/citizen6/slash.png",
-      "death": "characters/citizen6/hurt.png"
+      "death": "characters/citizen6/hurt.png",
+      "shoot": "characters/citizen6/bow.png",
+      "thrust": "characters/citizen6/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen7",
       "walk": "characters/citizen7/walkcycle.png",
       "slash": "characters/citizen7/slash.png",
-      "death": "characters/citizen7/hurt.png"
+      "death": "characters/citizen7/hurt.png",
+      "shoot": "characters/citizen7/bow.png",
+      "thrust": "characters/citizen7/thrust.png"
     },
     {
       "type": "animation",
       "name": "citizen8",
       "walk": "characters/citizen8/walkcycle.png",
       "slash": "characters/citizen8/slash.png",
-      "death": "characters/citizen8/hurt.png"
+      "death": "characters/citizen8/hurt.png",
+      "shoot": "characters/citizen8/bow.png",
+      "thrust": "characters/citizen8/thrust.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen9",
+      "walk": "characters/citizen9/walkcycle.png",
+      "slash": "characters/citizen9/slash.png",
+      "death": "characters/citizen9/hurt.png",
+      "shoot": "characters/citizen9/bow.png",
+      "thrust": "characters/citizen9/thrust.png"
+    },
+    {
+      "type": "animation",
+      "name": "salesman0",
+      "walk": "characters/salesman0/walkcycle.png"
+    },
+    {
+      "type": "animation",
+      "name": "salesman1",
+      "walk": "characters/salesman1/walkcycle.png"
+    },
+    {
+      "type": "animation",
+      "name": "salesman2",
+      "walk": "characters/salesman2/walkcycle.png"
+    },
+    {
+      "type": "animation",
+      "name": "salesman3",
+      "walk": "characters/salesman3/walkcycle.png"
     },
     {
       "type": "animation",
@@ -71,13 +118,54 @@
       "death": "characters/zombie0/hurt.png"
     },
     {
+      "type": "animation",
+      "name": "weapon1",
+      "slash": "weapons/dagger.png"
+    },
+    {
+      "type": "animation",
+      "name": "weapon2",
+      "shoot": "weapons/bow.png"
+    },
+    {
+      "type": "animation",
+      "name": "weapon3",
+      "thrust": "weapons/staff.png"
+    },
+    {
+      "type": "animation",
+      "name": "weapon4",
+      "thrust": "weapons/spear.png"
+    },
+    {
+      "type": "animation",
+      "name": "weapon5",
+      "size":192,
+      "slash": "weapons/rapier.png"
+    },
+    {
+      "type": "animation",
+      "name": "weapon6",
+      "size":192,
+      "slash": "weapons/longsword.png"
+    },
+    {
       "type": "avatar",
       "name": "citizen",
       "properties": {
-        "animation": "citizen[0-8]",
+        "animation": "citizen[0-9]",
         "tag": [
           "actor"
         ]
+      }
+    },
+    {
+      "type": "avatar",
+      "name": "salesman",
+      "properties": {
+        "animation": "salesman[0-3]",
+        "menu": "weapons",
+        "tag": []
       }
     },
     {
@@ -114,6 +202,30 @@
           ],
           "x": 4793,
           "y": 4342
+        },
+        {
+          "type": "salesman",
+          "calls": [
+            "Need a weapon?",
+            "Cheap weapons here!",
+            "Arm yourselves!",
+            "Low prices!"
+          ],
+          "menu":"weapons",
+          "x": 7650,
+          "y": 6500
+        },
+        {
+          "type": "salesman",
+          "calls": [
+            "Cheap upgrades!",
+            "Upgrades here!",
+            "Weapon Upgrades!",
+            "Cheap!"
+          ],
+          "menu":"upgrades",
+          "x": 7403,
+          "y": 2149
         },
         {
           "type": "node",
@@ -234,14 +346,6 @@
           ],
           "x": 7829,
           "y": 6987
-        },
-        {
-          "type": "node",
-          "tag": [
-            "house"
-          ],
-          "x": 7765,
-          "y": 6456
         },
         {
           "type": "node",
@@ -1186,6 +1290,22 @@
           ],
           "x": 1392,
           "y": 6648
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 5907,
+          "y": 5968
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 5907,
+          "y": 5969
         }
       ],
       "paths": [

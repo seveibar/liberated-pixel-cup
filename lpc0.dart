@@ -254,7 +254,7 @@ class Game {
               List<Avatar> zoms =  tags["zombie"];
               for (int i = (Math.random() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
                 int index = i%zoms.length;
-                if (zoms[index].distanceTo(citizen) < 96){
+                if (zoms[index].alive && zoms[index].distanceTo(citizen) < 96){
                   ["wander","traveler","lost","following","homebound"].forEach((String tag){
                     if (citizen.hasTag(tag)){
                       citizen.removeTag(tag);

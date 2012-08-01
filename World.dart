@@ -14,25 +14,26 @@ class World {
   List<PathNode> pathnodes;
   num time = 7;//24:00 clock
   num dayLength = 60 * 60 * 5;
-  bool night_mode = true;
+  bool night_mode = false;
   int totalPopulation = 200;
   int saved = 0;
   int awakePopulation = 0;
   int dayCount = 0;
   int zombie_max = 50;
   int zombie_out = 0;
+  Animation player_animation;
   
   bool intro = true;
   int slideTime = 0;
   int currentSlide = 0;
   final List<String> slides = const["This is the island of Dartia",
                                     "At day, all is peaceful",
-                                    "But come night, horrific monsters of the night appear",
+                                    "But come night, horrific monsters of the black appear",
                                     "The ever-curious villagers often stray into the darkness",
                                     "Do you have what it takes to defend them?"];
-  final List<num> slidex_pos = const[2779,7174,2000,7876,6340];
-  final List<num> slidey_pos = const[1324,3395,9900,6652,2290];
-  final List<num> slide_dir = const[2,2,1,2,2];
+  final List<num> slidex_pos = const[2400,4581,4329,2324,8221];
+  final List<num> slidey_pos = const[1000,5251,6819,8114,6860];
+  final List<num> slide_dir = const[2,2,3,-2,-2];
   
   bool paused;
   //List<String> dayName = const["The Beginning","Long Night","","","","","","","","","","","","","",""];
@@ -171,6 +172,10 @@ class World {
   void startCycle(context){
     //Set camera to player position
     player = tags["player"][0];
+    if (intro){
+      player_animation = player.animation;
+      player.animation = new Animation({});
+    }
     player.removeTag("citizen");
     sortScreenObjects();
     camera.set(player.x,player.y);
@@ -544,12 +549,17 @@ class World {
     }else{
       slideTime ++;
       camera.x = slidex_pos[currentSlide] + slideTime * slide_dir[currentSlide];
-      camera.y = slidey_pos[currentSlide];
+      camera.y = slidey_pos[currentSlide] ;
+      player.set(camera.x, camera.y);
       if (slideTime >= 300){
         slideTime = 0;
         currentSlide++;
         if (currentSlide>=slides.length){
           intro = false;
+          notify("Day $dayCount");
+          notify("Total Population : $totalPopulation");
+          player.set(4793,4342);
+          player.animation = player_animation;
         }
       }
     }
@@ -735,10 +745,16 @@ class World {
     renderNotifications(c);
     renderSaved(c);
     if (intro){
+      c.globalAlpha = 1;
       c.fillStyle = "#000";
-      c.globalAlpha = Math.pow((slideTime - 150)/150,8);
+      c.fillRect(0,SCREEN_HEIGHT-50,SCREEN_WIDTH,50);
+      c.fillStyle = "#fff";
+      c.font = "24px Arial";
+      c.fillText(slides[currentSlide], 50, SCREEN_HEIGHT - 20);
+      c.fillStyle = "#000";
+      c.globalAlpha = Math.pow((slideTime - 150)/150,2);
       c.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-      
+      c.globalAlpha = 1;
     }
   }
 }

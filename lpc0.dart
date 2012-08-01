@@ -38,13 +38,13 @@ final int CHUNK_JOIN = 10;
 bool DEBUG = true;//TODO make final
 final bool MOBILE = false;
 
-int AGRO_DISTANCE = 256;
-int ZOMBIE_WANDER_DISTANCE = 256;
-num ZOMBIE_SPEED = .6;
+int AGRO_DISTANCE;
+int ZOMBIE_WANDER_DISTANCE ;
+num ZOMBIE_SPEED ;
 
 int patch_size;
 
-num niceFactor = 0;
+num niceFactor;
 
 html.ImageElement BLANK_IMAGE;
 
@@ -95,7 +95,10 @@ Map<String,bool> removalOnDeath = const{
   "wander":true,
   "nice":true,
   "hostile":true,
-  "hostile-wander":true
+  "hostile-wander":true,
+  "mean":true,
+  "scared":true,
+  "citizen":true
 };
 
 Map<String,List<GameObject>> tags; //These are the same thing (dirty work around)
@@ -126,35 +129,63 @@ World world;
 void GameOver(html.CanvasRenderingContext2D c){
   world.paused = true;
   Vec2 menu_pos = new Vec2(SCREEN_WIDTH,0);
-  int off = 0;
-  int inc = 1048;
-  html.ImageData pid;
+  html.ImageElement img = new html.ImageElement();
+  img.src = game.canvas.toDataURL('image/png');
+  game = null;
+  int timePass = 0;
   bool rcycle(int a){
-    if (inc > 128){
-      html.ImageData id = c.getImageData(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-      for (int i = off * 4;i<id.data.length;i+=4*inc){
-        int avg = ((id.data[i]+id.data[i+1]+id.data[i+2])/3).toInt();
-        id.data[i] = avg;
-        id.data[i+1] = avg;
-        id.data[i+2] = avg;
-      }
-      off++;
-      inc--;
-      c.putImageData(id, 0, 0);
-      if (inc <=128){
-        pid = id;
-      }
-    }else{
-      c.putImageData(pid, 0, 0);
-    }
+    timePass ++;
+    c.globalAlpha = 1;
+      //world.render(c);
+     c.drawImage(img, 0, 0);
     c.save();
+    menu_pos.x -= (menu_pos.x - (SCREEN_WIDTH - 400))/10;
     c.translate(menu_pos.x,menu_pos.y);
     //Okay, draw all menu items
-    c.restore();
+    c.fillStyle = "#000";
+    c.globalAlpha = .75;
+    c.fillRect(0,0,400,SCREEN_HEIGHT);
     
+    //GAME OVER
+    c.globalAlpha = 1;
+    c.font = "48px Arial";
+    c.fillStyle = "#fff";
+    c.fillText("Game Over",75,75);
+    
+    //Stats
+    c.font = "18px Arial";
+    num ypos = 160;
+    [
+     ["Village Population","${world.totalPopulation}"],
+     ["Zombie Population","${world.zombie_max}"],
+     ["Villagers Saved","${world.saved}"],
+     ["Days Survived","${world.dayCount}"]
+    ].forEach((List<String> not){
+      c.textAlign = "left";
+      c.fillText(not[0],25,ypos);
+      c.textAlign = "right";
+      c.fillText(not[1],400-50,ypos);
+      ypos += 40;
+    });
+    
+    c.textAlign = "center";
+    c.fillText("Click anywhere to play again", 200, ypos + 50);
+    c.fillText("Game by Severin Ibarluzea", 200, SCREEN_HEIGHT-50);
+    c.fillText("For the Liberated Pixel Cup (2012)", 200, SCREEN_HEIGHT-25);
+    
+    c.restore();
+    if (game == null){
     html.window.requestAnimationFrame(rcycle);
+    }
   }
   html.window.requestAnimationFrame(rcycle);
+  event.onClick.add((e){
+    if (timePass >= 120){
+      print("Starting New Game");
+      main();
+      return true;
+    }
+  });
 }
 
 void renderNotifications(html.CanvasRenderingContext2D c){
@@ -189,6 +220,10 @@ class Game {
   html.CanvasRenderingContext2D context;
   
   Game(){
+    AGRO_DISTANCE = 256;
+    ZOMBIE_WANDER_DISTANCE = 256;
+    ZOMBIE_SPEED = .6;
+    niceFactor = 0;
     rpatCount = (Math.random() * 64).toInt();
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),
@@ -198,6 +233,11 @@ class Game {
     tagEvents = {
         "citizen":{
           "init":(Avatar avatar){
+            if (avatar.damage == null){
+              avatar.armor = 1;
+              avatar.damage = 0;
+            }
+            avatar["destination"] = avatar.clone();//DIRTY FIX
             avatar["waitTime"] = 0;
             num r = Math.random() + niceFactor;
             if (r<.1){
@@ -230,6 +270,26 @@ class Game {
                   
                 }
               }
+              //Basically the exact same thing with corpses
+              zoms = tags["corpse"];
+              for (int i = (Math.random() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
+                int index = i%zoms.length;
+                if (!zoms[index].hasTag("zombie") && zoms[index].distanceTo(citizen) < 96){
+                  ["wander","traveler","lost","following","homebound"].forEach((String tag){
+                    if (citizen.hasTag(tag)){
+                      citizen.removeTag(tag);
+                      rmTag(citizen,tag);
+                    }
+                  });
+                  citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()]);
+                  citizen.tags.add("scared");
+                  addTag(citizen,"scared");
+                  citizen["scaredOf"] = zoms[index];
+                  tagEvents["scared"]["init"](citizen);
+                  return;
+                  
+                }
+              }
             }
           },
           "die":(Avatar avatar){
@@ -239,8 +299,18 @@ class Game {
           }
         },
         "player":{
+          "init":(Avatar player){
+            player.damage = 25;
+            player.armor = .5;
+          },
+          "die":(Avatar player){
+            notifiy("You have died, please wait");
+          },
           "decomposed":(Avatar player){
             GameOver(context); 
+          },
+          "update":(Avatar player){
+            player.health = (player.health < 100) ? player.health + .25 : player.health;
           }
         },
         "scared":{
@@ -257,7 +327,6 @@ class Game {
                 addTag(citizen,"wander");
               }
             }
-            
           }
         },
         "traveler":{
@@ -510,6 +579,8 @@ class Game {
         "hostile-wander":{
           "init":(Avatar zom){
             zom["originalPosition"] = zom.clone();
+            zom.damage = 25;
+            zom.armor = 1;
             tagEvents["wander"]["init"](zom);
           },
           "update":(Avatar zom){
@@ -539,7 +610,8 @@ class Game {
               
               if (distance < 32){
                 zom.attacking = true;
-                zom.attackDirection = zom.velocity.normalize();
+                zom.attackDirection = target.clone().sub(zom).normalize();
+                zom.velocity.divideScalar(2);
               }else if (distance < AGRO_DISTANCE * 2){
                 zom.attacking = false;
                 zom.velocity.sub(zom.clone().sub(target).normalize().multiplyScalar(ZOMBIE_SPEED));
@@ -560,6 +632,15 @@ class Game {
               zom["target"] = null;
               zom.attacking = false;
             }
+          },
+          "hit":(Avatar zom){
+            tags["friendly"].some((Avatar friend){
+              if (friend.attacking && friend.distanceTo(zom) < 96){
+                zom["target"] = friend;
+                return true;
+              }
+              return false;
+            });
           }
         },
         "nestbound":{
@@ -585,7 +666,7 @@ class Game {
     
     BLANK_IMAGE = new html.ImageElement();
     
-    tags = {"zombie":[]};
+    tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>()};
     tagMap = tags;
     
     animationMap = new Map<String,Animation>();

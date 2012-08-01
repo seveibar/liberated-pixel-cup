@@ -26,14 +26,19 @@ class UIManager {
       
       //TODO track mouse position
       html.window.on.mouseDown.add((e){
-        mouseDownAt(e.pageX,e.pageY);
-        onClick.forEach((Function func) => func(e));
+        mouseDownAt(e.pageX/RESOLUTION,e.pageY/RESOLUTION);
+        for (int i = onClick.length-1;i>=0;i--){
+          var result = onClick[i](e);
+          if (result == true){
+            onClick.removeRange(i, 1);
+          }
+        }
       });
       html.window.on.mouseUp.add((e){
-        mouseUpAt(e.pageX,e.pageY);
+        mouseUpAt(e.pageX/RESOLUTION,e.pageY/RESOLUTION);
       });
       html.window.on.mouseMove.add((e){
-        mouseAt(e.pageX,e.pageY);
+        mouseAt(e.pageX/RESOLUTION,e.pageY/RESOLUTION);
       });
     }else{
       html.window.on.touchStart.add((e){

@@ -7,9 +7,12 @@ class Avatar extends GameObject {
   Vec2 velocity;
   bool _attacking = false;
   Vec2 attackDirection;
+  
+  num damage=25,armor=1;
   int attackTime = 12;
   int currentAttackTime = 0;
-  int health = 100;
+  int timeSinceHealthChange = 0;
+  num health = 100;
   bool alive = true;
   
   bool speaking = false;
@@ -30,7 +33,9 @@ class Avatar extends GameObject {
   }
   
   void hurt(int damage){
-    health -= damage;
+    fireTagEvent("hit");
+    health -= damage * armor;
+    timeSinceHealthChange = 120;
     if (alive && health <= 0){
       currentFrame = 0;
       currentAnimation = Animation.DEATH;
@@ -66,11 +71,15 @@ class Avatar extends GameObject {
     animation.render(c,currentAnimation,currentOrientation,(currentFrame/5).toInt());
     //Draw Health Bar
     //OPTIMIZE
-    final num healthBarSize = 50.0;
-    c.fillStyle = "#f00";
-    c.fillRect(-healthBarSize/2, -25, healthBarSize, 5);
-    c.fillStyle = "#0f0";
-    c.fillRect(-healthBarSize/2, -25, health / 100.0 * healthBarSize, 5);
+    if (timeSinceHealthChange>=0){
+      timeSinceHealthChange--;
+      c.globalAlpha = timeSinceHealthChange/120;
+      final num healthBarSize = 50.0;
+      c.fillStyle = "#f00";
+      c.fillRect(-healthBarSize/2, -25, healthBarSize, 5);
+      c.fillStyle = "#0f0";
+      c.fillRect(-healthBarSize/2, -25, health / 100.0 * healthBarSize, 5);
+    }
     if (speaking){
       c.globalAlpha *= .75;
       c.font = "14px Arial";

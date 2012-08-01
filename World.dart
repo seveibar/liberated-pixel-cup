@@ -19,8 +19,20 @@ class World {
   int saved = 0;
   int awakePopulation = 0;
   int dayCount = 0;
-  int zombie_max = 200;
+  int zombie_max = 50;
   int zombie_out = 0;
+  
+  bool intro = true;
+  int slideTime = 0;
+  int currentSlide = 0;
+  final List<String> slides = const["This is the island of Dartia",
+                                    "At day, all is peaceful",
+                                    "But come night, horrific monsters of the night appear",
+                                    "The ever-curious villagers often stray into the darkness",
+                                    "Do you have what it takes to defend them?"];
+  final List<num> slidex_pos = const[2779,7174,2000,7876,6340];
+  final List<num> slidey_pos = const[1324,3395,9900,6652,2290];
+  final List<num> slide_dir = const[2,2,1,2,2];
   
   bool paused;
   //List<String> dayName = const["The Beginning","Long Night","","","","","","","","","","","","","",""];
@@ -298,6 +310,12 @@ class World {
                          }
                        },
                        {
+                         "name":"Dump Trace",
+                         "func":(){
+                           print("Player : Health : ${player.health} : Damage : ${player.damage} : Armor : ${player.armor}");
+                         }
+                       },
+                       {
                         "name":"Game Over",
                         "func":()=>GameOver(game.context)
                        }
@@ -314,7 +332,7 @@ class World {
           event.mouseDown = false;
         }
         for (int i = menuInterfaces.length-1;i>=0;i--){
-          if (menuInterfaces[i].clickAt(e.pageX,e.pageY)){
+          if (menuInterfaces[i].clickAt(event.mouse_position.x,event.mouse_position.y)){
             menuInterfaces.removeRange(i, 1);
           }
         }
@@ -517,11 +535,24 @@ class World {
       tags["lost"][(tags["lost"].length * Math.random()).toInt()].say(lostSpeech[(lostSpeech.length * Math.random()).toInt()]);
     }
     
-    //Player Tag
-    Avatar player = tags["player"][0];
-    Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
-    inc.normalize().multiplyScalar(2 * ( 1 + 4 * event.key("shift")));
-    player.velocity.add(inc);
+    if (!intro){
+      //Player Tag
+      Avatar player = tags["player"][0];
+      Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
+      inc.normalize().multiplyScalar(2 * ( 1 + 4 * event.key("shift")));
+      player.velocity.add(inc);
+    }else{
+      slideTime ++;
+      camera.x = slidex_pos[currentSlide] + slideTime * slide_dir[currentSlide];
+      camera.y = slidey_pos[currentSlide];
+      if (slideTime >= 300){
+        slideTime = 0;
+        currentSlide++;
+        if (currentSlide>=slides.length){
+          intro = false;
+        }
+      }
+    }
     
     //Check if player is trying to attack
     if (event.mouseDown){
@@ -579,7 +610,7 @@ class World {
               actor.currentAttackTime = 0;
               //print(actor.attackDirection.clone().multiplyScalar(actor.attackRadius).toString());
               //print(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)).toString());
-              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,100);
+              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage);
               for (int i = 0;i<attacked.length;i++){
                 if (!attacked[i].alive){
                   actor.fireTagEvent("kill");
@@ -662,6 +693,17 @@ class World {
     c.save();
     c.translate(SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
     c.scale(camera.animatedZoom,camera.animatedZoom);
+    if (camera.x - SCREEN_WIDTH/2 < 0){
+      camera.x = SCREEN_WIDTH/2;
+    }else if (camera.x + SCREEN_WIDTH/2 > map_width*32){
+      camera.x = map_width*32-SCREEN_WIDTH/2;
+    }
+    //Note that the map is square, map_width = map_height
+    if (camera.y - SCREEN_HEIGHT/2 < 0){
+      camera.y = SCREEN_HEIGHT/2;
+    }else if (camera.y + SCREEN_HEIGHT/2 > map_width*32){
+      camera.y = map_width*32 - SCREEN_HEIGHT/2;
+    }
     c.translate(-camera.x,-camera.y);
     c.font = "12px Arial";
     bottomTileManager.render(c,camera);
@@ -692,7 +734,11 @@ class World {
     });
     renderNotifications(c);
     renderSaved(c);
-    
-    //
+    if (intro){
+      c.fillStyle = "#000";
+      c.globalAlpha = Math.pow((slideTime - 150)/150,8);
+      c.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+      
+    }
   }
 }

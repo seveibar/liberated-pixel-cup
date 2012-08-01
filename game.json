@@ -1,1 +1,1424 @@
-{"objects":[{"type":"animation","name":"citizen0","walk":"characters/citizen0/walkcycle.png","slash":"characters/citizen0/slash.png","death":"characters/citizen0/hurt.png"},{"type":"animation","name":"citizen1","walk":"characters/citizen1/walkcycle.png","slash":"characters/citizen1/slash.png","death":"characters/citizen1/hurt.png"},{"type":"animation","name":"citizen2","walk":"characters/citizen2/walkcycle.png","slash":"characters/citizen2/slash.png","death":"characters/citizen2/hurt.png"},{"type":"animation","name":"citizen3","walk":"characters/citizen3/walkcycle.png","slash":"characters/citizen3/slash.png","death":"characters/citizen3/hurt.png"},{"type":"animation","name":"citizen4","walk":"characters/citizen4/walkcycle.png","slash":"characters/citizen4/slash.png","death":"characters/citizen4/hurt.png"},{"type":"animation","name":"citizen5","walk":"characters/citizen5/walkcycle.png","slash":"characters/citizen5/slash.png","death":"characters/citizen5/hurt.png"},{"type":"animation","name":"citizen6","walk":"characters/citizen6/walkcycle.png","slash":"characters/citizen6/slash.png","death":"characters/citizen6/hurt.png"},{"type":"animation","name":"citizen7","walk":"characters/citizen7/walkcycle.png","slash":"characters/citizen7/slash.png","death":"characters/citizen7/hurt.png"},{"type":"animation","name":"citizen8","walk":"characters/citizen8/walkcycle.png","slash":"characters/citizen8/slash.png","death":"characters/citizen8/hurt.png"},{"type":"animation","name":"zombie0","walk":"characters/zombie0/walkcycle.png","slash":"characters/zombie0/slash.png","death":"characters/zombie0/hurt.png"},{"type":"avatar","name":"citizen","properties":{"animation":"citizen[0-8]","tag":["actor"]}},{"type":"avatar","name":"zombie","properties":{"animation":"zombie0","tag":["actor","hostile-wander"]}},{"type":"item","name":"watermelon","properties":{"imageIndex":48,"tag":["item"]}}],"maps":{"test":{"collision-map":"collision.txt","objects":[{"type":"citizen","tag":["player","friendly"],"x":3000,"y":1700},{"type":"node","tag":["house"],"x":2705,"y":1265},{"type":"node","tag":["house"],"x":3214,"y":1233},{"type":"node","tag":["house"],"x":3632,"y":1040},{"type":"node","tag":["house"],"x":2417,"y":1141},{"type":"node","tag":["house"],"x":2321,"y":1138},{"type":"node","tag":["house"],"x":850,"y":6419},{"type":"node","tag":["house"],"x":494,"y":6481},{"type":"node","tag":["house"],"x":689,"y":6768},{"type":"node","tag":["house"],"x":912,"y":6741},{"type":"node","tag":["house"],"x":1140,"y":7001},{"type":"node","tag":["house"],"x":1100,"y":7219},{"type":"node","tag":["house"],"x":7342,"y":6839},{"type":"node","tag":["house"],"x":7505,"y":6841},{"type":"node","tag":["house"],"x":7691,"y":6835},{"type":"node","tag":["house"],"x":7829,"y":6987},{"type":"node","tag":["house"],"x":7765,"y":6456},{"type":"node","tag":["house"],"x":8467,"y":6455},{"type":"node","tag":["house"],"x":2989,"y":6196},{"type":"node","tag":["house"],"x":3089,"y":6199},{"type":"node","tag":["house"],"x":9110,"y":6802},{"type":"node","tag":["house"],"x":8727,"y":6804},{"type":"node","tag":["house"],"x":8651,"y":6802},{"type":"node","tag":["house"],"x":8306,"y":6807},{"type":"node","tag":["house"],"x":8286,"y":6923},{"type":"node","tag":["house"],"x":8740,"y":6885},{"type":"node","tag":["house"],"x":9106,"y":6922},{"type":"node","tag":["house"],"x":9107,"y":6804},{"type":"node","tag":["house"],"x":4139,"y":5104},{"type":"node","tag":["house"],"x":4654,"y":5211},{"type":"node","tag":["house"],"x":5133,"y":5334},{"type":"node","tag":["house"],"x":4595,"y":4437},{"type":"node","tag":["house"],"x":8239,"y":2321},{"type":"node","tag":["house"],"x":7798,"y":2292},{"type":"node","tag":["house"],"x":7446,"y":2704},{"type":"node","tag":["house"],"x":7282,"y":2704},{"type":"node","tag":["house"],"x":7072,"y":2479},{"type":"node","tag":["house"],"x":7174,"y":2149},{"type":"node","tag":["house"],"x":7308,"y":1974},{"type":"node","tag":["house"],"x":7635,"y":1940},{"type":"node","tag":["house"],"x":6828,"y":1913},{"type":"node","tag":["house"],"x":2581,"y":762},{"type":"node","tag":["house"],"x":3025,"y":758},{"type":"node","tag":["house"],"x":2730,"y":757},{"type":"node","tag":["house"],"x":6463,"y":1275},{"type":"node","tag":["zombie-spawn"],"x":5519.064089962512,"y":1134.310204362268},{"type":"node","tag":["zombie-spawn"],"x":4890.7228723820035,"y":1371.7326702525631},{"type":"node","tag":["zombie-spawn"],"x":4239.812536673985,"y":2262.8596539746436},{"type":"node","tag":["zombie-spawn"],"x":3539.152868832304,"y":3375.694985877192},{"type":"node","tag":["zombie-spawn"],"x":2326.068534322245,"y":3217.954870507013},{"type":"node","tag":["zombie-spawn"],"x":2775.3900372158673,"y":6663.577566812957},{"type":"node","tag":["zombie-spawn"],"x":4024.053126554461,"y":7033.634414723768},{"type":"node","tag":["zombie-spawn"],"x":6639.522317567227,"y":7153.37429280862},{"type":"node","tag":["zombie-spawn"],"x":8241.958060008501,"y":3988.8665254821335},{"type":"node","tag":["zombie-spawn"],"x":8947.124778894906,"y":6330.33939685152},{"type":"node","tag":["zombie-spawn"],"x":8721.384663524716,"y":6100.599281481238},{"type":"node","tag":["zombie-spawn"],"x":6262.887009606945,"y":7487.421168612033},{"type":"node","tag":["zombie-spawn"],"x":3895.139918329381,"y":7307.4322216383935},{"type":"node","tag":["house"],"x":1855,"y":7929},{"type":"node","tag":["house"],"x":2087,"y":7922},{"type":"node","tag":["house"],"x":2299,"y":7922},{"type":"node","tag":["house"],"x":4592,"y":4436},{"type":"node","tag":["zombie-spawn"],"x":1870.868563331904,"y":7420.673933820008},{"type":"node","tag":["zombie-spawn"],"x":871.9972801572887,"y":5965.8026506456345},{"type":"node","tag":["zombie-spawn"],"x":1390.77101686226,"y":4806.342622440804},{"type":"node","tag":["zombie-spawn"],"x":1294.7222436260627,"y":3942.98014069966},{"type":"node","tag":["zombie-spawn"],"x":2003.1348243519765,"y":3533.9911097609447},{"type":"node","tag":["zombie-spawn"],"x":1803.2525733580676,"y":2743.266146292418},{"type":"node","tag":["zombie-spawn"],"x":1452.8765569079296,"y":2255.134111936454},{"type":"node","tag":["zombie-spawn"],"x":2988.832231805862,"y":2086.5580255724403},{"type":"node","tag":["zombie-spawn"],"x":3533.604105156879,"y":1653.0534082144457},{"type":"node","tag":["zombie-spawn"],"x":4342.13457367823,"y":1779.2788049588607},{"type":"node","tag":["zombie-spawn"],"x":5453.417593094733,"y":1925.2992403875571},{"type":"node","tag":["zombie-spawn"],"x":5452.45483671899,"y":622.1500822201225},{"type":"node","tag":["zombie-spawn"],"x":5988.676334156971,"y":610.9196387241246},{"type":"node","tag":["zombie-spawn"],"x":6409.953571683107,"y":897.2770659419198},{"type":"node","tag":["zombie-spawn"],"x":7089.043844994142,"y":1082.5201328109526},{"type":"node","tag":["zombie-spawn"],"x":7253.460106751651,"y":1474.1752562796808},{"type":"node","tag":["zombie-spawn"],"x":6316.574151101986,"y":1796.0142533550718},{"type":"node","tag":["zombie-spawn"],"x":5871.414406624034,"y":2212.2936789794094},{"type":"node","tag":["zombie-spawn"],"x":3831.1343664532174,"y":3000.233159129419},{"type":"node","tag":["zombie-spawn"],"x":3273.320925799266,"y":3704.558933812886},{"type":"node","tag":["zombie-spawn"],"x":3201.923962033145,"y":4479.082878286759},{"type":"node","tag":["zombie-spawn"],"x":2123.3959437881663,"y":3924.274696556627},{"type":"node","tag":["zombie-spawn"],"x":1388.7088473318472,"y":3439.065036285506},{"type":"node","tag":["zombie-spawn"],"x":2130.9732947683024,"y":2323.9686432616986},{"type":"node","tag":["zombie-spawn"],"x":1492.1208795361385,"y":5853.74649446601},{"type":"node","tag":["zombie-spawn"],"x":2671.7474207617165,"y":7444.499831205375},{"type":"node","tag":["zombie-spawn"],"x":2443.249937929394,"y":8480.075020106135},{"type":"node","tag":["zombie-spawn"],"x":1844.7218832098117,"y":8588.324033871242},{"type":"node","tag":["zombie-spawn"],"x":1359.954969403339,"y":8048.254210924741},{"type":"node","tag":["zombie-spawn"],"x":4565.106476671741,"y":7657.267075290308},{"type":"node","tag":["zombie-spawn"],"x":3563.6547065754894,"y":6708.503439890676},{"type":"node","tag":["zombie-spawn"],"x":4811.807982342074,"y":6428.850887610726},{"type":"node","tag":["zombie-spawn"],"x":5352.944097059608,"y":6011.964071964864},{"type":"node","tag":["zombie-spawn"],"x":4178.739874241085,"y":5603.21559493371},{"type":"node","tag":["zombie-spawn"],"x":3083.6361753174087,"y":5579.961656505172},{"type":"node","tag":["zombie-spawn"],"x":3181.15637180559,"y":4826.457035690877},{"type":"node","tag":["zombie-spawn"],"x":4074.244585663715,"y":6241.790842558523},{"type":"node","tag":["zombie-spawn"],"x":5133.952415165346,"y":7073.512957317026},{"type":"node","tag":["zombie-spawn"],"x":5900.266240842118,"y":6158.714994465374},{"type":"node","tag":["zombie-spawn"],"x":6866.103827815148,"y":6042.630328408324},{"type":"node","tag":["zombie-spawn"],"x":7504.752901131986,"y":5691.087750647602},{"type":"node","tag":["zombie-spawn"],"x":6794.281967953825,"y":4835.478878653267},{"type":"node","tag":["zombie-spawn"],"x":6494.3304426744,"y":4107.949874416713},{"type":"node","tag":["zombie-spawn"],"x":6640.815391073628,"y":3684.8830365420017},{"type":"node","tag":["zombie-spawn"],"x":7282.654628938401,"y":3555.0596599820387},{"type":"node","tag":["zombie-spawn"],"x":7890.224552564947,"y":2559.0649059819643},{"type":"node","tag":["zombie-spawn"],"x":8304.41514459158,"y":2833.2564860919724},{"type":"node","tag":["zombie-spawn"],"x":8176.0727760352065,"y":1508.1821153256988},{"type":"node","tag":["zombie-spawn"],"x":7756.460651588288,"y":1172.1797512644034},{"type":"node","tag":["zombie-spawn"],"x":7205.902182993774,"y":761.7393164916908},{"type":"node","tag":["zombie-spawn"],"x":6486.255361257492,"y":494.66106254943037},{"type":"node","tag":["zombie-spawn"],"x":5437.4046025966045,"y":407.000028063145},{"type":"node","tag":["zombie-spawn"],"x":4996.870973110009,"y":576.5783777435934},{"type":"node","tag":["zombie-spawn"],"x":2882.2484679203744,"y":2813.6366517139586},{"type":"node","tag":["zombie-spawn"],"x":4599.408851452946,"y":2579.0873613898257},{"type":"node","tag":["zombie-spawn"],"x":4847.805053671192,"y":2153.563487356807},{"type":"node","tag":["zombie-spawn"],"x":8404.840478002401,"y":1931.697284052898},{"type":"node","tag":["zombie-spawn"],"x":8554.66385435062,"y":2603.683789783815},{"type":"node","tag":["zombie-spawn"],"x":8183.6399461056835,"y":3331.791014627627},{"type":"node","tag":["zombie-spawn"],"x":7344.859274591291,"y":4160.500644201338},{"type":"node","tag":["zombie-spawn"],"x":6063.417651553158,"y":5532.139642904932},{"type":"node","tag":["zombie-spawn"],"x":8656.67515957726,"y":5464.0152512129},{"type":"node","tag":["zombie-spawn"],"x":6542.310610100486,"y":2562.994313348108},{"type":"node","tag":["zombie-spawn"],"x":6640.404069568859,"y":3247.817279678681},{"type":"node","tag":["zombie-spawn"],"x":6379.2800094405775,"y":6599.625002157069},{"type":"node","tag":["zombie-spawn"],"x":5574.235409581857,"y":7501.135179998224},{"type":"node","tag":["zombie-spawn"],"x":5136.190044656094,"y":7973.718001586835},{"type":"node","tag":["zombie-spawn"],"x":3240.19600465582,"y":8338.585106939865}],"paths":[{"type":"path","point_x":[2742,2809,3192,3246,3145,2773,2617,2374,2445,2770],"point_y":[1391,1488,1832,2536,2870,3078,3418,4165,4776,5257],"endHouse":false,"startHouse":true},{"type":"path","point_x":[2813,2264,1893,1400,1074,833],"point_y":[5315,5884,6114,6324,6465,6472],"endHouse":true,"startHouse":false},{"type":"path","point_x":[2874,3144,3396,3612,3911,4097],"point_y":[5277,5127,5099,5187,5245,5219],"endHouse":true,"startHouse":false},{"type":"path","point_x":[4201,4452,4699,4867,5066,5120,5258,5486,5637,5925,6293,6608,6891,6955],"point_y":[5219,5250,5508,5721,5940,6286,6434,6434,6689,6893,6989,6949,6843,6794],"endHouse":false,"startHouse":true},{"type":"path","point_x":[7000,7056,7158,7274,7526,7850,8014,8031,7901,7671,7541,7507,7550,7737],"point_y":[6749,6337,6090,5758,5335,5026,4782,4389,4064,3714,3384,2995,2725,2378],"endHouse":true,"startHouse":false},{"type":"path","point_x":[7519,6947,6537],"point_y":[2316,2336,2313],"endHouse":false,"startHouse":false},{"type":"path","point_x":[6413,5976,5676,5315,4975,4733,4550,4530,4280,3851,3731],"point_y":[2313,2369,2446,2172,1998,1832,1437,1097,899,847,1073],"endHouse":true,"startHouse":false},{"type":"path","point_x":[3646,3435,3194,2896,2719],"point_y":[1061,1209,1310,1315,1353],"endHouse":true,"startHouse":true},{"type":"path","point_x":[7036,7426,7852,8216,9135],"point_y":[6781,6895,6881,6853,6853],"endHouse":true,"startHouse":false}]}}}
+{
+  "objects": [
+    {
+      "type": "animation",
+      "name": "citizen0",
+      "walk": "characters/citizen0/walkcycle.png",
+      "slash": "characters/citizen0/slash.png",
+      "death": "characters/citizen0/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen1",
+      "walk": "characters/citizen1/walkcycle.png",
+      "slash": "characters/citizen1/slash.png",
+      "death": "characters/citizen1/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen2",
+      "walk": "characters/citizen2/walkcycle.png",
+      "slash": "characters/citizen2/slash.png",
+      "death": "characters/citizen2/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen3",
+      "walk": "characters/citizen3/walkcycle.png",
+      "slash": "characters/citizen3/slash.png",
+      "death": "characters/citizen3/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen4",
+      "walk": "characters/citizen4/walkcycle.png",
+      "slash": "characters/citizen4/slash.png",
+      "death": "characters/citizen4/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen5",
+      "walk": "characters/citizen5/walkcycle.png",
+      "slash": "characters/citizen5/slash.png",
+      "death": "characters/citizen5/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen6",
+      "walk": "characters/citizen6/walkcycle.png",
+      "slash": "characters/citizen6/slash.png",
+      "death": "characters/citizen6/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen7",
+      "walk": "characters/citizen7/walkcycle.png",
+      "slash": "characters/citizen7/slash.png",
+      "death": "characters/citizen7/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "citizen8",
+      "walk": "characters/citizen8/walkcycle.png",
+      "slash": "characters/citizen8/slash.png",
+      "death": "characters/citizen8/hurt.png"
+    },
+    {
+      "type": "animation",
+      "name": "zombie0",
+      "walk": "characters/zombie0/walkcycle.png",
+      "slash": "characters/zombie0/slash.png",
+      "death": "characters/zombie0/hurt.png"
+    },
+    {
+      "type": "avatar",
+      "name": "citizen",
+      "properties": {
+        "animation": "citizen[0-8]",
+        "tag": [
+          "actor"
+        ]
+      }
+    },
+    {
+      "type": "avatar",
+      "name": "zombie",
+      "properties": {
+        "animation": "zombie0",
+        "tag": [
+          "actor",
+          "hostile-wander"
+        ]
+      }
+    },
+    {
+      "type": "item",
+      "name": "watermelon",
+      "properties": {
+        "imageIndex": 48,
+        "tag": [
+          "item"
+        ]
+      }
+    }
+  ],
+  "maps": {
+    "test": {
+      "collision-map": "collision.txt",
+      "objects": [
+        {
+          "type": "citizen",
+          "tag": [
+            "player",
+            "friendly"
+          ],
+          "x": 4793,
+          "y": 4242
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2705,
+          "y": 1265
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 3214,
+          "y": 1233
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 3632,
+          "y": 1040
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2417,
+          "y": 1141
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2321,
+          "y": 1138
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 850,
+          "y": 6419
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 494,
+          "y": 6481
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 689,
+          "y": 6768
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 912,
+          "y": 6741
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 1140,
+          "y": 7001
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 1100,
+          "y": 7219
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7342,
+          "y": 6839
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7505,
+          "y": 6841
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7691,
+          "y": 6835
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7829,
+          "y": 6987
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7765,
+          "y": 6456
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8467,
+          "y": 6455
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2989,
+          "y": 6196
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 3089,
+          "y": 6199
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 9110,
+          "y": 6802
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8727,
+          "y": 6804
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8651,
+          "y": 6802
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8306,
+          "y": 6807
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8286,
+          "y": 6923
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8740,
+          "y": 6885
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 9106,
+          "y": 6922
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 9107,
+          "y": 6804
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 4139,
+          "y": 5104
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 4654,
+          "y": 5211
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 5133,
+          "y": 5334
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 4595,
+          "y": 4437
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 8239,
+          "y": 2321
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7798,
+          "y": 2292
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7446,
+          "y": 2704
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7282,
+          "y": 2704
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7072,
+          "y": 2479
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7174,
+          "y": 2149
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7308,
+          "y": 1974
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 7635,
+          "y": 1940
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 6828,
+          "y": 1913
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2581,
+          "y": 762
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 3025,
+          "y": 758
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2730,
+          "y": 757
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 6463,
+          "y": 1275
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5519.064089962512,
+          "y": 1134.310204362268
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4890.7228723820035,
+          "y": 1371.7326702525631
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4239.812536673985,
+          "y": 2262.8596539746436
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3539.152868832304,
+          "y": 3375.694985877192
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2326.068534322245,
+          "y": 3217.954870507013
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2775.3900372158673,
+          "y": 6663.577566812957
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4024.053126554461,
+          "y": 7033.634414723768
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6639.522317567227,
+          "y": 7153.37429280862
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8241.958060008501,
+          "y": 3988.8665254821335
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8947.124778894906,
+          "y": 6330.33939685152
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8721.384663524716,
+          "y": 6100.599281481238
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6262.887009606945,
+          "y": 7487.421168612033
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3895.139918329381,
+          "y": 7307.4322216383935
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 1855,
+          "y": 7929
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2087,
+          "y": 7922
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 2299,
+          "y": 7922
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 4592,
+          "y": 4436
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1870.868563331904,
+          "y": 7420.673933820008
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 871.9972801572887,
+          "y": 5965.8026506456345
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1390.77101686226,
+          "y": 4806.342622440804
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1294.7222436260627,
+          "y": 3942.98014069966
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2003.1348243519765,
+          "y": 3533.9911097609447
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1803.2525733580676,
+          "y": 2743.266146292418
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1452.8765569079296,
+          "y": 2255.134111936454
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2988.832231805862,
+          "y": 2086.5580255724403
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3533.604105156879,
+          "y": 1653.0534082144457
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4342.13457367823,
+          "y": 1779.2788049588607
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5453.417593094733,
+          "y": 1925.2992403875571
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5452.45483671899,
+          "y": 622.1500822201225
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5988.676334156971,
+          "y": 610.9196387241246
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6409.953571683107,
+          "y": 897.2770659419198
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7089.043844994142,
+          "y": 1082.5201328109526
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7253.460106751651,
+          "y": 1474.1752562796808
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6316.574151101986,
+          "y": 1796.0142533550718
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5871.414406624034,
+          "y": 2212.2936789794094
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3831.1343664532174,
+          "y": 3000.233159129419
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3273.320925799266,
+          "y": 3704.558933812886
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3201.923962033145,
+          "y": 4479.082878286759
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2123.3959437881663,
+          "y": 3924.274696556627
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1388.7088473318472,
+          "y": 3439.065036285506
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2130.9732947683024,
+          "y": 2323.9686432616986
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1492.1208795361385,
+          "y": 5853.74649446601
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2671.7474207617165,
+          "y": 7444.499831205375
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2443.249937929394,
+          "y": 8480.075020106135
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1844.7218832098117,
+          "y": 8588.324033871242
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 1359.954969403339,
+          "y": 8048.254210924741
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4565.106476671741,
+          "y": 7657.267075290308
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3563.6547065754894,
+          "y": 6708.503439890676
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4811.807982342074,
+          "y": 6428.850887610726
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5352.944097059608,
+          "y": 6011.964071964864
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4178.739874241085,
+          "y": 5603.21559493371
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3083.6361753174087,
+          "y": 5579.961656505172
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3181.15637180559,
+          "y": 4826.457035690877
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4074.244585663715,
+          "y": 6241.790842558523
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5133.952415165346,
+          "y": 7073.512957317026
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5900.266240842118,
+          "y": 6158.714994465374
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6866.103827815148,
+          "y": 6042.630328408324
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7504.752901131986,
+          "y": 5691.087750647602
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6794.281967953825,
+          "y": 4835.478878653267
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6494.3304426744,
+          "y": 4107.949874416713
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6640.815391073628,
+          "y": 3684.8830365420017
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7282.654628938401,
+          "y": 3555.0596599820387
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7890.224552564947,
+          "y": 2559.0649059819643
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8304.41514459158,
+          "y": 2833.2564860919724
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8176.0727760352065,
+          "y": 1508.1821153256988
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7756.460651588288,
+          "y": 1172.1797512644034
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7205.902182993774,
+          "y": 761.7393164916908
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6486.255361257492,
+          "y": 494.66106254943037
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5437.4046025966045,
+          "y": 407.000028063145
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4996.870973110009,
+          "y": 576.5783777435934
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 2882.2484679203744,
+          "y": 2813.6366517139586
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4599.408851452946,
+          "y": 2579.0873613898257
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 4847.805053671192,
+          "y": 2153.563487356807
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8404.840478002401,
+          "y": 1931.697284052898
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8554.66385435062,
+          "y": 2603.683789783815
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8183.6399461056835,
+          "y": 3331.791014627627
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 7344.859274591291,
+          "y": 4160.500644201338
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6063.417651553158,
+          "y": 5532.139642904932
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 8656.67515957726,
+          "y": 5464.0152512129
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6542.310610100486,
+          "y": 2562.994313348108
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6640.404069568859,
+          "y": 3247.817279678681
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 6379.2800094405775,
+          "y": 6599.625002157069
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5574.235409581857,
+          "y": 7501.135179998224
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 5136.190044656094,
+          "y": 7973.718001586835
+        },
+        {
+          "type": "node",
+          "tag": [
+            "zombie-spawn"
+          ],
+          "x": 3240.19600465582,
+          "y": 8338.585106939865
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 6609,
+          "y": 2262
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 3949,
+          "y": 4651
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 5173,
+          "y": 4820
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 4592,
+          "y": 4690
+        },
+        {
+          "type": "node",
+          "tag": [
+            "house"
+          ],
+          "x": 1392,
+          "y": 6648
+        }
+      ],
+      "paths": [
+        {
+          "type": "path",
+          "point_x": [
+            2742,
+            2809,
+            3192,
+            3246,
+            3145,
+            2773,
+            2617,
+            2374,
+            2445,
+            2770
+          ],
+          "point_y": [
+            1391,
+            1488,
+            1832,
+            2536,
+            2870,
+            3078,
+            3418,
+            4165,
+            4776,
+            5257
+          ],
+          "endHouse": false,
+          "startHouse": true
+        },
+        {
+          "type": "path",
+          "point_x": [
+            2813,
+            2264,
+            1893,
+            1400,
+            1074,
+            833
+          ],
+          "point_y": [
+            5315,
+            5884,
+            6114,
+            6324,
+            6465,
+            6472
+          ],
+          "endHouse": true,
+          "startHouse": false
+        },
+        {
+          "type": "path",
+          "point_x": [
+            2874,
+            3144,
+            3396,
+            3612,
+            3911,
+            4097
+          ],
+          "point_y": [
+            5277,
+            5127,
+            5099,
+            5187,
+            5245,
+            5219
+          ],
+          "endHouse": true,
+          "startHouse": false
+        },
+        {
+          "type": "path",
+          "point_x": [
+            4201,
+            4452,
+            4699,
+            4867,
+            5066,
+            5120,
+            5258,
+            5486,
+            5637,
+            5925,
+            6293,
+            6608,
+            6891,
+            6955
+          ],
+          "point_y": [
+            5219,
+            5250,
+            5508,
+            5721,
+            5940,
+            6286,
+            6434,
+            6434,
+            6689,
+            6893,
+            6989,
+            6949,
+            6843,
+            6794
+          ],
+          "endHouse": false,
+          "startHouse": true
+        },
+        {
+          "type": "path",
+          "point_x": [
+            7000,
+            7056,
+            7158,
+            7274,
+            7526,
+            7850,
+            8014,
+            8031,
+            7901,
+            7671,
+            7541,
+            7507,
+            7550,
+            7737
+          ],
+          "point_y": [
+            6749,
+            6337,
+            6090,
+            5758,
+            5335,
+            5026,
+            4782,
+            4389,
+            4064,
+            3714,
+            3384,
+            2995,
+            2725,
+            2378
+          ],
+          "endHouse": true,
+          "startHouse": false
+        },
+        {
+          "type": "path",
+          "point_x": [
+            7519,
+            6947,
+            6537
+          ],
+          "point_y": [
+            2316,
+            2336,
+            2313
+          ],
+          "endHouse": false,
+          "startHouse": false
+        },
+        {
+          "type": "path",
+          "point_x": [
+            6413,
+            5976,
+            5676,
+            5315,
+            4975,
+            4733,
+            4550,
+            4530,
+            4280,
+            3851,
+            3731
+          ],
+          "point_y": [
+            2313,
+            2369,
+            2446,
+            2172,
+            1998,
+            1832,
+            1437,
+            1097,
+            899,
+            847,
+            1073
+          ],
+          "endHouse": true,
+          "startHouse": false
+        },
+        {
+          "type": "path",
+          "point_x": [
+            3646,
+            3435,
+            3194,
+            2896,
+            2719
+          ],
+          "point_y": [
+            1061,
+            1209,
+            1310,
+            1315,
+            1353
+          ],
+          "endHouse": true,
+          "startHouse": true
+        },
+        {
+          "type": "path",
+          "point_x": [
+            7036,
+            7426,
+            7852,
+            8216,
+            9135
+          ],
+          "point_y": [
+            6781,
+            6895,
+            6881,
+            6853,
+            6853
+          ],
+          "endHouse": true,
+          "startHouse": false
+        }
+      ]
+    }
+  }
+}

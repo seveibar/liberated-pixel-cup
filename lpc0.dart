@@ -253,7 +253,8 @@ Game game;
 MainMenu menu;
 void main() {
   html.window.on.load.add((e){
-   menu = new MainMenu();
+    startGame();
+   //menu = new MainMenu();
   });
 }
 void startGame(){

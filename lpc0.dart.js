@@ -123,13 +123,13 @@ $$.HashMapImplementation = {"":
   if (typeof length$ !== 'number') return this.forEach$1$bailout(1, f, length$);
   for (var i = 0; i < length$; ++i) {
     var key = $.index(this._keys, i);
-    !(key == null) && !(key === $.CTC1) && f.$call$2(key, $.index(this._values, i));
+    !(key == null) && !(key === $.CTC8) && f.$call$2(key, $.index(this._values, i));
   }
  },
  forEach$1$bailout: function(state, f, length$) {
   for (var i = 0; $.ltB(i, length$); ++i) {
     var key = $.index(this._keys, i);
-    !(key == null) && !(key === $.CTC1) && f.$call$2(key, $.index(this._values, i));
+    !(key == null) && !(key === $.CTC8) && f.$call$2(key, $.index(this._values, i));
   }
  },
  get$length: function() {
@@ -141,36 +141,8 @@ $$.HashMapImplementation = {"":
  },
  operator$index$1: function(key) {
   var index = this._probeForLookup$1(key);
-  if (typeof index !== 'number') return this.operator$index$1$bailout(1, index, 0);
-  if (index < 0) return;
-  var t1 = this._values;
-  if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.operator$index$1$bailout(2, t1, index);
-  if (index !== (index | 0)) throw $.iae(index);
-  var t3 = t1.length;
-  if (index < 0 || index >= t3) throw $.ioore(index);
-  return t1[index];
- },
- operator$index$1$bailout: function(state, env0, env1) {
-  switch (state) {
-    case 1:
-      index = env0;
-      break;
-    case 2:
-      t1 = env0;
-      index = env1;
-      break;
-  }
-  switch (state) {
-    case 0:
-      var index = this._probeForLookup$1(key);
-    case 1:
-      state = 0;
-      if ($.ltB(index, 0)) return;
-      var t1 = this._values;
-    case 2:
-      state = 0;
-      return $.index(t1, index);
-  }
+  if ($.ltB(index, 0)) return;
+  return $.index(this._values, index);
  },
  operator$indexSet$2: function(key, value) {
   this._ensureCapacity$0();
@@ -184,7 +156,7 @@ $$.HashMapImplementation = {"":
     if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.operator$indexSet$2$bailout(2, key, value, index, t1);
     t3 = t1.length;
     if (index < 0 || index >= t3) throw $.ioore(index);
-    var t4 = t1[index] === $.CTC1;
+    var t4 = t1[index] === $.CTC8;
     t1 = t4;
   } else t1 = true;
   if (t1) {
@@ -249,7 +221,7 @@ $$.HashMapImplementation = {"":
             t1 = this._keys;
           case 2:
             state = 0;
-            var t3 = $.index(t1, index) === $.CTC1;
+            var t3 = $.index(t1, index) === $.CTC8;
             t1 = t3;
         }
       } else {
@@ -307,7 +279,7 @@ $$.HashMapImplementation = {"":
     var t1 = oldKeys.length;
     if (i < 0 || i >= t1) throw $.ioore(i);
     var key = oldKeys[i];
-    if (key == null || key === $.CTC1) continue;
+    if (key == null || key === $.CTC8) continue;
     t1 = oldValues.length;
     if (i < 0 || i >= t1) throw $.ioore(i);
     var value = oldValues[i];
@@ -353,7 +325,7 @@ $$.HashMapImplementation = {"":
       this._values = t4;
       for (var i = 0; $.ltB(i, capacity); ++i) {
         var key = $.index(oldKeys, i);
-        if (key == null || key === $.CTC1) continue;
+        if (key == null || key === $.CTC8) continue;
         var value = $.index(oldValues, i);
         var newIndex = this._probeForAdding$1(key);
         $.indexSet(this._keys, newIndex, key);
@@ -396,7 +368,7 @@ $$.HashMapImplementation = {"":
       return insertionIndex;
     }
     if ($.eqB(existingKey, key)) return hash;
-    if (insertionIndex < 0 && $.CTC1 === existingKey) insertionIndex = hash;
+    if (insertionIndex < 0 && $.CTC8 === existingKey) insertionIndex = hash;
     var numberOfProbes0 = numberOfProbes + 1;
     hash = $.HashMapImplementation__nextProbe(hash, numberOfProbes, $.get$length(this._keys));
     if (hash !== (hash | 0)) return this._probeForAdding$1$bailout(3, key, numberOfProbes0, insertionIndex, hash, 0);
@@ -444,7 +416,7 @@ $$.HashMapImplementation = {"":
               return insertionIndex;
             }
             if ($.eqB(existingKey, key)) return hash;
-            if ($.ltB(insertionIndex, 0) && $.CTC1 === existingKey) insertionIndex = hash;
+            if ($.ltB(insertionIndex, 0) && $.CTC8 === existingKey) insertionIndex = hash;
             var numberOfProbes0 = numberOfProbes + 1;
             hash = $.HashMapImplementation__nextProbe(hash, numberOfProbes, $.get$length(this._keys));
           case 3:
@@ -530,7 +502,7 @@ $$.HashSetIterator = {"":
     var t3 = t1.length;
     if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
     entry = t1[t2];
-  } while ((entry == null || entry === $.CTC1));
+  } while ((entry == null || entry === $.CTC8));
  },
  _advance$0$bailout: function(state, t1) {
   var length$ = $.get$length(t1);
@@ -540,10 +512,10 @@ $$.HashSetIterator = {"":
     this._nextValidIndex = t2;
     if ($.geB(t2, length$)) break;
     entry = $.index(t1, this._nextValidIndex);
-  } while ((entry == null || entry === $.CTC1));
+  } while ((entry == null || entry === $.CTC8));
  },
  next$0: function() {
-  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC2);
+  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC1);
   var t1 = this._entries;
   if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.next$0$bailout(1, t1);
   var t3 = this._nextValidIndex;
@@ -567,12 +539,12 @@ $$.HashSetIterator = {"":
   if (t1 >= t4) return false;
   if (t1 !== (t1 | 0)) throw $.iae(t1);
   if (t1 < 0 || t1 >= t4) throw $.ioore(t1);
-  t2[t1] === $.CTC1 && this._advance$0();
+  t2[t1] === $.CTC8 && this._advance$0();
   return this._nextValidIndex < t2.length;
  },
  hasNext$0$bailout: function(state, t1, t2) {
   if ($.geB(t1, $.get$length(t2))) return false;
-  $.index(t2, this._nextValidIndex) === $.CTC1 && this._advance$0();
+  $.index(t2, this._nextValidIndex) === $.CTC8 && this._advance$0();
   return $.lt(this._nextValidIndex, $.get$length(t2));
  },
  HashSetIterator$1: function(set_) {
@@ -711,13 +683,13 @@ $$._DoubleLinkedQueueEntrySentinel = {"":
  ["_element", "_next", "_previous"],
  super: "DoubleLinkedQueueEntry",
  get$element: function() {
-  throw $.captureStackTrace($.CTC13);
+  throw $.captureStackTrace($.CTC9);
  },
  _asNonSentinelEntry$0: function() {
   return;
  },
  remove$0: function() {
-  throw $.captureStackTrace($.CTC13);
+  throw $.captureStackTrace($.CTC9);
  },
  _DoubleLinkedQueueEntrySentinel$0: function() {
   this._link$2(this, this);
@@ -798,7 +770,7 @@ $$._DoubleLinkedQueueIterator = {"":
  ["_currentEntry", "_sentinel"],
  super: "Object",
  next$0: function() {
-  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC2);
+  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC1);
   this._currentEntry = this._currentEntry.get$_next();
   return this._currentEntry.get$element();
  },
@@ -940,7 +912,7 @@ $$._AllMatchesIterator = {"":
   return true;
  },
  next$0: function() {
-  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC2);
+  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC1);
   var next = this._next;
   this._next = null;
   return next;
@@ -999,7 +971,7 @@ $$.ConstantMap = {"":
   return this._throwImmutable$0();
  },
  _throwImmutable$0: function() {
-  throw $.captureStackTrace($.CTC12);
+  throw $.captureStackTrace($.CTC28);
  },
  toString$0: function() {
   return $.Maps_mapToString(this);
@@ -1196,15 +1168,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('_setAttachedInfo', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, '_setAttachedInfo', [arg0, arg1])
 },
- getContext$1: function (arg0) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('getContext', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'getContext', [arg0])
-},
  $dom_addEventListener$3: function (arg0, arg1, arg2) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('$dom_addEventListener', [arg0, arg1, arg2])
       : $.Object.prototype.noSuchMethod$2.call(this, '$dom_addEventListener', [arg0, arg1, arg2])
+},
+ getContext$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('getContext', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'getContext', [arg0])
 },
  getValues$0: function () {
   return this.noSuchMethod$2
@@ -1226,25 +1198,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('load', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, 'load', [arg0, arg1])
 },
- render$1: function (arg0) {
+ operator$le$1: function (arg0) {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('render', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0])
-},
- render$2: function (arg0, arg1) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('render', [arg0, arg1])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1])
-},
- render$3: function (arg0, arg1, arg2) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('render', [arg0, arg1, arg2])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1, arg2])
-},
- render$4: function (arg0, arg1, arg2, arg3) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('render', [arg0, arg1, arg2, arg3])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1, arg2, arg3])
+      ? this.noSuchMethod$2('operator$le', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'operator$le', [arg0])
 },
  charCodeAt$1: function (arg0) {
   return this.noSuchMethod$2
@@ -1276,15 +1233,30 @@ $$.Object = {"":
       ? this.noSuchMethod$2('isInfinite', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'isInfinite', [])
 },
- operator$le$1: function (arg0) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('operator$le', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'operator$le', [arg0])
-},
  pickUpItem$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('pickUpItem', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'pickUpItem', [arg0])
+},
+ render$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('render', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0])
+},
+ render$2: function (arg0, arg1) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('render', [arg0, arg1])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1])
+},
+ render$3: function (arg0, arg1, arg2) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('render', [arg0, arg1, arg2])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1, arg2])
+},
+ render$4: function (arg0, arg1, arg2, arg3) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('render', [arg0, arg1, arg2, arg3])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'render', [arg0, arg1, arg2, arg3])
 },
  createPattern$2: function (arg0, arg1) {
   return this.noSuchMethod$2
@@ -1300,6 +1272,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('fillRect', [arg0, arg1, arg2, arg3])
       : $.Object.prototype.noSuchMethod$2.call(this, 'fillRect', [arg0, arg1, arg2, arg3])
+},
+ toDataURL$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('toDataURL', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'toDataURL', [arg0])
 },
  _lib2_ensureCapacity$0: function () {
   return this.noSuchMethod$2
@@ -1360,11 +1337,6 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('_ensureCapacity', [])
       : $.Object.prototype.noSuchMethod$2.call(this, '_ensureCapacity', [])
-},
- toDataURL$1: function (arg0) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('toDataURL', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'toDataURL', [arg0])
 },
  loadWalkAnimation$2: function (arg0, arg1) {
   return this.noSuchMethod$2
@@ -3321,15 +3293,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('open', [arg0, arg1, arg2])
       : $.Object.prototype.noSuchMethod$2.call(this, 'open', [arg0, arg1, arg2])
 },
- setKey$2: function (arg0, arg1) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('setKey', [arg0, arg1])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'setKey', [arg0, arg1])
-},
  lastEntry$0: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('lastEntry', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'lastEntry', [])
+},
+ setKey$2: function (arg0, arg1) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('setKey', [arg0, arg1])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'setKey', [arg0, arg1])
 },
  renderCoins$1: function (arg0) {
   return this.noSuchMethod$2
@@ -3415,11 +3387,6 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('normalize', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'normalize', [])
-},
- containsKey$1: function (arg0) {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('containsKey', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'containsKey', [arg0])
 },
  containsKey$1: function (arg0) {
   return this.noSuchMethod$2
@@ -4306,6 +4273,16 @@ $$.Object = {"":
       ? this.noSuchMethod$2('operator$index', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'operator$index', [arg0])
 },
+ operator$index$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('operator$index', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'operator$index', [arg0])
+},
+ operator$index$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('operator$index', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'operator$index', [arg0])
+},
  operator$mod$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('operator$mod', [arg0])
@@ -4851,11 +4828,6 @@ $$.Object = {"":
       ? this.noSuchMethod$2('visitBufferingSendPort', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'visitBufferingSendPort', [arg0])
 },
- get$ZOMBIE_WANDER_DISTANCE: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get ZOMBIE_WANDER_DISTANCE', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get ZOMBIE_WANDER_DISTANCE', [])
-},
  get$_lib2_id: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get _id', [])
@@ -5296,11 +5268,6 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get context', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get context', [])
 },
- get$innerHeight: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get innerHeight', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get innerHeight', [])
-},
  get$prop: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get prop', [])
@@ -5310,6 +5277,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get weaponAttackTypes', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get weaponAttackTypes', [])
+},
+ get$keyCode: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get keyCode', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get keyCode', [])
 },
  get$objects: function () {
   return this.noSuchMethod$2
@@ -5325,11 +5297,6 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get mouse_position', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get mouse_position', [])
-},
- get$mouseMove: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get mouseMove', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get mouseMove', [])
 },
  get$attackRadius: function () {
   return this.noSuchMethod$2
@@ -5351,10 +5318,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get exceptionName', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get exceptionName', [])
 },
- get$keyCode: function () {
+ get$mouseMove: function () {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get keyCode', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get keyCode', [])
+      ? this.noSuchMethod$2('get mouseMove', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get mouseMove', [])
 },
  get$AGRO_DISTANCE: function () {
   return this.noSuchMethod$2
@@ -5986,15 +5953,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get error', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get error', [])
 },
- get$keyUp: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get keyUp', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get keyUp', [])
-},
  get$element: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get element', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get element', [])
+},
+ get$keyUp: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get keyUp', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get keyUp', [])
 },
  get$house: function () {
   return this.noSuchMethod$2
@@ -6101,15 +6068,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get completer', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get completer', [])
 },
- get$innerWidth: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get innerWidth', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get innerWidth', [])
-},
  get$currentContext: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get currentContext', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get currentContext', [])
+},
+ get$innerWidth: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get innerWidth', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get innerWidth', [])
 },
  get$saved: function () {
   return this.noSuchMethod$2
@@ -6401,15 +6368,20 @@ $$.Object = {"":
       ? this.noSuchMethod$2('set awakePopulation', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set awakePopulation', [arg0])
 },
- set$mouseDown: function (arg0) {
+ set$coin: function (arg0) {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('set mouseDown', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'set mouseDown', [arg0])
+      ? this.noSuchMethod$2('set coin', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set coin', [arg0])
 },
  set$length: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set length', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set length', [arg0])
+},
+ set$mouseDown: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set mouseDown', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set mouseDown', [arg0])
 },
  set$time: function (arg0) {
   return this.noSuchMethod$2
@@ -6914,7 +6886,7 @@ $$.Game = {"":
   $.niceFactor = 0;
   $.rpatCount = $.toInt($.mul($.Math_random(), 64));
   $.classMap = $.makeLiteralMap(['spawn', new $.anon(), 'avatar', new $.anon0(), 'node', new $.anon1(), 'arrow', new $.anon2(), 'floating_text', new $.anon3()]);
-  $.tagEvents = $.makeLiteralMap(['citizen', $.makeLiteralMap(['init', new $.anon4(), 'update', new $.anon5(), 'hit', new $.anon6(), 'die', new $.anon7(), 'collide', new $.anon8()]), 'player', $.makeLiteralMap(['init', new $.anon9(), 'die', new $.anon10(), 'decomposed', new $.anon11(this), 'update', new $.anon12()]), 'scared', $.makeLiteralMap(['init', new $.anon13(), 'update', new $.anon14()]), 'traveler', $.makeLiteralMap(['init', new $.anon15(), 'collide', new $.anon16(), 'update', new $.anon17()]), 'homebound', $.makeLiteralMap(['init', new $.anon18(), 'update', new $.anon19(), 'collide', new $.anon20()]), 'lost', $.makeLiteralMap(['update', new $.anon21()]), 'corpse', $.makeLiteralMap(['init', new $.anon22(), 'update', new $.anon23()]), 'following', $.makeLiteralMap(['update', new $.anon24()]), 'wander', $.makeLiteralMap(['collide', new $.anon25(), 'init', new $.anon26(), 'update', new $.anon27()]), 'nice', $.makeLiteralMap(['init', new $.anon28(), 'update', new $.anon29()]), 'mean', $.makeLiteralMap(['init', new $.anon30(), 'update', new $.anon31()]), 'salesman', $.makeLiteralMap(['update', new $.anon32()]), 'arrow', $.makeLiteralMap(['update', new $.anon33()]), 'zombie', $.makeLiteralMap(['init', new $.anon34(), 'die', new $.anon35()]), 'hostile-wander', $.makeLiteralMap(['init', new $.anon36(), 'update', new $.anon37(), 'hit', new $.anon38()]), 'hostile', $.makeLiteralMap(['update', new $.anon39(), 'kill', new $.anon40(), 'hit', new $.anon41()]), 'nestbound', $.makeLiteralMap(['init', new $.anon42(), 'update', new $.anon43(), 'collide', new $.anon44()]), 'floating_text', $.makeLiteralMap(['update', new $.anon45()])]);
+  $.tagEvents = $.makeLiteralMap(['citizen', $.makeLiteralMap(['init', new $.anon4(), 'update', new $.anon5(), 'hit', new $.anon6(), 'die', new $.anon7(), 'collide', new $.anon8()]), 'player', $.makeLiteralMap(['init', new $.anon9(), 'die', new $.anon10(), 'decomposed', new $.anon11(this), 'update', new $.anon12()]), 'scared', $.makeLiteralMap(['init', new $.anon13(), 'update', new $.anon14()]), 'traveler', $.makeLiteralMap(['init', new $.anon15(), 'collide', new $.anon16(), 'update', new $.anon17()]), 'homebound', $.makeLiteralMap(['init', new $.anon18(), 'update', new $.anon19(), 'collide', new $.anon20()]), 'lost', $.makeLiteralMap(['update', new $.anon21()]), 'corpse', $.makeLiteralMap(['init', new $.anon22(), 'update', new $.anon23()]), 'following', $.makeLiteralMap(['update', new $.anon24()]), 'wander', $.makeLiteralMap(['collide', new $.anon25(), 'init', new $.anon26(), 'update', new $.anon27()]), 'nice', $.makeLiteralMap(['init', new $.anon28(), 'update', new $.anon29()]), 'mean', $.makeLiteralMap(['init', new $.anon30(), 'update', new $.anon31()]), 'salesman', $.makeLiteralMap(['update', new $.anon32()]), 'arrow', $.makeLiteralMap(['update', new $.anon33()]), 'zombie', $.makeLiteralMap(['init', new $.anon34(), 'die', new $.anon35()]), 'hostile-wander', $.makeLiteralMap(['init', new $.anon36(), 'update', new $.anon37(), 'collide', new $.anon38(), 'hit', new $.anon39()]), 'hostile', $.makeLiteralMap(['update', new $.anon40(), 'kill', new $.anon41(), 'hit', new $.anon42()]), 'nestbound', $.makeLiteralMap(['init', new $.anon43(), 'update', new $.anon44(), 'collide', new $.anon45()]), 'floating_text', $.makeLiteralMap(['update', new $.anon46()])]);
   var t1 = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(t1, ({E: 'Notification'}));
   $.notifications = t1;
@@ -6931,19 +6903,18 @@ $$.Game = {"":
   $.tagMap = $.tags;
   $.audio = $.AudioManager$();
   $.animationMap = $.HashMapImplementation$();
-  $.event = $.UIManager$();
   this.canvas = $.document().query$1('#canvas');
-  var t5 = $.toInt($.div($.window().get$innerWidth(), $.RESOLUTION));
-  var t6 = this.canvas;
-  t6.set$width(t5);
-  t6.set$height($.toInt($.div($.window().get$innerHeight(), $.RESOLUTION)));
-  this.context = t6.getContext$1('2d');
-  $.SCREEN_WIDTH = t6.get$width();
-  $.SCREEN_HEIGHT = t6.get$height();
+  var t5 = this.canvas;
+  t5.set$width(800);
+  t5.set$height(600);
+  this.context = t5.getContext$1('2d');
+  $.SCREEN_WIDTH = t5.get$width();
+  $.SCREEN_HEIGHT = t5.get$height();
+  $.event = $.UIManager$();
   $.RENDER_DISTANCE = $.toInt($.div($.mul($.add($.SCREEN_WIDTH, $.SCREEN_HEIGHT), 2), 4));
   $.world = $.World$();
   $.print('Loading World');
-  $.web_load('game.json', new $.anon46(this));
+  $.web_load('game.json', new $.anon47(this));
  }
 };
 
@@ -7006,15 +6977,9 @@ $$.GameObject = {"":
   if ($.DEBUG === true) {
     c.set$fillStyle('#fff');
     var string = '(' + $.S($.div($.toInt($.mul(this.x, 10)), 10.0)) + ',' + $.S($.div($.toInt($.mul(this.y, 10)), 10.0)) + ')';
-    var t1 = c.measureText$1(string).get$width();
-    if (typeof t1 !== 'number') throw $.iae(t1);
-    t1 *= -0.5;
     if (typeof sep !== 'number') throw $.iae(sep);
-    c.fillText$3(string, t1, -0.5 * sep + 10);
-    string = $.toString(this.tags);
-    t1 = c.measureText$1(string).get$width();
-    if (typeof t1 !== 'number') throw $.iae(t1);
-    c.fillText$3(string, -0.5 * t1, 0.5 * sep + 10);
+    c.fillText$3(string, 0, -0.5 * sep + 10);
+    c.fillText$3($.toString(this.tags), 0, 0.5 * sep + 10);
   }
  },
  debugRender$1: function(c) {
@@ -7348,14 +7313,14 @@ $$.Avatar = {"":
   var t2 = this.currentAnimation;
   var t3 = this.currentOrientation;
   var t4 = this.currentFrame;
-  if (typeof t4 !== 'number') return this.render$1$bailout(1, c, t1, t2, t3, t4);
+  if (typeof t4 !== 'number') return this.render$1$bailout(1, c, t4, t1, t2, t3);
   t1.render$4(c, t2, t3, $.toInt(t4 / 5));
   t1 = this.weaponAnimation;
   if (!(t1 == null)) {
     t2 = this.currentAnimation;
     t3 = this.currentOrientation;
     t4 = this.currentFrame;
-    if (typeof t4 !== 'number') return this.render$1$bailout(2, c, t3, t4, t1, t2);
+    if (typeof t4 !== 'number') return this.render$1$bailout(2, c, t1, t2, t3, t4);
     t1.render$4(c, t2, t3, $.toInt(t4 / 5));
   }
   t1 = this.timeSinceHealthChange;
@@ -7386,7 +7351,7 @@ $$.Avatar = {"":
     c.fillRect$4(8, -42, bubbleWidth, 30);
     c.strokeRect$4(8, -42, bubbleWidth, 30);
     c.set$fillStyle('#000');
-    c.fillText$3(this.speech, 16, -22);
+    c.fillText$3(this.speech, bubbleWidth / 2 + 6, -22);
     t3 = c.get$globalAlpha();
     if (typeof t3 !== 'number') return this.render$1$bailout(9, c, t3, 0, 0, 0);
     c.set$globalAlpha(t3 / 0.75);
@@ -7397,17 +7362,17 @@ $$.Avatar = {"":
   switch (state) {
     case 1:
       var c = env0;
+      t4 = env1;
+      t1 = env2;
+      t2 = env3;
+      t3 = env4;
+      break;
+    case 2:
+      c = env0;
       t1 = env1;
       t2 = env2;
       t3 = env3;
       t4 = env4;
-      break;
-    case 2:
-      c = env0;
-      t3 = env1;
-      t4 = env2;
-      t1 = env3;
-      t2 = env4;
       break;
     case 3:
       c = env0;
@@ -7507,7 +7472,7 @@ $$.Avatar = {"":
             c.fillRect$4(8, -42, bubbleWidth, 30);
             c.strokeRect$4(8, -42, bubbleWidth, 30);
             c.set$fillStyle('#000');
-            c.fillText$3(this.speech, 16, -22);
+            c.fillText$3(this.speech, $.add($.div(bubbleWidth, 2), 6), -22);
             t3 = c.get$globalAlpha();
           case 9:
             state = 0;
@@ -7826,14 +7791,38 @@ $$.UIManager = {"":
  ["keyMap", "mouse_position?", "onClick?", "onKeyPress?", "mouseDown=", "keyList"],
  super: "Object",
  mouseAt$2: function(x, y) {
+  if ($.ltB(x, 0)) x = 0;
+  else {
+    if ($.gtB(x, 800)) x = 800;
+  }
+  if ($.ltB(y, 0)) y = 0;
+  else {
+    if ($.gtB(y, 800)) y = 800;
+  }
   this.mouse_position.set$2(x, y);
  },
  mouseUpAt$2: function(x, y) {
   this.mouseDown = false;
+  if ($.ltB(x, 0)) x = 0;
+  else {
+    if ($.gtB(x, 800)) x = 800;
+  }
+  if ($.ltB(y, 0)) y = 0;
+  else {
+    if ($.gtB(y, 800)) y = 800;
+  }
   this.mouseAt$2(x, y);
  },
  mouseDownAt$2: function(x, y) {
   this.mouseDown = true;
+  if ($.ltB(x, 0)) x = 0;
+  else {
+    if ($.gtB(x, 800)) x = 800;
+  }
+  if ($.ltB(y, 0)) y = 0;
+  else {
+    if ($.gtB(y, 800)) y = 800;
+  }
   this.mouseAt$2(x, y);
  },
  key$1: function(identifier) {
@@ -7853,6 +7842,8 @@ $$.UIManager = {"":
   t1[keyCode] = value;
  },
  UIManager$0: function() {
+  var canvas = $.document().query$1('#canvas');
+  var CANVAS_OFFX = $.div($.sub($.window().get$innerWidth(), canvas.get$width()), 2);
   var t1 = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(t1, ({E: 'Function'}));
   this.onKeyPress = t1;
@@ -7868,11 +7859,11 @@ $$.UIManager = {"":
     if (i < 0 || i >= t2) throw $.ioore(i);
     t1[i] = 0;
   }
-  $.add$1($.window().get$on().get$keyDown(), new $.anon47(this));
-  $.add$1($.window().get$on().get$keyUp(), new $.anon48(this));
-  $.add$1($.window().get$on().get$mouseDown(), new $.anon49(this));
-  $.add$1($.window().get$on().get$mouseUp(), new $.anon50(this));
-  $.add$1($.window().get$on().get$mouseMove(), new $.anon51(this));
+  $.add$1($.window().get$on().get$keyDown(), new $.anon48(this));
+  $.add$1($.window().get$on().get$keyUp(), new $.anon49(this));
+  $.add$1($.window().get$on().get$mouseDown(), new $.anon50(this, CANVAS_OFFX, 100));
+  $.add$1($.window().get$on().get$mouseUp(), new $.anon51(this, CANVAS_OFFX, 100));
+  $.add$1($.window().get$on().get$mouseMove(), new $.anon52(this, CANVAS_OFFX, 100));
   var i;
  }
 };
@@ -8523,14 +8514,14 @@ $$.MenuInterface = {"":
       for (t1 = this.buttons, i = 0; $.ltB(i, $.get$length(options)); ++i) {
         $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), i * 50)));
       }
-      $.add$1(t1, $.MenuButton$('Exit', new $.anon54(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 50))));
+      $.add$1(t1, $.MenuButton$('Exit', new $.anon55(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 50))));
       break;
     case 'confirm':
       this.renderFunction = this.get$renderConfirmMenu();
       var cx = $.div($.SCREEN_WIDTH, 2);
       var cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon55(), $.sub(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon56(), $.sub(cx, 150), $.add(cy, 200)));
       $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 200)));
       break;
     case 'broke':
@@ -8538,8 +8529,8 @@ $$.MenuInterface = {"":
       cx = $.div($.SCREEN_WIDTH, 2);
       cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon56(), $.sub(cx, 150), $.add(cy, 200)));
-      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon57(), $.add(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon57(), $.sub(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon58(), $.add(cx, 150), $.add(cy, 200)));
       break;
   }
   var i;
@@ -8547,7 +8538,7 @@ $$.MenuInterface = {"":
 };
 
 $$.World = {"":
- ["lastSaved", "player?", "paused=", "slide_dir", "slidey_pos", "slidex_pos", "slides", "currentSlide", "slideTime", "intro", "player_max_health=", "player_animation", "coin?", "weaponStartFrame", "weaponName?", "weaponCost2?", "weaponCost?", "weaponAttackRadius", "weaponAttackTypes?", "weaponAttackTime?", "weaponDamage?", "currentWeapon=", "playerWeapons?", "difficultyMode", "zombies_killed=", "zombie_out", "zombie_max=", "dayCount?", "awakePopulation=", "saved=", "totalPopulation=", "night_mode", "dayLength?", "time=", "pathnodes?", "paths?", "ZOMBIE_DAMAGE?", "ZOMBIE_ARMOR?", "ZOMBIE_SPEED?", "ZOMBIE_WANDER_DISTANCE?", "AGRO_DISTANCE?", "uiImages=", "itemImages!", "collisionMap", "map_width", "offscene?", "onscene?", "objects?", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
+ ["lastSaved", "player?", "paused=", "slide_dir", "slidey_pos", "slidex_pos", "slides", "currentSlide", "slideTime", "intro", "player_max_health=", "player_animation", "coin=", "weaponStartFrame", "weaponName?", "weaponCost2?", "weaponCost?", "weaponAttackRadius", "weaponAttackTypes?", "weaponAttackTime?", "weaponDamage?", "currentWeapon=", "playerWeapons?", "difficultyMode", "zombies_killed=", "zombie_out", "zombie_max=", "dayCount?", "awakePopulation=", "saved=", "totalPopulation=", "night_mode", "dayLength?", "time=", "pathnodes?", "paths?", "ZOMBIE_DAMAGE?", "ZOMBIE_ARMOR?", "ZOMBIE_SPEED?", "ZOMBIE_WANDER_DISTANCE", "AGRO_DISTANCE?", "uiImages=", "itemImages!", "collisionMap", "map_width", "offscene?", "onscene?", "objects?", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
  super: "Object",
  render$1: function(c) {
   c.setTransform$6(1, 0, 0, 1, 0, 0);
@@ -8562,9 +8553,9 @@ $$.World = {"":
   t1 = this.camera;
   c.scale$2(t1.get$animatedZoom(), t1.get$animatedZoom());
   var t2 = t1.x;
-  if (typeof t2 !== 'number') return this.render$1$bailout(3, c, t1, t2, 0);
+  if (typeof t2 !== 'number') return this.render$1$bailout(3, c, t2, t1, 0);
   var t4 = $.SCREEN_WIDTH;
-  if (typeof t4 !== 'number') return this.render$1$bailout(4, c, t1, t2, t4);
+  if (typeof t4 !== 'number') return this.render$1$bailout(4, c, t2, t4, t1);
   if (t2 - t4 / 2 < 0) {
     t2 = $.SCREEN_WIDTH;
     if (typeof t2 !== 'number') return this.render$1$bailout(5, c, t1, t2, 0);
@@ -8575,9 +8566,9 @@ $$.World = {"":
     if (typeof t4 !== 'number') return this.render$1$bailout(7, c, t1, t2, t4);
     t2 += t4 / 2;
     var t6 = this.map_width;
-    if (typeof t6 !== 'number') return this.render$1$bailout(8, c, t1, t2, t6);
+    if (typeof t6 !== 'number') return this.render$1$bailout(8, c, t2, t1, t6);
     if (t2 > t6 * 32) {
-      if (typeof t6 !== 'number') return this.render$1$bailout(9, c, t1, t6, 0);
+      if (typeof t6 !== 'number') return this.render$1$bailout(9, c, t6, t1, 0);
       t6 *= 32;
       t3 = $.SCREEN_WIDTH;
       if (typeof t3 !== 'number') return this.render$1$bailout(10, c, t1, t6, t3);
@@ -8585,17 +8576,17 @@ $$.World = {"":
     }
   }
   t2 = t1.y;
-  if (typeof t2 !== 'number') return this.render$1$bailout(11, c, t1, t2, 0);
+  if (typeof t2 !== 'number') return this.render$1$bailout(11, c, t2, t1, 0);
   t4 = $.SCREEN_HEIGHT;
-  if (typeof t4 !== 'number') return this.render$1$bailout(12, c, t1, t4, t2);
+  if (typeof t4 !== 'number') return this.render$1$bailout(12, c, t2, t4, t1);
   if (t2 - t4 / 2 < 0) {
     t2 = $.SCREEN_HEIGHT;
-    if (typeof t2 !== 'number') return this.render$1$bailout(13, c, t1, t2, 0);
+    if (typeof t2 !== 'number') return this.render$1$bailout(13, c, t2, t1, 0);
     t1.y = t2 / 2;
   } else {
-    if (typeof t2 !== 'number') return this.render$1$bailout(14, c, t1, t2, 0);
+    if (typeof t2 !== 'number') return this.render$1$bailout(14, c, t2, t1, 0);
     t4 = $.SCREEN_HEIGHT;
-    if (typeof t4 !== 'number') return this.render$1$bailout(15, c, t1, t2, t4);
+    if (typeof t4 !== 'number') return this.render$1$bailout(15, c, t2, t1, t4);
     t2 += t4 / 2;
     t6 = this.map_width;
     if (typeof t6 !== 'number') return this.render$1$bailout(16, c, t1, t6, t2);
@@ -8603,7 +8594,7 @@ $$.World = {"":
       if (typeof t6 !== 'number') return this.render$1$bailout(17, c, t1, t6, 0);
       t6 *= 32;
       t3 = $.SCREEN_HEIGHT;
-      if (typeof t3 !== 'number') return this.render$1$bailout(18, c, t1, t6, t3);
+      if (typeof t3 !== 'number') return this.render$1$bailout(18, c, t6, t3, t1);
       t1.y = t6 - t3 / 2;
     }
   }
@@ -8611,9 +8602,10 @@ $$.World = {"":
   if (typeof t2 !== 'number') return this.render$1$bailout(19, c, t1, t2, 0);
   t2 = -t2;
   t4 = t1.y;
-  if (typeof t4 !== 'number') return this.render$1$bailout(20, c, t1, t4, t2);
+  if (typeof t4 !== 'number') return this.render$1$bailout(20, c, t4, t1, t2);
   c.translate$2(t2, -t4);
   c.set$font('12px Arial');
+  c.set$textAlign('center');
   this.bottomTileManager.render$2(c, t1);
   $.forEach(this.onscene, new $.World_render_anon(c));
   if ($.DEBUG === true) {
@@ -8642,7 +8634,7 @@ $$.World = {"":
     if (t4 < 0 || t4 >= t5) throw $.ioore(t4);
     t4 = t3[t4];
     t3 = $.SCREEN_HEIGHT;
-    if (typeof t3 !== 'number') return this.render$1$bailout(22, c, t4, t3, 0);
+    if (typeof t3 !== 'number') return this.render$1$bailout(22, c, t3, t4, 0);
     c.fillText$3(t4, 50, t3 - 20);
     c.set$fillStyle('#000');
     c.set$globalAlpha($.Math_pow((this.slideTime - 150) / 150, 2));
@@ -8663,14 +8655,14 @@ $$.World = {"":
       break;
     case 3:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 4:
       c = env0;
-      t1 = env1;
-      t2 = env2;
-      t4 = env3;
+      t2 = env1;
+      t4 = env2;
+      t1 = env3;
       break;
     case 5:
       c = env0;
@@ -8690,14 +8682,14 @@ $$.World = {"":
       break;
     case 8:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       t6 = env3;
       break;
     case 9:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 10:
       c = env0;
@@ -8707,29 +8699,29 @@ $$.World = {"":
       break;
     case 11:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 12:
       c = env0;
-      t1 = env1;
+      t2 = env1;
       t4 = env2;
-      t2 = env3;
+      t1 = env3;
       break;
     case 13:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 14:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 15:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       t4 = env3;
       break;
     case 16:
@@ -8745,9 +8737,9 @@ $$.World = {"":
       break;
     case 18:
       c = env0;
-      t1 = env1;
-      t2 = env2;
-      t4 = env3;
+      t2 = env1;
+      t4 = env2;
+      t1 = env3;
       break;
     case 19:
       c = env0;
@@ -8756,8 +8748,8 @@ $$.World = {"":
       break;
     case 20:
       c = env0;
-      t1 = env1;
-      t4 = env2;
+      t4 = env1;
+      t1 = env2;
       t2 = env3;
       break;
     case 21:
@@ -8766,8 +8758,8 @@ $$.World = {"":
       break;
     case 22:
       c = env0;
-      t4 = env1;
-      t3 = env2;
+      t3 = env1;
+      t4 = env2;
       break;
   }
   switch (state) {
@@ -8887,6 +8879,7 @@ $$.World = {"":
       state = 0;
       c.translate$2(t2, $.neg(t4));
       c.set$font('12px Arial');
+      c.set$textAlign('center');
       this.bottomTileManager.render$2(c, t1);
       $.forEach(this.onscene, new $.World_render_anon(c));
       if ($.DEBUG === true) {
@@ -9002,6 +8995,9 @@ $$.World = {"":
     this.dayCount = this.dayCount + 1;
     $.notify('Day ' + $.S(this.dayCount));
     $.notify('Total Population : ' + $.S(this.totalPopulation));
+    t1 = this.totalPopulation;
+    if (typeof t1 !== 'number') return this.update$0$bailout(6, t1, 0, 0, 0, 0);
+    t1 < 100 && $.notify('WARNING! If your population falls below 50 you lose!');
     this.dayCount > 1 && this.increaseDifficulty$0();
     $.tags.containsKey$1('lost') === true && $.forEach($.index($.tags, 'lost'), new $.World_update_anon());
     $.tags.containsKey$1('following') === true && $.forEach($.index($.tags, 'following'), new $.World_update_anon0());
@@ -9009,9 +9005,9 @@ $$.World = {"":
   } else {
     if (!t1) {
       t1 = this.time;
-      if (typeof t1 !== 'number') return this.update$0$bailout(6, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(7, t1, 0, 0, 0, 0);
       if (!(t1 > 21)) {
-        if (typeof t1 !== 'number') return this.update$0$bailout(7, t1, 0, 0, 0, 0);
+        if (typeof t1 !== 'number') return this.update$0$bailout(8, t1, 0, 0, 0, 0);
         t1 = t1 < 6.5;
       } else t1 = true;
     } else t1 = false;
@@ -9019,20 +9015,21 @@ $$.World = {"":
       this.night_mode = true;
       $.forEach($.index($.tags, 'wander'), new $.World_update_anon2());
       $.notify('Lost Citizens : ' + $.S($.get$length($.index($.tags, 'lost'))));
+      $.notify('Save as many as possible!');
     }
   }
   if (!this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(8, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(9, t1, 0, 0, 0, 0);
     t1 = t1 > 16 && $.rpat(5) === true;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'wander');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(9, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(10, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'wander'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(10, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(11, t3, t1, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(11, t3, t1, t5, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(12, t3, t1, t5, 0, 0);
     var t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     var t8 = t1.length;
@@ -9040,7 +9037,7 @@ $$.World = {"":
     var citizen = t1[t7];
     if (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)) {
       t1 = $.Math_random();
-      if (typeof t1 !== 'number') return this.update$0$bailout(12, citizen, t1, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(13, t1, citizen, 0, 0, 0);
       if (t1 < 0.9) {
         $.switchTag(citizen, 'wander', 'homebound');
         $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(citizen);
@@ -9052,57 +9049,57 @@ $$.World = {"":
   }
   if (!this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(13, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(14, t1, 0, 0, 0, 0);
     if (t1 < 12) {
       t1 = this.awakePopulation;
-      if (typeof t1 !== 'number') return this.update$0$bailout(14, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(15, t1, 0, 0, 0, 0);
       t3 = this.totalPopulation;
-      if (typeof t3 !== 'number') return this.update$0$bailout(15, t1, t3, 0, 0, 0);
+      if (typeof t3 !== 'number') return this.update$0$bailout(16, t3, t1, 0, 0, 0);
       t3 = t1 < t3;
       t1 = t3;
     } else t1 = false;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'house');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(16, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(17, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'house'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(17, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(18, t1, t3, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(18, t3, t1, t5, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(19, t1, t5, t3, 0, 0);
     t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     t8 = t1.length;
     if (t7 < 0 || t7 >= t8) throw $.ioore(t7);
     var house = t1[t7];
     t1 = $.Math_random();
-    if (typeof t1 !== 'number') return this.update$0$bailout(19, t1, house, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(20, t1, house, 0, 0, 0);
     this.spawnObject$2('citizen', $.makeLiteralMap(['tag', ['friendly', t1 < 0.5 ? 'wander' : 'traveler', 'ai'], 'x', house.get$x(), 'y', house.get$y(), 'home', house]));
     t1 = this.awakePopulation;
-    if (typeof t1 !== 'number') return this.update$0$bailout(20, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(21, t1, 0, 0, 0, 0);
     this.awakePopulation = t1 + 1;
   }
   if (this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(21, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(22, t1, 0, 0, 0, 0);
     if (!(t1 < 4)) {
-      if (typeof t1 !== 'number') return this.update$0$bailout(22, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(23, t1, 0, 0, 0, 0);
       t1 = t1 > 21;
     } else t1 = true;
     if (t1) {
       t1 = this.zombie_out;
       t2 = this.zombie_max;
-      if (typeof t2 !== 'number') return this.update$0$bailout(23, t1, t2, 0, 0, 0);
+      if (typeof t2 !== 'number') return this.update$0$bailout(24, t1, t2, 0, 0, 0);
       if (!(t1 < t2 - 50)) {
-        if (typeof t2 !== 'number') return this.update$0$bailout(24, t1, t2, 0, 0, 0);
+        if (typeof t2 !== 'number') return this.update$0$bailout(25, t1, t2, 0, 0, 0);
         t1 = t1 < t2 && $.rpat(32) === true;
       } else t1 = true;
       if (t1) {
         this.zombie_out = this.zombie_out + 1;
         var zs_list = $.index($.tags, 'zombie-spawn');
-        if (typeof zs_list !== 'string' && (typeof zs_list !== 'object' || zs_list === null || (zs_list.constructor !== Array && !zs_list.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(25, zs_list, 0, 0, 0, 0);
+        if (typeof zs_list !== 'string' && (typeof zs_list !== 'object' || zs_list === null || (zs_list.constructor !== Array && !zs_list.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(26, zs_list, 0, 0, 0, 0);
         t2 = zs_list.length;
         t3 = $.Math_random();
-        if (typeof t3 !== 'number') return this.update$0$bailout(26, t2, t3, zs_list, 0, 0);
+        if (typeof t3 !== 'number') return this.update$0$bailout(27, t2, t3, zs_list, 0, 0);
         t5 = $.toInt(t2 * t3);
         if (t5 !== (t5 | 0)) throw $.iae(t5);
         var t6 = zs_list.length;
@@ -9113,11 +9110,11 @@ $$.World = {"":
     } else {
       if (this.zombie_out > 0 && $.rpat(16) === true) {
         t1 = $.index($.tags, 'zombie');
-        if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(27, t1, 0, 0, 0, 0);
+        if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(28, t1, 0, 0, 0, 0);
         t3 = $.get$length($.index($.tags, 'zombie'));
-        if (typeof t3 !== 'number') return this.update$0$bailout(28, t3, t1, 0, 0, 0);
+        if (typeof t3 !== 'number') return this.update$0$bailout(29, t3, t1, 0, 0, 0);
         t5 = $.Math_random();
-        if (typeof t5 !== 'number') return this.update$0$bailout(29, t3, t1, t5, 0, 0);
+        if (typeof t5 !== 'number') return this.update$0$bailout(30, t3, t1, t5, 0, 0);
         t7 = $.toInt(t3 * t5);
         if (t7 !== (t7 | 0)) throw $.iae(t7);
         t8 = t1.length;
@@ -9136,7 +9133,7 @@ $$.World = {"":
     }
   }
   if ($.rpat(1000) === true) {
-    var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'All weapons, upgrades and coins are preserved between games', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly'];
+    var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'All weapons, upgrades and coins are preserved between games', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time'];
     t1 = protips.length;
     t2 = $.Math_random();
     if (typeof t2 !== 'number') throw $.iae(t2);
@@ -9150,18 +9147,18 @@ $$.World = {"":
     if ($.rpat(60) === true) {
       if ($.tags.containsKey$1('lost') === true) {
         t1 = $.get$length($.index($.tags, 'lost'));
-        if (typeof t1 !== 'number') return this.update$0$bailout(30, t1, 0, 0, 0, 0);
+        if (typeof t1 !== 'number') return this.update$0$bailout(31, t1, 0, 0, 0, 0);
         t1 = t1 > 0;
       } else t1 = false;
     } else t1 = false;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'lost');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(31, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(32, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'lost'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(32, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(33, t3, t1, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(33, t3, t1, t5, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(34, t3, t1, t5, 0, 0);
     t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     t8 = t1.length;
@@ -9176,19 +9173,19 @@ $$.World = {"":
   }
   if (!this.intro) {
     t1 = $.event.key$1('d');
-    if (typeof t1 !== 'number') return this.update$0$bailout(34, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(35, t1, 0, 0, 0, 0);
     t3 = $.event.key$1('a');
-    if (typeof t3 !== 'number') return this.update$0$bailout(35, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(36, t3, t1, 0, 0, 0);
     t3 = t1 - t3;
     t1 = $.event.key$1('s');
-    if (typeof t1 !== 'number') return this.update$0$bailout(36, t3, t1, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(37, t3, t1, 0, 0, 0);
     t6 = $.event.key$1('w');
-    if (typeof t6 !== 'number') return this.update$0$bailout(37, t6, t3, t1, 0, 0);
+    if (typeof t6 !== 'number') return this.update$0$bailout(38, t6, t3, t1, 0, 0);
     var inc = $.Vec2$(t3, t1 - t6);
     t3 = inc.normalize$0();
     t8 = $.event.key$1('shift');
     if (typeof t8 !== 'number') throw $.iae(t8);
-    t3.multiplyScalar$1(2 * (1 + 4 * t8));
+    t3.multiplyScalar$1(2 * (1 + 1 * t8));
     $.add$1(this.player.get$velocity(), inc);
   } else {
     this.slideTime = this.slideTime + 1;
@@ -9198,13 +9195,13 @@ $$.World = {"":
     t3 = t1.length;
     if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
     t1 = t1[t2];
-    if (typeof t1 !== 'number') return this.update$0$bailout(38, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(39, t1, 0, 0, 0, 0);
     t5 = this.slideTime;
     t6 = this.slide_dir;
     t7 = t6.length;
     if (t2 < 0 || t2 >= t7) throw $.ioore(t2);
     t2 = t6[t2];
-    if (typeof t2 !== 'number') return this.update$0$bailout(39, t2, t1, t5, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(40, t2, t5, t1, 0, 0);
     t1 += t5 * t2;
     t8 = this.camera;
     t8.x = t1;
@@ -9225,12 +9222,13 @@ $$.World = {"":
         this.player.set$2(4793, 4342);
         t1 = this.player_animation;
         this.player.set$animation(t1);
+        $.notify('Explore the island while it\'s safe!');
       }
     }
   }
   if ($.event.get$mouseDown() === true) {
     t1 = this.player.get$currentAttackTime();
-    if (typeof t1 !== 'number') return this.update$0$bailout(40, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(41, t1, 0, 0, 0, 0);
     if (t1 === 0) {
       t1 = this.weaponStartFrame;
       t2 = this.currentWeapon;
@@ -9238,17 +9236,17 @@ $$.World = {"":
       t3 = t1.length;
       if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
       t2 = t1[t2];
-      if (typeof t2 !== 'number') return this.update$0$bailout(41, t2, 0, 0, 0, 0);
+      if (typeof t2 !== 'number') return this.update$0$bailout(42, t2, 0, 0, 0, 0);
       t2 *= 5;
       this.player.set$currentFrame(t2);
     }
     this.player.set$attacking(true);
     t1 = $.event.get$mouse_position().clone$0();
     t2 = $.SCREEN_WIDTH;
-    if (typeof t2 !== 'number') return this.update$0$bailout(42, t1, t2, 0, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(43, t2, t1, 0, 0, 0);
     t2 /= 2;
     t4 = $.SCREEN_HEIGHT;
-    if (typeof t4 !== 'number') return this.update$0$bailout(43, t4, t1, t2, 0, 0);
+    if (typeof t4 !== 'number') return this.update$0$bailout(44, t2, t4, t1, 0, 0);
     t6 = t1.subTo$2(t2, t4 / 2).normalize$0();
     this.player.set$attackDirection(t6);
   } else {
@@ -9257,27 +9255,27 @@ $$.World = {"":
   }
   t1 = this.camera;
   t2 = t1.x;
-  if (typeof t2 !== 'number') return this.update$0$bailout(44, t1, t2, 0, 0, 0);
-  if (typeof t2 !== 'number') return this.update$0$bailout(45, t2, t1, t2, 0, 0);
+  if (typeof t2 !== 'number') return this.update$0$bailout(45, t2, t1, 0, 0, 0);
+  if (typeof t2 !== 'number') return this.update$0$bailout(46, t2, t1, t2, 0, 0);
   t5 = this.player.get$x();
-  if (typeof t5 !== 'number') return this.update$0$bailout(46, t2, t5, t1, t2, 0);
+  if (typeof t5 !== 'number') return this.update$0$bailout(47, t2, t1, t2, t5, 0);
   t7 = this.player.get$velocity().get$x();
-  if (typeof t7 !== 'number') return this.update$0$bailout(47, t2, t5, t1, t7, t2);
+  if (typeof t7 !== 'number') return this.update$0$bailout(48, t7, t2, t1, t2, t5);
   t1.x = t2 - (t2 - (t5 + t7 * 5)) / 5;
   t9 = t1.y;
-  if (typeof t9 !== 'number') return this.update$0$bailout(48, t9, t1, 0, 0, 0);
-  if (typeof t9 !== 'number') return this.update$0$bailout(49, t9, t9, t1, 0, 0);
+  if (typeof t9 !== 'number') return this.update$0$bailout(49, t1, t9, 0, 0, 0);
+  if (typeof t9 !== 'number') return this.update$0$bailout(50, t1, t9, t9, 0, 0);
   var t12 = this.player.get$y();
-  if (typeof t12 !== 'number') return this.update$0$bailout(50, t9, t9, t1, t12, 0);
+  if (typeof t12 !== 'number') return this.update$0$bailout(51, t12, t1, t9, t9, 0);
   var t14 = this.player.get$velocity().get$y();
-  if (typeof t14 !== 'number') return this.update$0$bailout(51, t14, t9, t9, t1, t12);
+  if (typeof t14 !== 'number') return this.update$0$bailout(52, t12, t1, t14, t9, t9);
   t1.y = t9 - (t9 - (t12 + t14 * 5)) / 5;
   var t16 = t1.get$zoom();
-  if (typeof t16 !== 'number') return this.update$0$bailout(52, t1, t16, 0, 0, 0);
+  if (typeof t16 !== 'number') return this.update$0$bailout(53, t16, t1, 0, 0, 0);
   var t18 = $.event.key$1('up');
-  if (typeof t18 !== 'number') return this.update$0$bailout(53, t18, t1, t16, 0, 0);
+  if (typeof t18 !== 'number') return this.update$0$bailout(54, t16, t1, t18, 0, 0);
   var t20 = $.event.key$1('down');
-  if (typeof t20 !== 'number') return this.update$0$bailout(54, t18, t20, t1, t16, 0);
+  if (typeof t20 !== 'number') return this.update$0$bailout(55, t16, t1, t18, t20, 0);
   t1.set$zoom(t16 + (t18 - t20) / 10.0);
   t1.update$0();
   if ($.tags.containsKey$1('uninit') === true) {
@@ -9290,16 +9288,16 @@ $$.World = {"":
   for (t1 = $.iterator($.tags.getKeys$0()); t1.hasNext$0() === true; ) {
     t2 = t1.next$0();
     t3 = $.tags;
-    if (typeof t3 !== 'string' && (typeof t3 !== 'object' || t3 === null || (t3.constructor !== Array && !t3.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(55, t2, t1, t3, 0, 0);
+    if (typeof t3 !== 'string' && (typeof t3 !== 'object' || t3 === null || (t3.constructor !== Array && !t3.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(56, t2, t1, t3, 0, 0);
     if (t2 !== (t2 | 0)) throw $.iae(t2);
     t5 = t3.length;
     if (t2 < 0 || t2 >= t5) throw $.ioore(t2);
     var lst = t3[t2];
-    if (typeof lst !== 'string' && (typeof lst !== 'object' || lst === null || (lst.constructor !== Array && !lst.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(56, t1, lst, 0, 0, 0);
+    if (typeof lst !== 'string' && (typeof lst !== 'object' || lst === null || (lst.constructor !== Array && !lst.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(57, lst, t1, 0, 0, 0);
     t2 = $.Math_random();
-    if (typeof t2 !== 'number') return this.update$0$bailout(57, t2, t1, lst, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(58, lst, t2, t1, 0, 0);
     var i = $.toInt(t2 * lst.length);
-    if (typeof i !== 'number') return this.update$0$bailout(58, t1, lst, i, 0, 0);
+    if (typeof i !== 'number') return this.update$0$bailout(59, lst, i, t1, 0, 0);
     var iter = 0;
     for (; t2 = lst.length, iter < t2 / 16; ++iter, ++i) {
       var index = $.mod(i, t2);
@@ -9311,9 +9309,9 @@ $$.World = {"":
   t1 = this.objects;
   t2 = t1.length;
   t3 = $.Math_random();
-  if (typeof t3 !== 'number') return this.update$0$bailout(59, t1, t2, t3, 0, 0);
+  if (typeof t3 !== 'number') return this.update$0$bailout(60, t2, t3, t1, 0, 0);
   i = $.toInt(t2 * t3);
-  if (typeof i !== 'number') return this.update$0$bailout(60, i, t1, 0, 0, 0);
+  if (typeof i !== 'number') return this.update$0$bailout(61, t1, i, 0, 0, 0);
   iter = 0;
   for (; t2 = t1.length, iter < t2 / 16; ++iter, ++i) {
     index = $.mod(i, t2);
@@ -9326,7 +9324,7 @@ $$.World = {"":
   $.tags.containsKey$1('spawn') === true && $.forEach($.index($.tags, 'spawn'), new $.World_update_anon6());
   this.sortScreenObjects$0();
   t1 = this.time;
-  if (typeof t1 !== 'number') return this.update$0$bailout(61, t1, 0, 0, 0, 0);
+  if (typeof t1 !== 'number') return this.update$0$bailout(62, t1, 0, 0, 0, 0);
   this.time = $.mod(t1 + 24 / this.dayLength, 24);
  },
  update$0$bailout: function(state, env0, env1, env2, env3, env4) {
@@ -9361,46 +9359,46 @@ $$.World = {"":
       t1 = env0;
       break;
     case 10:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
       break;
     case 11:
       t3 = env0;
       t1 = env1;
-      t5 = env2;
       break;
     case 12:
-      citizen = env0;
+      t3 = env0;
       t1 = env1;
+      t5 = env2;
       break;
     case 13:
       t1 = env0;
+      citizen = env1;
       break;
     case 14:
       t1 = env0;
       break;
     case 15:
       t1 = env0;
-      t3 = env1;
       break;
     case 16:
-      t1 = env0;
+      t3 = env0;
+      t1 = env1;
       break;
     case 17:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
       break;
     case 18:
-      t3 = env0;
-      t1 = env1;
-      t5 = env2;
+      t1 = env0;
+      t3 = env1;
       break;
     case 19:
       t1 = env0;
-      house = env1;
+      t5 = env1;
+      t3 = env2;
       break;
     case 20:
       t1 = env0;
+      house = env1;
       break;
     case 21:
       t1 = env0;
@@ -9410,174 +9408,177 @@ $$.World = {"":
       break;
     case 23:
       t1 = env0;
-      t2 = env1;
       break;
     case 24:
       t1 = env0;
       t2 = env1;
       break;
     case 25:
-      zs_list = env0;
+      t1 = env0;
+      t2 = env1;
       break;
     case 26:
+      zs_list = env0;
+      break;
+    case 27:
       t2 = env0;
       t3 = env1;
       zs_list = env2;
       break;
-    case 27:
-      t1 = env0;
-      break;
     case 28:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
       break;
     case 29:
       t3 = env0;
       t1 = env1;
-      t5 = env2;
       break;
     case 30:
-      t1 = env0;
+      t3 = env0;
+      t1 = env1;
+      t5 = env2;
       break;
     case 31:
       t1 = env0;
       break;
     case 32:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
       break;
     case 33:
       t3 = env0;
       t1 = env1;
-      t5 = env2;
       break;
     case 34:
-      t1 = env0;
-      break;
-    case 35:
       t3 = env0;
       t1 = env1;
+      t5 = env2;
+      break;
+    case 35:
+      t1 = env0;
       break;
     case 36:
       t3 = env0;
       t1 = env1;
       break;
     case 37:
+      t3 = env0;
+      t1 = env1;
+      break;
+    case 38:
       t6 = env0;
       t3 = env1;
       t1 = env2;
       break;
-    case 38:
-      t2 = env0;
-      break;
     case 39:
-      t6 = env0;
-      t2 = env1;
-      t4 = env2;
+      t2 = env0;
       break;
     case 40:
-      t1 = env0;
+      t6 = env0;
+      t4 = env1;
+      t2 = env2;
       break;
     case 41:
-      t2 = env0;
+      t1 = env0;
       break;
     case 42:
-      t1 = env0;
-      t2 = env1;
+      t2 = env0;
       break;
     case 43:
-      t4 = env0;
+      t2 = env0;
       t1 = env1;
-      t2 = env2;
       break;
     case 44:
-      t1 = env0;
-      t2 = env1;
+      t2 = env0;
+      t4 = env1;
+      t1 = env2;
       break;
     case 45:
-      t4 = env0;
+      t2 = env0;
       t1 = env1;
-      t2 = env2;
       break;
     case 46:
-      t4 = env0;
-      t6 = env1;
-      t1 = env2;
-      t2 = env3;
+      t2 = env0;
+      t1 = env1;
+      t4 = env2;
       break;
     case 47:
-      t4 = env0;
-      t6 = env1;
-      t1 = env2;
-      t8 = env3;
-      t2 = env4;
+      t2 = env0;
+      t1 = env1;
+      t4 = env2;
+      t6 = env3;
       break;
     case 48:
-      t10 = env0;
-      t1 = env1;
+      t8 = env0;
+      t2 = env1;
+      t1 = env2;
+      t4 = env3;
+      t6 = env4;
       break;
     case 49:
-      t10 = env0;
-      t12 = env1;
-      t1 = env2;
+      t1 = env0;
+      t10 = env1;
       break;
     case 50:
-      t10 = env0;
-      t12 = env1;
-      t1 = env2;
-      t14 = env3;
-      break;
-    case 51:
-      t16 = env0;
+      t1 = env0;
       t10 = env1;
       t12 = env2;
-      t1 = env3;
-      t14 = env4;
+      break;
+    case 51:
+      t14 = env0;
+      t1 = env1;
+      t10 = env2;
+      t12 = env3;
       break;
     case 52:
-      t1 = env0;
-      t18 = env1;
+      t14 = env0;
+      t1 = env1;
+      t16 = env2;
+      t10 = env3;
+      t12 = env4;
       break;
     case 53:
-      t20 = env0;
+      t18 = env0;
       t1 = env1;
-      t18 = env2;
       break;
     case 54:
-      t20 = env0;
-      t22 = env1;
-      t1 = env2;
-      t18 = env3;
+      t18 = env0;
+      t1 = env1;
+      t20 = env2;
       break;
     case 55:
-      t2 = env0;
+      t18 = env0;
       t1 = env1;
-      t3 = env2;
+      t20 = env2;
+      t22 = env3;
       break;
     case 56:
-      t1 = env0;
-      lst = env1;
-      break;
-    case 57:
       t2 = env0;
       t1 = env1;
-      lst = env2;
-      break;
-    case 58:
-      t1 = env0;
-      lst = env1;
-      i = env2;
-      break;
-    case 59:
-      t1 = env0;
-      t2 = env1;
       t3 = env2;
       break;
-    case 60:
-      i = env0;
+    case 57:
+      lst = env0;
       t1 = env1;
       break;
+    case 58:
+      lst = env0;
+      t2 = env1;
+      t1 = env2;
+      break;
+    case 59:
+      lst = env0;
+      i = env1;
+      t1 = env2;
+      break;
+    case 60:
+      t2 = env0;
+      t3 = env1;
+      t1 = env2;
+      break;
     case 61:
+      t1 = env0;
+      i = env1;
+      break;
+    case 62:
       t1 = env0;
       break;
   }
@@ -9618,31 +9619,39 @@ $$.World = {"":
       }
     case 6:
     case 7:
-      if ((state == 0 && t1)) {
-        this.night_mode = false;
-        this.dayCount = this.dayCount + 1;
-        $.notify('Day ' + $.S(this.dayCount));
-        $.notify('Total Population : ' + $.S(this.totalPopulation));
-        this.dayCount > 1 && this.increaseDifficulty$0();
-        $.tags.containsKey$1('lost') === true && $.forEach($.index($.tags, 'lost'), new $.World_update_anon());
-        $.tags.containsKey$1('following') === true && $.forEach($.index($.tags, 'following'), new $.World_update_anon0());
-        $.tags.containsKey$1('zombie') === true && $.forEach($.index($.tags, 'zombie'), new $.World_update_anon1());
+    case 8:
+      if (state == 6 || (state == 0 && t1)) {
+        switch (state) {
+          case 0:
+            this.night_mode = false;
+            this.dayCount = this.dayCount + 1;
+            $.notify('Day ' + $.S(this.dayCount));
+            $.notify('Total Population : ' + $.S(this.totalPopulation));
+            t1 = this.totalPopulation;
+          case 6:
+            state = 0;
+            $.ltB(t1, 100) && $.notify('WARNING! If your population falls below 50 you lose!');
+            this.dayCount > 1 && this.increaseDifficulty$0();
+            $.tags.containsKey$1('lost') === true && $.forEach($.index($.tags, 'lost'), new $.World_update_anon());
+            $.tags.containsKey$1('following') === true && $.forEach($.index($.tags, 'following'), new $.World_update_anon0());
+            $.tags.containsKey$1('zombie') === true && $.forEach($.index($.tags, 'zombie'), new $.World_update_anon1());
+        }
       } else {
         switch (state) {
           case 0:
           default:
-            if (state == 6 || state == 7 || (state == 0 && this.night_mode !== true)) {
+            if (state == 7 || state == 8 || (state == 0 && this.night_mode !== true)) {
               switch (state) {
                 case 0:
                   t1 = this.time;
-                case 6:
-                  state = 0;
                 case 7:
-                  if (state == 7 || (state == 0 && !$.gtB(t1, 21))) {
+                  state = 0;
+                case 8:
+                  if (state == 8 || (state == 0 && !$.gtB(t1, 21))) {
                     switch (state) {
                       case 0:
                         t1 = this.time;
-                      case 7:
+                      case 8:
                         state = 0;
                         t1 = $.ltB(t1, 6.5);
                     }
@@ -9657,44 +9666,45 @@ $$.World = {"":
               this.night_mode = true;
               $.forEach($.index($.tags, 'wander'), new $.World_update_anon2());
               $.notify('Lost Citizens : ' + $.S($.get$length($.index($.tags, 'lost'))));
+              $.notify('Save as many as possible!');
             }
         }
       }
-    case 8:
-      if (state == 8 || (state == 0 && this.night_mode !== true)) {
+    case 9:
+      if (state == 9 || (state == 0 && this.night_mode !== true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 8:
+          case 9:
             state = 0;
             t1 = $.gtB(t1, 16) && $.rpat(5) === true;
         }
       } else {
         t1 = false;
       }
-    case 9:
     case 10:
     case 11:
     case 12:
-      if (state == 9 || state == 10 || state == 11 || state == 12 || (state == 0 && t1)) {
+    case 13:
+      if (state == 10 || state == 11 || state == 12 || state == 13 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'wander');
-          case 9:
-            state = 0;
-            t3 = $.get$length($.index($.tags, 'wander'));
           case 10:
             state = 0;
-            t5 = $.Math_random();
+            t3 = $.get$length($.index($.tags, 'wander'));
           case 11:
             state = 0;
-            var citizen = $.index(t1, $.toInt($.mul(t3, t5)));
+            t5 = $.Math_random();
           case 12:
-            if (state == 12 || (state == 0 && (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)))) {
+            state = 0;
+            var citizen = $.index(t1, $.toInt($.mul(t3, t5)));
+          case 13:
+            if (state == 13 || (state == 0 && (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)))) {
               switch (state) {
                 case 0:
                   t1 = $.Math_random();
-                case 12:
+                case 13:
                   state = 0;
                   if ($.ltB(t1, 0.9)) {
                     $.switchTag(citizen, 'wander', 'homebound');
@@ -9707,24 +9717,24 @@ $$.World = {"":
             }
         }
       }
-    case 13:
     case 14:
     case 15:
-      if (state == 13 || state == 14 || state == 15 || (state == 0 && this.night_mode !== true)) {
+    case 16:
+      if (state == 14 || state == 15 || state == 16 || (state == 0 && this.night_mode !== true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 13:
+          case 14:
             state = 0;
           default:
-            if (state == 14 || state == 15 || (state == 0 && $.ltB(t1, 12))) {
+            if (state == 15 || state == 16 || (state == 0 && $.ltB(t1, 12))) {
               switch (state) {
                 case 0:
                   t1 = this.awakePopulation;
-                case 14:
+                case 15:
                   state = 0;
                   t3 = this.totalPopulation;
-                case 15:
+                case 16:
                   state = 0;
                   t3 = $.ltB(t1, t3);
                   t1 = t3;
@@ -9736,35 +9746,34 @@ $$.World = {"":
       } else {
         t1 = false;
       }
-    case 16:
     case 17:
     case 18:
     case 19:
     case 20:
-      if (state == 16 || state == 17 || state == 18 || state == 19 || state == 20 || (state == 0 && t1)) {
+    case 21:
+      if (state == 17 || state == 18 || state == 19 || state == 20 || state == 21 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'house');
-          case 16:
-            state = 0;
-            t3 = $.get$length($.index($.tags, 'house'));
           case 17:
             state = 0;
-            t5 = $.Math_random();
+            t3 = $.get$length($.index($.tags, 'house'));
           case 18:
+            state = 0;
+            t5 = $.Math_random();
+          case 19:
             state = 0;
             var house = $.index(t1, $.toInt($.mul(t3, t5)));
             t1 = $.Math_random();
-          case 19:
+          case 20:
             state = 0;
             this.spawnObject$2('citizen', $.makeLiteralMap(['tag', ['friendly', $.ltB(t1, 0.5) ? 'wander' : 'traveler', 'ai'], 'x', house.get$x(), 'y', house.get$y(), 'home', house]));
             t1 = this.awakePopulation;
-          case 20:
+          case 21:
             state = 0;
             this.awakePopulation = $.add(t1, 1);
         }
       }
-    case 21:
     case 22:
     case 23:
     case 24:
@@ -9773,18 +9782,19 @@ $$.World = {"":
     case 27:
     case 28:
     case 29:
-      if (state == 21 || state == 22 || state == 23 || state == 24 || state == 25 || state == 26 || state == 27 || state == 28 || state == 29 || (state == 0 && this.night_mode === true)) {
+    case 30:
+      if (state == 22 || state == 23 || state == 24 || state == 25 || state == 26 || state == 27 || state == 28 || state == 29 || state == 30 || (state == 0 && this.night_mode === true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 21:
-            state = 0;
           case 22:
-            if (state == 22 || (state == 0 && !$.ltB(t1, 4))) {
+            state = 0;
+          case 23:
+            if (state == 23 || (state == 0 && !$.ltB(t1, 4))) {
               switch (state) {
                 case 0:
                   t1 = this.time;
-                case 22:
+                case 23:
                   state = 0;
                   t1 = $.gtB(t1, 21);
               }
@@ -9792,20 +9802,20 @@ $$.World = {"":
               t1 = true;
             }
           default:
-            if (state == 23 || state == 24 || state == 25 || state == 26 || (state == 0 && t1)) {
+            if (state == 24 || state == 25 || state == 26 || state == 27 || (state == 0 && t1)) {
               switch (state) {
                 case 0:
                   t1 = this.zombie_out;
                   var t2 = this.zombie_max;
-                case 23:
-                  state = 0;
                 case 24:
-                  if (state == 24 || (state == 0 && !$.ltB(t1, $.sub(t2, 50)))) {
+                  state = 0;
+                case 25:
+                  if (state == 25 || (state == 0 && !$.ltB(t1, $.sub(t2, 50)))) {
                     switch (state) {
                       case 0:
                         t1 = this.zombie_out;
                         t2 = this.zombie_max;
-                      case 24:
+                      case 25:
                         state = 0;
                         t1 = $.ltB(t1, t2) && $.rpat(32) === true;
                     }
@@ -9813,16 +9823,16 @@ $$.World = {"":
                     t1 = true;
                   }
                 default:
-                  if (state == 25 || state == 26 || (state == 0 && t1)) {
+                  if (state == 26 || state == 27 || (state == 0 && t1)) {
                     switch (state) {
                       case 0:
                         this.zombie_out = this.zombie_out + 1;
                         var zs_list = $.index($.tags, 'zombie-spawn');
-                      case 25:
+                      case 26:
                         state = 0;
                         t2 = $.get$length(zs_list);
                         t3 = $.Math_random();
-                      case 26:
+                      case 27:
                         state = 0;
                         var zs = $.index(zs_list, $.toInt($.mul(t2, t3)));
                         this.spawnObject$2('zombie', $.makeLiteralMap(['x', zs.get$x(), 'y', zs.get$y()]));
@@ -9833,17 +9843,17 @@ $$.World = {"":
               switch (state) {
                 case 0:
                 default:
-                  if (state == 27 || state == 28 || state == 29 || (state == 0 && (this.zombie_out > 0 && $.rpat(16) === true))) {
+                  if (state == 28 || state == 29 || state == 30 || (state == 0 && (this.zombie_out > 0 && $.rpat(16) === true))) {
                     switch (state) {
                       case 0:
                         t1 = $.index($.tags, 'zombie');
-                      case 27:
-                        state = 0;
-                        t3 = $.get$length($.index($.tags, 'zombie'));
                       case 28:
                         state = 0;
-                        t5 = $.Math_random();
+                        t3 = $.get$length($.index($.tags, 'zombie'));
                       case 29:
+                        state = 0;
+                        t5 = $.Math_random();
+                      case 30:
                         state = 0;
                         var zom = $.index(t1, $.toInt($.mul(t3, t5)));
                         if (zom.hasTag$1('nestbound') !== true) {
@@ -9862,7 +9872,7 @@ $$.World = {"":
         }
       }
       if ($.rpat(1000) === true) {
-        var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'All weapons, upgrades and coins are preserved between games', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly'];
+        var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'All weapons, upgrades and coins are preserved between games', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time'];
         t1 = protips.length;
         t2 = $.Math_random();
         if (typeof t2 !== 'number') throw $.iae(t2);
@@ -9872,20 +9882,20 @@ $$.World = {"":
         if (t3 < 0 || t3 >= t4) throw $.ioore(t3);
         $.notify('Tip : ' + $.S(protips[t3]));
       }
-    case 30:
-      if (state == 30 || (state == 0 && this.night_mode === true)) {
+    case 31:
+      if (state == 31 || (state == 0 && this.night_mode === true)) {
         switch (state) {
           case 0:
-          case 30:
-            if (state == 30 || (state == 0 && $.rpat(60) === true)) {
+          case 31:
+            if (state == 31 || (state == 0 && $.rpat(60) === true)) {
               switch (state) {
                 case 0:
-                case 30:
-                  if (state == 30 || (state == 0 && $.tags.containsKey$1('lost') === true)) {
+                case 31:
+                  if (state == 31 || (state == 0 && $.tags.containsKey$1('lost') === true)) {
                     switch (state) {
                       case 0:
                         t1 = $.get$length($.index($.tags, 'lost'));
-                      case 30:
+                      case 31:
                         state = 0;
                         t1 = $.gtB(t1, 0);
                     }
@@ -9900,20 +9910,20 @@ $$.World = {"":
       } else {
         t1 = false;
       }
-    case 31:
     case 32:
     case 33:
-      if (state == 31 || state == 32 || state == 33 || (state == 0 && t1)) {
+    case 34:
+      if (state == 32 || state == 33 || state == 34 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'lost');
-          case 31:
-            state = 0;
-            t3 = $.get$length($.index($.tags, 'lost'));
           case 32:
             state = 0;
-            t5 = $.Math_random();
+            t3 = $.get$length($.index($.tags, 'lost'));
           case 33:
+            state = 0;
+            t5 = $.Math_random();
+          case 34:
             state = 0;
             t1 = $.index(t1, $.toInt($.mul(t3, t5)));
             var t7 = $.Math_random();
@@ -9924,33 +9934,33 @@ $$.World = {"":
             t1.say$1($.CTC32[t8]);
         }
       }
-    case 34:
     case 35:
     case 36:
     case 37:
     case 38:
     case 39:
-      if (state == 34 || state == 35 || state == 36 || state == 37 || (state == 0 && this.intro !== true)) {
+    case 40:
+      if (state == 35 || state == 36 || state == 37 || state == 38 || (state == 0 && this.intro !== true)) {
         switch (state) {
           case 0:
             t1 = $.event.key$1('d');
-          case 34:
+          case 35:
             state = 0;
             t3 = $.event.key$1('a');
-          case 35:
+          case 36:
             state = 0;
             t3 = $.sub(t1, t3);
             t1 = $.event.key$1('s');
-          case 36:
+          case 37:
             state = 0;
             var t6 = $.event.key$1('w');
-          case 37:
+          case 38:
             state = 0;
             var inc = $.Vec2$(t3, $.sub(t1, t6));
             t3 = inc.normalize$0();
             t8 = $.event.key$1('shift');
             if (typeof t8 !== 'number') throw $.iae(t8);
-            t3.multiplyScalar$1(2 * (1 + 4 * t8));
+            t3.multiplyScalar$1(2 * (1 + 1 * t8));
             $.add$1(this.player.get$velocity(), inc);
         }
       } else {
@@ -9963,7 +9973,7 @@ $$.World = {"":
             t3 = t1.length;
             if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
             t2 = t1[t2];
-          case 38:
+          case 39:
             state = 0;
             t4 = this.slideTime;
             t5 = this.slide_dir;
@@ -9972,7 +9982,7 @@ $$.World = {"":
             t7 = t5.length;
             if (t6 < 0 || t6 >= t7) throw $.ioore(t6);
             t6 = t5[t6];
-          case 39:
+          case 40:
             state = 0;
             if (typeof t6 !== 'number') throw $.iae(t6);
             t2 = $.add(t2, t4 * t6);
@@ -9995,22 +10005,23 @@ $$.World = {"":
                 this.player.set$2(4793, 4342);
                 t1 = this.player_animation;
                 this.player.set$animation(t1);
+                $.notify('Explore the island while it\'s safe!');
               }
             }
         }
       }
-    case 40:
     case 41:
     case 42:
     case 43:
-      if (state == 40 || state == 41 || state == 42 || state == 43 || (state == 0 && $.event.get$mouseDown() === true)) {
+    case 44:
+      if (state == 41 || state == 42 || state == 43 || state == 44 || (state == 0 && $.event.get$mouseDown() === true)) {
         switch (state) {
           case 0:
             t1 = this.player.get$currentAttackTime();
-          case 40:
-            state = 0;
           case 41:
-            if (state == 41 || (state == 0 && $.eqB(t1, 0))) {
+            state = 0;
+          case 42:
+            if (state == 42 || (state == 0 && $.eqB(t1, 0))) {
               switch (state) {
                 case 0:
                   t1 = this.weaponStartFrame;
@@ -10019,7 +10030,7 @@ $$.World = {"":
                   t3 = t1.length;
                   if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
                   t2 = t1[t2];
-                case 41:
+                case 42:
                   state = 0;
                   t2 = $.mul(t2, 5);
                   this.player.set$currentFrame(t2);
@@ -10028,11 +10039,11 @@ $$.World = {"":
             this.player.set$attacking(true);
             t1 = $.event.get$mouse_position().clone$0();
             t2 = $.SCREEN_WIDTH;
-          case 42:
+          case 43:
             state = 0;
             t2 = $.div(t2, 2);
             t4 = $.SCREEN_HEIGHT;
-          case 43:
+          case 44:
             state = 0;
             t6 = t1.subTo$2(t2, $.div(t4, 2)).normalize$0();
             this.player.set$attackDirection(t6);
@@ -10043,39 +10054,39 @@ $$.World = {"":
       }
       t1 = this.camera;
       t2 = t1.get$x();
-    case 44:
-      state = 0;
-      t4 = t1.get$x();
     case 45:
       state = 0;
-      t6 = this.player.get$x();
+      t4 = t1.get$x();
     case 46:
       state = 0;
-      t8 = this.player.get$velocity().get$x();
+      t6 = this.player.get$x();
     case 47:
+      state = 0;
+      t8 = this.player.get$velocity().get$x();
+    case 48:
       state = 0;
       t1.set$x($.sub(t2, $.div($.sub(t4, $.add(t6, $.mul(t8, 5))), 5)));
       t10 = t1.get$y();
-    case 48:
-      state = 0;
-      var t12 = t1.get$y();
     case 49:
       state = 0;
-      var t14 = this.player.get$y();
+      var t12 = t1.get$y();
     case 50:
       state = 0;
-      var t16 = this.player.get$velocity().get$y();
+      var t14 = this.player.get$y();
     case 51:
+      state = 0;
+      var t16 = this.player.get$velocity().get$y();
+    case 52:
       state = 0;
       t1.set$y($.sub(t10, $.div($.sub(t12, $.add(t14, $.mul(t16, 5))), 5)));
       var t18 = t1.get$zoom();
-    case 52:
-      state = 0;
-      var t20 = $.event.key$1('up');
     case 53:
       state = 0;
-      var t22 = $.event.key$1('down');
+      var t20 = $.event.key$1('up');
     case 54:
+      state = 0;
+      var t22 = $.event.key$1('down');
+    case 55:
       state = 0;
       t1.set$zoom($.add(t18, $.div($.sub(t20, t22), 10.0)));
       t1.update$0();
@@ -10087,26 +10098,26 @@ $$.World = {"":
         $.indexSet(t1, 'uninit', t2);
       }
       t1 = $.iterator($.tags.getKeys$0());
-    case 55:
     case 56:
     case 57:
     case 58:
+    case 59:
       L0: while (true) {
         switch (state) {
           case 0:
             if (!(t1.hasNext$0() === true)) break L0;
             t2 = t1.next$0();
             t3 = $.tags;
-          case 55:
-            state = 0;
-            var lst = $.index(t3, t2);
           case 56:
             state = 0;
-            t2 = $.Math_random();
+            var lst = $.index(t3, t2);
           case 57:
             state = 0;
-            var i = $.toInt($.mul(t2, $.get$length(lst)));
+            t2 = $.Math_random();
           case 58:
+            state = 0;
+            var i = $.toInt($.mul(t2, $.get$length(lst)));
+          case 59:
             state = 0;
             var iter = 0;
             for (; $.ltB(iter, $.div($.get$length(lst), 16)); ++iter, i = $.add(i, 1)) {
@@ -10118,11 +10129,11 @@ $$.World = {"":
       t1 = this.objects;
       t2 = t1.length;
       t3 = $.Math_random();
-    case 59:
+    case 60:
       state = 0;
       if (typeof t3 !== 'number') throw $.iae(t3);
       i = $.toInt(t2 * t3);
-    case 60:
+    case 61:
       state = 0;
       iter = 0;
       for (; iter < t1.length / 16; ++iter, i = $.add(i, 1)) {
@@ -10137,7 +10148,7 @@ $$.World = {"":
       $.tags.containsKey$1('spawn') === true && $.forEach($.index($.tags, 'spawn'), new $.World_update_anon6());
       this.sortScreenObjects$0();
       t1 = this.time;
-    case 61:
+    case 62:
       state = 0;
       t3 = this.dayLength;
       if (typeof t3 !== 'number') throw $.iae(t3);
@@ -10345,8 +10356,8 @@ $$.World = {"":
     $.setRuntimeTypeInfo(debugPathNodes, ({E: 'Vec2'}));
     t1.debugPathNodes_4 = debugPathNodes;
     $.add$1($.event.get$onKeyPress(), new $.World_startCycle_anon0(this, t1));
-    $.add$1($.event.get$onClick(), new $.World_startCycle_anon1(this));
   }
+  $.add$1($.event.get$onClick(), new $.World_startCycle_anon1(this));
   $.add$1($.event.get$onKeyPress(), new $.World_startCycle_anon2(this));
   new $.World_startCycle_cycle(context, this).$call$1(0);
  },
@@ -10364,7 +10375,7 @@ $$.World = {"":
   switch (type) {
     case 'damage':
       var t1 = this.weaponDamage;
-      $.indexSet(t1, weaponID, $.mul($.index(t1, weaponID), 1.25));
+      $.indexSet(t1, weaponID, $.mul($.index(t1, weaponID), 1.5));
       t1 = this.coin;
       var t2 = this.weaponCost;
       this.coin = $.sub(t1, $.index(t2, weaponID));
@@ -10372,7 +10383,7 @@ $$.World = {"":
       break;
     case 'rate':
       t1 = this.weaponAttackTime;
-      $.indexSet(t1, weaponID, $.mul($.index(t1, weaponID), 1.25));
+      $.indexSet(t1, weaponID, $.sub($.index(t1, weaponID), 2));
       t1 = this.coin;
       t2 = this.weaponCost2;
       this.coin = $.sub(t1, $.index(t2, weaponID));
@@ -10427,7 +10438,10 @@ $$.World = {"":
       $.add$1(this.menuInterfaces, $.MenuInterface$('options', $.makeLiteralMap(['options', optionMap])));
       break;
     case 'health':
-      $.add$1(this.menuInterfaces, $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to buy a health upgrade for 500c?', 'func', new $.World_openMenu_anon2(this)])));
+      t1 = $.geB(this.coin, 300);
+      t2 = this.menuInterfaces;
+      if (t1) $.add$1(t2, $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to buy a health upgrade for 300c?', 'func', new $.World_openMenu_anon2(this)])));
+      else $.add$1(t2, $.MenuInterface$('broke', $.makeLiteralMap(['text', 'Would you like to buy a health upgrade for 300c?'])));
       break;
   }
   var t4;
@@ -10439,16 +10453,25 @@ $$.World = {"":
   this.ZOMBIE_WANDER_DISTANCE = $.toInt(t1 * 1.5);
   var t3 = this.ZOMBIE_SPEED;
   if (typeof t3 !== 'number') return this.increaseDifficulty$1$bailout(3, times, t3);
-  this.ZOMBIE_SPEED = t3 - (t3 - 3) / 10;
-  var t5 = this.ZOMBIE_DAMAGE;
-  if (typeof t5 !== 'number') return this.increaseDifficulty$1$bailout(4, times, t5);
-  this.ZOMBIE_DAMAGE = t5 - (t5 - 75) / 10;
-  var t7 = this.ZOMBIE_ARMOR;
-  if (typeof t7 !== 'number') return this.increaseDifficulty$1$bailout(5, times, t7);
-  this.ZOMBIE_ARMOR = t7 - (t7 - 0.25) / 10;
-  var t9 = this.zombie_max;
-  if (typeof t9 !== 'number') return this.increaseDifficulty$1$bailout(6, times, t9);
-  this.zombie_max = t9 + 20;
+  this.ZOMBIE_SPEED = t3 * 1.1;
+  t1 = this.ZOMBIE_SPEED;
+  if (typeof t1 !== 'number') return this.increaseDifficulty$1$bailout(4, times, t1);
+  if (t1 < 2) {
+    if (typeof t1 !== 'number') return this.increaseDifficulty$1$bailout(5, times, t1);
+  } else t1 = 2;
+  this.ZOMBIE_SPEED = t1;
+  t1 = this.ZOMBIE_DAMAGE;
+  if (typeof t1 !== 'number') return this.increaseDifficulty$1$bailout(6, times, t1);
+  this.ZOMBIE_DAMAGE = t1 + 10 * ((75 - t1) / 75);
+  t3 = this.ZOMBIE_ARMOR;
+  if (typeof t3 !== 'number') return this.increaseDifficulty$1$bailout(7, times, t3);
+  this.ZOMBIE_ARMOR = t3 - (t3 - 0.25) / 10;
+  var t5 = this.AGRO_DISTANCE;
+  if (typeof t5 !== 'number') return this.increaseDifficulty$1$bailout(8, times, t5);
+  this.AGRO_DISTANCE = t5 - (t5 - 512) / 10;
+  var t7 = this.zombie_max;
+  if (typeof t7 !== 'number') return this.increaseDifficulty$1$bailout(9, times, t7);
+  this.zombie_max = t7 + 20;
   return times > 0 ? this.increaseDifficulty$1(times - 1) : null;
  },
  increaseDifficulty$1$bailout: function(state, env0, env1) {
@@ -10466,15 +10489,27 @@ $$.World = {"":
       break;
     case 4:
       times = env0;
-      t5 = env1;
+      t1 = env1;
       break;
     case 5:
       times = env0;
-      t7 = env1;
+      t1 = env1;
       break;
     case 6:
       times = env0;
-      t9 = env1;
+      t1 = env1;
+      break;
+    case 7:
+      times = env0;
+      t3 = env1;
+      break;
+    case 8:
+      times = env0;
+      t5 = env1;
+      break;
+    case 9:
+      times = env0;
+      t7 = env1;
       break;
   }
   switch (state) {
@@ -10488,19 +10523,39 @@ $$.World = {"":
       var t3 = this.ZOMBIE_SPEED;
     case 3:
       state = 0;
-      this.ZOMBIE_SPEED = $.sub(t3, $.div($.sub(t3, 3), 10));
-      var t5 = this.ZOMBIE_DAMAGE;
+      this.ZOMBIE_SPEED = $.mul(t3, 1.1);
+      t1 = this.ZOMBIE_SPEED;
     case 4:
       state = 0;
-      this.ZOMBIE_DAMAGE = $.sub(t5, $.div($.sub(t5, 75), 10));
-      var t7 = this.ZOMBIE_ARMOR;
     case 5:
-      state = 0;
-      this.ZOMBIE_ARMOR = $.sub(t7, $.div($.sub(t7, 0.25), 10));
-      var t9 = this.zombie_max;
+      if (state == 5 || (state == 0 && $.ltB(t1, 2))) {
+        switch (state) {
+          case 0:
+            t1 = this.ZOMBIE_SPEED;
+          case 5:
+            state = 0;
+        }
+      } else {
+        t1 = 2;
+      }
+      this.ZOMBIE_SPEED = t1;
+      t1 = this.ZOMBIE_DAMAGE;
     case 6:
       state = 0;
-      this.zombie_max = $.add(t9, 20);
+      if (typeof t1 !== 'number') throw $.iae(t1);
+      this.ZOMBIE_DAMAGE = $.add(t1, 10 * ((75 - t1) / 75));
+      t3 = this.ZOMBIE_ARMOR;
+    case 7:
+      state = 0;
+      this.ZOMBIE_ARMOR = $.sub(t3, $.div($.sub(t3, 0.25), 10));
+      var t5 = this.AGRO_DISTANCE;
+    case 8:
+      state = 0;
+      this.AGRO_DISTANCE = $.sub(t5, $.div($.sub(t5, 512), 10));
+      var t7 = this.zombie_max;
+    case 9:
+      state = 0;
+      this.zombie_max = $.add(t7, 20);
       return $.gtB(times, 0) ? this.increaseDifficulty$1($.sub(times, 1)) : null;
   }
  },
@@ -10527,7 +10582,7 @@ $$.World = {"":
     if (ci !== (ci | 0)) throw $.iae(ci);
     t1 = chars.length;
     if (ci < 0 || ci >= t1) throw $.ioore(ci);
-    var hexMap = $.CTC31.operator$index$1(chars[ci]);
+    var hexMap = $.CTC27.operator$index$1(chars[ci]);
     if (!(hexMap == null)) {
       t1 = this.collisionMap;
       $.add$1(t1, $.eqB($.index(hexMap, bseq), 1) && true);
@@ -10540,7 +10595,7 @@ $$.World = {"":
   for (var cir = 0; $.ltB(cir, $.mul($.get$length(data), 4)); ++cir) {
     var ci = $.toInt(cir / 4);
     var bseq = $.mod(cir, 4);
-    var hexMap = $.CTC31.operator$index$1($.index(chars, ci));
+    var hexMap = $.CTC27.operator$index$1($.index(chars, ci));
     if (!(hexMap == null)) {
       var t1 = this.collisionMap;
       $.add$1(t1, $.eqB($.index(hexMap, bseq), 1) && true);
@@ -10634,7 +10689,7 @@ $$.World = {"":
   this.mapsTree = $.index(this.dataTree, 'maps');
   $.print('Unpacking Game');
   this.unpackObjects$1(objectList);
-  $.print('Data Parsed, Loading Test Map');
+  $.print('Data Parsed');
   $.res_loadSplitImage('items.png', new $.World_load_anon(this, callback), 32, 32);
  },
  get$load: function() { return new $.BoundClosure0(this, 'load$2'); },
@@ -10659,7 +10714,8 @@ $$.World = {"":
   t1 = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(t1, ({E: 'PathNode'}));
   this.pathnodes = t1;
-  this.playerWeapons = [true, true, true, true, true, true, true];
+  this.playerWeapons = [true, true, true, true, true, true];
+  this.playerWeapons = [true, false, false, false, false, false];
   this.weaponDamage = [25, 34, 20, 34, 75, 45, 70];
   this.weaponAttackTypes = [0, 0, 1, 2, 2, 0, 0];
   this.weaponAttackTime = [12, 10, 24, 15, 20, 12, 18];
@@ -10863,7 +10919,7 @@ $$.AudioManager = {"":
  AudioManager$0: function() {
   var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1'];
   this.audioElements = $.HashMapImplementation$();
-  $.forEach(soundList, new $.anon52(this));
+  $.forEach(soundList, new $.anon53(this));
   this.audioGroup = $.HashMapImplementation$();
   var t1 = this.audioGroup;
   $.indexSet(t1, 'shoot', ['shoot', 'shoot1']);
@@ -11406,7 +11462,7 @@ $$._VariableSizeListIterator = {"":
  [],
  super: "Object",
  next$0: function() {
-  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC2);
+  if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC1);
   var t1 = this._array;
   if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.next$0$bailout(1, t1, 0);
   var t3 = this._pos;
@@ -11429,7 +11485,7 @@ $$._VariableSizeListIterator = {"":
   }
   switch (state) {
     case 0:
-      if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC2);
+      if (this.hasNext$0() !== true) throw $.captureStackTrace($.CTC1);
       var t1 = this._array;
     case 1:
       state = 0;
@@ -12347,6 +12403,50 @@ $$.JsonStringifier = {"":
  }
 };
 
+$$.main_anon = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  $.startGame();
+ }
+};
+
+$$.Maps__emitMap_anon = {"":
+ ["result_3", "box_0", "visiting_2"],
+ super: "Closure",
+ $call$2: function(k, v) {
+  this.box_0.first_1 !== true && $.add$1(this.result_3, ', ');
+  this.box_0.first_1 = false;
+  $.Collections__emitObject(k, this.result_3, this.visiting_2);
+  $.add$1(this.result_3, ': ');
+  $.Collections__emitObject(v, this.result_3, this.visiting_2);
+ }
+};
+
+$$.invokeClosure_anon = {"":
+ ["closure_0"],
+ super: "Closure",
+ $call$0: function() {
+  return this.closure_0.$call$0();
+ }
+};
+
+$$.invokeClosure_anon0 = {"":
+ ["closure_2", "arg1_1"],
+ super: "Closure",
+ $call$0: function() {
+  return this.closure_2.$call$1(this.arg1_1);
+ }
+};
+
+$$.invokeClosure_anon1 = {"":
+ ["closure_5", "arg1_4", "arg2_3"],
+ super: "Closure",
+ $call$0: function() {
+  return this.closure_5.$call$2(this.arg1_4, this.arg2_3);
+ }
+};
+
 $$.anon = {"":
  [],
  super: "Closure",
@@ -12435,7 +12535,7 @@ $$.anon5 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon66(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon67(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -12467,7 +12567,7 @@ $$.anon5 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon67(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon68(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -12523,7 +12623,7 @@ $$.anon5 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               var index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).get$alive() === true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon66(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon67(citizen));
                 var t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 var t2 = $.toInt(5 * t1);
@@ -12547,7 +12647,7 @@ $$.anon5 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).hasTag$1('zombie') !== true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon67(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon68(citizen));
                 t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 t2 = $.toInt(5 * t1);
@@ -12567,7 +12667,7 @@ $$.anon5 = {"":
  }
 };
 
-$$.anon66 = {"":
+$$.anon67 = {"":
  ["citizen_2"],
  super: "Closure",
  $call$1: function(tag) {
@@ -12578,7 +12678,7 @@ $$.anon66 = {"":
  }
 };
 
-$$.anon67 = {"":
+$$.anon68 = {"":
  ["citizen_3"],
  super: "Closure",
  $call$1: function(tag) {
@@ -12596,7 +12696,7 @@ $$.anon6 = {"":
   $.ltB(citizen.distanceTo$1($.world.get$player()), 256) && $.audio.play$1('hurt');
   if ($.world.get$player().get$attacking() === true) {
     $.niceFactor = $.sub($.niceFactor, 0.005);
-    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon65(citizen));
+    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon66(citizen));
     var t1 = $.Math_random();
     if (typeof t1 !== 'number') throw $.iae(t1);
     var t2 = $.toInt(5 * t1);
@@ -12611,7 +12711,7 @@ $$.anon6 = {"":
  }
 };
 
-$$.anon65 = {"":
+$$.anon66 = {"":
  ["citizen_4"],
  super: "Closure",
  $call$1: function(tag) {
@@ -12666,6 +12766,7 @@ $$.anon10 = {"":
  super: "Closure",
  $call$1: function(player) {
   $.notify('You have died, please wait');
+  $.indexSet(player, 'deadTime', 540);
  }
 };
 
@@ -12743,13 +12844,13 @@ $$.anon15 = {"":
       $.indexSet(a, 'pathPoint', cnodes[ni].clone$0());
       t2 = cnodes.length;
       if (ni < 0 || ni >= t2) throw $.ioore(ni);
-      $.indexSet(a, 'pathMove', cnodes[ni].clone$0().sub$1(a).normalize$0().divideScalar$1(2).multiplyScalar$1(a.get$speed()));
+      $.indexSet(a, 'pathMove', cnodes[ni].clone$0().sub$1(a).normalize$0().multiplyScalar$1(a.get$speed()));
     } else {
       for (var i = cnodes.length - 1; i >= 0; --i) {
         t1 = cnodes.length;
         if (i < 0 || i >= t1) throw $.ioore(i);
         if (cnodes[i].get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon64(a));
+          $.some($.index($.tags, 'house'), new $.anon65(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -12772,11 +12873,11 @@ $$.anon15 = {"":
       $.indexSet(a, 'pathDirection', $.index(cnodes, ni).get$start() === true ? 1 : -1);
       $.indexSet(a, 'pathIndex', $.index(cnodes, ni).get$start() === true ? 0 : $.sub($.get$length($.index(cnodes, ni).get$path().get$points()), 1));
       $.indexSet(a, 'pathPoint', $.index(cnodes, ni).clone$0());
-      $.indexSet(a, 'pathMove', $.index(cnodes, ni).clone$0().sub$1(a).normalize$0().divideScalar$1(2).multiplyScalar$1(a.get$speed()));
+      $.indexSet(a, 'pathMove', $.index(cnodes, ni).clone$0().sub$1(a).normalize$0().multiplyScalar$1(a.get$speed()));
     } else {
       for (var i = $.sub($.get$length(cnodes), 1); $.geB(i, 0); i = $.sub(i, 1)) {
         if ($.index(cnodes, i).get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon64(a));
+          $.some($.index($.tags, 'house'), new $.anon65(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -12793,7 +12894,7 @@ $$.anon15 = {"":
  }
 };
 
-$$.anon64 = {"":
+$$.anon65 = {"":
  ["a_6"],
  super: "Closure",
  $call$1: function(house) {
@@ -12810,7 +12911,7 @@ $$.anon16 = {"":
  super: "Closure",
  $call$1: function(a) {
   $.indexSet(a, 'pathPoint', $.index($.index(a, 'path').get$points(), $.index(a, 'pathIndex')));
-  $.indexSet(a, 'pathMove', $.index(a, 'pathPoint').clone$0().sub$1(a).normalize$0().divideScalar$1(2).multiplyScalar$1(a.get$speed()));
+  $.indexSet(a, 'pathMove', $.index(a, 'pathPoint').clone$0().sub$1(a).normalize$0().multiplyScalar$1(a.get$speed()));
   $.add$1(a, $.index(a, 'pathMove'));
  }
 };
@@ -12828,7 +12929,7 @@ $$.anon17 = {"":
       $.indexSet(a, 'pathPoint', $.index($.index(a, 'path').get$points(), $.index(a, 'pathIndex')).clone$0());
       var d = $.div(a.distanceTo$1($.index(a, 'pathPoint')), 4);
       $.index(a, 'pathPoint').addTo$2($.sub($.mul($.Math_random(), d), $.div(d, 2)), $.sub($.mul($.Math_random(), d), $.div(d, 2)));
-      $.indexSet(a, 'pathMove', $.index(a, 'pathPoint').clone$0().sub$1(a).normalize$0().divideScalar$1(2).multiplyScalar$1(a.get$speed()));
+      $.indexSet(a, 'pathMove', $.index(a, 'pathPoint').clone$0().sub$1(a).normalize$0().multiplyScalar$1(a.get$speed()));
     }
   }
  }
@@ -12839,7 +12940,7 @@ $$.anon18 = {"":
  super: "Closure",
  $call$1: function(avatar) {
   $.indexSet(avatar, 'collisionCount', 0);
-  $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().divideScalar$1(2).multiplyScalar$1(avatar.get$speed()));
+  $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
  }
 };
 
@@ -12853,10 +12954,10 @@ $$.anon19 = {"":
     var d = $.index(avatar, 'home').distanceTo$1(avatar);
     if ($.gtB(d, 256)) {
       t1.found_1 = false;
-      $.some($.index($.tags, 'house'), new $.anon63(t1, avatar));
+      $.some($.index($.tags, 'house'), new $.anon64(t1, avatar));
       if (t1.found_1 === true) {
         $.indexSet(avatar, 'collisionCount', 0);
-        $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().divideScalar$1(2).multiplyScalar$1(avatar.get$speed()));
+        $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
       } else {
         $.switchTag(avatar, 'homebound', 'lost');
         $.add$1(avatar.get$tags(), 'wander');
@@ -12873,7 +12974,7 @@ $$.anon19 = {"":
  }
 };
 
-$$.anon63 = {"":
+$$.anon64 = {"":
  ["box_0", "avatar_7"],
  super: "Closure",
  $call$1: function(house) {
@@ -13088,7 +13189,7 @@ $$.anon27 = {"":
       var destination = $.index(avatar.get$prop(), 'destination');
       $.add$1(avatar.get$velocity(), destination.clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
     } else {
-      if ($.ltB($.Math_random(), 0.5)) $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0().addTo$2($.sub($.mul($.Math_random(), 400), 200), $.sub($.mul($.Math_random(), 400), 200)));
+      if ($.ltB($.Math_random(), 0.75)) $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0().addTo$2($.sub($.mul($.Math_random(), 400), 200), $.sub($.mul($.Math_random(), 400), 200)));
       else {
         $.indexSet(avatar.get$prop(), 'destination', avatar.clone$0());
         $.indexSet(avatar.get$prop(), 'waitTime', $.mul($.Math_random(), 200));
@@ -13114,13 +13215,13 @@ $$.anon29 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon62(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon63(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon62 = {"":
+$$.anon63 = {"":
  ["avatar_8"],
  super: "Closure",
  $call$1: function(player) {
@@ -13148,13 +13249,13 @@ $$.anon31 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon61(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon62(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon61 = {"":
+$$.anon62 = {"":
  ["avatar_9"],
  super: "Closure",
  $call$1: function(player) {
@@ -13237,14 +13338,29 @@ $$.anon37 = {"":
  super: "Closure",
  $call$1: function(zom) {
   if ($.rpat(20) === true) {
-    $.index($.index($.tagEvents, 'wander'), 'update').$call$1(zom);
-    if ($.rpat(8) === true && $.gtB($.index(zom, 'originalPosition').distanceTo$1($.index(zom, 'destination')), $.world.get$ZOMBIE_WANDER_DISTANCE())) $.indexSet(zom, 'destination', $.index(zom, 'originalPosition').clone$0().addTo$2($.sub($.mul($.Math_random(), $.world.get$ZOMBIE_WANDER_DISTANCE()), $.div($.world.get$ZOMBIE_WANDER_DISTANCE(), 2)), $.sub($.mul($.Math_random(), $.world.get$ZOMBIE_WANDER_DISTANCE()), $.div($.world.get$ZOMBIE_WANDER_DISTANCE(), 2))));
-    $.some($.index($.tags, 'friendly'), new $.anon60(zom));
+    if ($.gtB($.index(zom.get$prop(), 'waitTime'), 0)) {
+      var t1 = zom.get$prop();
+      $.indexSet(t1, 'waitTime', $.sub($.index(t1, 'waitTime'), 1));
+    } else {
+      if ($.gtB($.index(zom.get$prop(), 'destination').distanceTo$1(zom), 2)) {
+        var destination = $.index(zom.get$prop(), 'destination');
+        $.add$1(zom.get$velocity(), destination.clone$0().sub$1(zom).normalize$0().multiplyScalar$1($.mul(zom.get$speed(), $.world.get$ZOMBIE_SPEED())));
+      } else {
+        if ($.ltB($.Math_random(), 0.75)) $.indexSet(zom.get$prop(), 'destination', zom.clone$0().addTo$2($.sub($.mul($.Math_random(), 400), 200), $.sub($.mul($.Math_random(), 400), 200)));
+        else {
+          $.indexSet(zom.get$prop(), 'destination', zom.clone$0());
+          $.indexSet(zom.get$prop(), 'waitTime', $.mul($.Math_random(), 200));
+          zom.set$currentFrame(0);
+          zom.get$velocity().zero$0();
+        }
+      }
+    }
+    $.some($.index($.tags, 'friendly'), new $.anon61(zom));
   }
  }
 };
 
-$$.anon60 = {"":
+$$.anon61 = {"":
  ["zom_10"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13264,11 +13380,19 @@ $$.anon38 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon59(zom));
+  $.indexSet(zom.get$prop(), 'destination', zom.clone$0().addTo$2($.sub($.mul($.Math_random(), 100), 50), $.sub($.mul($.Math_random(), 100), 50)));
  }
 };
 
-$$.anon59 = {"":
+$$.anon39 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(zom) {
+  $.some($.index($.tags, 'friendly'), new $.anon60(zom));
+ }
+};
+
+$$.anon60 = {"":
  ["zom_11"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13284,7 +13408,7 @@ $$.anon59 = {"":
  }
 };
 
-$$.anon39 = {"":
+$$.anon40 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13308,7 +13432,7 @@ $$.anon39 = {"":
  }
 };
 
-$$.anon40 = {"":
+$$.anon41 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13323,15 +13447,15 @@ $$.anon40 = {"":
  }
 };
 
-$$.anon41 = {"":
+$$.anon42 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon58(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon59(zom));
  }
 };
 
-$$.anon58 = {"":
+$$.anon59 = {"":
  ["zom_12"],
  super: "Closure",
  $call$1: function(friend) {
@@ -13343,7 +13467,7 @@ $$.anon58 = {"":
  }
 };
 
-$$.anon42 = {"":
+$$.anon43 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13352,7 +13476,7 @@ $$.anon42 = {"":
  }
 };
 
-$$.anon43 = {"":
+$$.anon44 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13361,7 +13485,7 @@ $$.anon43 = {"":
  }
 };
 
-$$.anon44 = {"":
+$$.anon45 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13370,7 +13494,7 @@ $$.anon44 = {"":
  }
 };
 
-$$.anon45 = {"":
+$$.anon46 = {"":
  [],
  super: "Closure",
  $call$1: function(ftext) {
@@ -13380,15 +13504,15 @@ $$.anon45 = {"":
  }
 };
 
-$$.anon46 = {"":
+$$.anon47 = {"":
  ["this_13"],
  super: "Closure",
  $call$1: function(data) {
-  $.world.load$2(data, new $.anon53(this.this_13));
+  $.world.load$2(data, new $.anon54(this.this_13));
  }
 };
 
-$$.anon53 = {"":
+$$.anon54 = {"":
  ["this_14"],
  super: "Closure",
  $call$0: function() {
@@ -13404,164 +13528,12 @@ $$.web_load_anon = {"":
  }
 };
 
-$$.Maps__emitMap_anon = {"":
- ["result_3", "box_0", "visiting_2"],
- super: "Closure",
- $call$2: function(k, v) {
-  this.box_0.first_1 !== true && $.add$1(this.result_3, ', ');
-  this.box_0.first_1 = false;
-  $.Collections__emitObject(k, this.result_3, this.visiting_2);
-  $.add$1(this.result_3, ': ');
-  $.Collections__emitObject(v, this.result_3, this.visiting_2);
- }
-};
-
-$$.invokeClosure_anon = {"":
- ["closure_0"],
- super: "Closure",
- $call$0: function() {
-  return this.closure_0.$call$0();
- }
-};
-
-$$.invokeClosure_anon0 = {"":
- ["closure_2", "arg1_1"],
- super: "Closure",
- $call$0: function() {
-  return this.closure_2.$call$1(this.arg1_1);
- }
-};
-
-$$.invokeClosure_anon1 = {"":
- ["closure_5", "arg1_4", "arg2_3"],
- super: "Closure",
- $call$0: function() {
-  return this.closure_5.$call$2(this.arg1_4, this.arg2_3);
- }
-};
-
-$$.anon47 = {"":
- ["this_0"],
- super: "Closure",
- $call$1: function(e) {
-  this.this_0.setKey$2(e.get$keyCode(), 1);
-  var i = $.sub($.get$length(this.this_0.get$onKeyPress()), 1);
-  if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
-  for (; i >= 0; --i) {
-    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
-  }
- },
- $call$1$bailout: function(state, e, i) {
-  for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
-  }
- }
-};
-
-$$.anon48 = {"":
- ["this_1"],
- super: "Closure",
- $call$1: function(e) {
-  this.this_1.setKey$2(e.get$keyCode(), 0);
- }
-};
-
-$$.anon49 = {"":
- ["this_2"],
- super: "Closure",
- $call$1: function(e) {
-  this.this_2.mouseDownAt$2($.div(e.get$pageX(), $.RESOLUTION), $.div(e.get$pageY(), $.RESOLUTION));
-  var i = $.sub($.get$length(this.this_2.get$onClick()), 1);
-  if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
-  for (; i >= 0; --i) {
-    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
-  }
- },
- $call$1$bailout: function(state, e, i) {
-  for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
-  }
- }
-};
-
-$$.anon50 = {"":
- ["this_3"],
- super: "Closure",
- $call$1: function(e) {
-  this.this_3.mouseUpAt$2($.div(e.get$pageX(), $.RESOLUTION), $.div(e.get$pageY(), $.RESOLUTION));
- }
-};
-
-$$.anon51 = {"":
- ["this_4"],
- super: "Closure",
- $call$1: function(e) {
-  this.this_4.mouseAt$2($.div(e.get$pageX(), $.RESOLUTION), $.div(e.get$pageY(), $.RESOLUTION));
- }
-};
-
-$$.anon68 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
-$$.anon69 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
-$$.anon70 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
-$$.ConstantMap_forEach_anon = {"":
- ["this_1", "f_0"],
- super: "Closure",
- $call$1: function(key) {
-  return this.f_0.$call$2(key, $.index(this.this_1, key));
- }
-};
-
-$$.anon52 = {"":
- ["this_0"],
- super: "Closure",
- $call$1: function(soundName) {
-  $.indexSet(this.this_0.get$audioElements(), soundName, $.document().query$1('#audio_' + $.S(soundName)));
- }
-};
-
-$$.DoubleLinkedQueue_length__ = {"":
- ["box_0"],
- super: "Closure",
- $call$1: function(element) {
-  var counter = $.add(this.box_0.counter_1, 1);
-  this.box_0.counter_1 = counter;
- }
-};
-
-$$.LinkedHashMapImplementation_forEach__ = {"":
- ["f_0"],
- super: "Closure",
- $call$1: function(entry) {
-  this.f_0.$call$2(entry.get$key(), entry.get$value());
- }
-};
-
 $$.World_load_anon = {"":
  ["this_1", "callback_0"],
  super: "Closure",
  $call$1: function(imgs) {
   this.this_1.set$itemImages(imgs);
+  $.print('items loaded');
   $.res_loadSplitImage('ui.png', new $.World_load_anon0(this.this_1, this.callback_0), 32, 32);
  }
 };
@@ -13571,6 +13543,7 @@ $$.World_load_anon0 = {"":
  super: "Closure",
  $call$1: function(ui_imgs) {
   this.this_3.set$uiImages(ui_imgs);
+  $.print('Loading \'test\' map');
   this.this_3.loadMap$2('test', this.callback_2);
  }
 };
@@ -13774,6 +13747,23 @@ $$.GameObject_remove_anon = {"":
  }
 };
 
+$$.DoubleLinkedQueue_length__ = {"":
+ ["box_0"],
+ super: "Closure",
+ $call$1: function(element) {
+  var counter = $.add(this.box_0.counter_1, 1);
+  this.box_0.counter_1 = counter;
+ }
+};
+
+$$.LinkedHashMapImplementation_forEach__ = {"":
+ ["f_0"],
+ super: "Closure",
+ $call$1: function(entry) {
+  this.f_0.$call$2(entry.get$key(), entry.get$value());
+ }
+};
+
 $$.World_loadMap_anon = {"":
  ["this_1", "callback_0"],
  super: "Closure",
@@ -13812,12 +13802,112 @@ $$.World_unpackMapPaths_anon = {"":
  }
 };
 
+$$.ConstantMap_forEach_anon = {"":
+ ["this_1", "f_0"],
+ super: "Closure",
+ $call$1: function(key) {
+  return this.f_0.$call$2(key, $.index(this.this_1, key));
+ }
+};
+
+$$.anon48 = {"":
+ ["this_0"],
+ super: "Closure",
+ $call$1: function(e) {
+  this.this_0.setKey$2(e.get$keyCode(), 1);
+  var i = $.sub($.get$length(this.this_0.get$onKeyPress()), 1);
+  if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
+  for (; i >= 0; --i) {
+    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
+  }
+ },
+ $call$1$bailout: function(state, e, i) {
+  for (; $.geB(i, 0); i = $.sub(i, 1)) {
+    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
+  }
+ }
+};
+
+$$.anon49 = {"":
+ ["this_1"],
+ super: "Closure",
+ $call$1: function(e) {
+  this.this_1.setKey$2(e.get$keyCode(), 0);
+ }
+};
+
+$$.anon50 = {"":
+ ["this_4", "CANVAS_OFFX_3", "CANVAS_OFFY_2"],
+ super: "Closure",
+ $call$1: function(e) {
+  this.this_4.mouseDownAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_3), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_2), $.RESOLUTION));
+  var i = $.sub($.get$length(this.this_4.get$onClick()), 1);
+  if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
+  for (; i >= 0; --i) {
+    $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+  }
+ },
+ $call$1$bailout: function(state, e, i) {
+  for (; $.geB(i, 0); i = $.sub(i, 1)) {
+    $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+  }
+ }
+};
+
+$$.anon51 = {"":
+ ["this_7", "CANVAS_OFFX_6", "CANVAS_OFFY_5"],
+ super: "Closure",
+ $call$1: function(e) {
+  this.this_7.mouseUpAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_6), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_5), $.RESOLUTION));
+ }
+};
+
+$$.anon52 = {"":
+ ["this_10", "CANVAS_OFFX_9", "CANVAS_OFFY_8"],
+ super: "Closure",
+ $call$1: function(e) {
+  this.this_10.mouseAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_9), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_8), $.RESOLUTION));
+ }
+};
+
+$$.anon69 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon70 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon71 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon53 = {"":
+ ["this_0"],
+ super: "Closure",
+ $call$1: function(soundName) {
+  $.indexSet(this.this_0.get$audioElements(), soundName, $.document().query$1('#audio_' + $.S(soundName)));
+ }
+};
+
 $$.World_startCycle_anon = {"":
  ["this_5"],
  super: "Closure",
  $call$1: function(e) {
-  if ($.eqB($.event.key$1('E'), 1)) {
-    var t1 = $.mod($.add(this.this_5.get$currentWeapon(), 1), $.get$length(this.this_5.get$playerWeapons()));
+  if ($.eqB($.event.key$1('E'), 1) || $.eqB($.event.key$1('Q'), 1)) {
+    var t1 = $.mod($.sub($.add(this.this_5.get$currentWeapon(), $.event.key$1('E')), $.event.key$1('Q')), $.get$length(this.this_5.get$playerWeapons()));
     this.this_5.set$currentWeapon(t1);
     for (; $.index(this.this_5.get$playerWeapons(), this.this_5.get$currentWeapon()) !== true; ) {
       t1 = $.mod($.add(this.this_5.get$currentWeapon(), 1), $.get$length(this.this_5.get$playerWeapons()));
@@ -13835,6 +13925,7 @@ $$.World_startCycle_anon = {"":
     this.this_5.get$player().set$attackTime(t1);
     t1 = $.index(this.this_5.get$weaponAttackTypes(), this.this_5.get$currentWeapon());
     this.this_5.get$player().set$attackType(t1);
+    $.notify('Using ' + $.S($.index(this.this_5.get$weaponName(), this.this_5.get$currentWeapon())));
   }
  }
 };
@@ -13845,7 +13936,7 @@ $$.World_startCycle_anon0 = {"":
  $call$1: function(e) {
   if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_6.get$menuInterfaces()), 0)) {
     var t1 = new $.World_startCycle_prompt();
-    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon13(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon14(this.this_6)])]])));
+    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon13(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon14(this.this_6)])]])));
   }
  }
 };
@@ -13865,11 +13956,11 @@ $$.World_startCycle_anon5 = {"":
  ["this_8", "prompt_7"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon22(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon23(this.this_8, this.prompt_7)])]])));
+  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon21(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon22(this.this_8, this.prompt_7)])]])));
  }
 };
 
-$$.World_startCycle_anon22 = {"":
+$$.World_startCycle_anon21 = {"":
  ["this_9"],
  super: "Closure",
  $call$0: function() {
@@ -13877,7 +13968,7 @@ $$.World_startCycle_anon22 = {"":
  }
 };
 
-$$.World_startCycle_anon23 = {"":
+$$.World_startCycle_anon22 = {"":
  ["this_11", "prompt_10"],
  super: "Closure",
  $call$0: function() {
@@ -13889,11 +13980,11 @@ $$.World_startCycle_anon6 = {"":
  ["this_13", "prompt_12"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon21(this.this_13, this.prompt_12)])]])));
+  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon20(this.this_13, this.prompt_12)])]])));
  }
 };
 
-$$.World_startCycle_anon21 = {"":
+$$.World_startCycle_anon20 = {"":
  ["this_15", "prompt_14"],
  super: "Closure",
  $call$0: function() {
@@ -13905,11 +13996,11 @@ $$.World_startCycle_anon7 = {"":
  ["this_16", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon16(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon17(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon18(this.this_16, this.box_3)])]])));
+  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon15(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon16(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon17(this.this_16, this.box_3)])]])));
  }
 };
 
-$$.World_startCycle_anon16 = {"":
+$$.World_startCycle_anon15 = {"":
  ["this_17"],
  super: "Closure",
  $call$0: function() {
@@ -13917,7 +14008,7 @@ $$.World_startCycle_anon16 = {"":
  }
 };
 
-$$.World_startCycle_anon17 = {"":
+$$.World_startCycle_anon16 = {"":
  ["this_18", "box_3"],
  super: "Closure",
  $call$0: function() {
@@ -13925,7 +14016,7 @@ $$.World_startCycle_anon17 = {"":
  }
 };
 
-$$.World_startCycle_anon18 = {"":
+$$.World_startCycle_anon17 = {"":
  ["this_19", "box_3"],
  super: "Closure",
  $call$0: function() {
@@ -13935,13 +14026,13 @@ $$.World_startCycle_anon18 = {"":
   $.setRuntimeTypeInfo(ax, ({E: 'int'}));
   var ay = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(ay, ({E: 'int'}));
-  $.forEach(this.box_3.debugPathNodes_4, new $.World_startCycle_anon19(ay, ax));
+  $.forEach(this.box_3.debugPathNodes_4, new $.World_startCycle_anon18(ay, ax));
   var t2 = this.box_3.debugPathNodes_4;
   var end = $.index(t2, $.sub($.get$length(t2), 1));
   var start = $.index(this.box_3.debugPathNodes_4, 0);
   t1.endHouse_1 = false;
   t1.startHouse_2 = false;
-  $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon20(start, t1, end));
+  $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon19(start, t1, end));
   $.add$1($.index(this.this_19.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
   var debugPathNodes = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(debugPathNodes, ({E: 'Vec2'}));
@@ -13949,7 +14040,7 @@ $$.World_startCycle_anon18 = {"":
  }
 };
 
-$$.World_startCycle_anon19 = {"":
+$$.World_startCycle_anon18 = {"":
  ["ay_21", "ax_20"],
  super: "Closure",
  $call$1: function(node) {
@@ -13958,7 +14049,7 @@ $$.World_startCycle_anon19 = {"":
  }
 };
 
-$$.World_startCycle_anon20 = {"":
+$$.World_startCycle_anon19 = {"":
  ["start_23", "box_0", "end_22"],
  super: "Closure",
  $call$1: function(house) {
@@ -14001,6 +14092,7 @@ $$.World_startCycle_anon11 = {"":
  super: "Closure",
  $call$0: function() {
   $.print('Player : Health : ' + $.S(this.this_26.get$player().get$health()) + ' : Damage : ' + $.S(this.this_26.get$player().get$damage()) + ' : Armor : ' + $.S(this.this_26.get$player().get$armor()));
+  $.print('Mouse : ' + $.S($.toString($.event.get$mouse_position())));
  }
 };
 
@@ -14016,14 +14108,10 @@ $$.World_startCycle_anon13 = {"":
  ["this_27"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_27.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon15()])));
- }
-};
-
-$$.World_startCycle_anon15 = {"":
- [],
- super: "Closure",
- $call$0: function() {
+  var t1 = this.this_27;
+  t1.giveCoin$2(t1.get$player(), 2000);
+  t1 = this.this_27;
+  t1.set$totalPopulation($.add(t1.get$totalPopulation(), 200));
  }
 };
 
@@ -14533,13 +14621,8 @@ $$.World_openMenu_anon2 = {"":
  $call$0: function() {
   var t1 = this.this_12;
   t1.set$player_max_health($.add(t1.get$player_max_health(), 50));
- }
-};
-
-$$.anon54 = {"":
- [],
- super: "Closure",
- $call$0: function() {
+  t1 = this.this_12;
+  t1.set$coin($.sub(t1.get$coin(), 300));
  }
 };
 
@@ -14558,6 +14641,13 @@ $$.anon56 = {"":
 };
 
 $$.anon57 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+ }
+};
+
+$$.anon58 = {"":
  [],
  super: "Closure",
  $call$0: function() {
@@ -14725,14 +14815,6 @@ $$.HashMapImplementation_getValues__ = {"":
  }
 };
 
-$$.ConstantMap_getValues_anon = {"":
- ["this_1", "result_0"],
- super: "Closure",
- $call$1: function(key) {
-  return $.add$1(this.result_0, $.index(this.this_1, key));
- }
-};
-
 $$.LinkedHashMapImplementation_getValues__ = {"":
  ["list_2", "box_0"],
  super: "Closure",
@@ -14742,6 +14824,14 @@ $$.LinkedHashMapImplementation_getValues__ = {"":
   var index = $.add(t2, 1);
   this.box_0.index_10 = index;
   $.indexSet(t1, t2, entry.get$value());
+ }
+};
+
+$$.ConstantMap_getValues_anon = {"":
+ ["this_1", "result_0"],
+ super: "Closure",
+ $call$1: function(key) {
+  return $.add$1(this.result_0, $.index(this.this_1, key));
  }
 };
 
@@ -14805,14 +14895,6 @@ $._AudioContextEventsImpl$ = function(_ptr) {
 $.floor = function(receiver) {
   if (!(typeof receiver === 'number')) return receiver.floor$0();
   return Math.floor(receiver);
-};
-
-$.web_load = function(url, callback) {
-  var req = $._XMLHttpRequestFactoryProvider_XMLHttpRequest();
-  req.open$2('GET', url);
-  req.setRequestHeader$2('Content-type', 'text/plain');
-  $.add$1(req.get$on().get$readyStateChange(), new $.web_load_anon(callback, req));
-  req.send$0();
 };
 
 $.GameOver = function(c) {
@@ -14914,6 +14996,14 @@ $.allMatches = function(receiver, str) {
   return $.allMatchesInStringUnchecked(receiver, str);
 };
 
+$.web_load = function(url, callback) {
+  var req = $._XMLHttpRequestFactoryProvider_XMLHttpRequest();
+  req.open$2('GET', url);
+  req.setRequestHeader$2('Content-type', 'text/plain');
+  $.add$1(req.get$on().get$readyStateChange(), new $.web_load_anon(callback, req));
+  req.send$0();
+};
+
 $.substringUnchecked = function(receiver, startIndex, endIndex) {
   return receiver.substring(startIndex, endIndex);
 };
@@ -14940,6 +15030,12 @@ $.IllegalJSRegExpException$ = function(_pattern, _errmsg) {
 
 $._IDBOpenDBRequestEventsImpl$ = function(_ptr) {
   return new $._IDBOpenDBRequestEventsImpl(_ptr);
+};
+
+$.DoubleLinkedQueueEntry$ = function(e) {
+  var t1 = new $.DoubleLinkedQueueEntry(null, null, null);
+  t1.DoubleLinkedQueueEntry$1(e);
+  return t1;
 };
 
 $.switchTag = function(o, oldTag, newTag) {
@@ -15023,6 +15119,11 @@ $.JSSyntaxRegExp$_globalVersionOf = function(other) {
   return t1;
 };
 
+$.clear = function(receiver) {
+  if ($.isJsArray(receiver) !== true) return receiver.clear$0();
+  $.set$length(receiver, 0);
+};
+
 $.removeRange = function(receiver, start, length$) {
   if ($.isJsArray(receiver) !== true) return receiver.removeRange$2(start, length$);
   $.checkGrowable(receiver, 'removeRange');
@@ -15053,11 +15154,6 @@ $.typeNameInChrome = function(obj) {
   if (name$ === 'CanvasPixelArray') return 'Uint8ClampedArray';
   if (name$ === 'WebKitMutationObserver') return 'MutationObserver';
   return name$;
-};
-
-$.clear = function(receiver) {
-  if ($.isJsArray(receiver) !== true) return receiver.clear$0();
-  $.set$length(receiver, 0);
 };
 
 $.Math_sqrt = function(x) {
@@ -15274,11 +15370,11 @@ $.JsonStringifier__numberToString = function(x) {
 };
 
 $.OverlayManager$ = function() {
-  return new $.OverlayManager($.CTC7, $.CTC8, 21, 7);
+  return new $.OverlayManager($.CTC6, $.CTC7, 21, 7);
 };
 
 $.UIManager$ = function() {
-  var t1 = new $.UIManager($.CTC11, null, null, null, false, null);
+  var t1 = new $.UIManager($.CTC30, null, null, null, false, null);
   t1.UIManager$0();
   return t1;
 };
@@ -15325,19 +15421,13 @@ $._DocumentEventsImpl$ = function(_ptr) {
   return new $._DocumentEventsImpl(_ptr);
 };
 
-$.DoubleLinkedQueueEntry$ = function(e) {
-  var t1 = new $.DoubleLinkedQueueEntry(null, null, null);
-  t1.DoubleLinkedQueueEntry$1(e);
-  return t1;
+$.isEmpty = function(receiver) {
+  if (typeof receiver === 'string' || $.isJsArray(receiver) === true) return receiver.length === 0;
+  return receiver.isEmpty$0();
 };
 
 $.regExpTest = function(regExp, str) {
   return $.regExpGetNative(regExp).test(str);
-};
-
-$.isEmpty = function(receiver) {
-  if (typeof receiver === 'string' || $.isJsArray(receiver) === true) return receiver.length === 0;
-  return receiver.isEmpty$0();
 };
 
 $.typeNameInOpera = function(obj) {
@@ -15438,11 +15528,6 @@ $.abs = function(receiver) {
   return Math.abs(receiver);
 };
 
-$.iterator = function(receiver) {
-  if ($.isJsArray(receiver) === true) return $.ListIterator$(receiver);
-  return receiver.iterator$0();
-};
-
 $.Primitives_objectTypeName = function(object) {
   var name$ = $.constructorNameFallback(object);
   if ($.eqB(name$, 'Object')) {
@@ -15506,6 +15591,11 @@ $.regExpMakeNative = function(regExp, global) {
     var e = t1;
     throw $.captureStackTrace($.IllegalJSRegExpException$(pattern, (String(e))));
   }
+};
+
+$.iterator = function(receiver) {
+  if ($.isJsArray(receiver) === true) return $.ListIterator$(receiver);
+  return receiver.iterator$0();
 };
 
 $.splitChars = function(receiver) {
@@ -15643,14 +15733,14 @@ $._ElementFactoryProvider_Element$tag = function(tag) {
   return document.createElement(tag);
 };
 
+$._FrameSetElementEventsImpl$ = function(_ptr) {
+  return new $._FrameSetElementEventsImpl(_ptr);
+};
+
 $._Manager$ = function() {
   var t1 = new $._Manager(null, null, null, null, null, null, null, null, null, 1, 0, 0);
   t1._Manager$0();
   return t1;
-};
-
-$._FrameSetElementEventsImpl$ = function(_ptr) {
-  return new $._FrameSetElementEventsImpl(_ptr);
 };
 
 $.add$slow = function(a, b) {
@@ -15683,17 +15773,11 @@ $.Primitives_newList = function(length$) {
 };
 
 $.main = function() {
-  $.game = $.Game$();
+  $.add$1($.window().get$on().get$load(), new $.main_anon());
 };
 
 $._AbstractWorkerEventsImpl$ = function(_ptr) {
   return new $._AbstractWorkerEventsImpl(_ptr);
-};
-
-$.addLast = function(receiver, value) {
-  if ($.isJsArray(receiver) !== true) return receiver.addLast$1(value);
-  $.checkGrowable(receiver, 'addLast');
-  receiver.push(value);
 };
 
 $.HashMapImplementation__computeLoadLimit = function(capacity) {
@@ -15708,6 +15792,12 @@ $.HashSetIterator$ = function(set_) {
 
 $._WorkerSendPort$ = function(_workerId, isolateId, _receivePortId) {
   return new $._WorkerSendPort(_receivePortId, _workerId, isolateId);
+};
+
+$.addLast = function(receiver, value) {
+  if ($.isJsArray(receiver) !== true) return receiver.addLast$1(value);
+  $.checkGrowable(receiver, 'addLast');
+  receiver.push(value);
 };
 
 $.IllegalArgumentException$ = function(arg) {
@@ -15729,6 +15819,10 @@ $._IDBTransactionEventsImpl$ = function(_ptr) {
   return new $._IDBTransactionEventsImpl(_ptr);
 };
 
+$._BodyElementEventsImpl$ = function(_ptr) {
+  return new $._BodyElementEventsImpl(_ptr);
+};
+
 $.AudioManager$ = function() {
   var t1 = new $.AudioManager(null, null);
   t1.AudioManager$0();
@@ -15739,16 +15833,6 @@ $._AllMatchesIterator$ = function(re, _str) {
   return new $._AllMatchesIterator(false, null, _str, $.JSSyntaxRegExp$_globalVersionOf(re));
 };
 
-$._BodyElementEventsImpl$ = function(_ptr) {
-  return new $._BodyElementEventsImpl(_ptr);
-};
-
-$.FutureImpl$ = function() {
-  var t1 = [];
-  var t2 = [];
-  return new $.FutureImpl([], t2, t1, false, null, null, null, false);
-};
-
 $.iae = function(argument) {
   throw $.captureStackTrace($.IllegalArgumentException$(argument));
 };
@@ -15757,6 +15841,12 @@ $._IsolateContext$ = function() {
   var t1 = new $._IsolateContext(null, null, null);
   t1._IsolateContext$0();
   return t1;
+};
+
+$.FutureImpl$ = function() {
+  var t1 = [];
+  var t2 = [];
+  return new $.FutureImpl([], t2, t1, false, null, null, null, false);
 };
 
 $.truncate = function(receiver) {
@@ -15774,10 +15864,21 @@ $.isInfinite = function(receiver) {
   return (receiver == Infinity) || (receiver == -Infinity);
 };
 
+$.startGame = function() {
+  $.menu = null;
+  $.game = $.Game$();
+};
+
 $.round = function(receiver) {
   if (!(typeof receiver === 'number')) return receiver.round$0();
   if (receiver < 0) return -Math.round(-receiver);
   return Math.round(receiver);
+};
+
+$.Animation$ = function(properties) {
+  var t1 = new $.Animation(null, null, null);
+  t1.Animation$1(properties);
+  return t1;
 };
 
 $.allMatchesInStringUnchecked = function(needle, haystack) {
@@ -15797,12 +15898,6 @@ $.allMatchesInStringUnchecked = function(needle, haystack) {
     }
   }
   return result;
-};
-
-$.Animation$ = function(properties) {
-  var t1 = new $.Animation(null, null, null);
-  t1.Animation$1(properties);
-  return t1;
 };
 
 $.le$slow = function(a, b) {
@@ -16175,6 +16270,16 @@ $._DOMWindowCrossFrameImpl__postMessage3 = function(win, message, targetOrigin, 
 ;
 };
 
+$.contains$2 = function(receiver, other, startIndex) {
+  if (!(typeof receiver === 'string')) return receiver.contains$2(other, startIndex);
+  $.checkNull(other);
+  return $.stringContainsUnchecked(receiver, other, startIndex);
+};
+
+$._MainManagerStub$ = function() {
+  return new $._MainManagerStub();
+};
+
 $.toString = function(value) {
   if (typeof value == "object" && value !== null) {
     if ($.isJsArray(value) === true) return $.Collections_collectionToString(value);
@@ -16184,16 +16289,6 @@ $.toString = function(value) {
   if (value == null) return 'null';
   if (typeof value == "function") return 'Closure';
   return String(value);
-};
-
-$.contains$2 = function(receiver, other, startIndex) {
-  if (!(typeof receiver === 'string')) return receiver.contains$2(other, startIndex);
-  $.checkNull(other);
-  return $.stringContainsUnchecked(receiver, other, startIndex);
-};
-
-$._MainManagerStub$ = function() {
-  return new $._MainManagerStub();
 };
 
 $.Path$ = function(s, e, points, houseStart, houseEnd) {
@@ -16489,13 +16584,13 @@ $.typeNameInFirefox = function(obj) {
   return name$;
 };
 
+$.ioore = function(index) {
+  throw $.captureStackTrace($.IndexOutOfRangeException$(index));
+};
+
 $.gt$slow = function(a, b) {
   if ($.checkNumbers(a, b) === true) return a > b;
   return a.operator$gt$1(b);
-};
-
-$.ioore = function(index) {
-  throw $.captureStackTrace($.IndexOutOfRangeException$(index));
 };
 
 $.JsonStringifier__hexDigit = function(x) {
@@ -16514,12 +16609,6 @@ $.forEach = function(receiver, f) {
   return $.Collections_forEach(receiver, f);
 };
 
-$.Collections_forEach = function(iterable, f) {
-  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
-    f.$call$1(t1.next$0());
-  }
-};
-
 $.hashCode = function(receiver) {
   if (typeof receiver === 'number') return receiver & 0x1FFFFFFF;
   if (!(typeof receiver === 'string')) return receiver.hashCode$0();
@@ -16535,6 +16624,13 @@ $.hashCode = function(receiver) {
   return 536870911 & hash0 + (16383 & hash0 << 15);
 };
 
+$.SpawnPoint$ = function(a) {
+  var t1 = new $.SpawnPoint(null, null, false, 0, 0, 5, -1, false, '', '', null, null, null, null);
+  t1.Vec2$2(0, 0);
+  t1.GameObject$3(a, 0, 0);
+  return t1;
+};
+
 $.makeLiteralMap = function(keyValuePairs) {
   var iterator = $.iterator(keyValuePairs);
   var result = $.LinkedHashMapImplementation$();
@@ -16544,15 +16640,14 @@ $.makeLiteralMap = function(keyValuePairs) {
   return result;
 };
 
-$.SpawnPoint$ = function(a) {
-  var t1 = new $.SpawnPoint(null, null, false, 0, 0, 5, -1, false, '', '', null, null, null, null);
-  t1.Vec2$2(0, 0);
-  t1.GameObject$3(a, 0, 0);
-  return t1;
-};
-
 $._JsVisitedMap$ = function() {
   return new $._JsVisitedMap(null);
+};
+
+$.Collections_forEach = function(iterable, f) {
+  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
+    f.$call$1(t1.next$0());
+  }
 };
 
 $.StringBase_createFromCharCodes = function(charCodes) {
@@ -16573,18 +16668,18 @@ $.startsWith = function(receiver, other) {
   return other == receiver.substring(0, length$);
 };
 
-$._Collections_forEach = function(iterable, f) {
-  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
-    f.$call$1(t1.next$0());
-  }
-};
-
 $.le = function(a, b) {
   return typeof a === 'number' && typeof b === 'number' ? (a <= b) : $.le$slow(a, b);
 };
 
 $.toStringForNativeObject = function(obj) {
   return 'Instance of ' + $.S($.getTypeNameOf(obj));
+};
+
+$._Collections_forEach = function(iterable, f) {
+  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
+    f.$call$1(t1.next$0());
+  }
 };
 
 $.trim = function(receiver) {
@@ -16654,7 +16749,7 @@ $._ElementEventsImpl$ = function(_ptr) {
 };
 
 $.World$ = function() {
-  var t1 = new $.World(0, null, null, $.CTC3, $.CTC4, $.CTC5, $.CTC6, 0, 0, false, 100, null, 0, null, null, null, null, null, null, null, null, 0, null, 5, 0, 0, 150, 0, 0, 0, 200, false, 14400, 21, null, null, 25, 1, 0.6, 256, 256, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  var t1 = new $.World(0, null, null, $.CTC2, $.CTC3, $.CTC4, $.CTC5, 0, 0, true, 100, null, 0, null, null, null, null, null, null, null, null, 0, null, 0, 0, 0, 50, 1, 0, 0, 200, false, 14400, 7, null, null, 25, 1, 0.6, 256, 256, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   t1.World$0();
   return t1;
 };
@@ -17125,52 +17220,52 @@ Isolate.makeConstantList = function(list) {
   return list;
 };
 $.CTC = Isolate.makeConstantList([]);
-$.CTC15 = Isolate.makeConstantList([0, 0, 0, 1]);
-$.CTC16 = Isolate.makeConstantList([0, 0, 1, 0]);
-$.CTC3 = Isolate.makeConstantList([2, 2, 3, -2, -2]);
-$.CTC18 = Isolate.makeConstantList([0, 1, 0, 0]);
+$.CTC11 = Isolate.makeConstantList([0, 0, 0, 1]);
+$.CTC12 = Isolate.makeConstantList([0, 0, 1, 0]);
+$.CTC2 = Isolate.makeConstantList([2, 2, 3, -2, -2]);
+$.CTC14 = Isolate.makeConstantList([0, 1, 0, 0]);
 $.CTC34 = Isolate.makeConstantList([6, 12, 8]);
-$.CTC14 = Isolate.makeConstantList([0, 0, 0, 0]);
-$.CTC21 = Isolate.makeConstantList([0, 1, 1, 1]);
+$.CTC10 = Isolate.makeConstantList([0, 0, 0, 0]);
+$.CTC17 = Isolate.makeConstantList([0, 1, 1, 1]);
+$.CTC43 = Isolate.makeConstantList(['Ahhhh!', 'Look out!', 'Run!', 'AHHHH!', 'Woah!']);
+$.CTC8 = new Isolate.$isolateProperties._DeletedKeySentinel();
+$.CTC16 = Isolate.makeConstantList([0, 1, 1, 0]);
+$.CTC18 = Isolate.makeConstantList([1, 0, 0, 0]);
 $.CTC37 = new Isolate.$isolateProperties._SimpleClientRect(0, 0, 0, 0);
-$.CTC1 = new Isolate.$isolateProperties._DeletedKeySentinel();
-$.CTC17 = Isolate.makeConstantList([0, 0, 1, 1]);
-$.CTC22 = Isolate.makeConstantList([1, 0, 0, 0]);
-$.CTC44 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
 $.CTC32 = Isolate.makeConstantList(['Help!', 'Where is everyone?', 'Where do I go?', 'Please help me!', 'Where am I?']);
-$.CTC30 = Isolate.makeConstantList(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']);
-$.CTC19 = Isolate.makeConstantList([0, 1, 0, 1]);
-$.CTC20 = Isolate.makeConstantList([0, 1, 1, 0]);
-$.CTC23 = Isolate.makeConstantList([1, 0, 0, 1]);
-$.CTC24 = Isolate.makeConstantList([1, 0, 1, 0]);
-$.CTC25 = Isolate.makeConstantList([1, 0, 1, 1]);
-$.CTC26 = Isolate.makeConstantList([1, 1, 0, 0]);
-$.CTC27 = Isolate.makeConstantList([1, 1, 0, 1]);
-$.CTC28 = Isolate.makeConstantList([1, 1, 1, 0]);
-$.CTC29 = Isolate.makeConstantList([1, 1, 1, 1]);
-$.CTC31 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC30, {'0': Isolate.$isolateProperties.CTC14, '1': Isolate.$isolateProperties.CTC15, '2': Isolate.$isolateProperties.CTC16, '3': Isolate.$isolateProperties.CTC17, '4': Isolate.$isolateProperties.CTC18, '5': Isolate.$isolateProperties.CTC19, '6': Isolate.$isolateProperties.CTC20, '7': Isolate.$isolateProperties.CTC21, '8': Isolate.$isolateProperties.CTC22, '9': Isolate.$isolateProperties.CTC23, 'a': Isolate.$isolateProperties.CTC24, 'b': Isolate.$isolateProperties.CTC25, 'c': Isolate.$isolateProperties.CTC26, 'd': Isolate.$isolateProperties.CTC27, 'e': Isolate.$isolateProperties.CTC28, 'f': Isolate.$isolateProperties.CTC29}, 16);
+$.CTC26 = Isolate.makeConstantList(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']);
+$.CTC13 = Isolate.makeConstantList([0, 0, 1, 1]);
+$.CTC15 = Isolate.makeConstantList([0, 1, 0, 1]);
+$.CTC19 = Isolate.makeConstantList([1, 0, 0, 1]);
+$.CTC20 = Isolate.makeConstantList([1, 0, 1, 0]);
+$.CTC21 = Isolate.makeConstantList([1, 0, 1, 1]);
+$.CTC22 = Isolate.makeConstantList([1, 1, 0, 0]);
+$.CTC23 = Isolate.makeConstantList([1, 1, 0, 1]);
+$.CTC24 = Isolate.makeConstantList([1, 1, 1, 0]);
+$.CTC25 = Isolate.makeConstantList([1, 1, 1, 1]);
+$.CTC27 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC26, {'0': Isolate.$isolateProperties.CTC10, '1': Isolate.$isolateProperties.CTC11, '2': Isolate.$isolateProperties.CTC12, '3': Isolate.$isolateProperties.CTC13, '4': Isolate.$isolateProperties.CTC14, '5': Isolate.$isolateProperties.CTC15, '6': Isolate.$isolateProperties.CTC16, '7': Isolate.$isolateProperties.CTC17, '8': Isolate.$isolateProperties.CTC18, '9': Isolate.$isolateProperties.CTC19, 'a': Isolate.$isolateProperties.CTC20, 'b': Isolate.$isolateProperties.CTC21, 'c': Isolate.$isolateProperties.CTC22, 'd': Isolate.$isolateProperties.CTC23, 'e': Isolate.$isolateProperties.CTC24, 'f': Isolate.$isolateProperties.CTC25}, 16);
 $.CTC35 = Isolate.makeConstantList(['wander', 'nice', 'hostile', 'hostile-wander', 'mean', 'scared', 'citizen']);
 $.CTC33 = Isolate.makeConstantList([2, 4, 5]);
-$.CTC9 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, '^#[_a-zA-Z]\\w*$');
-$.CTC10 = Isolate.makeConstantList(['backspace', 'enter', 'shift', 'ctrl', 'alt', 'capslock', 'esc', 'space', '_0', 'zero', '_1', 'one', '_2', 'two', '_3', 'three', '_4', 'four', '_5', 'five', '_6', 'six', '_7', 'seven', '_8', 'eight', '_9', 'nine', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'semicolon', 'equal', 'comma', 'hyphen', 'dash', 'minus', 'period', 'dot', 'slash', 'forwardslash', 'grave', 'backtick', 'bracketleft', 'backslash', 'bracketright', 'singlequote', 'exclamation', 'at', 'ampersat', 'pound', 'dollar', 'mod', 'modulo', 'percent', 'caret', 'ampersand', 'asterisk', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'colon', 'plus', 'pointbracketleft', 'trianglebracketleft', 'underscore', 'pointbracketright', 'trianglebracketright', 'question', 'questionmark', 'approx', 'tilde', 'curleybraceleft', 'pipe', 'curleybraceright', 'doublequote', 'left', 'up', 'right', 'down', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
+$.CTC29 = Isolate.makeConstantList(['backspace', 'enter', 'shift', 'ctrl', 'alt', 'capslock', 'esc', 'space', '_0', 'zero', '_1', 'one', '_2', 'two', '_3', 'three', '_4', 'four', '_5', 'five', '_6', 'six', '_7', 'seven', '_8', 'eight', '_9', 'nine', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'semicolon', 'equal', 'comma', 'hyphen', 'dash', 'minus', 'period', 'dot', 'slash', 'forwardslash', 'grave', 'backtick', 'bracketleft', 'backslash', 'bracketright', 'singlequote', 'exclamation', 'at', 'ampersat', 'pound', 'dollar', 'mod', 'modulo', 'percent', 'caret', 'ampersand', 'asterisk', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'colon', 'plus', 'pointbracketleft', 'trianglebracketleft', 'underscore', 'pointbracketright', 'trianglebracketright', 'question', 'questionmark', 'approx', 'tilde', 'curleybraceleft', 'pipe', 'curleybraceright', 'doublequote', 'left', 'up', 'right', 'down', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
+$.CTC44 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
+$.CTC31 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, '^#[_a-zA-Z]\\w*$');
 $.CTC40 = Isolate.makeConstantList(['Why don\'t you just go?', 'Get outta here!', 'Get out!', 'Why won\'t you help us?', 'It\'s outsiders like you that caused this!']);
-$.CTC7 = Isolate.makeConstantList(['#ebddcb', '#d3b7b2', '#bb98ad', '#806593']);
-$.CTC6 = Isolate.makeConstantList(['This is the island of Dartia', 'At day, all is peaceful', 'But come night, horrific monsters of the black appear', 'The ever-curious villagers often stray into the darkness', 'Do you have what it takes to defend them?']);
-$.CTC5 = Isolate.makeConstantList([2400, 4581, 4329, 2324, 8221]);
-$.CTC43 = Isolate.makeConstantList(['Ahhhh!', 'Look out!', 'Run!', 'AHHHH!', 'Woah!']);
+$.CTC6 = Isolate.makeConstantList(['#ebddcb', '#d3b7b2', '#bb98ad', '#806593']);
+$.CTC4 = Isolate.makeConstantList([2400, 4581, 4329, 2324, 8221]);
+$.CTC5 = Isolate.makeConstantList(['This is Big Island', 'At day, all is peaceful', 'But come night, horrific monsters of the black appear', 'The ever-curious villagers often stray into the darkness', 'Do you have what it takes to defend them?']);
 $.CTC42 = Isolate.makeConstantList(['Can you take me somewhere safe?', 'Please help me!', 'Please take me home!']);
 $.CTC45 = new Isolate.$isolateProperties.Object();
+$.CTC7 = Isolate.makeConstantList(['#3e3e56', '#818fb6', '#b2cdec', '#cbe3f6']);
 $.CTC39 = new Isolate.$isolateProperties.JsonUnsupportedObjectType();
-$.CTC8 = Isolate.makeConstantList(['#3e3e56', '#818fb6', '#b2cdec', '#cbe3f6']);
-$.CTC11 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC10, {'backspace': 8, 'enter': 13, 'shift': 16, 'ctrl': 17, 'alt': 18, 'capslock': 20, 'esc': 27, 'space': 32, '_0': 48, 'zero': 48, '_1': 49, 'one': 49, '_2': 50, 'two': 50, '_3': 51, 'three': 51, '_4': 52, 'four': 52, '_5': 53, 'five': 53, '_6': 54, 'six': 54, '_7': 55, 'seven': 55, '_8': 56, 'eight': 56, '_9': 57, 'nine': 57, 'a': 65, 'b': 66, 'c': 67, 'd': 68, 'e': 69, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74, 'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87, 'x': 88, 'y': 89, 'z': 90, 'semicolon': 186, 'equal': 187, 'comma': 188, 'hyphen': 189, 'dash': 189, 'minus': 189, 'period': 190, 'dot': 190, 'slash': 191, 'forwardslash': 191, 'grave': 192, 'backtick': 192, 'bracketleft': 219, 'backslash': 220, 'bracketright': 221, 'singlequote': 222, 'exclamation': 49, 'at': 50, 'ampersat': 50, 'pound': 51, 'dollar': 52, 'mod': 53, 'modulo': 53, 'percent': 53, 'caret': 54, 'ampersand': 55, 'asterisk': 56, 'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72, 'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80, 'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88, 'Y': 89, 'Z': 90, 'colon': 186, 'plus': 187, 'pointbracketleft': 188, 'trianglebracketleft': 188, 'underscore': 189, 'pointbracketright': 190, 'trianglebracketright': 190, 'question': 191, 'questionmark': 191, 'approx': 192, 'tilde': 192, 'curleybraceleft': 219, 'pipe': 220, 'curleybraceright': 221, 'doublequote': 222, 'left': 37, 'up': 38, 'right': 39, 'down': 40, 'F1': 112, 'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118, 'F8': 119, 'F9': 120, 'F10': 121, 'F11': 122, 'F12': 123}, 138);
-$.CTC12 = new Isolate.$isolateProperties.IllegalAccessException();
-$.CTC4 = Isolate.makeConstantList([1000, 5251, 6819, 8114, 6860]);
+$.CTC30 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC29, {'backspace': 8, 'enter': 13, 'shift': 16, 'ctrl': 17, 'alt': 18, 'capslock': 20, 'esc': 27, 'space': 32, '_0': 48, 'zero': 48, '_1': 49, 'one': 49, '_2': 50, 'two': 50, '_3': 51, 'three': 51, '_4': 52, 'four': 52, '_5': 53, 'five': 53, '_6': 54, 'six': 54, '_7': 55, 'seven': 55, '_8': 56, 'eight': 56, '_9': 57, 'nine': 57, 'a': 65, 'b': 66, 'c': 67, 'd': 68, 'e': 69, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74, 'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87, 'x': 88, 'y': 89, 'z': 90, 'semicolon': 186, 'equal': 187, 'comma': 188, 'hyphen': 189, 'dash': 189, 'minus': 189, 'period': 190, 'dot': 190, 'slash': 191, 'forwardslash': 191, 'grave': 192, 'backtick': 192, 'bracketleft': 219, 'backslash': 220, 'bracketright': 221, 'singlequote': 222, 'exclamation': 49, 'at': 50, 'ampersat': 50, 'pound': 51, 'dollar': 52, 'mod': 53, 'modulo': 53, 'percent': 53, 'caret': 54, 'ampersand': 55, 'asterisk': 56, 'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72, 'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80, 'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88, 'Y': 89, 'Z': 90, 'colon': 186, 'plus': 187, 'pointbracketleft': 188, 'trianglebracketleft': 188, 'underscore': 189, 'pointbracketright': 190, 'trianglebracketright': 190, 'question': 191, 'questionmark': 191, 'approx': 192, 'tilde': 192, 'curleybraceleft': 219, 'pipe': 220, 'curleybraceright': 221, 'doublequote': 222, 'left': 37, 'up': 38, 'right': 39, 'down': 40, 'F1': 112, 'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118, 'F8': 119, 'F9': 120, 'F10': 121, 'F11': 122, 'F12': 123}, 138);
+$.CTC28 = new Isolate.$isolateProperties.IllegalAccessException();
+$.CTC3 = Isolate.makeConstantList([1000, 5251, 6819, 8114, 6860]);
 $.CTC36 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC35, {'wander': true, 'nice': true, 'hostile': true, 'hostile-wander': true, 'mean': true, 'scared': true, 'citizen': true}, 7);
 $.CTC41 = Isolate.makeConstantList(['Hi!', 'Hiya!', 'Hello!', 'It\'s not so scary with you around!', 'Thanks for the help!']);
 $.CTC0 = new Isolate.$isolateProperties.NullPointerException(Isolate.$isolateProperties.CTC, null);
 $.CTC38 = new Isolate.$isolateProperties.EmptyElementRect(Isolate.$isolateProperties.CTC, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37);
-$.CTC2 = new Isolate.$isolateProperties.NoMoreElementsException();
-$.CTC13 = new Isolate.$isolateProperties.EmptyQueueException();
+$.CTC1 = new Isolate.$isolateProperties.NoMoreElementsException();
+$.CTC9 = new Isolate.$isolateProperties.EmptyQueueException();
 $._pendingRequests = null;
 $.niceFactor = null;
 $.RESOLUTION = 1;
@@ -17182,9 +17277,10 @@ $.tagEvents = null;
 $.rpatCount = 0;
 $.world = null;
 $.SCREEN_WIDTH = null;
-$.DEBUG = true;
+$.DEBUG = false;
 $.event = null;
 $.animationMap = null;
+$.menu = null;
 $.dynamicUnknownElementDispatcher = null;
 $.game = null;
 $._getTypeNameOf = null;
@@ -17638,7 +17734,7 @@ $.$defineNativeClass('HTMLDetailsElement', [], {
 
 $.$defineNativeClass('HTMLDocument', ["readyState?"], {
  query$1: function(selectors) {
-  if ($.CTC9.hasMatch$1(selectors) === true) return this.$dom_getElementById$1($.substring$1(selectors, 1));
+  if ($.CTC31.hasMatch$1(selectors) === true) return this.$dom_getElementById$1($.substring$1(selectors, 1));
   return this.$dom_querySelector$1(selectors);
  },
  $dom_querySelector$1: function(selectors) {
@@ -19391,7 +19487,7 @@ $.$defineNativeClass('WebSocket', ["readyState?"], {
  }
 });
 
-$.$defineNativeClass('DOMWindow', ["status?", "navigator?", "length?", "innerWidth?", "innerHeight?"], {
+$.$defineNativeClass('DOMWindow', ["status?", "navigator?", "length?", "innerWidth?"], {
  setTimeout$2: function(handler, timeout) {
   return this.setTimeout($.convertDartClosureToJS(handler, 0),timeout);
  },

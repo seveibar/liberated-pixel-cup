@@ -56,7 +56,7 @@
 
 final int GRAPHIC_BLOCK_SIZE = 32;
 final int CHUNK_SIZE = 8;
-final int CHUNK_JOIN = 10;
+final int CHUNK_JOIN = 6;
 
 bool DEBUG = false;//TODO make final
 final bool MOBILE = false;

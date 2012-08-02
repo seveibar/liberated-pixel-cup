@@ -639,10 +639,17 @@ class World {
     if (night_mode && time>6.5 && time<21){//6:30 is wake up time
       night_mode = false;
       dayCount ++;
+      zombie_out = 0;
       notify("Day $dayCount");
       notify("Total Population : $totalPopulation");
       if (totalPopulation<100){
-        notify("WARNING! If your population falls below 50 you lose!");
+        if (totalPopulation<50){
+          notify("The population has fallen below 50");
+          GameOver(game.context);
+        }else{
+          notify("WARNING! If your population falls below 50 you lose!");
+        }
+        
       }
       
       if (dayCount > 1){
@@ -796,7 +803,9 @@ class World {
     camera.x -= (camera.x - (player.x+player.velocity.x * 5))/5;
     camera.y -= (camera.y - (player.y+player.velocity.y * 5))/5;
     
-    camera.zoom += (event.key("up") - event.key("down"))/10.0;
+    if (DEBUG){
+      camera.zoom += (event.key("up") - event.key("down"))/10.0;
+    }
     camera.update();
     
     //Uninit Tag (newly spawns)

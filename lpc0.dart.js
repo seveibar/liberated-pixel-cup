@@ -8166,13 +8166,14 @@ $$.TileManager = {"":
   var c2 = $.add($.div($.div($.SCREEN_HEIGHT, 256), camera.get$animatedZoom()), 1);
   if (typeof c2 !== 'number') return this.render$2$bailout(6, c, tyi, tx, ty, c2, txi, c1);
   for (var t1 = this.renderChunkCoordinates, t2 = this.renderChunks, i = -1; i < c1; ++i) {
-    for (var t3 = i * 256, t4 = txi + i, t5 = $.mod(t4, 6), t3 += tx, t6 = t4 * 8, u = -1; u < c2; ++u) {
-      var t7 = tyi + u;
-      var index = t5 + $.mod(t7, 6) * 6;
-      if (!(t1.operator$index$1(index) == null) && (t1.operator$index$1(index).at$2(t4, t7) === true && !(t2.operator$index$1(index) == null))) c.drawImage$3(t2.operator$index$1(index), t3, ty + u * 256);
+    var txi_i = txi + i;
+    for (var t3 = i * 256, t4 = $.mod(txi_i, 6), dx = tx + t3, t3 = txi_i * 8, u = -1; u < c2; ++u) {
+      var t5 = tyi + u;
+      var index = t4 + $.mod(t5, 6) * 6;
+      if (!(t1.operator$index$1(index) == null) && (t1.operator$index$1(index).at$2(txi_i, t5) === true && !(t2.operator$index$1(index) == null))) c.drawImage$3(t2.operator$index$1(index), dx, ty + u * 256);
       else {
-        t1.operator$indexSet$2(index, $.Vec2$(t4, t7));
-        t2.operator$indexSet$2(index, this.generateTileChunk$2(t6, t7 * 8));
+        t1.operator$indexSet$2(index, $.Vec2$(txi_i, t5));
+        t2.operator$indexSet$2(index, this.generateTileChunk$2(t3, t5 * 8));
       }
     }
   }
@@ -8247,12 +8248,15 @@ $$.TileManager = {"":
     case 6:
       state = 0;
       for (var t1 = this.renderChunkCoordinates, t2 = this.renderChunks, i = -1; $.ltB(i, c1); ++i) {
+        var txi_i = $.add(txi, i);
         for (var t3 = i * 256, u = -1; $.ltB(u, c2); ++u) {
-          var index = $.add($.mod($.add(txi, i), 6), $.mul($.mod($.add(tyi, u), 6), 6));
-          if (!($.index(t1, index) == null) && ($.index(t1, index).at$2($.add(txi, i), $.add(tyi, u)) === true && !($.index(t2, index) == null))) c.drawImage$3($.index(t2, index), $.add(tx, t3), $.add(ty, u * 256));
-          else {
-            $.indexSet(t1, index, $.Vec2$($.add(txi, i), $.add(tyi, u)));
-            $.indexSet(t2, index, this.generateTileChunk$2($.mul($.add(txi, i), 8), $.mul($.add(tyi, u), 8)));
+          var index = $.add($.mod(txi_i, 6), $.mul($.mod($.add(tyi, u), 6), 6));
+          if (!($.index(t1, index) == null) && ($.index(t1, index).at$2(txi_i, $.add(tyi, u)) === true && !($.index(t2, index) == null))) {
+            var dx = $.add(tx, t3);
+            c.drawImage$3($.index(t2, index), dx, $.add(ty, u * 256));
+          } else {
+            $.indexSet(t1, index, $.Vec2$(txi_i, $.add(tyi, u)));
+            $.indexSet(t2, index, this.generateTileChunk$2($.mul(txi_i, 8), $.mul($.add(tyi, u), 8)));
           }
         }
       }

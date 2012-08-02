@@ -1538,6 +1538,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('loadDeathAnimation', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, 'loadDeathAnimation', [arg0, arg1])
 },
+ webkitRequestFullscreen$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('webkitRequestFullscreen', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'webkitRequestFullscreen', [])
+},
  _lib2_char$0: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('_char', [])
@@ -4173,6 +4178,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('addLast', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'addLast', [arg0])
 },
+ webkitCancelFullScreen$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('webkitCancelFullScreen', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'webkitCancelFullScreen', [])
+},
  hasTag$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('hasTag', [arg0])
@@ -5177,6 +5187,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get mouseUp', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get mouseUp', [])
+},
+ get$webkitIsFullScreen: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get webkitIsFullScreen', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get webkitIsFullScreen', [])
 },
  get$rootContext: function () {
   return this.noSuchMethod$2
@@ -13751,7 +13766,7 @@ $$.anon38 = {"":
   if ($.ltB($.world.get$player().distanceTo$1(a), 256) && $.world.get$player().get$attacking() === true) {
     var t1 = $.world;
     t1.set$zombies_killed($.add(t1.get$zombies_killed(), 1));
-    $.world.giveCoin$2(a, $.toInt($.add($.mul($.Math_random(), 7), 1)));
+    $.world.giveCoin$2(a, $.toInt($.add($.mul($.Math_random(), 4), 1)));
   }
  }
 };
@@ -14360,6 +14375,11 @@ $$.World_startCycle_anon = {"":
     t1 = $.index(this.this_5.get$weaponAttackTypes(), this.this_5.get$currentWeapon());
     this.this_5.get$player().set$attackType(t1);
     $.notify('Using ' + $.S($.index(this.this_5.get$weaponName(), this.this_5.get$currentWeapon())));
+  } else {
+    if ($.eqB($.event.key$1('F'), 1)) {
+      if ($.document().get$webkitIsFullScreen() !== true) $.document().get$body().webkitRequestFullscreen$0();
+      else $.document().webkitCancelFullScreen$0();
+    }
   }
  }
 };
@@ -16874,10 +16894,6 @@ $._MediaStreamEventsImpl$ = function(_ptr) {
   return new $._MediaStreamEventsImpl(_ptr);
 };
 
-$.MetaInfo$ = function(tag, tags, set) {
-  return new $.MetaInfo(set, tags, tag);
-};
-
 $.defineProperty = function(obj, property, value) {
   Object.defineProperty(obj, property,
       {value: value, enumerable: false, writable: true, configurable: true});
@@ -16913,6 +16929,10 @@ $.div = function(a, b) {
 
 $._NativeJsSendPort$ = function(_receivePort, isolateId) {
   return new $._NativeJsSendPort(_receivePort, isolateId);
+};
+
+$.MetaInfo$ = function(tag, tags, set) {
+  return new $.MetaInfo(set, tags, tag);
 };
 
 $._callInIsolate = function(isolate, function$) {
@@ -18167,10 +18187,13 @@ $.$defineNativeClass('HTMLDetailsElement', [], {
  open$3: function(arg0, arg1, arg2) { return this.open.$call$3(arg0, arg1, arg2); }
 });
 
-$.$defineNativeClass('HTMLDocument', ["readyState?", "body?"], {
+$.$defineNativeClass('HTMLDocument', ["webkitIsFullScreen?", "readyState?", "body?"], {
  query$1: function(selectors) {
   if ($.CTC2.hasMatch$1(selectors) === true) return this.$dom_getElementById$1($.substring$1(selectors, 1));
   return this.$dom_querySelector$1(selectors);
+ },
+ webkitCancelFullScreen$0: function() {
+  return this.webkitCancelFullScreen();
  },
  $dom_querySelector$1: function(selectors) {
   return this.querySelector(selectors);
@@ -18192,6 +18215,8 @@ $.$defineNativeClass('DocumentFragment', [], {
  },
  get$on: function() {
   return $._ElementEventsImpl$(this);
+ },
+ webkitRequestFullscreen$0: function() {
  },
  get$style: function() {
   return $._ElementFactoryProvider_Element$tag('div').get$style();
@@ -18219,6 +18244,9 @@ $.$defineNativeClass('DocumentFragment', [], {
 });
 
 $.$defineNativeClass('Element', ["style?", "id?"], {
+ webkitRequestFullscreen$0: function() {
+  return this.webkitRequestFullscreen();
+ },
  $dom_querySelector$1: function(selectors) {
   return this.querySelector(selectors);
  },

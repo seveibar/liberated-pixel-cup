@@ -363,6 +363,13 @@ class World {
         player.attackTime = weaponAttackTime[currentWeapon];
         player.attackType = weaponAttackTypes[currentWeapon];
         notify("Using ${weaponName[currentWeapon]}");
+      }else if (event.key("F") == 1){
+        //TODO support firefox + opera
+        if (!html.document.webkitIsFullScreen){
+          html.document.body.webkitRequestFullscreen();
+        }else{
+          html.document.webkitCancelFullScreen();
+        }
       }
     });
     

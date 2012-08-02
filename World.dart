@@ -523,6 +523,15 @@ class World {
                           giveCoin(player,2000);
                           totalPopulation += 200;
                         }
+                       },
+                       {
+                         "name":"Test Menu",
+                         "func":()=>menuInterfaces.add(new MenuInterface("confirm",{
+                           "text":"Would you like to confirm?",
+                           "func":(){
+                             print("Confirmed");
+                           }
+                         }))
                        }
                        ,{
                          "name":"Get JSON",

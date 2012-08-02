@@ -77,17 +77,16 @@ class MainMenu {
     
     
     if (credits){
-      context.globalAlpha = anim[4];
-      anim[4] = anim[4]<1?anim[4]+=.1:1;
-      context.drawImage(creditsImage,200,250);
+      anim[4] = anim[4]<1?anim[4]+=.05:1;
       if (event.mouseDown){
         credits = false;
         event.mouseDown = false;
       }
     }else{
-      anim[4] = anim[4]>0?anim[4]-=.1:0;
+      anim[4] = anim[4]>0?anim[4]-=.05:0;
     }
-    
+    context.globalAlpha = anim[4];
+    context.drawImage(creditsImage,75,75);
     context.globalAlpha = 1 - anim[4];
     final int linex = 650;
     ["Play","Dev Mode","Long Night","Credits"].forEach((String s){

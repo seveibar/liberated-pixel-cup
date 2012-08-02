@@ -32,23 +32,23 @@ class MenuInterface {
           String name = options[i]["name"];
           Function func = options[i]["func"];
           
-          buttons.add(new MenuButton(name,func,SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + i * 50));
+          buttons.add(new MenuButton(name,func,SCREEN_WIDTH/8 + (i%2)*200,SCREEN_HEIGHT/8 + (i/2).toInt() * 50));
         }
-        buttons.add(new MenuButton("Exit",(){},SCREEN_WIDTH/8,SCREEN_HEIGHT/8 + options.length * 50));
+        buttons.add(new MenuButton("Exit",(){},SCREEN_WIDTH/8 + (options.length%2)*200,SCREEN_HEIGHT/8 + (options.length/2).toInt() * 50));
         break;
       case "confirm":
         renderFunction = renderConfirmMenu;
         num cx = SCREEN_WIDTH/2;
         num cy = SCREEN_HEIGHT/2;
-        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 200));
-        buttons.add(new MenuButton("Confirm",data["func"],cx + 150,cy + 200));
+        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 100));
+        buttons.add(new MenuButton("Confirm",data["func"],cx + 150,cy + 100));
         break;
       case "broke":
         renderFunction = renderConfirmMenu;
         num cx = SCREEN_WIDTH/2;
         num cy = SCREEN_HEIGHT/2;
-        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 200));
-        buttons.add(new MenuButton("Not Enough Coin",(){},cx + 150,cy + 200));
+        buttons.add(new MenuButton("Cancel",(){},cx - 150,cy + 100));
+        buttons.add(new MenuButton("Not Enough Coin",(){},cx + 150,cy + 100));
         break;
     }
   }
@@ -81,22 +81,21 @@ class MenuInterface {
     var pattern = c.createPattern(ui[16], "repeat");
     c.beginPath();
     c.fillStyle = pattern;
-    c.rect(cx-300+32+10, cy-300+32, 600-84, 600-88);
+    c.rect(cx-300+32+10, cy-200+32, 600-84, 400-88);
     c.fill();
     c.closePath();
-    c.drawImage(ui[8],cx-300+12, cy-300);
+    c.drawImage(ui[8],cx-300+12, cy-200);
     for (int i = 0;i<16;i++){
-      c.drawImage(ui[9],cx-300+12 + 32 + i * 32, cy-300);
-      c.drawImage(ui[15],cx-300+12, cy-300 + 32 + i * 32);
-      c.drawImage(ui[17],cx+300-12-32, cy-300+ 32 + i * 32);
-      c.drawImage(ui[23],cx-300+12 + 32 + i * 32,cy+300-64);
-      /*for (int u = 0;u<16;u++){
-        c.drawImage(ui[16],cx-300+12 + 32 + i * 32, cy-300 + 32 + u * 32);
-      }*/
+      c.drawImage(ui[9],cx-300+12 + 32 + i * 32, cy-200);
+      c.drawImage(ui[23],cx-300+12 + 32 + i * 32,cy+200-64);
     }
-    c.drawImage(ui[10],cx+300-32-12, cy-300);
-    c.drawImage(ui[22], cx-300+12, cy+300-64);
-    c.drawImage(ui[24], cx+300-32-12, cy+300-64);
+    for (int i = 0;i<10;i++){
+      c.drawImage(ui[15],cx-300+12, cy-200 + 32 + i * 32);
+      c.drawImage(ui[17],cx+300-12-32, cy-200+ 32 + i * 32);
+    }
+    c.drawImage(ui[10],cx+300-32-12, cy-200);
+    c.drawImage(ui[22], cx-300+12, cy+200-64);
+    c.drawImage(ui[24], cx+300-32-12, cy+200-64);
     
     //Draw Text
     c.font = "18px Arial";

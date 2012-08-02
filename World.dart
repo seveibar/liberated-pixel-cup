@@ -959,6 +959,7 @@ class World {
   void giveCoin(Vec2 at,int amt){
     coin += amt;
     spawnObject("floating_text",{"x":at.x,"y":at.y,"text":"+${amt}"});
+    audio.play("coin");
   }
   List<Avatar> damageBubble(Vec2 point,num radius,num damage,Vec2 direction){
     List<Avatar> attacked = new List<Avatar>();

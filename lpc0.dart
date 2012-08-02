@@ -675,7 +675,7 @@ class Game {
           "die":(Avatar a){
             if (world.player.distanceTo(a) < 256 && world.player.attacking){
               world.zombies_killed ++;
-              world.giveCoin(a,(Math.random() * 4 + 1).toInt());
+              world.giveCoin(a,(Math.random() * 7 + 1).toInt());
             }
           }
         },

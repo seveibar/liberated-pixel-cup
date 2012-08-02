@@ -9120,6 +9120,7 @@ $$.World = {"":
   if (typeof t1 !== 'number') return this.giveCoin$2$bailout(2, at, amt, t1);
   this.coin = t1 + amt;
   this.spawnObject$2('floating_text', $.makeLiteralMap(['x', at.get$x(), 'y', at.get$y(), 'text', '+' + $.S(amt)]));
+  $.audio.play$1('coin');
  },
  giveCoin$2$bailout: function(state, env0, env1, env2) {
   switch (state) {
@@ -9142,6 +9143,7 @@ $$.World = {"":
       state = 0;
       this.coin = $.add(t1, amt);
       this.spawnObject$2('floating_text', $.makeLiteralMap(['x', at.get$x(), 'y', at.get$y(), 'text', '+' + $.S(amt)]));
+      $.audio.play$1('coin');
   }
  },
  renderCoins$1: function(c) {
@@ -11168,7 +11170,7 @@ $$.AudioManager = {"":
   else $.index(t3, soundName).play$0();
  },
  AudioManager$0: function() {
-  var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1'];
+  var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1', 'coin'];
   this.audioElements = $.HashMapImplementation$();
   $.forEach(soundList, new $.anon56(this));
   this.audioGroup = $.HashMapImplementation$();
@@ -13749,7 +13751,7 @@ $$.anon38 = {"":
   if ($.ltB($.world.get$player().distanceTo$1(a), 256) && $.world.get$player().get$attacking() === true) {
     var t1 = $.world;
     t1.set$zombies_killed($.add(t1.get$zombies_killed(), 1));
-    $.world.giveCoin$2(a, $.toInt($.add($.mul($.Math_random(), 4), 1)));
+    $.world.giveCoin$2(a, $.toInt($.add($.mul($.Math_random(), 7), 1)));
   }
  }
 };

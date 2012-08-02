@@ -19,7 +19,7 @@ class AudioManager {
   Map<String,html.AudioElement> audioElements;
   Map<String,List<String>> audioGroup;
   AudioManager(){
-    final List<String> soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1'];
+    final List<String> soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1','coin'];
     audioElements = new Map<String,html.AudioElement>();
     soundList.forEach((String soundName){
       audioElements[soundName] = html.document.query("#audio_$soundName");

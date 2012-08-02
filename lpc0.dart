@@ -198,14 +198,13 @@ void GameOver(html.CanvasRenderingContext2D c){
     
     c.restore();
     if (game == null){
-    html.window.requestAnimationFrame(rcycle);
+      html.window.requestAnimationFrame(rcycle);
     }
   }
   html.window.requestAnimationFrame(rcycle);
   event.onClick.add((e){
     if (timePass >= 120){
-      print("Starting New Game");
-      main();
+      openMainMenu();
       return true;
     }
   });
@@ -247,8 +246,11 @@ void main() {
   html.document.query("#canvas").style.left = "${CANVAS_OFFSETX}px";
   html.document.query("#canvas").style.top = "${CANVAS_OFFSETY}px";
   html.window.on.load.add((e){
-   menu = new MainMenu();
+   openMainMenu();
   });
+}
+void openMainMenu(){
+  menu = new MainMenu();
 }
 void startGame(){
   menu = null;

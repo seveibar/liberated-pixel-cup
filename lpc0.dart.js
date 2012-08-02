@@ -12693,7 +12693,7 @@ $$.main_anon = {"":
  [],
  super: "Closure",
  $call$1: function(e) {
-  $.menu = $.MainMenu$();
+  $.openMainMenu();
  }
 };
 
@@ -15009,8 +15009,7 @@ $$.GameOver_anon = {"":
  super: "Closure",
  $call$1: function(e) {
   if ($.geB(this.box_2.timePass_3, 120)) {
-    $.print('Starting New Game');
-    $.main();
+    $.openMainMenu();
     return true;
   }
  }
@@ -16365,6 +16364,10 @@ $.Animation$ = function(properties) {
 $.le$slow = function(a, b) {
   if ($.checkNumbers(a, b) === true) return a <= b;
   return a.operator$le$1(b);
+};
+
+$.openMainMenu = function() {
+  $.menu = $.MainMenu$();
 };
 
 $._AllMatchesIterable$ = function(_re, _str) {

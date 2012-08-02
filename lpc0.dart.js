@@ -5313,6 +5313,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get animatedZoom', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get animatedZoom', [])
 },
+ get$innerHeight: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get innerHeight', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get innerHeight', [])
+},
  get$cycle: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get cycle', [])
@@ -6133,15 +6138,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get completer', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get completer', [])
 },
- get$currentContext: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get currentContext', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get currentContext', [])
-},
  get$innerWidth: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get innerWidth', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get innerWidth', [])
+},
+ get$currentContext: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get currentContext', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get currentContext', [])
 },
  get$saved: function () {
   return this.noSuchMethod$2
@@ -6378,10 +6383,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get $dom_scrollHeight', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get $dom_scrollHeight', [])
 },
- set$currentAttackTime: function (arg0) {
+ set$currentWeapon: function (arg0) {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('set currentAttackTime', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'set currentAttackTime', [arg0])
+      ? this.noSuchMethod$2('set currentWeapon', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set currentWeapon', [arg0])
 },
  set$player_max_health: function (arg0) {
   return this.noSuchMethod$2
@@ -6428,10 +6433,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('set width', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set width', [arg0])
 },
- set$rootContext: function (arg0) {
+ set$top: function (arg0) {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('set rootContext', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'set rootContext', [arg0])
+      ? this.noSuchMethod$2('set top', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set top', [arg0])
 },
  set$uiImages: function (arg0) {
   return this.noSuchMethod$2
@@ -6442,6 +6447,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set b', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set b', [arg0])
+},
+ set$rootContext: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set rootContext', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set rootContext', [arg0])
 },
  set$awakePopulation: function (arg0) {
   return this.noSuchMethod$2
@@ -6553,10 +6563,20 @@ $$.Object = {"":
       ? this.noSuchMethod$2('set value', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set value', [arg0])
 },
+ set$position: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set position', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set position', [arg0])
+},
  set$weaponAnimation: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set weaponAnimation', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set weaponAnimation', [arg0])
+},
+ set$left: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set left', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set left', [arg0])
 },
  set$globalAlpha: function (arg0) {
   return this.noSuchMethod$2
@@ -6803,10 +6823,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('set active', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set active', [arg0])
 },
- set$currentWeapon: function (arg0) {
+ set$currentAttackTime: function (arg0) {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('set currentWeapon', [arg0])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'set currentWeapon', [arg0])
+      ? this.noSuchMethod$2('set currentAttackTime', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set currentAttackTime', [arg0])
 },
  set$fillStyle: function (arg0) {
   return this.noSuchMethod$2
@@ -8037,8 +8057,6 @@ $$.UIManager = {"":
   t1[keyCode] = value;
  },
  UIManager$0: function() {
-  var canvas = $.document().query$1('#canvas');
-  var CANVAS_OFFX = $.div($.sub($.window().get$innerWidth(), canvas.get$width()), 2);
   var t1 = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(t1, ({E: 'Function'}));
   this.onKeyPress = t1;
@@ -8056,9 +8074,9 @@ $$.UIManager = {"":
   }
   $.add$1($.window().get$on().get$keyDown(), new $.anon51(this));
   $.add$1($.window().get$on().get$keyUp(), new $.anon52(this));
-  $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this, CANVAS_OFFX, 100));
-  $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this, CANVAS_OFFX, 100));
-  $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this, CANVAS_OFFX, 100));
+  $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this));
+  $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this));
+  $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this));
   var i;
  }
 };
@@ -12183,7 +12201,7 @@ $$._JsVisitedMap = {"":
 };
 
 $$._JsonParser = {"":
- ["position", "length?", "json"],
+ ["position!", "length?", "json"],
  super: "Object",
  length$0: function() { return this.length.$call$0(); },
  _error$1: function(message) {
@@ -14286,36 +14304,36 @@ $$.anon52 = {"":
 };
 
 $$.anon53 = {"":
- ["this_4", "CANVAS_OFFX_3", "CANVAS_OFFY_2"],
+ ["this_2"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_4.mouseDownAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_3), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_2), $.RESOLUTION));
-  var i = $.sub($.get$length(this.this_4.get$onClick()), 1);
+  this.this_2.mouseDownAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+  var i = $.sub($.get$length(this.this_2.get$onClick()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
   for (; i >= 0; --i) {
-    $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
   }
  },
  $call$1$bailout: function(state, e, i) {
   for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
   }
  }
 };
 
 $$.anon54 = {"":
- ["this_7", "CANVAS_OFFX_6", "CANVAS_OFFY_5"],
+ ["this_3"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_7.mouseUpAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_6), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_5), $.RESOLUTION));
+  this.this_3.mouseUpAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
  }
 };
 
 $$.anon55 = {"":
- ["this_10", "CANVAS_OFFX_9", "CANVAS_OFFY_8"],
+ ["this_4"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_10.mouseAt$2($.div($.sub(e.get$pageX(), this.CANVAS_OFFX_9), $.RESOLUTION), $.div($.sub(e.get$pageY(), this.CANVAS_OFFY_8), $.RESOLUTION));
+  this.this_4.mouseAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
  }
 };
 
@@ -15932,12 +15950,12 @@ $.MenuInterface$ = function(type, data) {
   return t1;
 };
 
-$.add = function(a, b) {
-  return typeof a === 'number' && typeof b === 'number' ? (a + b) : $.add$slow(a, b);
-};
-
 $.geB = function(a, b) {
   return typeof a === 'number' && typeof b === 'number' ? (a >= b) : $.ge$slow(a, b) === true;
+};
+
+$.add = function(a, b) {
+  return typeof a === 'number' && typeof b === 'number' ? (a + b) : $.add$slow(a, b);
 };
 
 $.stringContainsUnchecked = function(receiver, other, startIndex) {
@@ -16039,11 +16057,6 @@ $.BadNumberFormatException$ = function(_s) {
   return new $.BadNumberFormatException(_s);
 };
 
-$.iterator = function(receiver) {
-  if ($.isJsArray(receiver) === true) return $.ListIterator$(receiver);
-  return receiver.iterator$0();
-};
-
 $.JSON_stringify = function(object) {
   return $.JsonStringifier_stringify(object);
 };
@@ -16058,6 +16071,11 @@ $.Maps_mapToString = function(m) {
   var result = $.StringBufferImpl$('');
   $.Maps__emitMap(m, result, $.ListFactory_List(null));
   return result.toString$0();
+};
+
+$.iterator = function(receiver) {
+  if ($.isJsArray(receiver) === true) return $.ListIterator$(receiver);
+  return receiver.iterator$0();
 };
 
 $._XMLHttpRequestEventsImpl$ = function(_ptr) {
@@ -16170,6 +16188,12 @@ $._ElementFactoryProvider_Element$tag = function(tag) {
   return document.createElement(tag);
 };
 
+$._Manager$ = function() {
+  var t1 = new $._Manager(null, null, null, null, null, null, null, null, null, 1, 0, 0);
+  t1._Manager$0();
+  return t1;
+};
+
 $._FrameSetElementEventsImpl$ = function(_ptr) {
   return new $._FrameSetElementEventsImpl(_ptr);
 };
@@ -16177,12 +16201,6 @@ $._FrameSetElementEventsImpl$ = function(_ptr) {
 $.add$slow = function(a, b) {
   if ($.checkNumbers(a, b) === true) return a + b;
   return a.operator$add$1(b);
-};
-
-$._Manager$ = function() {
-  var t1 = new $._Manager(null, null, null, null, null, null, null, null, null, 1, 0, 0);
-  t1._Manager$0();
-  return t1;
 };
 
 $.ListFactory_List$from = function(other) {
@@ -16210,11 +16228,24 @@ $.Primitives_newList = function(length$) {
 };
 
 $.main = function() {
+  $.CANVAS_OFFSETX = $.sub($.div($.window().get$innerWidth(), 2), 400.0);
+  $.CANVAS_OFFSETY = $.sub($.div($.window().get$innerHeight(), 2), 400.0);
+  $.document().query$1('#canvas').get$style().set$position('absolute');
+  var t1 = $.S($.CANVAS_OFFSETX) + 'px';
+  $.document().query$1('#canvas').get$style().set$left(t1);
+  t1 = $.S($.CANVAS_OFFSETY) + 'px';
+  $.document().query$1('#canvas').get$style().set$top(t1);
   $.add$1($.window().get$on().get$load(), new $.main_anon());
 };
 
 $._AbstractWorkerEventsImpl$ = function(_ptr) {
   return new $._AbstractWorkerEventsImpl(_ptr);
+};
+
+$.addLast = function(receiver, value) {
+  if ($.isJsArray(receiver) !== true) return receiver.addLast$1(value);
+  $.checkGrowable(receiver, 'addLast');
+  receiver.push(value);
 };
 
 $.HashMapImplementation__computeLoadLimit = function(capacity) {
@@ -16225,12 +16256,6 @@ $.HashSetIterator$ = function(set_) {
   var t1 = new $.HashSetIterator(-1, set_.get$_backingMap().get$_keys());
   t1.HashSetIterator$1(set_);
   return t1;
-};
-
-$.addLast = function(receiver, value) {
-  if ($.isJsArray(receiver) !== true) return receiver.addLast$1(value);
-  $.checkGrowable(receiver, 'addLast');
-  receiver.push(value);
 };
 
 $.IllegalArgumentException$ = function(arg) {
@@ -16967,21 +16992,6 @@ $.Primitives_objectToString = function(object) {
   return 'Instance of \'' + $.S($.Primitives_objectTypeName(object)) + '\'';
 };
 
-$.Arrays_indexOf = function(a, element, startIndex, endIndex) {
-  if (typeof a !== 'string' && (typeof a !== 'object' || a === null || (a.constructor !== Array && !a.is$JavaScriptIndexingBehavior()))) return $.Arrays_indexOf$bailout(1, a, element, startIndex, endIndex);
-  if (typeof endIndex !== 'number') return $.Arrays_indexOf$bailout(1, a, element, startIndex, endIndex);
-  if ($.geB(startIndex, a.length)) return -1;
-  if ($.ltB(startIndex, 0)) startIndex = 0;
-  if (typeof startIndex !== 'number') return $.Arrays_indexOf$bailout(2, a, element, startIndex, endIndex);
-  for (var i = startIndex; i < endIndex; ++i) {
-    if (i !== (i | 0)) throw $.iae(i);
-    var t1 = a.length;
-    if (i < 0 || i >= t1) throw $.ioore(i);
-    if ($.eqB(a[i], element)) return i;
-  }
-  return -1;
-};
-
 $._Lists_indexOf = function(a, element, startIndex, endIndex) {
   if (typeof a !== 'string' && (typeof a !== 'object' || a === null || (a.constructor !== Array && !a.is$JavaScriptIndexingBehavior()))) return $._Lists_indexOf$bailout(1, a, element, startIndex, endIndex);
   if (typeof endIndex !== 'number') return $._Lists_indexOf$bailout(1, a, element, startIndex, endIndex);
@@ -17052,6 +17062,12 @@ $.Collections_forEach = function(iterable, f) {
   }
 };
 
+$._Collections_forEach = function(iterable, f) {
+  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
+    f.$call$1(t1.next$0());
+  }
+};
+
 $.hashCode = function(receiver) {
   if (typeof receiver === 'number') return receiver & 0x1FFFFFFF;
   if (!(typeof receiver === 'string')) return receiver.hashCode$0();
@@ -17081,12 +17097,6 @@ $.SpawnPoint$ = function(a) {
   t1.Vec2$2(0, 0);
   t1.GameObject$3(a, 0, 0);
   return t1;
-};
-
-$._Collections_forEach = function(iterable, f) {
-  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
-    f.$call$1(t1.next$0());
-  }
 };
 
 $._JsVisitedMap$ = function() {
@@ -17274,9 +17284,9 @@ $.div$slow = function(a, b) {
   return a.operator$div$1(b);
 };
 
-$.HashMapImplementation$ = function() {
-  var t1 = new $.HashMapImplementation(null, null, null, null, null);
-  t1.HashMapImplementation$0();
+$.StringBufferImpl$ = function(content$) {
+  var t1 = new $.StringBufferImpl(null, null);
+  t1.StringBufferImpl$1(content$);
   return t1;
 };
 
@@ -17286,9 +17296,9 @@ $.MenuButton$ = function(text, action, x, y) {
   return t1;
 };
 
-$.StringBufferImpl$ = function(content$) {
-  var t1 = new $.StringBufferImpl(null, null);
-  t1.StringBufferImpl$1(content$);
+$.HashMapImplementation$ = function() {
+  var t1 = new $.HashMapImplementation(null, null, null, null, null);
+  t1.HashMapImplementation$0();
   return t1;
 };
 
@@ -17297,11 +17307,26 @@ $.some = function(receiver, f) {
   return $.Collections_some(receiver, f);
 };
 
-$.Arrow$ = function(properties) {
-  var t1 = new $.Arrow(0, false, '', '', null, null, null, null);
-  t1.Vec2$2(0, 0);
-  t1.GameObject$3(properties, 0, 0);
-  return t1;
+$.Collections_some = function(iterable, f) {
+  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
+    if (f.$call$1(t1.next$0()) === true) return true;
+  }
+  return false;
+};
+
+$.Arrays_indexOf = function(a, element, startIndex, endIndex) {
+  if (typeof a !== 'string' && (typeof a !== 'object' || a === null || (a.constructor !== Array && !a.is$JavaScriptIndexingBehavior()))) return $.Arrays_indexOf$bailout(1, a, element, startIndex, endIndex);
+  if (typeof endIndex !== 'number') return $.Arrays_indexOf$bailout(1, a, element, startIndex, endIndex);
+  if ($.geB(startIndex, a.length)) return -1;
+  if ($.ltB(startIndex, 0)) startIndex = 0;
+  if (typeof startIndex !== 'number') return $.Arrays_indexOf$bailout(2, a, element, startIndex, endIndex);
+  for (var i = startIndex; i < endIndex; ++i) {
+    if (i !== (i | 0)) throw $.iae(i);
+    var t1 = a.length;
+    if (i < 0 || i >= t1) throw $.ioore(i);
+    if ($.eqB(a[i], element)) return i;
+  }
+  return -1;
 };
 
 $._SharedWorkerContextEventsImpl$ = function(_ptr) {
@@ -17312,15 +17337,22 @@ $._IDBVersionChangeRequestEventsImpl$ = function(_ptr) {
   return new $._IDBVersionChangeRequestEventsImpl(_ptr);
 };
 
-$.Collections_some = function(iterable, f) {
-  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
-    if (f.$call$1(t1.next$0()) === true) return true;
-  }
-  return false;
+$.Arrow$ = function(properties) {
+  var t1 = new $.Arrow(0, false, '', '', null, null, null, null);
+  t1.Vec2$2(0, 0);
+  t1.GameObject$3(properties, 0, 0);
+  return t1;
 };
 
 $.gtB = function(a, b) {
   return typeof a === 'number' && typeof b === 'number' ? (a > b) : $.gt$slow(a, b) === true;
+};
+
+$._Collections_some = function(iterable, f) {
+  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
+    if (f.$call$1(t1.next$0()) === true) return true;
+  }
+  return false;
 };
 
 $.setRuntimeTypeInfo = function(target, typeInfo) {
@@ -17396,13 +17428,6 @@ $.ceil = function(receiver) {
 $.getTypeNameOf = function(obj) {
   if ($._getTypeNameOf == null) $._getTypeNameOf = $.getFunctionForTypeNameOf();
   return $._getTypeNameOf.$call$1(obj);
-};
-
-$._Collections_some = function(iterable, f) {
-  for (var t1 = $.iterator(iterable); t1.hasNext$0() === true; ) {
-    if (f.$call$1(t1.next$0()) === true) return true;
-  }
-  return false;
 };
 
 $.sub = function(a, b) {
@@ -17713,6 +17738,7 @@ $.animationMap = null;
 $._getTypeNameOf = null;
 $._cachedBrowserPrefix = null;
 $._firstMeasurementRequest = true;
+$.CANVAS_OFFSETY = null;
 $.classMap = null;
 $.removalOnDeath = Isolate.$isolateProperties.CTC36;
 $.RENDER_DISTANCE = null;
@@ -17720,6 +17746,7 @@ $.niceFactor = null;
 $.RESOLUTION = 1;
 $.SCREEN_HEIGHT = null;
 $._JsonParser_tokens = null;
+$.CANVAS_OFFSETX = null;
 $.world = null;
 $.DEBUG = false;
 $.event = null;
@@ -17879,6 +17906,9 @@ $.$defineNativeClass('CSSStyleDeclaration', ["length?"], {
  get$width: function() {
   return this.getPropertyValue$1('width');
  },
+ set$top: function(value) {
+  this.setProperty$3('top', value, '');
+ },
  get$top: function() {
   return this.getPropertyValue$1('top');
  },
@@ -17887,6 +17917,12 @@ $.$defineNativeClass('CSSStyleDeclaration', ["length?"], {
  },
  set$src: function(value) {
   this.setProperty$3('src', value, '');
+ },
+ set$position: function(value) {
+  this.setProperty$3('position', value, '');
+ },
+ set$left: function(value) {
+  this.setProperty$3('left', value, '');
  },
  get$left: function() {
   return this.getPropertyValue$1('left');
@@ -19698,7 +19734,7 @@ $.$defineNativeClass('TextTrack', [], {
  }
 });
 
-$.$defineNativeClass('TextTrackCue', ["text!", "id?"], {
+$.$defineNativeClass('TextTrackCue', ["text!", "position!", "id?"], {
  $dom_addEventListener$3: function(type, listener, useCapture) {
   return this.addEventListener(type,$.convertDartClosureToJS(listener, 1),useCapture);
  },
@@ -19953,7 +19989,7 @@ $.$defineNativeClass('WebSocket', ["readyState?"], {
  }
 });
 
-$.$defineNativeClass('DOMWindow', ["status?", "navigator?", "length?", "innerWidth?"], {
+$.$defineNativeClass('DOMWindow', ["status?", "navigator?", "length?", "innerWidth?", "innerHeight?"], {
  setTimeout$2: function(handler, timeout) {
   return this.setTimeout($.convertDartClosureToJS(handler, 0),timeout);
  },

@@ -230,6 +230,7 @@ void switchTag(GameObject o,String oldTag,String newTag){
   o.tags.add(newTag);
   addTag(o,newTag);
 }
+num CANVAS_OFFSETX,CANVAS_OFFSETY;
 int rpatCount = 0;
 bool rpat(int n){
   return ((rpatCount ++)%n == 0);
@@ -240,6 +241,11 @@ void main() {
   if (MOBILE){
     html.document.body.webkitRequestFullscreen();
   }
+  CANVAS_OFFSETX = html.window.innerWidth/2 - STATIC_WIDTH/2;
+  CANVAS_OFFSETY = html.window.innerHeight/2 - STATIC_HEIGHT/2;
+  html.document.query("#canvas").style.position = "absolute";
+  html.document.query("#canvas").style.left = "${CANVAS_OFFSETX}px";
+  html.document.query("#canvas").style.top = "${CANVAS_OFFSETY}px";
   html.window.on.load.add((e){
    menu = new MainMenu();
   });

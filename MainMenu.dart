@@ -24,8 +24,8 @@ class MainMenu {
   MainMenu(){
     //Draw loading screen
     canvas = html.document.query("#canvas");
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = STATIC_WIDTH;
+    canvas.height = STATIC_HEIGHT;
     context = canvas.getContext('2d');
     context.save();
     context.fillStyle = "#000";
@@ -65,9 +65,9 @@ class MainMenu {
     dx -= (dx - ((event.mouse_position.x - canvas.width/2)/(canvas.width) * (background.width - canvas.width) - (background.width - canvas.width)/2))/10;
     dy -= (dy - ((event.mouse_position.y - canvas.height/2)/(canvas.height) * (background.height - canvas.height) - (background.height - canvas.height)/2))/10;
     context.drawImage(background,dx , dy);
-    context.drawImage(title,400 - title.width/2,100);
+    context.drawImage(title,250 - title.width/2,75);
     
-    int ypos = 350;
+    int ypos = 200;
     final int buttonWidth = 240;
     final int buttonHeight = 50;
     
@@ -89,13 +89,13 @@ class MainMenu {
     }
     
     context.globalAlpha = 1 - anim[4];
-    
+    final int linex = 650;
     ["Play","Dev Mode","Long Night","Credits"].forEach((String s){
       context.save();
       
       context.fillStyle = "#000";
       
-      if ((event.mouse_position.x - canvas.width/2).abs() < buttonWidth/2 && (event.mouse_position.y - ypos).abs() < buttonHeight/2){
+      if ((event.mouse_position.x - linex).abs() < buttonWidth/2 && (event.mouse_position.y - ypos).abs() < buttonHeight/2){
         anim[i] = anim[i]<1?anim[i]+=.1:1;
         if (event.mouseDown){
           switch(s){
@@ -150,7 +150,7 @@ class MainMenu {
       num bw = buttonWidth + anim[i] * 20;
       num bh = buttonHeight + anim[i] * 10;
       
-      context.fillRect(canvas.width/2 - bw/2, ypos - bh/2, bw, bh);
+      context.fillRect(linex - bw/2, ypos - bh/2, bw, bh);
       
       context.globalAlpha /= .5 + anim[i]/2;
       
@@ -158,7 +158,7 @@ class MainMenu {
       context.font = "24px Arial";
       context.textAlign = "center";
       
-      context.fillText(s, canvas.width/2, ypos-buttonHeight/2 + 32);
+      context.fillText(s, linex, ypos-buttonHeight/2 + 32);
       
       ypos += buttonHeight + 10;
       

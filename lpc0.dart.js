@@ -5508,20 +5508,30 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get topEventLoop', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get topEventLoop', [])
 },
+ get$touchStart: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get touchStart', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get touchStart', [])
+},
+ get$touchEnd: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get touchEnd', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get touchEnd', [])
+},
  get$attackType: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get attackType', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get attackType', [])
 },
- get$type: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get type', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get type', [])
-},
  get$currentFrame: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get currentFrame', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get currentFrame', [])
+},
+ get$type: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get type', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get type', [])
 },
  get$attackDirection: function () {
   return this.noSuchMethod$2
@@ -6117,6 +6127,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get $dom_offsetLeft', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get $dom_offsetLeft', [])
+},
+ get$touchMove: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get touchMove', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get touchMove', [])
 },
  get$totalPopulation: function () {
   return this.noSuchMethod$2
@@ -7041,7 +7056,7 @@ $$.Game = {"":
   this.canvas = $.document().query$1('#canvas');
   var t5 = this.canvas;
   t5.set$width(800);
-  t5.set$height(600);
+  t5.set$height(450);
   this.context = t5.getContext$1('2d');
   $.SCREEN_WIDTH = t5.get$width();
   $.SCREEN_HEIGHT = t5.get$height();
@@ -7070,8 +7085,8 @@ $$.MainMenu = {"":
   var t7 = this.title;
   var t8 = $.div(t7.get$width(), 2);
   if (typeof t8 !== 'number') throw $.iae(t8);
-  t2.drawImage$3(t7, 400 - t8, 100);
-  t1.ypos_5 = 350;
+  t2.drawImage$3(t7, 250 - t8, 75);
+  t1.ypos_5 = 200;
   t1.i_6 = 0;
   $.document().get$body().get$style().set$cursor('default');
   t3 = this.credits === true;
@@ -7103,7 +7118,7 @@ $$.MainMenu = {"":
   t3 = $.index(this.anim, 4);
   if (typeof t3 !== 'number') throw $.iae(t3);
   t2.set$globalAlpha(1 - t3);
-  $.forEach(['Play', 'Dev Mode', 'Long Night', 'Credits'], new $.MainMenu_render_anon(this, 240, 50, t1));
+  $.forEach(['Play', 'Dev Mode', 'Long Night', 'Credits'], new $.MainMenu_render_anon(t1, 240, 650, 50, this));
   t2.restore$0();
  },
  cycle$1: function(a) {
@@ -7118,7 +7133,7 @@ $$.MainMenu = {"":
   this.canvas = $.document().query$1('#canvas');
   var t1 = this.canvas;
   t1.set$width(800);
-  t1.set$height(600);
+  t1.set$height(450);
   this.context = t1.getContext$1('2d');
   var t2 = this.context;
   t2.save$0();
@@ -8012,7 +8027,7 @@ $$.UIManager = {"":
   }
   if ($.ltB(y, 0)) y = 0;
   else {
-    if ($.gtB(y, 800)) y = 800;
+    if ($.gtB(y, 450)) y = 450;
   }
   this.mouse_position.set$2(x, y);
  },
@@ -8024,7 +8039,7 @@ $$.UIManager = {"":
   }
   if ($.ltB(y, 0)) y = 0;
   else {
-    if ($.gtB(y, 800)) y = 800;
+    if ($.gtB(y, 450)) y = 450;
   }
   this.mouseAt$2(x, y);
  },
@@ -8036,7 +8051,7 @@ $$.UIManager = {"":
   }
   if ($.ltB(y, 0)) y = 0;
   else {
-    if ($.gtB(y, 800)) y = 800;
+    if ($.gtB(y, 450)) y = 450;
   }
   this.mouseAt$2(x, y);
  },
@@ -8072,11 +8087,17 @@ $$.UIManager = {"":
     if (i < 0 || i >= t2) throw $.ioore(i);
     t1[i] = 0;
   }
-  $.add$1($.window().get$on().get$keyDown(), new $.anon51(this));
-  $.add$1($.window().get$on().get$keyUp(), new $.anon52(this));
-  $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this));
-  $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this));
-  $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this));
+  if ($.MOBILE !== true) {
+    $.add$1($.window().get$on().get$keyDown(), new $.anon51(this));
+    $.add$1($.window().get$on().get$keyUp(), new $.anon52(this));
+    $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this));
+    $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this));
+    $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this));
+  } else {
+    $.add$1($.window().get$on().get$touchStart(), new $.anon56());
+    $.add$1($.window().get$on().get$touchMove(), new $.anon57());
+    $.add$1($.window().get$on().get$touchEnd(), new $.anon58());
+  }
   var i;
  }
 };
@@ -8731,14 +8752,14 @@ $$.MenuInterface = {"":
       for (t1 = this.buttons, i = 0; $.ltB(i, $.get$length(options)); ++i) {
         $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), i * 50)));
       }
-      $.add$1(t1, $.MenuButton$('Exit', new $.anon58(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 50))));
+      $.add$1(t1, $.MenuButton$('Exit', new $.anon61(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 50))));
       break;
     case 'confirm':
       this.renderFunction = this.get$renderConfirmMenu();
       var cx = $.div($.SCREEN_WIDTH, 2);
       var cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon59(), $.sub(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon62(), $.sub(cx, 150), $.add(cy, 200)));
       $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 200)));
       break;
     case 'broke':
@@ -8746,8 +8767,8 @@ $$.MenuInterface = {"":
       cx = $.div($.SCREEN_WIDTH, 2);
       cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon60(), $.sub(cx, 150), $.add(cy, 200)));
-      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon61(), $.add(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon63(), $.sub(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon64(), $.add(cx, 150), $.add(cy, 200)));
       break;
   }
   var i;
@@ -11205,7 +11226,7 @@ $$.AudioManager = {"":
  AudioManager$0: function() {
   var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1', 'coin'];
   this.audioElements = $.HashMapImplementation$();
-  $.forEach(soundList, new $.anon56(this));
+  $.forEach(soundList, new $.anon59(this));
   this.audioGroup = $.HashMapImplementation$();
   var t1 = this.audioGroup;
   $.indexSet(t1, 'shoot', ['shoot', 'shoot1']);
@@ -11282,6 +11303,15 @@ $$._DeprecatedPeerConnectionEventsImpl = {"":
 $$._DocumentEventsImpl = {"":
  ["_ptr"],
  super: "_ElementEventsImpl",
+ get$touchStart: function() {
+  return this.operator$index$1('touchstart');
+ },
+ get$touchMove: function() {
+  return this.operator$index$1('touchmove');
+ },
+ get$touchEnd: function() {
+  return this.operator$index$1('touchend');
+ },
  get$reset: function() {
   return this.operator$index$1('reset');
  },
@@ -11337,6 +11367,15 @@ $$._ElementRectImpl = {"":
 $$._ElementEventsImpl = {"":
  ["_ptr"],
  super: "_EventsImpl",
+ get$touchStart: function() {
+  return this.operator$index$1('touchstart');
+ },
+ get$touchMove: function() {
+  return this.operator$index$1('touchmove');
+ },
+ get$touchEnd: function() {
+  return this.operator$index$1('touchend');
+ },
  get$reset: function() {
   return this.operator$index$1('reset');
  },
@@ -11604,6 +11643,15 @@ $$._WebSocketEventsImpl = {"":
 $$._WindowEventsImpl = {"":
  ["_ptr"],
  super: "_EventsImpl",
+ get$touchStart: function() {
+  return this.operator$index$1('touchstart');
+ },
+ get$touchMove: function() {
+  return this.operator$index$1('touchmove');
+ },
+ get$touchEnd: function() {
+  return this.operator$index$1('touchend');
+ },
  get$reset: function() {
   return this.operator$index$1('reset');
  },
@@ -12786,19 +12834,19 @@ $$.res_loadImage_anon1 = {"":
 };
 
 $$.MainMenu_render_anon = {"":
- ["this_9", "buttonWidth_8", "buttonHeight_7", "box_4"],
+ ["box_4", "buttonWidth_10", "linex_9", "buttonHeight_8", "this_7"],
  super: "Closure",
  $call$1: function(s) {
   var t1 = ({});
-  this.this_9.get$context().save$0();
-  this.this_9.get$context().set$fillStyle('#000');
-  var t2 = $.ltB($.abs($.sub($.event.get$mouse_position().get$x(), $.div(this.this_9.get$canvas().get$width(), 2))), $.div(this.buttonWidth_8, 2)) && $.ltB($.abs($.sub($.event.get$mouse_position().get$y(), this.box_4.ypos_5)), $.div(this.buttonHeight_7, 2));
-  var t3 = this.this_9;
+  this.this_7.get$context().save$0();
+  this.this_7.get$context().set$fillStyle('#000');
+  var t2 = $.ltB($.abs($.sub($.event.get$mouse_position().get$x(), this.linex_9)), $.div(this.buttonWidth_10, 2)) && $.ltB($.abs($.sub($.event.get$mouse_position().get$y(), this.box_4.ypos_5)), $.div(this.buttonHeight_8, 2));
+  var t3 = this.this_7;
   if (t2) {
     t2 = t3.get$anim();
     t3 = this.box_4.i_6;
-    if ($.ltB($.index(this.this_9.get$anim(), this.box_4.i_6), 1)) {
-      var t4 = this.this_9.get$anim();
+    if ($.ltB($.index(this.this_7.get$anim(), this.box_4.i_6), 1)) {
+      var t4 = this.this_7.get$anim();
       var t5 = this.box_4.i_6;
       var t6 = $.add($.index(t4, t5), 0.1);
       $.indexSet(t4, t5, t6);
@@ -12808,32 +12856,32 @@ $$.MainMenu_render_anon = {"":
     if ($.event.get$mouseDown() === true) {
       switch (s) {
         case 'Credits':
-          this.this_9.set$credits(true);
+          this.this_7.set$credits(true);
           $.event.set$mouseDown(false);
           break;
         case 'Play':
-          this.this_9.set$active(false);
+          this.this_7.set$active(false);
           t1 = new $.MainMenu_render_anon0();
-          this.this_9.set$fin(t1);
+          this.this_7.set$fin(t1);
           break;
         case 'Dev Mode':
-          this.this_9.set$active(false);
+          this.this_7.set$active(false);
           t1 = new $.MainMenu_render_anon1();
-          this.this_9.set$fin(t1);
+          this.this_7.set$fin(t1);
           break;
         case 'Long Night':
-          this.this_9.set$active(false);
+          this.this_7.set$active(false);
           t1.count_3 = 1;
           t1 = new $.MainMenu_render_anon2(t1);
-          this.this_9.set$fin(t1);
+          this.this_7.set$fin(t1);
           break;
       }
     } else $.document().get$body().get$style().set$cursor('pointer');
   } else {
     t1 = t3.get$anim();
     t2 = this.box_4.i_6;
-    if ($.gtB($.index(this.this_9.get$anim(), this.box_4.i_6), 0)) {
-      t3 = this.this_9.get$anim();
+    if ($.gtB($.index(this.this_7.get$anim(), this.box_4.i_6), 0)) {
+      t3 = this.this_7.get$anim();
       t4 = this.box_4.i_6;
       t5 = $.sub($.index(t3, t4), 0.1);
       $.indexSet(t3, t4, t5);
@@ -12841,26 +12889,26 @@ $$.MainMenu_render_anon = {"":
     } else t3 = 0;
     $.indexSet(t1, t2, t3);
   }
-  t1 = this.this_9.get$context();
+  t1 = this.this_7.get$context();
   t2 = t1.get$globalAlpha();
-  t3 = $.div($.index(this.this_9.get$anim(), this.box_4.i_6), 2);
+  t3 = $.div($.index(this.this_7.get$anim(), this.box_4.i_6), 2);
   if (typeof t3 !== 'number') throw $.iae(t3);
   t1.set$globalAlpha($.mul(t2, 0.5 + t3));
-  var bw = $.add(this.buttonWidth_8, $.mul($.index(this.this_9.get$anim(), this.box_4.i_6), 20));
-  var bh = $.add(this.buttonHeight_7, $.mul($.index(this.this_9.get$anim(), this.box_4.i_6), 10));
-  this.this_9.get$context().fillRect$4($.sub($.div(this.this_9.get$canvas().get$width(), 2), $.div(bw, 2)), $.sub(this.box_4.ypos_5, $.div(bh, 2)), bw, bh);
-  t1 = this.this_9.get$context();
+  var bw = $.add(this.buttonWidth_10, $.mul($.index(this.this_7.get$anim(), this.box_4.i_6), 20));
+  var bh = $.add(this.buttonHeight_8, $.mul($.index(this.this_7.get$anim(), this.box_4.i_6), 10));
+  this.this_7.get$context().fillRect$4($.sub(this.linex_9, $.div(bw, 2)), $.sub(this.box_4.ypos_5, $.div(bh, 2)), bw, bh);
+  t1 = this.this_7.get$context();
   t4 = t1.get$globalAlpha();
-  t5 = $.div($.index(this.this_9.get$anim(), this.box_4.i_6), 2);
+  t5 = $.div($.index(this.this_7.get$anim(), this.box_4.i_6), 2);
   if (typeof t5 !== 'number') throw $.iae(t5);
   t1.set$globalAlpha($.div(t4, 0.5 + t5));
-  this.this_9.get$context().set$fillStyle('white');
-  this.this_9.get$context().set$font('24px Arial');
-  this.this_9.get$context().set$textAlign('center');
-  this.this_9.get$context().fillText$3(s, $.div(this.this_9.get$canvas().get$width(), 2), $.add($.sub(this.box_4.ypos_5, $.div(this.buttonHeight_7, 2)), 32));
-  var ypos = $.add(this.box_4.ypos_5, $.add(this.buttonHeight_7, 10));
+  this.this_7.get$context().set$fillStyle('white');
+  this.this_7.get$context().set$font('24px Arial');
+  this.this_7.get$context().set$textAlign('center');
+  this.this_7.get$context().fillText$3(s, this.linex_9, $.add($.sub(this.box_4.ypos_5, $.div(this.buttonHeight_8, 2)), 32));
+  var ypos = $.add(this.box_4.ypos_5, $.add(this.buttonHeight_8, 10));
   this.box_4.ypos_5 = ypos;
-  this.this_9.get$context().restore$0();
+  this.this_7.get$context().restore$0();
   var i = $.add(this.box_4.i_6, 1);
   this.box_4.i_6 = i;
  }
@@ -13002,7 +13050,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon70(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon73(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13034,7 +13082,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon71(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13090,7 +13138,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               var index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).get$alive() === true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon70(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon73(citizen));
                 var t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 var t2 = $.toInt(5 * t1);
@@ -13114,7 +13162,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).hasTag$1('zombie') !== true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon71(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
                 t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 t2 = $.toInt(5 * t1);
@@ -13134,7 +13182,7 @@ $$.anon8 = {"":
  }
 };
 
-$$.anon70 = {"":
+$$.anon73 = {"":
  ["citizen_2"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13145,7 +13193,7 @@ $$.anon70 = {"":
  }
 };
 
-$$.anon71 = {"":
+$$.anon74 = {"":
  ["citizen_3"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13163,7 +13211,7 @@ $$.anon9 = {"":
   $.ltB(citizen.distanceTo$1($.world.get$player()), 256) && $.audio.play$1('hurt');
   if ($.world.get$player().get$attacking() === true) {
     $.niceFactor = $.sub($.niceFactor, 0.005);
-    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon69(citizen));
+    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon72(citizen));
     var t1 = $.Math_random();
     if (typeof t1 !== 'number') throw $.iae(t1);
     var t2 = $.toInt(5 * t1);
@@ -13178,7 +13226,7 @@ $$.anon9 = {"":
  }
 };
 
-$$.anon69 = {"":
+$$.anon72 = {"":
  ["citizen_4"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13317,7 +13365,7 @@ $$.anon18 = {"":
         t1 = cnodes.length;
         if (i < 0 || i >= t1) throw $.ioore(i);
         if (cnodes[i].get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon68(a));
+          $.some($.index($.tags, 'house'), new $.anon71(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13344,7 +13392,7 @@ $$.anon18 = {"":
     } else {
       for (var i = $.sub($.get$length(cnodes), 1); $.geB(i, 0); i = $.sub(i, 1)) {
         if ($.index(cnodes, i).get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon68(a));
+          $.some($.index($.tags, 'house'), new $.anon71(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13361,7 +13409,7 @@ $$.anon18 = {"":
  }
 };
 
-$$.anon68 = {"":
+$$.anon71 = {"":
  ["a_6"],
  super: "Closure",
  $call$1: function(house) {
@@ -13421,7 +13469,7 @@ $$.anon22 = {"":
     var d = $.index(avatar, 'home').distanceTo$1(avatar);
     if ($.gtB(d, 256)) {
       t1.found_1 = false;
-      $.some($.index($.tags, 'house'), new $.anon67(t1, avatar));
+      $.some($.index($.tags, 'house'), new $.anon70(t1, avatar));
       if (t1.found_1 === true) {
         $.indexSet(avatar, 'collisionCount', 0);
         $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
@@ -13441,7 +13489,7 @@ $$.anon22 = {"":
  }
 };
 
-$$.anon67 = {"":
+$$.anon70 = {"":
  ["box_0", "avatar_7"],
  super: "Closure",
  $call$1: function(house) {
@@ -13682,13 +13730,13 @@ $$.anon32 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon66(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon69(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon66 = {"":
+$$.anon69 = {"":
  ["avatar_8"],
  super: "Closure",
  $call$1: function(player) {
@@ -13716,13 +13764,13 @@ $$.anon34 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon65(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon68(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon65 = {"":
+$$.anon68 = {"":
  ["avatar_9"],
  super: "Closure",
  $call$1: function(player) {
@@ -13822,12 +13870,12 @@ $$.anon40 = {"":
         }
       }
     }
-    $.some($.index($.tags, 'friendly'), new $.anon64(zom));
+    $.some($.index($.tags, 'friendly'), new $.anon67(zom));
   }
  }
 };
 
-$$.anon64 = {"":
+$$.anon67 = {"":
  ["zom_10"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13855,11 +13903,11 @@ $$.anon42 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon63(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon66(zom));
  }
 };
 
-$$.anon63 = {"":
+$$.anon66 = {"":
  ["zom_11"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13918,11 +13966,11 @@ $$.anon45 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon62(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon65(zom));
  }
 };
 
-$$.anon62 = {"":
+$$.anon65 = {"":
  ["zom_12"],
  super: "Closure",
  $call$1: function(friend) {
@@ -13975,11 +14023,11 @@ $$.anon50 = {"":
  ["this_13"],
  super: "Closure",
  $call$1: function(data) {
-  $.world.load$2(data, new $.anon57(this.this_13));
+  $.world.load$2(data, new $.anon60(this.this_13));
  }
 };
 
-$$.anon57 = {"":
+$$.anon60 = {"":
  ["this_14"],
  super: "Closure",
  $call$0: function() {
@@ -14337,31 +14385,31 @@ $$.anon55 = {"":
  }
 };
 
-$$.anon72 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
-$$.anon73 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
-$$.anon74 = {"":
- [],
- super: "Closure",
- $call$1: function(e) {
-  e.preventDefault$0();
- }
-};
-
 $$.anon56 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon57 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon58 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(e) {
+  e.preventDefault$0();
+ }
+};
+
+$$.anon59 = {"":
  ["this_0"],
  super: "Closure",
  $call$1: function(soundName) {
@@ -15131,28 +15179,28 @@ $$.World_openMenu_anon2 = {"":
  }
 };
 
-$$.anon58 = {"":
- [],
- super: "Closure",
- $call$0: function() {
- }
-};
-
-$$.anon59 = {"":
- [],
- super: "Closure",
- $call$0: function() {
- }
-};
-
-$$.anon60 = {"":
- [],
- super: "Closure",
- $call$0: function() {
- }
-};
-
 $$.anon61 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+ }
+};
+
+$$.anon62 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+ }
+};
+
+$$.anon63 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+ }
+};
+
+$$.anon64 = {"":
  [],
  super: "Closure",
  $call$0: function() {
@@ -16228,7 +16276,8 @@ $.Primitives_newList = function(length$) {
 
 $.main = function() {
   $.CANVAS_OFFSETX = $.sub($.div($.window().get$innerWidth(), 2), 400.0);
-  $.CANVAS_OFFSETY = $.sub($.div($.window().get$innerHeight(), 2), 400.0);
+  $.CANVAS_OFFSETY = $.sub($.div($.window().get$innerHeight(), 2), 225.0);
+  if ($.ltB($.CANVAS_OFFSETY, 0)) $.CANVAS_OFFSETY = 0;
   $.document().query$1('#canvas').get$style().set$position('absolute');
   var t1 = $.S($.CANVAS_OFFSETX) + 'px';
   $.document().query$1('#canvas').get$style().set$left(t1);
@@ -17734,6 +17783,7 @@ $.CTC9 = new Isolate.$isolateProperties.EmptyQueueException();
 $._pendingRequests = null;
 $.audio = null;
 $.tags = null;
+$.MOBILE = false;
 $.tagEvents = null;
 $.rpatCount = 0;
 $.SCREEN_WIDTH = null;

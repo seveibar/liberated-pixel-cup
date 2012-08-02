@@ -59,7 +59,7 @@ final int CHUNK_SIZE = 8;
 final int CHUNK_JOIN = 6;
 
 bool DEBUG = false;//TODO make final
-final bool MOBILE = false;
+bool MOBILE = false;
 
 int patch_size;
 
@@ -136,7 +136,7 @@ void rmTag(GameObject object,String tag) {
 int SCREEN_WIDTH;
 int SCREEN_HEIGHT;
 final int STATIC_WIDTH = 800;
-final int STATIC_HEIGHT = 800;
+final int STATIC_HEIGHT = 450;
 int RENDER_DISTANCE;
 
 num RESOLUTION = 1;
@@ -237,11 +237,11 @@ bool rpat(int n){
 Game game;
 MainMenu menu;
 void main() {
-  if (MOBILE){
-    html.document.body.webkitRequestFullscreen();
-  }
   CANVAS_OFFSETX = html.window.innerWidth/2 - STATIC_WIDTH/2;
   CANVAS_OFFSETY = html.window.innerHeight/2 - STATIC_HEIGHT/2;
+  if (CANVAS_OFFSETY<0){
+    CANVAS_OFFSETY = 0;
+  }
   html.document.query("#canvas").style.position = "absolute";
   html.document.query("#canvas").style.left = "${CANVAS_OFFSETX}px";
   html.document.query("#canvas").style.top = "${CANVAS_OFFSETY}px";
@@ -826,8 +826,8 @@ class Game {
     animationMap = new Map<String,Animation>();
     canvas = html.document.query("#canvas");
     
-    canvas.width  = 800;
-    canvas.height = 600;
+    canvas.width  = STATIC_WIDTH;
+    canvas.height = STATIC_HEIGHT;
     //Uncomment for fullscreen
     //canvas.width = (html.window.innerWidth/RESOLUTION).toInt();
     //canvas.height = (html.window.innerHeight/RESOLUTION).toInt();

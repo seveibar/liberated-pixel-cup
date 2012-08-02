@@ -7092,16 +7092,13 @@ $$.MainMenu = {"":
   t3 = this.credits === true;
   t4 = this.anim;
   if (t3) {
-    t2.set$globalAlpha($.index(t4, 4));
-    t3 = this.anim;
-    if ($.ltB($.index(t3, 4), 1)) {
-      t4 = this.anim;
-      t5 = $.add($.index(t4, 4), 0.1);
-      $.indexSet(t4, 4, t5);
-      t4 = t5;
-    } else t4 = 1;
-    $.indexSet(t3, 4, t4);
-    t2.drawImage$3(this.creditsImage, 200, 250);
+    if ($.ltB($.index(t4, 4), 1)) {
+      t3 = this.anim;
+      t5 = $.add($.index(t3, 4), 0.05);
+      $.indexSet(t3, 4, t5);
+      t3 = t5;
+    } else t3 = 1;
+    $.indexSet(t4, 4, t3);
     if ($.event.get$mouseDown() === true) {
       this.credits = false;
       $.event.set$mouseDown(false);
@@ -7109,12 +7106,14 @@ $$.MainMenu = {"":
   } else {
     if ($.gtB($.index(t4, 4), 0)) {
       t3 = this.anim;
-      t5 = $.sub($.index(t3, 4), 0.1);
+      t5 = $.sub($.index(t3, 4), 0.05);
       $.indexSet(t3, 4, t5);
       t3 = t5;
     } else t3 = 0;
     $.indexSet(t4, 4, t3);
   }
+  t2.set$globalAlpha($.index(this.anim, 4));
+  t2.drawImage$3(this.creditsImage, 75, 75);
   t3 = $.index(this.anim, 4);
   if (typeof t3 !== 'number') throw $.iae(t3);
   t2.set$globalAlpha(1 - t3);
@@ -8613,9 +8612,9 @@ $$.MenuInterface = {"":
   c.set$fillStyle(pattern);
   var t5 = cx - 300;
   var t6 = t5 + 32 + 10;
-  var t7 = cy - 300;
+  var t7 = cy - 200;
   var t8 = t7 + 32;
-  c.rect$4(t6, t8, 516, 512);
+  c.rect$4(t6, t8, 516, 312);
   c.fill$0();
   c.closePath$0();
   t6 = ui.length;
@@ -8623,36 +8622,37 @@ $$.MenuInterface = {"":
   var t9 = ui[8];
   t5 += 12;
   c.drawImage$3(t9, t5, t7);
-  for (var t1 = t5 + 32, t2 = cx + 300, t3 = t2 - 12 - 32, t4 = cy + 300 - 64, i = 0; i < 16; ++i) {
-    t6 = ui.length;
-    if (9 >= t6) throw $.ioore(9);
-    t9 = ui[9];
-    var t10 = i * 32;
-    var t11 = t1 + t10;
-    c.drawImage$3(t9, t11, t7);
-    t9 = ui.length;
-    if (15 >= t9) throw $.ioore(15);
-    var t12 = ui[15];
-    t10 += t8;
-    c.drawImage$3(t12, t5, t10);
-    t12 = ui.length;
-    if (17 >= t12) throw $.ioore(17);
-    c.drawImage$3(ui[17], t3, t10);
-    t10 = ui.length;
-    if (23 >= t10) throw $.ioore(23);
-    c.drawImage$3(ui[23], t11, t4);
+  for (var t1 = t5 + 32, t2 = cy + 200 - 64, i = 0; i < 16; ++i) {
+    var t3 = ui.length;
+    if (9 >= t3) throw $.ioore(9);
+    t4 = ui[9];
+    t6 = t1 + i * 32;
+    c.drawImage$3(t4, t6, t7);
+    t4 = ui.length;
+    if (23 >= t4) throw $.ioore(23);
+    c.drawImage$3(ui[23], t6, t2);
   }
-  t1 = ui.length;
-  if (10 >= t1) throw $.ioore(10);
-  t3 = ui[10];
-  t6 = t2 - 32 - 12;
-  c.drawImage$3(t3, t6, t7);
+  for (t1 = cx + 300, t3 = t1 - 12 - 32, i = 0; i < 10; ++i) {
+    t4 = ui.length;
+    if (15 >= t4) throw $.ioore(15);
+    t6 = ui[15];
+    t9 = t8 + i * 32;
+    c.drawImage$3(t6, t5, t9);
+    t6 = ui.length;
+    if (17 >= t6) throw $.ioore(17);
+    c.drawImage$3(ui[17], t3, t9);
+  }
+  t3 = ui.length;
+  if (10 >= t3) throw $.ioore(10);
+  t4 = ui[10];
+  t6 = t1 - 32 - 12;
+  c.drawImage$3(t4, t6, t7);
   t7 = ui.length;
   if (22 >= t7) throw $.ioore(22);
-  c.drawImage$3(ui[22], t5, t4);
+  c.drawImage$3(ui[22], t5, t2);
   t5 = ui.length;
   if (24 >= t5) throw $.ioore(24);
-  c.drawImage$3(ui[24], t6, t4);
+  c.drawImage$3(ui[24], t6, t2);
   c.set$font('18px Arial');
   c.set$fillStyle('#ab7d10');
   c.set$textAlign('center');
@@ -8691,22 +8691,28 @@ $$.MenuInterface = {"":
       var pattern = c.createPattern$2($.index(ui, 16), 'repeat');
       c.beginPath$0();
       c.set$fillStyle(pattern);
-      c.rect$4($.add($.add($.sub(cx, 300), 32), 10), $.add($.sub(cy, 300), 32), 516, 512);
+      c.rect$4($.add($.add($.sub(cx, 300), 32), 10), $.add($.sub(cy, 200), 32), 516, 312);
       c.fill$0();
       c.closePath$0();
-      c.drawImage$3($.index(ui, 8), $.add($.sub(cx, 300), 12), $.sub(cy, 300));
+      c.drawImage$3($.index(ui, 8), $.add($.sub(cx, 300), 12), $.sub(cy, 200));
       for (var i = 0; i < 16; ++i) {
         var t1 = $.index(ui, 9);
         var t2 = $.add($.add($.sub(cx, 300), 12), 32);
         var t3 = i * 32;
-        c.drawImage$3(t1, $.add(t2, t3), $.sub(cy, 300));
-        c.drawImage$3($.index(ui, 15), $.add($.sub(cx, 300), 12), $.add($.add($.sub(cy, 300), 32), t3));
-        c.drawImage$3($.index(ui, 17), $.sub($.sub($.add(cx, 300), 12), 32), $.add($.add($.sub(cy, 300), 32), t3));
-        c.drawImage$3($.index(ui, 23), $.add($.add($.add($.sub(cx, 300), 12), 32), t3), $.sub($.add(cy, 300), 64));
+        c.drawImage$3(t1, $.add(t2, t3), $.sub(cy, 200));
+        c.drawImage$3($.index(ui, 23), $.add($.add($.add($.sub(cx, 300), 12), 32), t3), $.sub($.add(cy, 200), 64));
       }
-      c.drawImage$3($.index(ui, 10), $.sub($.sub($.add(cx, 300), 32), 12), $.sub(cy, 300));
-      c.drawImage$3($.index(ui, 22), $.add($.sub(cx, 300), 12), $.sub($.add(cy, 300), 64));
-      c.drawImage$3($.index(ui, 24), $.sub($.sub($.add(cx, 300), 32), 12), $.sub($.add(cy, 300), 64));
+      for (i = 0; i < 10; ++i) {
+        t1 = $.index(ui, 15);
+        t2 = $.add($.sub(cx, 300), 12);
+        t3 = $.add($.sub(cy, 200), 32);
+        var t4 = i * 32;
+        c.drawImage$3(t1, t2, $.add(t3, t4));
+        c.drawImage$3($.index(ui, 17), $.sub($.sub($.add(cx, 300), 12), 32), $.add($.add($.sub(cy, 200), 32), t4));
+      }
+      c.drawImage$3($.index(ui, 10), $.sub($.sub($.add(cx, 300), 32), 12), $.sub(cy, 200));
+      c.drawImage$3($.index(ui, 22), $.add($.sub(cx, 300), 12), $.sub($.add(cy, 200), 64));
+      c.drawImage$3($.index(ui, 24), $.sub($.sub($.add(cx, 300), 32), 12), $.sub($.add(cy, 200), 64));
       c.set$font('18px Arial');
       c.set$fillStyle('#ab7d10');
       c.set$textAlign('center');
@@ -8750,25 +8756,25 @@ $$.MenuInterface = {"":
       this.renderFunction = this.get$renderOptionsMenu();
       var options = $.index(this.data, 'options');
       for (t1 = this.buttons, i = 0; $.ltB(i, $.get$length(options)); ++i) {
-        $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), i * 50)));
+        $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.add($.div($.SCREEN_WIDTH, 8), $.mod(i, 2) * 200), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt(i / 2), 50))));
       }
-      $.add$1(t1, $.MenuButton$('Exit', new $.anon61(), $.div($.SCREEN_WIDTH, 8), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.get$length(options), 50))));
+      $.add$1(t1, $.MenuButton$('Exit', new $.anon61(), $.add($.div($.SCREEN_WIDTH, 8), $.mul($.mod($.get$length(options), 2), 200)), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt($.div($.get$length(options), 2)), 50))));
       break;
     case 'confirm':
       this.renderFunction = this.get$renderConfirmMenu();
       var cx = $.div($.SCREEN_WIDTH, 2);
       var cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon62(), $.sub(cx, 150), $.add(cy, 200)));
-      $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon62(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 100)));
       break;
     case 'broke':
       this.renderFunction = this.get$renderConfirmMenu();
       cx = $.div($.SCREEN_WIDTH, 2);
       cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon63(), $.sub(cx, 150), $.add(cy, 200)));
-      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon64(), $.add(cx, 150), $.add(cy, 200)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon63(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon64(), $.add(cx, 150), $.add(cy, 100)));
       break;
   }
   var i;
@@ -14456,7 +14462,7 @@ $$.World_startCycle_anon0 = {"":
  $call$1: function(e) {
   if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_6.get$menuInterfaces()), 0)) {
     var t1 = new $.World_startCycle_prompt();
-    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon13(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon14(this.this_6)])]])));
+    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon13(this.this_6)]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon14(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon15(this.this_6)])]])));
   }
  }
 };
@@ -14476,11 +14482,11 @@ $$.World_startCycle_anon5 = {"":
  ["this_8", "prompt_7"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon21(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon22(this.this_8, this.prompt_7)])]])));
+  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon23(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon24(this.this_8, this.prompt_7)])]])));
  }
 };
 
-$$.World_startCycle_anon21 = {"":
+$$.World_startCycle_anon23 = {"":
  ["this_9"],
  super: "Closure",
  $call$0: function() {
@@ -14488,7 +14494,7 @@ $$.World_startCycle_anon21 = {"":
  }
 };
 
-$$.World_startCycle_anon22 = {"":
+$$.World_startCycle_anon24 = {"":
  ["this_11", "prompt_10"],
  super: "Closure",
  $call$0: function() {
@@ -14500,11 +14506,11 @@ $$.World_startCycle_anon6 = {"":
  ["this_13", "prompt_12"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon20(this.this_13, this.prompt_12)])]])));
+  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon22(this.this_13, this.prompt_12)])]])));
  }
 };
 
-$$.World_startCycle_anon20 = {"":
+$$.World_startCycle_anon22 = {"":
  ["this_15", "prompt_14"],
  super: "Closure",
  $call$0: function() {
@@ -14516,11 +14522,11 @@ $$.World_startCycle_anon7 = {"":
  ["this_16", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon15(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon16(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon17(this.this_16, this.box_3)])]])));
+  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon17(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon18(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon19(this.this_16, this.box_3)])]])));
  }
 };
 
-$$.World_startCycle_anon15 = {"":
+$$.World_startCycle_anon17 = {"":
  ["this_17"],
  super: "Closure",
  $call$0: function() {
@@ -14528,7 +14534,7 @@ $$.World_startCycle_anon15 = {"":
  }
 };
 
-$$.World_startCycle_anon16 = {"":
+$$.World_startCycle_anon18 = {"":
  ["this_18", "box_3"],
  super: "Closure",
  $call$0: function() {
@@ -14536,7 +14542,7 @@ $$.World_startCycle_anon16 = {"":
  }
 };
 
-$$.World_startCycle_anon17 = {"":
+$$.World_startCycle_anon19 = {"":
  ["this_19", "box_3"],
  super: "Closure",
  $call$0: function() {
@@ -14546,13 +14552,13 @@ $$.World_startCycle_anon17 = {"":
   $.setRuntimeTypeInfo(ax, ({E: 'int'}));
   var ay = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(ay, ({E: 'int'}));
-  $.forEach(this.box_3.debugPathNodes_4, new $.World_startCycle_anon18(ay, ax));
+  $.forEach(this.box_3.debugPathNodes_4, new $.World_startCycle_anon20(ay, ax));
   var t2 = this.box_3.debugPathNodes_4;
   var end = $.index(t2, $.sub($.get$length(t2), 1));
   var start = $.index(this.box_3.debugPathNodes_4, 0);
   t1.endHouse_1 = false;
   t1.startHouse_2 = false;
-  $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon19(start, t1, end));
+  $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon21(start, t1, end));
   $.add$1($.index(this.this_19.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
   var debugPathNodes = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(debugPathNodes, ({E: 'Vec2'}));
@@ -14560,7 +14566,7 @@ $$.World_startCycle_anon17 = {"":
  }
 };
 
-$$.World_startCycle_anon18 = {"":
+$$.World_startCycle_anon20 = {"":
  ["ay_21", "ax_20"],
  super: "Closure",
  $call$1: function(node) {
@@ -14569,7 +14575,7 @@ $$.World_startCycle_anon18 = {"":
  }
 };
 
-$$.World_startCycle_anon19 = {"":
+$$.World_startCycle_anon21 = {"":
  ["start_23", "box_0", "end_22"],
  super: "Closure",
  $call$1: function(house) {
@@ -14639,38 +14645,54 @@ $$.World_startCycle_anon14 = {"":
  ["this_28"],
  super: "Closure",
  $call$0: function() {
-  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_28.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
+  return $.add$1(this.this_28.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon16()])));
+ }
+};
+
+$$.World_startCycle_anon16 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+  $.print('Confirmed');
+ }
+};
+
+$$.World_startCycle_anon15 = {"":
+ ["this_29"],
+ super: "Closure",
+ $call$0: function() {
+  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_29.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
  }
 };
 
 $$.World_startCycle_anon1 = {"":
- ["this_29"],
+ ["this_30"],
  super: "Closure",
  $call$1: function(e) {
-  !$.eqB($.get$length(this.this_29.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
-  var i = $.sub($.get$length(this.this_29.get$menuInterfaces()), 1);
+  !$.eqB($.get$length(this.this_30.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
+  var i = $.sub($.get$length(this.this_30.get$menuInterfaces()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(1, i);
   for (; i >= 0; --i) {
-    $.index(this.this_29.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_29.get$menuInterfaces(), i, 1);
+    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
   }
-  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_29));
+  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_30));
  },
  $call$1$bailout: function(state, i) {
   for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.index(this.this_29.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_29.get$menuInterfaces(), i, 1);
+    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
   }
-  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_29));
+  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_30));
  }
 };
 
 $$.World_startCycle_anon4 = {"":
- ["this_30"],
+ ["this_31"],
  super: "Closure",
  $call$1: function(item) {
-  if ($.ltB(this.this_30.get$player().distanceTo$1(item), 32)) {
+  if ($.ltB(this.this_31.get$player().distanceTo$1(item), 32)) {
     $.event.set$mouseDown(false);
     $.notify('You found ' + $.S(item.get$prop().containsKey$1('properName') === true ? $.index(item, 'properName') : item.get$type()));
-    this.this_30.pickUpItem$1(item);
+    this.this_31.pickUpItem$1(item);
     return true;
   }
   return false;
@@ -14678,34 +14700,34 @@ $$.World_startCycle_anon4 = {"":
 };
 
 $$.World_startCycle_anon2 = {"":
- ["this_31"],
+ ["this_32"],
  super: "Closure",
  $call$1: function(e) {
-  $.eqB($.event.key$1('space'), 1) && $.tags.containsKey$1('salesman') === true && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon3(this.this_31));
+  $.eqB($.event.key$1('space'), 1) && $.tags.containsKey$1('salesman') === true && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon3(this.this_32));
  }
 };
 
 $$.World_startCycle_anon3 = {"":
- ["this_32"],
+ ["this_33"],
  super: "Closure",
  $call$1: function(a) {
-  $.ltB(a.distanceTo$1(this.this_32.get$player()), 128) && this.this_32.openMenu$1($.index(a, 'menu'));
+  $.ltB(a.distanceTo$1(this.this_33.get$player()), 128) && this.this_33.openMenu$1($.index(a, 'menu'));
  }
 };
 
 $$.World_startCycle_cycle = {"":
- ["context_34", "this_33"],
+ ["context_35", "this_34"],
  super: "Closure",
  $call$1: function(a) {
-  if (this.this_33.get$paused() !== true) {
+  if (this.this_34.get$paused() !== true) {
     $.window().requestAnimationFrame$1(this);
-    this.this_33.update$0();
+    this.this_34.update$0();
     if ($.eqB($.event.key$1('T'), 1)) {
-      this.this_33.update$0();
-      this.this_33.update$0();
-      this.this_33.update$0();
+      this.this_34.update$0();
+      this.this_34.update$0();
+      this.this_34.update$0();
     }
-    this.this_33.render$1(this.context_34);
+    this.this_34.render$1(this.context_35);
   }
  }
 };

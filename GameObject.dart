@@ -89,9 +89,9 @@ class GameObject extends Vec2 {
     if (DEBUG){
       c.fillStyle = "#fff";
       String string = "(${(x*10).toInt()/10.0},${(y*10).toInt()/10.0})";
-      c.fillText(string,-.5 * c.measureText(string).width , -.5 * sep+10);
+      c.fillText(string, 0 , -.5 * sep+10);
       string = this.tags.toString();
-      c.fillText(string,-.5 * c.measureText(string).width , .5 * sep+10);
+      c.fillText(string,0 , .5 * sep+10);
     }
   }
   GameObject findNearest(String tag){

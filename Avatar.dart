@@ -34,7 +34,7 @@ class Avatar extends GameObject {
     //addTag(this,"avatar");
   }
   
-  void hurt(int damage,Vec2 direction){
+  void hurt(num damage,Vec2 direction){
     fireTagEvent("hit");
     health -= damage * armor;
     if (damage > 10){
@@ -65,7 +65,7 @@ class Avatar extends GameObject {
       }
     }
   }
-  void say(String text){
+  void say(String text,[int time = 300]){
     speaking = true;
     speech = text;
     sayTime = 600;
@@ -98,7 +98,7 @@ class Avatar extends GameObject {
       c.fillRect(8, -12 - 30, bubbleWidth, 30);
       c.strokeRect(8, -12 - 30, bubbleWidth, 30);
       c.fillStyle = "#000";
-      c.fillText(speech, 16, -22);
+      c.fillText(speech, bubbleWidth/2 + 6, -22);
       c.globalAlpha /= .75;
     }
     c.restore();

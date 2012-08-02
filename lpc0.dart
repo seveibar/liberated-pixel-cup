@@ -4,6 +4,8 @@
 #source("web.dart");
 #source("res.dart");
 
+#source("MainMenu.dart");
+
 #source("PathNode.dart");
 #source("Path.dart");
 #source("GameObject.dart");
@@ -39,12 +41,8 @@ final int GRAPHIC_BLOCK_SIZE = 32;
 final int CHUNK_SIZE = 8;
 final int CHUNK_JOIN = 10;
 
-bool DEBUG = true;//TODO make final
+bool DEBUG = false;//TODO make final
 final bool MOBILE = false;
-
-int AGRO_DISTANCE;
-int ZOMBIE_WANDER_DISTANCE ;
-num ZOMBIE_SPEED ;
 
 int patch_size;
 
@@ -120,6 +118,8 @@ void rmTag(GameObject object,String tag) {
 
 int SCREEN_WIDTH;
 int SCREEN_HEIGHT;
+final int STATIC_WIDTH = 800;
+final int STATIC_HEIGHT = 800;
 int RENDER_DISTANCE;
 
 num RESOLUTION = 1;
@@ -218,7 +218,14 @@ bool rpat(int n){
   return ((rpatCount ++)%n == 0);
 }
 Game game;
+MainMenu menu;
 void main() {
+  html.window.on.load.add((e){
+   menu = new MainMenu();
+  });
+}
+void startGame(){
+  menu = null;
   game = new Game();
 }
 class Game {
@@ -226,9 +233,6 @@ class Game {
   html.CanvasRenderingContext2D context;
   
   Game(){
-    AGRO_DISTANCE = 256;
-    ZOMBIE_WANDER_DISTANCE = 256;
-    ZOMBIE_SPEED = .6;
     niceFactor = 0;
     rpatCount = (Math.random() * 64).toInt();
     classMap = {
@@ -270,7 +274,7 @@ class Game {
                       rmTag(citizen,tag);
                     }
                   });
-                  citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()]);
+                  citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()],100);
                   citizen.tags.add("scared");
                   addTag(citizen,"scared");
                   citizen["scaredOf"] = zoms[index];
@@ -302,7 +306,9 @@ class Game {
             }
           },
           "hit":(Avatar citizen){
-            audio.play("hurt");
+            if (citizen.distanceTo(world.player) < 256){
+              audio.play("hurt");
+            }
             if (world.player.attacking){
               niceFactor -= .005;
               ["wander","traveler","lost","following","homebound","scared"].forEach((String tag){
@@ -342,6 +348,7 @@ class Game {
           },
           "die":(Avatar player){
             notify("You have died, please wait");
+            player["deadTime"] = 540;
           },
           "decomposed":(Avatar player){
             GameOver(context); 
@@ -361,7 +368,7 @@ class Game {
             citizen.velocity.add(citizen["runDirection"]);
             if (rpat(8)){
               Avatar zom = citizen["scaredOf"];
-              if (zom.distanceTo(citizen) > AGRO_DISTANCE + 32){
+              if (zom.distanceTo(citizen) > world.AGRO_DISTANCE + 32){
                 switchTag(citizen,"scared","lost");
                 citizen.tags.add("wander");
                 addTag(citizen,"wander");
@@ -380,7 +387,7 @@ class Game {
                 a["pathDirection"] = cnodes[ni].start ? 1 : -1;
                 a["pathIndex"] = cnodes[ni].start ? 0 : cnodes[ni].path.points.length - 1;
                 a["pathPoint"] = cnodes[ni].clone();
-                a["pathMove"] = cnodes[ni].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
+                a["pathMove"] = cnodes[ni].clone().sub(a).normalize().multiplyScalar(a.speed);
               }else{
                 for (int i = cnodes.length-1;i>=0;i--){
                   if (cnodes[i].house){
@@ -407,7 +414,7 @@ class Game {
           },
           "collide":(Avatar a){
             a["pathPoint"] = a["path"].points[a["pathIndex"]];
-            a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
+            a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().multiplyScalar(a.speed);
             a.add(a["pathMove"]);
           },
           "update":(Avatar a){
@@ -420,7 +427,7 @@ class Game {
                 a["pathPoint"] = a["path"].points[a["pathIndex"]].clone();
                 num d = a.distanceTo(a["pathPoint"])/4;
                 a["pathPoint"].addTo(Math.random() * d - d/2,Math.random() * d - d/2);
-                a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().divideScalar(2).multiplyScalar(a.speed);
+                a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().multiplyScalar(a.speed);
               }
             }
           }
@@ -430,7 +437,7 @@ class Game {
             avatar["collisionCount"] = 0;
             //TODO SIMPLIFY
             GameObject home = avatar["home"];
-            avatar["homeboundDirection"] = home.clone().sub(avatar).normalize().divideScalar(2).multiplyScalar(avatar.speed);
+            avatar["homeboundDirection"] = home.clone().sub(avatar).normalize().multiplyScalar(avatar.speed);
           },
           "update":(Avatar avatar){
             avatar.velocity.add(avatar["homeboundDirection"]);
@@ -448,7 +455,7 @@ class Game {
                 });
                 if (found){
                   avatar["collisionCount"] = 0;
-                  avatar["homeboundDirection"] = avatar["home"].clone().sub(avatar).normalize().divideScalar(2).multiplyScalar(avatar.speed);
+                  avatar["homeboundDirection"] = avatar["home"].clone().sub(avatar).normalize().multiplyScalar(avatar.speed);
                 }else{
                   switchTag(avatar,"homebound","lost");
                   avatar.tags.add("wander");
@@ -546,9 +553,7 @@ class Game {
             for (int i = (Math.random() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
               int index = i%tags["house"].length;
               if (tags["house"][index].distanceTo(avatar) < 256){
-                if (rpat(2)){
-                  avatar.say(rpat(4) ? "Thank you!" : "Thanks!" );
-                }
+                avatar.say(rpat(2) ? "Thank you!" : "Thanks!",100 );
                 avatar["home"] = tags["house"][index];
                 world.giveCoin(avatar,(Math.random() * 20 + 5).toInt());
                 iter = 9999;
@@ -573,9 +578,9 @@ class Game {
               avatar.prop["waitTime"] --;
             }else if (avatar.prop["destination"].distanceTo(avatar)>2){
               Vec2 destination = avatar.prop["destination"];
-              avatar.velocity.add(destination.clone().sub(avatar).normalize().divideScalar(2));
+              avatar.velocity.add(destination.clone().sub(avatar).normalize().multiplyScalar(avatar.speed));
             }else{
-              if (Math.random() < .5){
+              if (Math.random() < .75){
                 avatar.prop["destination"] = avatar.clone().addTo(Math.random() * 400 - 200,Math.random() * 400 - 200);
               }else{
                 avatar.prop["destination"] = avatar.clone();
@@ -647,8 +652,11 @@ class Game {
           }
         },
         "zombie":{
+          "init":(Avatar zom){
+            zom.speed = .5 + Math.random();
+          },
           "die":(Avatar a){
-            if (player.distanceTo(a) < 256 && player.attacking){
+            if (world.player.distanceTo(a) < 256 && world.player.attacking){
               world.zombies_killed ++;
               world.giveCoin(a,(Math.random() * 4 + 1).toInt());
             }
@@ -657,14 +665,47 @@ class Game {
         "hostile-wander":{
           "init":(Avatar zom){
             zom["originalPosition"] = zom.clone();
-            zom.damage = 25;
-            zom.armor = 1;
+            zom.damage = world.ZOMBIE_DAMAGE;
+            zom.armor = world.ZOMBIE_ARMOR;
             tagEvents["wander"]["init"](zom);
           },
           "update":(Avatar zom){
             //Check for nearby enemies
+            if (rpat(20)){
+              if (zom.prop["waitTime"] > 0){
+                zom.prop["waitTime"] --;
+              }else if (zom.prop["destination"].distanceTo(zom)>2){
+                Vec2 destination = zom.prop["destination"];
+                zom.velocity.add(destination.clone().sub(zom).normalize().multiplyScalar(zom.speed * world.ZOMBIE_SPEED));
+              }else{
+                if (Math.random() < .75){
+                  zom.prop["destination"] = zom.clone().addTo(Math.random() * 400 - 200,Math.random() * 400 - 200);
+                }else{
+                  zom.prop["destination"] = zom.clone();
+                  zom.prop["waitTime"] = Math.random() * 200;
+                  zom.currentFrame = 0;
+                  zom.velocity.zero();
+                }
+              }
+              tags["friendly"].some((Avatar avatar){
+                if (avatar.alive && avatar.distanceTo(zom) < world.AGRO_DISTANCE){
+                  rmTag(zom,"hostile-wander");
+                  zom.removeTag("hostile-wander");
+                  addTag(zom,"hostile");
+                  zom.tags.add("hostile");
+                  zom["target"] = avatar;
+                  return true;
+                }
+                return false;
+              });
+            }
+          },
+          "collide":(Avatar zom){
+            zom.prop["destination"] = zom.clone().addTo(Math.random() * 100 - 50,Math.random() * 100 - 50);
+          },
+          "hit":(Avatar zom){
             tags["friendly"].some((Avatar avatar){
-              if (avatar.alive && avatar.distanceTo(zom) < AGRO_DISTANCE && rpat(20)){
+              if (avatar.alive && avatar.attacking && avatar.distanceTo(zom) < world.AGRO_DISTANCE*2 ){
                 rmTag(zom,"hostile-wander");
                 zom.removeTag("hostile-wander");
                 addTag(zom,"hostile");
@@ -674,10 +715,6 @@ class Game {
               }
               return false;
             });
-            tagEvents["wander"]["update"](zom);
-            if (rpat(8) && zom["originalPosition"].distanceTo(zom["destination"])>ZOMBIE_WANDER_DISTANCE){
-              zom["destination"] = zom["originalPosition"].clone().addTo(Math.random() * ZOMBIE_WANDER_DISTANCE - ZOMBIE_WANDER_DISTANCE/2,Math.random() * ZOMBIE_WANDER_DISTANCE - ZOMBIE_WANDER_DISTANCE/2);
-            }
           }
         },
         "hostile":{
@@ -690,9 +727,9 @@ class Game {
                 zom.attacking = true;
                 zom.attackDirection = target.clone().sub(zom).normalize();
                 zom.velocity.divideScalar(2);
-              }else if (distance < AGRO_DISTANCE * 2){
+              }else if (distance < world.AGRO_DISTANCE * 2){
                 zom.attacking = false;
-                zom.velocity.sub(zom.clone().sub(target).normalize().multiplyScalar(ZOMBIE_SPEED));
+                zom.velocity.sub(zom.clone().sub(target).normalize().multiplyScalar(world.ZOMBIE_SPEED*zom.speed));
               }else{
                 switchTag(zom,"hostile","hostile-wander");
                 zom["target"] = null;
@@ -753,19 +790,23 @@ class Game {
     
     BLANK_IMAGE = new html.ImageElement();
     
-    tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>()};
+    tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>(),"wander":new List<Avatar>(),"lost":new List<Avatar>()};
     tagMap = tags;
     
     audio = new AudioManager();
     
     animationMap = new Map<String,Animation>();
-    event = new UIManager();
     canvas = html.document.query("#canvas");
-    canvas.width = (html.window.innerWidth/RESOLUTION).toInt();
-    canvas.height = (html.window.innerHeight/RESOLUTION).toInt();
+    
+    canvas.width  = 800;
+    canvas.height = 600;
+    //Uncomment for fullscreen
+    //canvas.width = (html.window.innerWidth/RESOLUTION).toInt();
+    //canvas.height = (html.window.innerHeight/RESOLUTION).toInt();
     context = canvas.getContext("2d");
     SCREEN_WIDTH = canvas.width;
     SCREEN_HEIGHT = canvas.height;
+    event = new UIManager();
     RENDER_DISTANCE = ((SCREEN_WIDTH + SCREEN_HEIGHT)*2/4).toInt();
     world = new World();
     print("Loading World");

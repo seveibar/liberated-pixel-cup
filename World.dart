@@ -13,25 +13,33 @@ class World {
   List<html.ImageElement> itemImages;
   List<html.ImageElement> uiImages;
   
+  num AGRO_DISTANCE= 256;
+  num ZOMBIE_WANDER_DISTANCE  = 256;
+  num ZOMBIE_SPEED = .6;
+  num ZOMBIE_ARMOR = 1;
+  num ZOMBIE_DAMAGE = 25;
+  
   List<Path> paths;
   List<PathNode> pathnodes;
-  num time = 7;//24:00 clock
-  num dayLength = 60 * 60 * 5;
+  num time = 7;//24:00 clock (Start at 7)
+  num dayLength = 60 * 60 * 4;
   bool night_mode = false;
   
   int totalPopulation = 200;
   int saved = 0;
   int awakePopulation = 0;
-  int dayCount = 0;
+  int dayCount = 1;
   
   int zombie_max = 50;
   int zombie_out = 0;
   int zombies_killed = 0;
   
+  int difficultyMode = 0;
+  
   List<bool> playerWeapons;
   int currentWeapon = 0;
   List<num> weaponDamage;
-  List<num> weaponAttackTime;
+  List<int> weaponAttackTime;
   List<int> weaponAttackTypes;
   List<num> weaponAttackRadius;
   List<int> weaponCost;
@@ -44,10 +52,10 @@ class World {
   Animation player_animation;
   int player_max_health = 100;
   
-  bool intro = false;
+  bool intro = true;
   int slideTime = 0;
   int currentSlide = 0;
-  final List<String> slides = const["This is the island of Dartia",
+  final List<String> slides = const["This is Big Island",
                                     "At day, all is peaceful",
                                     "But come night, horrific monsters of the black appear",
                                     "The ever-curious villagers often stray into the darkness",
@@ -69,7 +77,8 @@ class World {
     menuInterfaces = new List<MenuInterface>();
     paths = new List<Path>();
     pathnodes = new List<PathNode>();
-    playerWeapons = [true,true,true,true,true,true,true];
+    playerWeapons = [true,true ,true ,true , true,true];
+    playerWeapons = [true,false,false,false,false,false];
     //[0] = fist
     //[1] = dagger
     //[2] = bow
@@ -93,11 +102,13 @@ class World {
     mapsTree = dataTree["maps"];
     print("Unpacking Game");
     unpackObjects(objectList);
-    print("Data Parsed, Loading Test Map");
+    print("Data Parsed");
     res.loadSplitImage("items.png",(List<html.ImageElement> imgs){
       itemImages = imgs;
+      print("items loaded");
       res.loadSplitImage("ui.png",(List<html.ImageElement> ui_imgs){
         uiImages = ui_imgs;
+        print("Loading 'test' map");
         loadMap("test",callback); //TODO remove
       });
     });
@@ -196,6 +207,16 @@ class World {
   bool collisionAtVec2(Vec2 v){
     return collisionAt(v.x,v.y);
   }
+  void increaseDifficulty([int times = 0]){
+    ZOMBIE_WANDER_DISTANCE = (ZOMBIE_WANDER_DISTANCE * 1.5).toInt();
+    ZOMBIE_SPEED *= 1.1;
+    ZOMBIE_SPEED = ZOMBIE_SPEED<2?ZOMBIE_SPEED:2;
+    ZOMBIE_DAMAGE += 10 * ((75 - ZOMBIE_DAMAGE)/75);
+    ZOMBIE_ARMOR -= (ZOMBIE_ARMOR - .25)/10;
+    AGRO_DISTANCE -= (AGRO_DISTANCE - 512)/10;
+    zombie_max += 20;
+    return (times > 0) ? increaseDifficulty(times-1) : null;
+  }
   void openMenu(String type){
     print("Opening $type menu");
     switch(type){
@@ -220,7 +241,7 @@ class World {
         break;
       case "upgrades":
         List<Map> optionMap = [];
-        for (int nci = 0;nci<playerWeapons.length;nci++){
+        for (int nci = 1;nci<playerWeapons.length;nci++){
           int i = nci;//For closure
           if (playerWeapons[i]){
             optionMap.add({
@@ -245,10 +266,19 @@ class World {
         }));
         break;
      case "health":
-        menuInterfaces.add(new MenuInterface("confirm",{
-          "text":"Would you like to buy a health upgrade for 500c?",
-          "func":(){player_max_health+=50;}
-        }));
+       if (coin >= 300){
+          menuInterfaces.add(new MenuInterface("confirm",{
+            "text":"Would you like to buy a health upgrade for 300c?",
+            "func":(){
+              player_max_health+=50;
+              coin-=300;
+            }
+          }));
+       }else{
+         menuInterfaces.add(new MenuInterface("broke",{
+           "text":"Would you like to buy a health upgrade for 300c?"
+         }));
+       }
         break;
     }
   }
@@ -263,12 +293,12 @@ class World {
   void purchaseUpgrade(String type,int weaponID){
     switch(type){
       case "damage":
-        weaponDamage[weaponID] *= 1.25;
+        weaponDamage[weaponID] *= 1.5;
         coin -= weaponCost[weaponID];
         weaponCost[weaponID]*=2;
         break;
       case "rate":
-        weaponAttackTime[weaponID] *= 1.25;
+        weaponAttackTime[weaponID] -=2;
         coin -= weaponCost2[weaponID];
         weaponCost2[weaponID]*=2;
         break;
@@ -290,6 +320,9 @@ class World {
   void startCycle(context){
     //Set camera to player position
     player = tags["player"][0];
+    if (difficultyMode > 0){
+      increaseDifficulty(difficultyMode);
+    }
     if (intro){
       player_animation = player.animation;
       player.animation = new Animation({});
@@ -300,9 +333,8 @@ class World {
     paused = false;
     
     event.onKeyPress.add((e){
-      if (event.key("E")==1){
-        //Next weapon
-        currentWeapon = (currentWeapon+1)%playerWeapons.length;
+      if (event.key("E")==1 || event.key("Q") == 1){
+        currentWeapon = (currentWeapon+event.key("E")-event.key("Q"))%playerWeapons.length;
         while(!playerWeapons[currentWeapon]){
           currentWeapon = (currentWeapon+1)%playerWeapons.length;
         }
@@ -314,6 +346,7 @@ class World {
         player.damage = weaponDamage[currentWeapon];
         player.attackTime = weaponAttackTime[currentWeapon];
         player.attackType = weaponAttackTypes[currentWeapon];
+        notify("Using ${weaponName[currentWeapon]}");
       }
     });
     
@@ -454,6 +487,7 @@ class World {
                          "name":"Dump Trace",
                          "func":(){
                            print("Player : Health : ${player.health} : Damage : ${player.damage} : Armor : ${player.armor}");
+                           print("Mouse : ${event.mouse_position.toString()}");
                          }
                        },
                        {
@@ -461,8 +495,11 @@ class World {
                         "func":()=>GameOver(game.context)
                        },
                        {
-                        "name":"Test Menu",
-                        "func":()=>menuInterfaces.add(new MenuInterface("confirm",{"text":"Would you like to confirm?","func":(){}}))
+                        "name":"Prosperity",
+                        "func":(){
+                          giveCoin(player,2000);
+                          totalPopulation += 200;
+                        }
                        }
                        ,{
                          "name":"Get JSON",
@@ -471,30 +508,30 @@ class World {
           }));
         }
       });
-      event.onClick.add((e){
-        //Do menu stuff
-        if (menuInterfaces.length != 0){
-          event.mouseDown = false;
-        }
-        for (int i = menuInterfaces.length-1;i>=0;i--){
-          if (menuInterfaces[i].clickAt(event.mouse_position.x,event.mouse_position.y)){
-            menuInterfaces.removeRange(i, 1);
-          }
-        }
-        //Check if player is near items
-        if (tags.containsKey("item")){
-          tags["item"].some((Item item){
-            if (player.distanceTo(item) < 32){
-              event.mouseDown = false;
-              notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
-              pickUpItem(item);
-              return true;
-            }
-            return false;
-          });
-        }
-      });
     }
+    event.onClick.add((e){
+      //Do menu stuff
+      if (menuInterfaces.length != 0){
+        event.mouseDown = false;
+      }
+      for (int i = menuInterfaces.length-1;i>=0;i--){
+        if (menuInterfaces[i].clickAt(event.mouse_position.x,event.mouse_position.y)){
+          menuInterfaces.removeRange(i, 1);
+        }
+      }
+      //Check if player is near items
+      if (tags.containsKey("item")){
+        tags["item"].some((Item item){
+          if (player.distanceTo(item) < 32){
+            event.mouseDown = false;
+            notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
+            pickUpItem(item);
+            return true;
+          }
+          return false;
+        });
+      }
+    });
     event.onKeyPress.add((e){
       if (event.key("space") == 1 && tags.containsKey("salesman")){
         tags["salesman"].forEach((Avatar a){
@@ -588,12 +625,13 @@ class World {
       dayCount ++;
       notify("Day $dayCount");
       notify("Total Population : $totalPopulation");
+      if (totalPopulation<100){
+        notify("WARNING! If your population falls below 50 you lose!");
+      }
       
       if (dayCount > 1){
         //ON DAY INCREMENT
-        ZOMBIE_WANDER_DISTANCE = (ZOMBIE_WANDER_DISTANCE * 1.5).toInt();
-        ZOMBIE_SPEED += .5;
-        zombie_max += 10;
+        increaseDifficulty();
       }
       
       //Lost citizens become unlost during the day
@@ -632,6 +670,7 @@ class World {
         }
       });
       notify("Lost Citizens : ${tags['lost'].length}");
+      notify("Save as many as possible!");
     }
     if (!night_mode && time > 16 && rpat(5)){
       Avatar citizen = tags["wander"][(tags["wander"].length * Math.random()).toInt()];
@@ -661,7 +700,7 @@ class World {
     //Release Zombies (if night)
     if (night_mode){
       if (time < 4 || time > 21){
-        if (zombie_out < zombie_max && rpat(32)){
+        if (zombie_out < zombie_max - 50 || (zombie_out < zombie_max && rpat(32))){
           zombie_out ++;
           List<GameObject> zs_list = tags["zombie-spawn"];
           GameObject zs = zs_list[(zs_list.length * Math.random()).toInt()];
@@ -687,7 +726,9 @@ class World {
           "You can switch weapons with E",
           "Villagers tend to be meaner when you kill them",
           "All weapons, upgrades and coins are preserved between games",
-          "Upgrades can be purchased for all weapons"
+          "Upgrades can be purchased for all weapons",
+          "Zombies grow stronger every day, equip yourself accordingly",
+          "You can press T to speed up time"
       ];
       notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
     }
@@ -702,7 +743,7 @@ class World {
     if (!intro){
       //Player Tag
       Vec2 inc = new Vec2(event.key("d") - event.key("a"),event.key("s") - event.key("w"));
-      inc.normalize().multiplyScalar(2 * ( 1 + 4 * event.key("shift")));
+      inc.normalize().multiplyScalar(2 * ( 1 + 1 * event.key("shift")));
       player.velocity.add(inc);
     }else{
       slideTime ++;
@@ -718,6 +759,7 @@ class World {
           notify("Total Population : $totalPopulation");
           player.set(4793,4342);
           player.animation = player_animation;
+          notify("Explore the island while it's safe!");
         }
       }
     }
@@ -790,7 +832,9 @@ class World {
                     actor.fireTagEvent("kill");
                   }
                 }
-                audio.play("bump");
+                if (actor.distanceTo(player) < 256){
+                  audio.play("bump");
+                }
               }else if (actor.attackType == 1){
                 //Ranged Attack
                 spawnObject("arrow",{
@@ -917,6 +961,7 @@ class World {
     }
     c.translate(-camera.x,-camera.y);
     c.font = "12px Arial";
+    c.textAlign = "center";
     bottomTileManager.render(c,camera);
     onscene.forEach((object){
       object.render(c);

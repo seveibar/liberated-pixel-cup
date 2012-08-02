@@ -119,6 +119,62 @@
     },
     {
       "type": "animation",
+      "name": "zombie1",
+      "walk": "characters/zombie1/walkcycle.png",
+      "slash": "characters/zombie1/slash.png",
+      "death": "characters/zombie1/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie2",
+      "walk": "characters/zombie2/walkcycle.png",
+      "slash": "characters/zombie2/slash.png",
+      "death": "characters/zombie2/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie3",
+      "walk": "characters/zombie3/walkcycle.png",
+      "slash": "characters/zombie3/slash.png",
+      "death": "characters/zombie3/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie4",
+      "walk": "characters/zombie4/walkcycle.png",
+      "slash": "characters/zombie4/slash.png",
+      "death": "characters/zombie4/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie5",
+      "walk": "characters/zombie5/walkcycle.png",
+      "slash": "characters/zombie5/slash.png",
+      "death": "characters/zombie5/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie6",
+      "walk": "characters/zombie6/walkcycle.png",
+      "slash": "characters/zombie6/slash.png",
+      "death": "characters/zombie6/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie7",
+      "walk": "characters/zombie7/walkcycle.png",
+      "slash": "characters/zombie7/slash.png",
+      "death": "characters/zombie7/hurt.png"
+    },
+{
+      "type": "animation",
+      "name": "zombie8",
+      "walk": "characters/zombie8/walkcycle.png",
+      "slash": "characters/zombie8/slash.png",
+      "death": "characters/zombie8/hurt.png"
+    },
+    {
+      "type": "animation",
       "name": "weapon1",
       "slash": "weapons/dagger.png"
     },
@@ -172,7 +228,7 @@
       "type": "avatar",
       "name": "zombie",
       "properties": {
-        "animation": "zombie0",
+        "animation": "zombie[0-8]",
         "tag": [
           "actor",
           "hostile-wander"
@@ -231,9 +287,9 @@
           "type": "salesman",
           "calls": [
             "Health Upgrades!",
-            "",
-            "Weapon Upgrades!",
-            "Cheap!"
+            "Get health here!",
+            "Helps prevent death!",
+            "Available in red!"
           ],
           "menu": "health",
           "x": 124,
@@ -470,14 +526,6 @@
           ],
           "x": 5133,
           "y": 5334
-        },
-        {
-          "type": "node",
-          "tag": [
-            "house"
-          ],
-          "x": 4595,
-          "y": 4437
         },
         {
           "type": "node",

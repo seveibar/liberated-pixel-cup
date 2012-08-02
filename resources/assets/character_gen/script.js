@@ -78,6 +78,8 @@ window.onload = function(){
         
         
         $.post("/save",data);
+        canvas.width = 384;
+        canvas.height = 256;
     };
         
     var canvas = document.getElementById("canvas");

@@ -1,0 +1,237 @@
+Code authors
+============
+
+This program was written by the following people:
+ - Severin Ibarluzea
+
+
+Asset attribution
+=================
+
+Assets were authored by the following people:
+
+Lanea Zimmerman
+ - grass.png
+ - dirt.png
+ - dirt2.png
+ - house.png
+ - water.png
+ - chests.png
+ - signs.png
+ - barrel.png
+ - bridges.png
+ - buckets.png
+ - mountains.png
+ - rock.png
+ - waterfall.png
+ - cabinets.png
+ 
+Daniel Eddeland
+ - farming_fishing.png
+ - plowed_soil.png
+ - plants.png
+ - fence.png
+ - wheat.png
+ 
+Stephen Challener
+ - male_walkcycle.png
+ - male_hurt.png
+ - male_slash.png
+ - male_spellcast.png
+ - male_pants.png
+ - male_hurt_pants.png
+ - male_fall_down_pants.png
+ - male_slash_pants.png
+
+Casper Nilsson
+ - wheelbarrows.png
+ - tent.png
+ - tree_stump.png
+
+Mark Weyer
+ - signpost.png
+ - signpost_shadow.png
+
+Johannes Sjölund
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - WEAPON_bow.png
+ - TORSO_leather_armor_shirt_white.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - WEAPON_arrow.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - BEHIND_quiver.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - TORSO_leather_armor_shirt_white.png
+ - BODY_skeleton.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - WEAPON_dagger.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - BEHIND_quiver.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - TORSO_leather_armor_shirt_white.png
+ - BODY_skeleton.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_skeleton_eye_glow.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - BEHIND_quiver.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - TORSO_leather_armor_shirt_white.png
+ - BODY_skeleton.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - WEAPON_shield_cutout_body.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - BEHIND_quiver.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - WEAPON_shield_cutout_chain_armor_helmet.png
+ - TORSO_leather_armor_shirt_white.png
+ - BODY_skeleton.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - BELT_leather.png
+ - HEAD_hair_blonde.png
+ - FEET_shoes_brown.png
+ - WEAPON_shield_cutout_body.png
+ - TORSO_chain_armor_torso.png
+ - TORSO_leather_armor_bracers.png
+ - HEAD_chain_armor_helmet.png
+ - FEET_plate_armor_shoes.png
+ - TORSO_plate_armor_torso.png
+ - LEGS_robe_skirt.png
+ - HEAD_chain_armor_hood.png
+ - BELT_rope.png
+ - TORSO_chain_armor_jacket_purple.png
+ - HEAD_plate_armor_helmet.png
+ - LEGS_plate_armor_pants.png
+ - BEHIND_quiver.png
+ - TORSO_plate_armor_arms_shoulders.png
+ - HANDS_plate_armor_gloves.png
+ - LEGS_pants_greenish.png
+ - WEAPON_staff.png
+ - WEAPON_shield_cutout_chain_armor_helmet.png
+ - WEAPON_spear.png
+ - TORSO_leather_armor_shirt_white.png
+ - HEAD_robe_hood.png
+ - BODY_male.png
+ - TORSO_leather_armor_shoulders.png
+ - TORSO_robe_shirt_brown.png
+ - HEAD_leather_armor_hat.png
+ - TORSO_leather_armor_torso.png
+ - WEAPON_longsword.png
+ - WEAPON_rapier.png
+ - WEAPON_long_spear.png
+ - BEHIND_quiver.png
+
+Joshua Taylor
+ - Vegies.png
+ 
+Severin Ibarluzea
+ - bump.ogg
+ - hurt1.ogg
+ - hurt2.ogg
+ - hurt3.ogg
+ - hurt.ogg
+ - shoot1.ogg
+ - shoot.ogg
+ - big_island.png
+ - big_island_lpc.png
+ - attribution.png

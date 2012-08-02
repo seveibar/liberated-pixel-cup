@@ -49,7 +49,7 @@ class MainMenu {
     
     //cycle(0);
   }
-  bool cycle(int a){
+  bool cycle(a){
     if (active){
       html.window.requestAnimationFrame(cycle);
       render();

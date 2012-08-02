@@ -6967,7 +6967,6 @@ $$.MainMenu = {"":
   t2.restore$0();
  },
  cycle$1: function(a) {
-  $.intTypeCheck(a);
   if (this.active === true) {
     $.window().requestAnimationFrame$1(this.get$cycle());
     this.render$0();
@@ -9585,7 +9584,10 @@ $$.World = {"":
   if (typeof t1 !== 'number') return this.update$0$bailout(70, t1, 0, 0, 0, 0);
   t3 = this.dayLength;
   if (typeof t3 !== 'number') throw $.iae(t3);
-  this.time = $.mod(t1 + 24 / t3, 24);
+  this.time = t1 + 24 / t3;
+  t1 = this.time;
+  if (typeof t1 !== 'number') return this.update$0$bailout(71, t1, 0, 0, 0, 0);
+  if (t1 > 24) this.time = 0;
  },
  update$0$bailout: function(state, env0, env1, env2, env3, env4) {
   switch (state) {
@@ -9883,6 +9885,9 @@ $$.World = {"":
       t1 = env2;
       break;
     case 70:
+      t1 = env0;
+      break;
+    case 71:
       t1 = env0;
       break;
   }
@@ -10498,7 +10503,11 @@ $$.World = {"":
       state = 0;
       t3 = this.dayLength;
       if (typeof t3 !== 'number') throw $.iae(t3);
-      this.time = $.mod($.add(t1, 24 / t3), 24);
+      this.time = $.add(t1, 24 / t3);
+      t1 = this.time;
+    case 71:
+      state = 0;
+      if ($.gtB(t1, 24)) this.time = 0;
   }
  },
  sortScreenObjects$0: function() {
@@ -14764,7 +14773,6 @@ $$.World_startCycle_cycle = {"":
  ["context_34", "this_33"],
  super: "Closure",
  $call$1: function(a) {
-  $.intTypeCheck(a);
   if (this.this_33.get$paused() !== true) {
     $.window().requestAnimationFrame$1(this);
     this.this_33.update$0();

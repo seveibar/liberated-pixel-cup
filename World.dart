@@ -557,7 +557,7 @@ class World {
         });
       }
     });
-    bool cycle(int a){
+    bool cycle(a){
       if (!paused){
         html.window.requestAnimationFrame(cycle);
         update();
@@ -925,7 +925,10 @@ class World {
     sortScreenObjects();
     
     
-    time = (time + 24 / dayLength)%24;
+    time += 24 / dayLength;
+    if (time>24){
+      time = 0;
+    }
     //print(time);
   }
   int lastSaved = 0;

@@ -159,19 +159,12 @@
       "slash": "characters/zombie6/slash.png",
       "death": "characters/zombie6/hurt.png"
     },
-{
+	{
       "type": "animation",
       "name": "zombie7",
       "walk": "characters/zombie7/walkcycle.png",
       "slash": "characters/zombie7/slash.png",
       "death": "characters/zombie7/hurt.png"
-    },
-{
-      "type": "animation",
-      "name": "zombie8",
-      "walk": "characters/zombie8/walkcycle.png",
-      "slash": "characters/zombie8/slash.png",
-      "death": "characters/zombie8/hurt.png"
     },
     {
       "type": "animation",
@@ -228,7 +221,7 @@
       "type": "avatar",
       "name": "zombie",
       "properties": {
-        "animation": "zombie[0-8]",
+        "animation": "zombie[0-7]",
         "tag": [
           "actor",
           "hostile-wander"

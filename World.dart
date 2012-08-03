@@ -50,6 +50,10 @@ class World {
   int zombie_out = 0;
   int zombies_killed = 0;
   
+  int guard_out = 0;
+  int guard_total = 100;//2
+  int guard_price = 100;
+  
   int difficultyMode = 0;
   
   List<bool> playerWeapons;
@@ -578,12 +582,17 @@ class World {
         render(context);
       }
     }
-    html.window.setInterval((){
-      update();
-      if (event.key("T")==1){
+    var interval;
+    interval = html.window.setInterval((){
+      if (!paused){
         update();
-        update();
-        update();
+        if (event.key("T")==1){
+          update();
+          update();
+          update();
+        }
+      }else{
+        html.window.clearInterval(interval);
       }
     },(1000/60).toInt());
     cycle(0);
@@ -759,10 +768,12 @@ class World {
       final List<String> protips = [
           "You can switch weapons with E",
           "Villagers tend to be meaner when you kill them",
+          "Villagers will be nicer if you keep saving them",
           "Upgrades can be purchased for all weapons",
           "Zombies grow stronger every day, equip yourself accordingly",
           "You can press T to speed up time",
-          "Press the SHIFT key to sprint"
+          "Press the SHIFT key to sprint",
+          "You can purchase patrol guards to help keep villagers safe"
       ];
       notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
     }

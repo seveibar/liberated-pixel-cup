@@ -576,15 +576,17 @@ class World {
     bool cycle(a){
       if (!paused){
         html.window.requestAnimationFrame(cycle);
-        update();
-        if (event.key("T")==1){
-          update();
-          update();
-          update();
-        }
         render(context);
       }
     }
+    html.window.setInterval((){
+      update();
+      if (event.key("T")==1){
+        update();
+        update();
+        update();
+      }
+    },(1000/60).toInt());
     cycle(0);
   }
   html.ImageElement getItemImage(int index){

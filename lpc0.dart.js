@@ -5108,6 +5108,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get $dom_scrollLeft', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get $dom_scrollLeft', [])
 },
+ get$touches: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get touches', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get touches', [])
+},
  get$ZOMBIE_SPEED: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get ZOMBIE_SPEED', [])
@@ -5518,10 +5523,10 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get touchEnd', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get touchEnd', [])
 },
- get$attackType: function () {
+ get$changedTouches: function () {
   return this.noSuchMethod$2
-      ? this.noSuchMethod$2('get attackType', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'get attackType', [])
+      ? this.noSuchMethod$2('get changedTouches', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get changedTouches', [])
 },
  get$currentFrame: function () {
   return this.noSuchMethod$2
@@ -5532,6 +5537,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get type', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get type', [])
+},
+ get$attackType: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get attackType', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get attackType', [])
 },
  get$attackDirection: function () {
   return this.noSuchMethod$2
@@ -8071,32 +8081,31 @@ $$.UIManager = {"":
   t1[keyCode] = value;
  },
  UIManager$0: function() {
-  var t1 = $.ListFactory_List(null);
-  $.setRuntimeTypeInfo(t1, ({E: 'Function'}));
-  this.onKeyPress = t1;
-  t1 = $.ListFactory_List(null);
-  $.setRuntimeTypeInfo(t1, ({E: 'Function'}));
-  this.onClick = t1;
+  var t1 = ({});
+  t1.touches_1 = null;
+  var t2 = $.ListFactory_List(null);
+  $.setRuntimeTypeInfo(t2, ({E: 'Function'}));
+  this.onKeyPress = t2;
+  t2 = $.ListFactory_List(null);
+  $.setRuntimeTypeInfo(t2, ({E: 'Function'}));
+  this.onClick = t2;
   this.mouse_position = $.Vec2$(0.0, 0.0);
-  t1 = $.ListFactory_List(255);
-  $.setRuntimeTypeInfo(t1, ({E: 'int'}));
-  this.keyList = t1;
-  for (t1 = this.keyList, i = 0; i < 255; ++i) {
-    var t2 = t1.length;
-    if (i < 0 || i >= t2) throw $.ioore(i);
-    t1[i] = 0;
+  t2 = $.ListFactory_List(255);
+  $.setRuntimeTypeInfo(t2, ({E: 'int'}));
+  this.keyList = t2;
+  for (t2 = this.keyList, i = 0; i < 255; ++i) {
+    var t3 = t2.length;
+    if (i < 0 || i >= t3) throw $.ioore(i);
+    t2[i] = 0;
   }
-  if ($.MOBILE !== true) {
-    $.add$1($.window().get$on().get$keyDown(), new $.anon51(this));
-    $.add$1($.window().get$on().get$keyUp(), new $.anon52(this));
-    $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this));
-    $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this));
-    $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this));
-  } else {
-    $.add$1($.window().get$on().get$touchStart(), new $.anon56());
-    $.add$1($.window().get$on().get$touchMove(), new $.anon57());
-    $.add$1($.window().get$on().get$touchEnd(), new $.anon58());
-  }
+  $.add$1($.window().get$on().get$keyDown(), new $.anon51(this));
+  $.add$1($.window().get$on().get$keyUp(), new $.anon52(this));
+  $.add$1($.window().get$on().get$mouseDown(), new $.anon53(this, t1));
+  $.add$1($.window().get$on().get$mouseUp(), new $.anon54(this, t1));
+  $.add$1($.window().get$on().get$mouseMove(), new $.anon55(this, t1));
+  $.add$1($.window().get$on().get$touchStart(), new $.anon56(this));
+  $.add$1($.window().get$on().get$touchMove(), new $.anon57(this, t1));
+  $.add$1($.window().get$on().get$touchEnd(), new $.anon58());
   var i;
  }
 };
@@ -8758,14 +8767,14 @@ $$.MenuInterface = {"":
       for (t1 = this.buttons, i = 0; $.ltB(i, $.get$length(options)); ++i) {
         $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.add($.div($.SCREEN_WIDTH, 8), $.mod(i, 2) * 200), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt(i / 2), 50))));
       }
-      $.add$1(t1, $.MenuButton$('Exit', new $.anon61(), $.add($.div($.SCREEN_WIDTH, 8), $.mul($.mod($.get$length(options), 2), 200)), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt($.div($.get$length(options), 2)), 50))));
+      $.add$1(t1, $.MenuButton$('Exit', new $.anon62(), $.add($.div($.SCREEN_WIDTH, 8), $.mul($.mod($.get$length(options), 2), 200)), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt($.div($.get$length(options), 2)), 50))));
       break;
     case 'confirm':
       this.renderFunction = this.get$renderConfirmMenu();
       var cx = $.div($.SCREEN_WIDTH, 2);
       var cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon62(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon63(), $.sub(cx, 150), $.add(cy, 100)));
       $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 100)));
       break;
     case 'broke':
@@ -8773,8 +8782,8 @@ $$.MenuInterface = {"":
       cx = $.div($.SCREEN_WIDTH, 2);
       cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon63(), $.sub(cx, 150), $.add(cy, 100)));
-      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon64(), $.add(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon64(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon65(), $.add(cx, 150), $.add(cy, 100)));
       break;
   }
   var i;
@@ -10669,7 +10678,8 @@ $$.World = {"":
   }
   $.add$1($.event.get$onClick(), new $.World_startCycle_anon1(this));
   $.add$1($.event.get$onKeyPress(), new $.World_startCycle_anon2(this));
-  new $.World_startCycle_cycle(context, this).$call$1(0);
+  t1.c_inc_5 = 0;
+  new $.World_startCycle_cycle(context, t1, 2, this).$call$1(0);
  },
  getClosePathNodes$1: function(v) {
   var cnodes = $.ListFactory_List(null);
@@ -11232,7 +11242,7 @@ $$.AudioManager = {"":
  AudioManager$0: function() {
   var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1', 'coin'];
   this.audioElements = $.HashMapImplementation$();
-  $.forEach(soundList, new $.anon59(this));
+  $.forEach(soundList, new $.anon60(this));
   this.audioGroup = $.HashMapImplementation$();
   var t1 = this.audioGroup;
   $.indexSet(t1, 'shoot', ['shoot', 'shoot1']);
@@ -13056,7 +13066,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon73(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13088,7 +13098,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon75(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13144,7 +13154,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               var index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).get$alive() === true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon73(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
                 var t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 var t2 = $.toInt(5 * t1);
@@ -13168,7 +13178,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).hasTag$1('zombie') !== true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon74(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon75(citizen));
                 t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 t2 = $.toInt(5 * t1);
@@ -13188,7 +13198,7 @@ $$.anon8 = {"":
  }
 };
 
-$$.anon73 = {"":
+$$.anon74 = {"":
  ["citizen_2"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13199,7 +13209,7 @@ $$.anon73 = {"":
  }
 };
 
-$$.anon74 = {"":
+$$.anon75 = {"":
  ["citizen_3"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13217,7 +13227,7 @@ $$.anon9 = {"":
   $.ltB(citizen.distanceTo$1($.world.get$player()), 256) && $.audio.play$1('hurt');
   if ($.world.get$player().get$attacking() === true) {
     $.niceFactor = $.sub($.niceFactor, 0.005);
-    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon72(citizen));
+    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon73(citizen));
     var t1 = $.Math_random();
     if (typeof t1 !== 'number') throw $.iae(t1);
     var t2 = $.toInt(5 * t1);
@@ -13232,7 +13242,7 @@ $$.anon9 = {"":
  }
 };
 
-$$.anon72 = {"":
+$$.anon73 = {"":
  ["citizen_4"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13371,7 +13381,7 @@ $$.anon18 = {"":
         t1 = cnodes.length;
         if (i < 0 || i >= t1) throw $.ioore(i);
         if (cnodes[i].get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon71(a));
+          $.some($.index($.tags, 'house'), new $.anon72(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13398,7 +13408,7 @@ $$.anon18 = {"":
     } else {
       for (var i = $.sub($.get$length(cnodes), 1); $.geB(i, 0); i = $.sub(i, 1)) {
         if ($.index(cnodes, i).get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon71(a));
+          $.some($.index($.tags, 'house'), new $.anon72(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13415,7 +13425,7 @@ $$.anon18 = {"":
  }
 };
 
-$$.anon71 = {"":
+$$.anon72 = {"":
  ["a_6"],
  super: "Closure",
  $call$1: function(house) {
@@ -13475,7 +13485,7 @@ $$.anon22 = {"":
     var d = $.index(avatar, 'home').distanceTo$1(avatar);
     if ($.gtB(d, 256)) {
       t1.found_1 = false;
-      $.some($.index($.tags, 'house'), new $.anon70(t1, avatar));
+      $.some($.index($.tags, 'house'), new $.anon71(t1, avatar));
       if (t1.found_1 === true) {
         $.indexSet(avatar, 'collisionCount', 0);
         $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
@@ -13495,7 +13505,7 @@ $$.anon22 = {"":
  }
 };
 
-$$.anon70 = {"":
+$$.anon71 = {"":
  ["box_0", "avatar_7"],
  super: "Closure",
  $call$1: function(house) {
@@ -13736,13 +13746,13 @@ $$.anon32 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon69(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon70(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon69 = {"":
+$$.anon70 = {"":
  ["avatar_8"],
  super: "Closure",
  $call$1: function(player) {
@@ -13770,13 +13780,13 @@ $$.anon34 = {"":
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon68(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon69(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon68 = {"":
+$$.anon69 = {"":
  ["avatar_9"],
  super: "Closure",
  $call$1: function(player) {
@@ -13876,12 +13886,12 @@ $$.anon40 = {"":
         }
       }
     }
-    $.some($.index($.tags, 'friendly'), new $.anon67(zom));
+    $.some($.index($.tags, 'friendly'), new $.anon68(zom));
   }
  }
 };
 
-$$.anon67 = {"":
+$$.anon68 = {"":
  ["zom_10"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13909,11 +13919,11 @@ $$.anon42 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon66(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon67(zom));
  }
 };
 
-$$.anon66 = {"":
+$$.anon67 = {"":
  ["zom_11"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13972,11 +13982,11 @@ $$.anon45 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon65(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon66(zom));
  }
 };
 
-$$.anon65 = {"":
+$$.anon66 = {"":
  ["zom_12"],
  super: "Closure",
  $call$1: function(friend) {
@@ -14029,11 +14039,11 @@ $$.anon50 = {"":
  ["this_13"],
  super: "Closure",
  $call$1: function(data) {
-  $.world.load$2(data, new $.anon60(this.this_13));
+  $.world.load$2(data, new $.anon61(this.this_13));
  }
 };
 
-$$.anon60 = {"":
+$$.anon61 = {"":
  ["this_14"],
  super: "Closure",
  $call$0: function() {
@@ -14332,77 +14342,110 @@ $$.ConstantMap_forEach_anon = {"":
 };
 
 $$.anon51 = {"":
- ["this_0"],
+ ["this_2"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_0.setKey$2(e.get$keyCode(), 1);
-  var i = $.sub($.get$length(this.this_0.get$onKeyPress()), 1);
+  this.this_2.setKey$2(e.get$keyCode(), 1);
+  var i = $.sub($.get$length(this.this_2.get$onKeyPress()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
   for (; i >= 0; --i) {
-    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
+    if ($.eqB($.index(this.this_2.get$onKeyPress(), i).$call$1(e), true)) return;
   }
  },
  $call$1$bailout: function(state, e, i) {
   for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    if ($.eqB($.index(this.this_0.get$onKeyPress(), i).$call$1(e), true)) return;
+    if ($.eqB($.index(this.this_2.get$onKeyPress(), i).$call$1(e), true)) return;
   }
  }
 };
 
 $$.anon52 = {"":
- ["this_1"],
+ ["this_3"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_1.setKey$2(e.get$keyCode(), 0);
+  this.this_3.setKey$2(e.get$keyCode(), 0);
  }
 };
 
 $$.anon53 = {"":
- ["this_2"],
+ ["this_4", "box_0"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_2.mouseDownAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
-  var i = $.sub($.get$length(this.this_2.get$onClick()), 1);
-  if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
-  for (; i >= 0; --i) {
-    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
+  if (this.box_0.touches_1 == null) {
+    this.this_4.mouseDownAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+    var i = $.sub($.get$length(this.this_4.get$onClick()), 1);
+    if (typeof i !== 'number') return this.$call$1$bailout(1, e, i);
+    for (; i >= 0; --i) {
+      $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+    }
   }
  },
- $call$1$bailout: function(state, e, i) {
-  for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.eqB($.index(this.this_2.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_2.get$onClick(), i, 1);
+ $call$1$bailout: function(state, env0, env1) {
+  switch (state) {
+    case 1:
+      var e = env0;
+      i = env1;
+      break;
+  }
+  switch (state) {
+    case 0:
+    case 1:
+      if (state == 1 || (state == 0 && this.box_0.touches_1 == null)) {
+        switch (state) {
+          case 0:
+            this.this_4.mouseDownAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+            var i = $.sub($.get$length(this.this_4.get$onClick()), 1);
+          case 1:
+            state = 0;
+            for (; $.geB(i, 0); i = $.sub(i, 1)) {
+              $.eqB($.index(this.this_4.get$onClick(), i).$call$1(e), true) && $.removeRange(this.this_4.get$onClick(), i, 1);
+            }
+        }
+      }
   }
  }
 };
 
 $$.anon54 = {"":
- ["this_3"],
+ ["this_5", "box_0"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_3.mouseUpAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+  this.box_0.touches_1 == null && this.this_5.mouseUpAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
  }
 };
 
 $$.anon55 = {"":
- ["this_4"],
+ ["this_6", "box_0"],
  super: "Closure",
  $call$1: function(e) {
-  this.this_4.mouseAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+  this.box_0.touches_1 == null && this.this_6.mouseAt$2($.div($.sub(e.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(e.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
  }
 };
 
 $$.anon56 = {"":
- [],
+ ["this_7"],
  super: "Closure",
  $call$1: function(e) {
+  $.forEach(e.get$changedTouches(), new $.anon59(this.this_7));
   e.preventDefault$0();
  }
 };
 
+$$.anon59 = {"":
+ ["this_8"],
+ super: "Closure",
+ $call$1: function(touch) {
+  this.this_8.mouseDownAt$2($.div($.sub(touch.get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub(touch.get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
+ }
+};
+
 $$.anon57 = {"":
- [],
+ ["this_9", "box_0"],
  super: "Closure",
  $call$1: function(e) {
+  var touches = e.get$touches();
+  this.box_0.touches_1 = touches;
+  this.this_9.mouseAt$2($.div($.sub($.index(this.box_0.touches_1, 0).get$pageX(), $.CANVAS_OFFSETX), $.RESOLUTION), $.div($.sub($.index(this.box_0.touches_1, 0).get$pageY(), $.CANVAS_OFFSETY), $.RESOLUTION));
   e.preventDefault$0();
  }
 };
@@ -14415,7 +14458,7 @@ $$.anon58 = {"":
  }
 };
 
-$$.anon59 = {"":
+$$.anon60 = {"":
  ["this_0"],
  super: "Closure",
  $call$1: function(soundName) {
@@ -14424,29 +14467,29 @@ $$.anon59 = {"":
 };
 
 $$.World_startCycle_anon = {"":
- ["this_5"],
+ ["this_6"],
  super: "Closure",
  $call$1: function(e) {
   if ($.eqB($.event.key$1('E'), 1) || $.eqB($.event.key$1('Q'), 1)) {
-    var t1 = $.mod($.sub($.add(this.this_5.get$currentWeapon(), $.event.key$1('E')), $.event.key$1('Q')), $.get$length(this.this_5.get$playerWeapons()));
-    this.this_5.set$currentWeapon(t1);
-    for (; $.index(this.this_5.get$playerWeapons(), this.this_5.get$currentWeapon()) !== true; ) {
-      t1 = $.mod($.add(this.this_5.get$currentWeapon(), 1), $.get$length(this.this_5.get$playerWeapons()));
-      this.this_5.set$currentWeapon(t1);
+    var t1 = $.mod($.sub($.add(this.this_6.get$currentWeapon(), $.event.key$1('E')), $.event.key$1('Q')), $.get$length(this.this_6.get$playerWeapons()));
+    this.this_6.set$currentWeapon(t1);
+    for (; $.index(this.this_6.get$playerWeapons(), this.this_6.get$currentWeapon()) !== true; ) {
+      t1 = $.mod($.add(this.this_6.get$currentWeapon(), 1), $.get$length(this.this_6.get$playerWeapons()));
+      this.this_6.set$currentWeapon(t1);
     }
-    t1 = !$.eqB(this.this_5.get$currentWeapon(), 0);
-    var t2 = this.this_5;
+    t1 = !$.eqB(this.this_6.get$currentWeapon(), 0);
+    var t2 = this.this_6;
     if (t1) {
       t1 = $.index($.animationMap, 'weapon' + $.S(t2.get$currentWeapon()));
-      this.this_5.get$player().set$weaponAnimation(t1);
+      this.this_6.get$player().set$weaponAnimation(t1);
     } else t2.get$player().set$weaponAnimation(null);
-    t1 = $.index(this.this_5.get$weaponDamage(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$damage(t1);
-    t1 = $.index(this.this_5.get$weaponAttackTime(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$attackTime(t1);
-    t1 = $.index(this.this_5.get$weaponAttackTypes(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$attackType(t1);
-    $.notify('Using ' + $.S($.index(this.this_5.get$weaponName(), this.this_5.get$currentWeapon())));
+    t1 = $.index(this.this_6.get$weaponDamage(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$damage(t1);
+    t1 = $.index(this.this_6.get$weaponAttackTime(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$attackTime(t1);
+    t1 = $.index(this.this_6.get$weaponAttackTypes(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$attackType(t1);
+    $.notify('Using ' + $.S($.index(this.this_6.get$weaponName(), this.this_6.get$currentWeapon())));
   } else {
     if ($.eqB($.event.key$1('F'), 1)) {
       if ($.document().get$webkitIsFullScreen() !== true) $.document().get$body().webkitRequestFullscreen$0();
@@ -14457,12 +14500,12 @@ $$.World_startCycle_anon = {"":
 };
 
 $$.World_startCycle_anon0 = {"":
- ["this_6", "box_3"],
+ ["this_7", "box_3"],
  super: "Closure",
  $call$1: function(e) {
-  if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_6.get$menuInterfaces()), 0)) {
+  if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_7.get$menuInterfaces()), 0)) {
     var t1 = new $.World_startCycle_prompt();
-    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon13(this.this_6)]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon14(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon15(this.this_6)])]])));
+    $.add$1(this.this_7.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon5(this.this_7, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon6(this.this_7, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon7(this.this_7, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon8(this.this_7)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon9()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon10(this.this_7)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon11(this.this_7)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon12()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon13(this.this_7)]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon14(this.this_7)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon15(this.this_7)])]])));
   }
  }
 };
@@ -14479,75 +14522,75 @@ $$.World_startCycle_prompt = {"":
 };
 
 $$.World_startCycle_anon5 = {"":
- ["this_8", "prompt_7"],
+ ["this_9", "prompt_8"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon23(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon24(this.this_8, this.prompt_7)])]])));
+  $.add$1(this.this_9.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon23(this.this_9)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon24(this.this_9, this.prompt_8)])]])));
  }
 };
 
 $$.World_startCycle_anon23 = {"":
- ["this_9"],
+ ["this_10"],
  super: "Closure",
  $call$0: function() {
-  $.add$1($.index(this.this_9.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['zombie-spawn'], 'x', this.this_9.get$player().get$x(), 'y', this.this_9.get$player().get$y()]));
+  $.add$1($.index(this.this_10.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['zombie-spawn'], 'x', this.this_10.get$player().get$x(), 'y', this.this_10.get$player().get$y()]));
  }
 };
 
 $$.World_startCycle_anon24 = {"":
- ["this_11", "prompt_10"],
+ ["this_12", "prompt_11"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_11.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', this.prompt_10.$call$1('Emit Type'), 'emit-properties', $.makeLiteralMap(['tag', $.split(this.prompt_10.$call$1('Emit Properties (\',\' delimited)'), ',')]), 'freq', $.Math_parseInt(this.prompt_10.$call$1('Freq (60 = 1 second)')), 'limit', $.Math_parseInt(this.prompt_10.$call$1('Limit')), 'x', $.toInt(this.this_11.get$player().get$x()), 'y', $.toInt(this.this_11.get$player().get$y())]));
+  return $.add$1($.index(this.this_12.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', this.prompt_11.$call$1('Emit Type'), 'emit-properties', $.makeLiteralMap(['tag', $.split(this.prompt_11.$call$1('Emit Properties (\',\' delimited)'), ',')]), 'freq', $.Math_parseInt(this.prompt_11.$call$1('Freq (60 = 1 second)')), 'limit', $.Math_parseInt(this.prompt_11.$call$1('Limit')), 'x', $.toInt(this.this_12.get$player().get$x()), 'y', $.toInt(this.this_12.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon6 = {"":
- ["this_13", "prompt_12"],
+ ["this_14", "prompt_13"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon22(this.this_13, this.prompt_12)])]])));
+  $.add$1(this.this_14.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon22(this.this_14, this.prompt_13)])]])));
  }
 };
 
 $$.World_startCycle_anon22 = {"":
- ["this_15", "prompt_14"],
+ ["this_16", "prompt_15"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_15.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', this.prompt_14.$call$1('Type'), 'tag', $.split(this.prompt_14.$call$1('Tags, delimit with \',\''), ','), 'x', $.toInt(this.this_15.get$player().get$x()), 'y', $.toInt(this.this_15.get$player().get$y())]));
+  return $.add$1($.index(this.this_16.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', this.prompt_15.$call$1('Type'), 'tag', $.split(this.prompt_15.$call$1('Tags, delimit with \',\''), ','), 'x', $.toInt(this.this_16.get$player().get$x()), 'y', $.toInt(this.this_16.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon7 = {"":
- ["this_16", "box_3"],
+ ["this_17", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon17(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon18(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon19(this.this_16, this.box_3)])]])));
+  return $.add$1(this.this_17.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon17(this.this_17)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon18(this.this_17, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon19(this.this_17, this.box_3)])]])));
  }
 };
 
 $$.World_startCycle_anon17 = {"":
- ["this_17"],
+ ["this_18"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_17.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['house'], 'x', $.toInt(this.this_17.get$player().get$x()), 'y', $.toInt(this.this_17.get$player().get$y())]));
+  return $.add$1($.index(this.this_18.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['house'], 'x', $.toInt(this.this_18.get$player().get$x()), 'y', $.toInt(this.this_18.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon18 = {"":
- ["this_18", "box_3"],
+ ["this_19", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.box_3.debugPathNodes_4, this.this_18.get$player().clone$0());
+  return $.add$1(this.box_3.debugPathNodes_4, this.this_19.get$player().clone$0());
  }
 };
 
 $$.World_startCycle_anon19 = {"":
- ["this_19", "box_3"],
+ ["this_20", "box_3"],
  super: "Closure",
  $call$0: function() {
   var t1 = ({});
-  $.add$1(this.box_3.debugPathNodes_4, this.this_19.get$player().clone$0());
+  $.add$1(this.box_3.debugPathNodes_4, this.this_20.get$player().clone$0());
   var ax = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(ax, ({E: 'int'}));
   var ay = $.ListFactory_List(null);
@@ -14559,7 +14602,7 @@ $$.World_startCycle_anon19 = {"":
   t1.endHouse_1 = false;
   t1.startHouse_2 = false;
   $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon21(start, t1, end));
-  $.add$1($.index(this.this_19.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
+  $.add$1($.index(this.this_20.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
   var debugPathNodes = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(debugPathNodes, ({E: 'Vec2'}));
   this.box_3.debugPathNodes_4 = debugPathNodes;
@@ -14567,28 +14610,28 @@ $$.World_startCycle_anon19 = {"":
 };
 
 $$.World_startCycle_anon20 = {"":
- ["ay_21", "ax_20"],
+ ["ay_22", "ax_21"],
  super: "Closure",
  $call$1: function(node) {
-  $.add$1(this.ax_20, $.toInt(node.get$x()));
-  $.add$1(this.ay_21, $.toInt(node.get$y()));
+  $.add$1(this.ax_21, $.toInt(node.get$x()));
+  $.add$1(this.ay_22, $.toInt(node.get$y()));
  }
 };
 
 $$.World_startCycle_anon21 = {"":
- ["start_23", "box_0", "end_22"],
+ ["start_24", "box_0", "end_23"],
  super: "Closure",
  $call$1: function(house) {
-  if ($.ltB(house.distanceTo$1(this.end_22), 256)) this.box_0.endHouse_1 = true;
-  if ($.ltB(house.distanceTo$1(this.start_23), 256)) this.box_0.startHouse_2 = true;
+  if ($.ltB(house.distanceTo$1(this.end_23), 256)) this.box_0.endHouse_1 = true;
+  if ($.ltB(house.distanceTo$1(this.start_24), 256)) this.box_0.startHouse_2 = true;
  }
 };
 
 $$.World_startCycle_anon8 = {"":
- ["this_24"],
+ ["this_25"],
  super: "Closure",
  $call$0: function() {
-  var t1 = this.this_24;
+  var t1 = this.this_25;
   var t2 = $.add(t1.get$time(), 1);
   t1.set$time(t2);
   return t2;
@@ -14604,20 +14647,20 @@ $$.World_startCycle_anon9 = {"":
 };
 
 $$.World_startCycle_anon10 = {"":
- ["this_25"],
+ ["this_26"],
  super: "Closure",
  $call$0: function() {
-  for (var i = 0; $.ltB(i, $.div(this.this_25.get$dayLength(), 12)); ++i) {
-    this.this_25.update$0();
+  for (var i = 0; $.ltB(i, $.div(this.this_26.get$dayLength(), 12)); ++i) {
+    this.this_26.update$0();
   }
  }
 };
 
 $$.World_startCycle_anon11 = {"":
- ["this_26"],
+ ["this_27"],
  super: "Closure",
  $call$0: function() {
-  $.print('Player : Health : ' + $.S(this.this_26.get$player().get$health()) + ' : Damage : ' + $.S(this.this_26.get$player().get$damage()) + ' : Armor : ' + $.S(this.this_26.get$player().get$armor()));
+  $.print('Player : Health : ' + $.S(this.this_27.get$player().get$health()) + ' : Damage : ' + $.S(this.this_27.get$player().get$damage()) + ' : Armor : ' + $.S(this.this_27.get$player().get$armor()));
   $.print('Mouse : ' + $.S($.toString($.event.get$mouse_position())));
  }
 };
@@ -14631,21 +14674,21 @@ $$.World_startCycle_anon12 = {"":
 };
 
 $$.World_startCycle_anon13 = {"":
- ["this_27"],
+ ["this_28"],
  super: "Closure",
  $call$0: function() {
-  var t1 = this.this_27;
+  var t1 = this.this_28;
   t1.giveCoin$2(t1.get$player(), 2000);
-  t1 = this.this_27;
+  t1 = this.this_28;
   t1.set$totalPopulation($.add(t1.get$totalPopulation(), 200));
  }
 };
 
 $$.World_startCycle_anon14 = {"":
- ["this_28"],
+ ["this_29"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_28.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon16()])));
+  return $.add$1(this.this_29.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon16()])));
  }
 };
 
@@ -14658,41 +14701,41 @@ $$.World_startCycle_anon16 = {"":
 };
 
 $$.World_startCycle_anon15 = {"":
- ["this_29"],
+ ["this_30"],
  super: "Closure",
  $call$0: function() {
-  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_29.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
+  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_30.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
  }
 };
 
 $$.World_startCycle_anon1 = {"":
- ["this_30"],
+ ["this_31"],
  super: "Closure",
  $call$1: function(e) {
-  !$.eqB($.get$length(this.this_30.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
-  var i = $.sub($.get$length(this.this_30.get$menuInterfaces()), 1);
+  !$.eqB($.get$length(this.this_31.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
+  var i = $.sub($.get$length(this.this_31.get$menuInterfaces()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(1, i);
   for (; i >= 0; --i) {
-    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
+    $.index(this.this_31.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_31.get$menuInterfaces(), i, 1);
   }
-  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_30));
+  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_31));
  },
  $call$1$bailout: function(state, i) {
   for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
+    $.index(this.this_31.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_31.get$menuInterfaces(), i, 1);
   }
-  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_30));
+  $.tags.containsKey$1('item') === true && $.some($.index($.tags, 'item'), new $.World_startCycle_anon4(this.this_31));
  }
 };
 
 $$.World_startCycle_anon4 = {"":
- ["this_31"],
+ ["this_32"],
  super: "Closure",
  $call$1: function(item) {
-  if ($.ltB(this.this_31.get$player().distanceTo$1(item), 32)) {
+  if ($.ltB(this.this_32.get$player().distanceTo$1(item), 32)) {
     $.event.set$mouseDown(false);
     $.notify('You found ' + $.S(item.get$prop().containsKey$1('properName') === true ? $.index(item, 'properName') : item.get$type()));
-    this.this_31.pickUpItem$1(item);
+    this.this_32.pickUpItem$1(item);
     return true;
   }
   return false;
@@ -14700,34 +14743,37 @@ $$.World_startCycle_anon4 = {"":
 };
 
 $$.World_startCycle_anon2 = {"":
- ["this_32"],
+ ["this_33"],
  super: "Closure",
  $call$1: function(e) {
-  $.eqB($.event.key$1('space'), 1) && $.tags.containsKey$1('salesman') === true && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon3(this.this_32));
+  $.eqB($.event.key$1('space'), 1) && $.tags.containsKey$1('salesman') === true && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon3(this.this_33));
  }
 };
 
 $$.World_startCycle_anon3 = {"":
- ["this_33"],
+ ["this_34"],
  super: "Closure",
  $call$1: function(a) {
-  $.ltB(a.distanceTo$1(this.this_33.get$player()), 128) && this.this_33.openMenu$1($.index(a, 'menu'));
+  $.ltB(a.distanceTo$1(this.this_34.get$player()), 128) && this.this_34.openMenu$1($.index(a, 'menu'));
  }
 };
 
 $$.World_startCycle_cycle = {"":
- ["context_35", "this_34"],
+ ["context_37", "box_3", "frameSkip_36", "this_35"],
  super: "Closure",
  $call$1: function(a) {
-  if (this.this_34.get$paused() !== true) {
+  if (this.this_35.get$paused() !== true) {
     $.window().requestAnimationFrame$1(this);
-    this.this_34.update$0();
+    this.this_35.update$0();
     if ($.eqB($.event.key$1('T'), 1)) {
-      this.this_34.update$0();
-      this.this_34.update$0();
-      this.this_34.update$0();
+      this.this_35.update$0();
+      this.this_35.update$0();
+      this.this_35.update$0();
     }
-    this.this_34.render$1(this.context_35);
+    var t1 = this.box_3.c_inc_5;
+    var c_inc = $.add(t1, 1);
+    this.box_3.c_inc_5 = c_inc;
+    $.eqB($.mod(t1, this.frameSkip_36), 0) && this.this_35.render$1(this.context_37);
   }
  }
 };
@@ -15201,13 +15247,6 @@ $$.World_openMenu_anon2 = {"":
  }
 };
 
-$$.anon61 = {"":
- [],
- super: "Closure",
- $call$0: function() {
- }
-};
-
 $$.anon62 = {"":
  [],
  super: "Closure",
@@ -15223,6 +15262,13 @@ $$.anon63 = {"":
 };
 
 $$.anon64 = {"":
+ [],
+ super: "Closure",
+ $call$0: function() {
+ }
+};
+
+$$.anon65 = {"":
  [],
  super: "Closure",
  $call$0: function() {
@@ -15886,6 +15932,7 @@ $.OverlayManager$ = function() {
 };
 
 $.UIManager$ = function() {
+  {};
   var t1 = new $.UIManager($.CTC30, null, null, null, false, null);
   t1.UIManager$0();
   return t1;
@@ -17805,7 +17852,6 @@ $.CTC9 = new Isolate.$isolateProperties.EmptyQueueException();
 $._pendingRequests = null;
 $.audio = null;
 $.tags = null;
-$.MOBILE = false;
 $.tagEvents = null;
 $.rpatCount = 0;
 $.SCREEN_WIDTH = null;
@@ -19843,6 +19889,9 @@ $.$defineNativeClass('TimeRanges', ["length?"], {
 $.$defineNativeClass('Touch', ["pageY?", "pageX?"], {
 });
 
+$.$defineNativeClass('TouchEvent', ["touches?", "changedTouches?"], {
+});
+
 $.$defineNativeClass('TouchList', ["length?"], {
  removeRange$2: function(start, rangeLength) {
   throw $.captureStackTrace($.UnsupportedOperationException$('Cannot removeRange on immutable List.'));
@@ -20255,7 +20304,7 @@ $.$defineNativeClass('Worker', [], {
  }
 });
 
-// 266 dynamic classes.
+// 267 dynamic classes.
 // 408 classes
 // 37 !leaf
 (function(){

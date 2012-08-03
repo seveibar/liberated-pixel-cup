@@ -125,10 +125,7 @@ class GameObject extends Vec2 {
   }
   void fireTagEvent(String event){
     this.tags.forEach((tag){
-      //OPTIMIZE
-      if (tagEvents.containsKey(tag) && tagEvents[tag].containsKey(event)){
-        tagEvents[tag][event](this);
-      }
+      tagEvents[tag][event](this);
     });
   }
   void markForRemoval(){

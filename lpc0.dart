@@ -812,13 +812,33 @@ class Game {
               ftext.remove();
             }
           }
-        }
+        },
+        "avatar":{},
+        "actor":{},
+        "ai":{},
+        "friendly":{},
+        "uninit":{},
+        "house":{},
+        "node":{},
+        "zombie-spawn":{}
     };
+    
+    List<String> tagEventIndex = ["init","update","collide","die","decompose","hit","kill"];
+    tagEventIndex.forEach((String i){
+      for (String key in tagEvents.getKeys()){
+        if (!tagEvents[key].containsKey(i)){
+          tagEvents[key][i] = (a){};
+        }
+      }
+    });
+    
     notifications = new List<Notification>();
     
     BLANK_IMAGE = new html.ImageElement();
     
-    tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>(),"wander":new List<Avatar>(),"lost":new List<Avatar>()};
+    tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>(),"wander":new List<Avatar>(),"lost":new List<Avatar>(),
+            "item":new List<Item>(),"salesman":new List<Avatar>(),"lost":new List<Avatar>(),"zombie":new List<Avatar>(),
+            "uninit":new List<GameObject>(),"actor":new List<Avatar>(),"spawn":new List<SpawnPoint>(),"following":new List<Avatar>()};
     tagMap = tags;
     
     audio = new AudioManager();

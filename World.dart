@@ -552,20 +552,19 @@ class World {
         }
       }
       //Check if player is near items
-      if (tags.containsKey("item")){
-        tags["item"].some((Item item){
-          if (player.distanceTo(item) < 32){
-            event.mouseDown = false;
-            notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
-            pickUpItem(item);
-            return true;
-          }
-          return false;
-        });
-      }
+      //TODO permatags
+      tags["item"].some((Item item){
+        if (player.distanceTo(item) < 32){
+          event.mouseDown = false;
+          notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
+          pickUpItem(item);
+          return true;
+        }
+        return false;
+      });
     });
     event.onKeyPress.add((e){
-      if (event.key("space") == 1 && tags.containsKey("salesman")){
+      if (event.key("space") == 1){
         tags["salesman"].forEach((Avatar a){
           if (a.distanceTo(player)<128){
             openMenu(a["menu"]);
@@ -676,25 +675,19 @@ class World {
       }
       
       //Lost citizens become unlost during the day
-      if (tags.containsKey("lost")){
-        tags["lost"].forEach((Avatar a){
-          a.removeTag("lost");
-          rmTag(a,"lost");
-        });
-      }
-      if (tags.containsKey("following")){
-        tags["following"].forEach((Avatar a){
-          switchTag(a,"following","wander");
-          a.say("Thank you!");
-          a.tags.add("nice");
-          addTag(a,"nice");
-        });
-      }
-      if (tags.containsKey("zombie")){
-        tags["zombie"].forEach((Avatar a){
-          a.markForRemoval();
-        });
-      }
+      tags["lost"].forEach((Avatar a){
+        a.removeTag("lost");
+        rmTag(a,"lost");
+      });
+      tags["following"].forEach((Avatar a){
+        switchTag(a,"following","wander");
+        a.say("Thank you!");
+        a.tags.add("nice");
+        addTag(a,"nice");
+      });
+      tags["zombie"].forEach((Avatar a){
+        a.markForRemoval();
+      });
       
     }else if (!night_mode && (time > 21 || time < 6.5)){
       night_mode = true;
@@ -762,14 +755,14 @@ class World {
     }
     
     //Protips
-    if (rpat(1000)){
+    if (rpat(2000)){
       final List<String> protips = [
           "You can switch weapons with E",
           "Villagers tend to be meaner when you kill them",
-          "All weapons, upgrades and coins are preserved between games",
           "Upgrades can be purchased for all weapons",
           "Zombies grow stronger every day, equip yourself accordingly",
-          "You can press T to speed up time"
+          "You can press T to speed up time",
+          "Press the SHIFT key to sprint"
       ];
       notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
     }
@@ -777,7 +770,7 @@ class World {
     //Tag events
     
     //The Lost
-    if (night_mode && rpat(60) && tags.containsKey("lost") && tags["lost"].length>0){
+    if (night_mode && rpat(60) && tags["lost"].length>0){
       tags["lost"][(tags["lost"].length * Math.random()).toInt()].say(lostSpeech[(lostSpeech.length * Math.random()).toInt()]);
     }
     
@@ -827,13 +820,11 @@ class World {
     camera.update();
     
     //Uninit Tag (newly spawns)
-    if (tags.containsKey("uninit")){
-      tags["uninit"].forEach((GameObject ob){
-        ob.fireTagEvent("init");
-        ob.removeTag("uninit");
-      });
-      tags["uninit"] = new List<GameObject>();
-    }
+    tags["uninit"].forEach((GameObject ob){
+      ob.fireTagEvent("init");
+      ob.removeTag("uninit");
+    });
+    tags["uninit"] = new List<GameObject>();
     
     //Update All Tags
     
@@ -857,94 +848,90 @@ class World {
     objects.forEach((GameObject g) => g.fireTagEvent("update"));
     
     //Actor Tag
-    if (tags.containsKey("actor")){
-      tags["actor"].forEach((Avatar actor){
-        if (actor.alive){
-          if (actor.attacking){
-            actor.currentAttackTime = actor.currentAttackTime + 1;
-            if (actor.currentAttackTime > actor.attackTime){
-              
-              actor.currentAttackTime = 0;
-              
-              //TODO use switch here
-              if (actor.attackType == 0){
-                //Melee Attack
-                List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection);
-                for (int i = 0;i<attacked.length;i++){
-                  if (!attacked[i].alive){
-                    actor.fireTagEvent("kill");
-                  }
+    tags["actor"].forEach((Avatar actor){
+      if (actor.alive){
+        if (actor.attacking){
+          actor.currentAttackTime = actor.currentAttackTime + 1;
+          if (actor.currentAttackTime > actor.attackTime){
+            
+            actor.currentAttackTime = 0;
+            
+            //TODO use switch here
+            if (actor.attackType == 0){
+              //Melee Attack
+              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection);
+              for (int i = 0;i<attacked.length;i++){
+                if (!attacked[i].alive){
+                  actor.fireTagEvent("kill");
                 }
-                if (actor.distanceTo(player) < 256){
-                  audio.play("bump");
-                }
-              }else if (actor.attackType == 1){
-                //Ranged Attack
-                spawnObject("arrow",{
-                  "direction":actor.attackDirection.clone().multiplyScalar(128),
-                  "x":actor.x + actor.attackDirection.x * 32,
-                  "y":actor.y + actor.attackDirection.y * 32,
-                  "damage":actor.damage
-                });
-                audio.play("shoot");
-              }else if (actor.attackType == 2){
-                //Thrusting attack
-                List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection.clone().multiplyScalar(1.5));
-                for (int i = 0;i<attacked.length;i++){
-                  if (!attacked[i].alive){
-                    actor.fireTagEvent("kill");
-                  }
+              }
+              if (actor.distanceTo(player) < 256){
+                audio.play("bump");
+              }
+            }else if (actor.attackType == 1){
+              //Ranged Attack
+              spawnObject("arrow",{
+                "direction":actor.attackDirection.clone().multiplyScalar(128),
+                "x":actor.x + actor.attackDirection.x * 32,
+                "y":actor.y + actor.attackDirection.y * 32,
+                "damage":actor.damage
+              });
+              audio.play("shoot");
+            }else if (actor.attackType == 2){
+              //Thrusting attack
+              List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection.clone().multiplyScalar(1.5));
+              for (int i = 0;i<attacked.length;i++){
+                if (!attacked[i].alive){
+                  actor.fireTagEvent("kill");
                 }
               }
             }
-            int timeToAttack = actor.currentAttackTime - actor.attackTime + Animation.AnimationTime[actor.attackType];
-            actor.currentFrame += (timeToAttack > 0) ? timeToAttack : 0;
-            actor.currentOrientation = actor.attackDirection.getDirection();
-          }else{
-            if (actor.velocity.length() > 0.1){
-              actor.currentFrame += actor.velocity.length();
-              actor.currentOrientation = actor.velocity.getDirection();
-            }
           }
-          actor.velocity.divideScalar(1.5 * (actor.attacking ? 2 : 1));
-          if (collisionAtVec2(actor.clone().add(actor.velocity))){
-            //Figure out if it's on the left or right side
-            if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
-              //actor.velocity.negateX();
-              actor.velocity.zeroX();
-            }
-            if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
-              //actor.velocity.negateY();
-              actor.velocity.zeroY();
-            }
-            actor.add(actor.velocity);
-            actor.fireTagEvent("collide");
-          }else if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
-            //actor.add(actor.velocity.negateX());
-            actor.add(actor.velocity.zeroX());
-            actor.fireTagEvent("collide");
-          }else if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
-            //actor.add(actor.velocity.negateY());
-            actor.add(actor.velocity.zeroY());
-            actor.fireTagEvent("collide");
-          }else{
-            actor.add(actor.velocity);
-          }
+          int timeToAttack = actor.currentAttackTime - actor.attackTime + Animation.AnimationTime[actor.attackType];
+          actor.currentFrame += (timeToAttack > 0) ? timeToAttack : 0;
+          actor.currentOrientation = actor.attackDirection.getDirection();
         }else{
-          //If actor is dead
-          if (actor.currentFrame < 25){
-            actor.currentFrame ++;
+          if (actor.velocity.length() > 0.1){
+            actor.currentFrame += actor.velocity.length();
+            actor.currentOrientation = actor.velocity.getDirection();
           }
         }
-      });
-    }
+        actor.velocity.divideScalar(1.5 * (actor.attacking ? 2 : 1));
+        if (collisionAtVec2(actor.clone().add(actor.velocity))){
+          //Figure out if it's on the left or right side
+          if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
+            //actor.velocity.negateX();
+            actor.velocity.zeroX();
+          }
+          if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
+            //actor.velocity.negateY();
+            actor.velocity.zeroY();
+          }
+          actor.add(actor.velocity);
+          actor.fireTagEvent("collide");
+        }else if (collisionAtVec2(actor.clone().addTo(actor.velocity.x, 0))){
+          //actor.add(actor.velocity.negateX());
+          actor.add(actor.velocity.zeroX());
+          actor.fireTagEvent("collide");
+        }else if (collisionAtVec2(actor.clone().addTo(0, actor.velocity.y))){
+          //actor.add(actor.velocity.negateY());
+          actor.add(actor.velocity.zeroY());
+          actor.fireTagEvent("collide");
+        }else{
+          actor.add(actor.velocity);
+        }
+      }else{
+        //If actor is dead
+        if (actor.currentFrame < 25){
+          actor.currentFrame ++;
+        }
+      }
+    });
     
     //Spawn Tag
-    if (tags.containsKey("spawn")){
-      tags["spawn"].forEach((SpawnPoint spawn){
-        spawn.update();
-      });
-    }
+    tags["spawn"].forEach((SpawnPoint spawn){
+      spawn.update();
+    });
     
     
     //Sort Objects
@@ -1013,8 +1000,8 @@ class World {
     onscene.forEach((object){
       object.render(c);
     });
+    c.globalAlpha = .5;
     if (DEBUG){
-      c.globalAlpha = .5;
       paths.forEach((Path path){
         c.beginPath();
         c.strokeStyle = "#fff";

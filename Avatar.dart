@@ -71,6 +71,9 @@ class Avatar extends GameObject {
     health -= damage * armor;
     if (damage > 10){
       this.velocity.add(direction.multiplyScalar(damage/2));
+      if (this.velocity.lengthSq() > 8*8){
+        this.velocity.normalize().multiplyScalar(8);
+      }
     }
     timeSinceHealthChange = 120;
     if (alive && health <= 0){

@@ -38,7 +38,7 @@ class World {
   List<Path> paths;
   List<PathNode> pathnodes;
   num time = 7;//24:00 clock (Start at 7)
-  num dayLength = 60 * 60 * 4;
+  num dayLength = 60 * 60 * 3;
   bool night_mode = false;
   
   int totalPopulation = 200;
@@ -46,12 +46,11 @@ class World {
   int awakePopulation = 0;
   int dayCount = 1;
   
-  int zombie_max = 50;
+  int zombie_max = 100;
   int zombie_out = 0;
   int zombies_killed = 0;
   
-  int guard_out = 0;
-  int guard_total = 100;//2
+  int guard_total = 2;//2
   int guard_price = 100;
   
   int difficultyMode = 0;
@@ -66,6 +65,10 @@ class World {
   List<int> weaponCost2;//For second upgrade
   List<String> weaponName;
   List<int> weaponStartFrame;
+  
+  int multiplier = 1;
+  num multiplier_time = 0;
+  final num max_multiplier_time = 120;
   
   int coin = 0;//Player Money
   
@@ -109,7 +112,7 @@ class World {
     weaponDamage =        [25,  34,  20,  34,    75,  45,   70  ];
     weaponAttackTypes =   [0,   0,    1,   2,     2,  0,     0  ];
     weaponAttackTime =    [12,  10,  24,  15,    20,  12,   18  ];
-    weaponAttackRadius =  [64,  64,   0,  128,  128, 128,  128  ];
+    weaponAttackRadius =  [64,  64,   256,  64,  64, 64,  64  ];
     weaponCost =          [0,  120, 240,  150,  400, 300,  500  ];
     weaponCost2 =         [0,  120, 240,  150,  400, 300,  500  ];
     weaponStartFrame =    [0,    0,   25,    0,    0,   0,    0  ];
@@ -337,6 +340,32 @@ class World {
     });
     return cnodes;
   }
+  void spawnGuard(){
+    PathNode pn = pathnodes[(pathnodes.length * Math.random()).toInt()];
+    spawnObject("guard",{"x":pn.x,"y":pn.y});
+  }
+  void setGuardPath(Avatar guard){
+    PathNode destinationNode;
+    //Get next path point
+    List<PathNode> cnodes = getClosePathNodes(guard);
+    if (cnodes.length == 0){
+      //Find closest path node
+      num closestDistance = 9999;
+      PathNode closest;
+      world.pathnodes.forEach((PathNode node){
+        if (node.distanceTo(guard) < closestDistance){
+          closest = node;
+        }
+      });
+      destinationNode = closest;
+    }else{
+      destinationNode = cnodes[(Math.random() * cnodes.length).toInt()];
+    }
+    guard["path"] = destinationNode.path;
+    guard["destination"] = destinationNode.clone().add(guard["positionOffset"]);
+    guard["pathDirection"] =  destinationNode.start ? 1 : -1;
+    guard["pathIndex"] = destinationNode.start ? 0 : destinationNode.path.points.length-1;
+  }
   void startCycle(context){
     //Set camera to player position
     player = tags["player"][0];
@@ -346,6 +375,9 @@ class World {
     if (intro){
       player_animation = player.animation;
       player.animation = new Animation({});
+    }
+    for (int i = 0;i<guard_total;i++){
+      spawnGuard();
     }
     player.removeTag("citizen");
     sortScreenObjects();
@@ -597,6 +629,17 @@ class World {
     },(1000/60).toInt());
     cycle(0);
   }
+  void equipWeapon(Avatar avatar,int weaponID){
+    if (weaponID != 0){
+      avatar.weaponAnimation = animationMap["weapon$weaponID"];
+    }else{
+      avatar.weaponAnimation = null;
+    }
+    avatar.damage = weaponDamage[weaponID];
+    avatar.attackTime = weaponAttackTime[weaponID];
+    avatar.attackType = weaponAttackTypes[weaponID];
+    avatar.attackRadius = weaponAttackRadius[weaponID]/2;
+  }
   html.ImageElement getItemImage(int index){
     if (itemImages != null){
       return itemImages[index];
@@ -659,8 +702,19 @@ class World {
     }
   }
   void update(){
-    
     rpatCount += (Math.random() * 64).toInt();
+    
+    if (multiplier_time <= 0){
+      if (multiplier <= 1){
+        multiplier = 1;
+      }else{
+        multiplier --;
+        multiplier_time = max_multiplier_time;
+      }
+    }else{
+      multiplier_time --;
+    }
+    
     //Day/Night Cycle Events
     if (night_mode && time>6.5 && time<21){//6:30 is wake up time
       night_mode = false;
@@ -743,13 +797,13 @@ class World {
     //Release Zombies (if night)
     if (night_mode){
       if (time < 4 || time > 21){
-        if (zombie_out < zombie_max - 50 || (zombie_out < zombie_max && rpat(32))){
+        if (zombie_out < zombie_max - 50 || (zombie_out < zombie_max && rpat(16))){
           zombie_out ++;
           List<GameObject> zs_list = tags["zombie-spawn"];
           GameObject zs = zs_list[(zs_list.length * Math.random()).toInt()];
           Avatar a = spawnObject("zombie",{"x":zs.x,"y":zs.y});
         }
-      }else if (zombie_out > 0 && rpat(16)){
+      }else if (zombie_out > 0 && rpat(30)){
         Avatar zom = tags["zombie"][(tags["zombie"].length * Math.random()).toInt()];
         if (!zom.hasTag("nestbound")){
           zom.removeTag("hostile");
@@ -969,13 +1023,35 @@ class World {
     c.globalAlpha = .75;
     c.fillText("${coin}c", 15, 18);
     c.globalAlpha = 1;
-    
-    
+  }
+  void renderMultiplier(html.CanvasRenderingContext2D c){
+    c.save();
+    final int distanceFromEdge = 50;
+    final int radius = 40;
+    c.globalAlpha = .5;
+    c.lineWidth = 12;
+    c.strokeStyle = "#f00";
+    c.beginPath();
+    num p =  multiplier_time / max_multiplier_time * Math.PI * 2;
+    if (p > 0){
+      c.arc(SCREEN_WIDTH - distanceFromEdge, distanceFromEdge, radius, 0,p, false);
+    }
+    c.stroke();
+    c.closePath();
+    c.fillStyle = "#f00";
+    c.font = "bold 18px Arial";
+    c.fillText("${multiplier}x", SCREEN_WIDTH - distanceFromEdge - 14, distanceFromEdge+6);
+    c.restore();
   }
   void giveCoin(Vec2 at,int amt){
+    amt *= multiplier;
     coin += amt;
     spawnObject("floating_text",{"x":at.x,"y":at.y,"text":"+${amt}"});
     audio.play("coin");
+  }
+  void addMultiplier(){
+    multiplier ++;
+    multiplier_time = max_multiplier_time;
   }
   List<Avatar> damageBubble(Vec2 point,num radius,num damage,Vec2 direction){
     List<Avatar> attacked = new List<Avatar>();
@@ -1022,6 +1098,7 @@ class World {
         c.moveTo(path.start.x, path.start.y);
         path.points.forEach((Vec2 point){
           c.lineTo(point.x,point.y);
+          c.fillText(point.toString(), point.x, point.y);
         });
         c.stroke();
         c.closePath();
@@ -1036,6 +1113,7 @@ class World {
     renderNotifications(c);
     renderSaved(c);
     renderCoins(c);
+    renderMultiplier(c);
     if (intro){
       c.globalAlpha = 1;
       c.fillStyle = "#000";

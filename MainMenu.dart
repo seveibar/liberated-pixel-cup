@@ -123,8 +123,9 @@ class MainMenu {
                 world.dayLength = 60 * 60 * 120;//2 hour nights
                 world.time = 21;
                 var interval;
+                final int seconds_difficulty_change = 20;
                 interval = html.window.setInterval((){
-                  if (count % 120 == 0){
+                  if (count % (seconds_difficulty_change * 2) == 0){
                     world.dayCount ++;
                     world.increaseDifficulty();
                     notify("Difficulty Increased (Night ${world.dayCount})");

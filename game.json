@@ -199,12 +199,59 @@
       "slash": "weapons/longsword.png"
     },
     {
+      "type": "animation",
+      "name": "guard0",
+      "walk": "characters/guard0/walkcycle.png",
+      "slash": "characters/guard0/slash.png",
+      "death": "characters/guard0/hurt.png",
+      "shoot": "characters/guard0/bow.png",
+      "thrust": "characters/guard0/thrust.png"
+    },
+{
+      "type": "animation",
+      "name": "guard1",
+      "walk": "characters/guard1/walkcycle.png",
+      "slash": "characters/guard1/slash.png",
+      "death": "characters/guard1/hurt.png",
+      "shoot": "characters/guard1/bow.png",
+      "thrust": "characters/guard1/thrust.png"
+    },
+{
+      "type": "animation",
+      "name": "guard2",
+      "walk": "characters/guard2/walkcycle.png",
+      "slash": "characters/guard2/slash.png",
+      "death": "characters/guard2/hurt.png",
+      "shoot": "characters/guard2/bow.png",
+      "thrust": "characters/guard2/thrust.png"
+    },
+{
+      "type": "animation",
+      "name": "guard3",
+      "walk": "characters/guard3/walkcycle.png",
+      "slash": "characters/guard3/slash.png",
+      "death": "characters/guard3/hurt.png",
+      "shoot": "characters/guard3/bow.png",
+      "thrust": "characters/guard3/thrust.png"
+    },
+
+    {
       "type": "avatar",
       "name": "citizen",
       "properties": {
         "animation": "citizen[0-9]",
         "tag": [
           "actor"
+        ]
+      }
+    },
+    {
+      "type": "avatar",
+      "name": "guard",
+      "properties": {
+        "animation": "guard[0-3]",
+        "tag": [
+          "actor","friendly","guard-wander"
         ]
       }
     },
@@ -1455,6 +1502,7 @@
           "point_x": [
             2742,
             2809,
+            3000,
             3192,
             3246,
             3145,
@@ -1467,6 +1515,7 @@
           "point_y": [
             1391,
             1488,
+            1600,
             1832,
             2536,
             2870,
@@ -1615,6 +1664,7 @@
           "point_x": [
             6413,
             5976,
+            5750,
             5676,
             5315,
             4975,
@@ -1628,6 +1678,7 @@
           "point_y": [
             2313,
             2369,
+            2446,
             2446,
             2172,
             1998,

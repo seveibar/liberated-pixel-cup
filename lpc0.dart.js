@@ -1103,6 +1103,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('getClosePathNodes', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'getClosePathNodes', [arg0])
 },
+ getClosePathNodes$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('getClosePathNodes', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'getClosePathNodes', [arg0])
+},
  removeFirst$0: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('removeFirst', [])
@@ -1543,6 +1548,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('webkitRequestFullscreen', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'webkitRequestFullscreen', [])
 },
+ equipWeapon$2: function (arg0, arg1) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('equipWeapon', [arg0, arg1])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'equipWeapon', [arg0, arg1])
+},
  _lib2_char$0: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('_char', [])
@@ -1763,10 +1773,20 @@ $$.Object = {"":
       ? this.noSuchMethod$2('_complete', [])
       : $.Object.prototype.noSuchMethod$2.call(this, '_complete', [])
 },
+ renderMultiplier$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('renderMultiplier', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'renderMultiplier', [arg0])
+},
  prompt$2: function (arg0, arg1) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('prompt', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, 'prompt', [arg0, arg1])
+},
+ arc$6: function (arg0, arg1, arg2, arg3, arg4, arg5) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('arc', [arg0, arg1, arg2, arg3, arg4, arg5])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'arc', [arg0, arg1, arg2, arg3, arg4, arg5])
 },
  purchaseWeapon$1: function (arg0) {
   return this.noSuchMethod$2
@@ -3283,6 +3303,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('clickAt', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, 'clickAt', [arg0, arg1])
 },
+ setGuardPath$1: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('setGuardPath', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'setGuardPath', [arg0])
+},
  $dom_getElementById$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('$dom_getElementById', [arg0])
@@ -4163,15 +4188,15 @@ $$.Object = {"":
       ? this.noSuchMethod$2('getDirection', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'getDirection', [])
 },
- zeroY$0: function () {
-  return this.noSuchMethod$2
-      ? this.noSuchMethod$2('zeroY', [])
-      : $.Object.prototype.noSuchMethod$2.call(this, 'zeroY', [])
-},
  clearInterval$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('clearInterval', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'clearInterval', [arg0])
+},
+ zeroY$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('zeroY', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'zeroY', [])
 },
  addLast$1: function (arg0) {
   return this.noSuchMethod$2
@@ -4333,6 +4358,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('lengthSq', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'lengthSq', [])
 },
+ lengthSq$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('lengthSq', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'lengthSq', [])
+},
  operator$lt$1: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('operator$lt', [arg0])
@@ -4347,6 +4377,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('some', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'some', [arg0])
+},
+ addMultiplier$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('addMultiplier', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'addMultiplier', [])
 },
  getPropertyValue$1: function (arg0) {
   return this.noSuchMethod$2
@@ -4397,6 +4432,16 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set', [arg0, arg1])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set', [arg0, arg1])
+},
+ spawnGuard$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('spawnGuard', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'spawnGuard', [])
+},
+ spawnGuard$0: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('spawnGuard', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'spawnGuard', [])
 },
  removeLast$0: function () {
   return this.noSuchMethod$2
@@ -5818,6 +5863,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('get player_max_health', [])
       : $.Object.prototype.noSuchMethod$2.call(this, 'get player_max_health', [])
 },
+ get$zombie_out: function () {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('get zombie_out', [])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'get zombie_out', [])
+},
  get$$$dom_offsetHeight: function () {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('get $dom_offsetHeight', [])
@@ -6418,6 +6468,11 @@ $$.Object = {"":
       ? this.noSuchMethod$2('set player_max_health', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set player_max_health', [arg0])
 },
+ set$zombie_out: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set zombie_out', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set zombie_out', [arg0])
+},
  set$y: function (arg0) {
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set y', [arg0])
@@ -6587,6 +6642,11 @@ $$.Object = {"":
   return this.noSuchMethod$2
       ? this.noSuchMethod$2('set value', [arg0])
       : $.Object.prototype.noSuchMethod$2.call(this, 'set value', [arg0])
+},
+ set$attackRadius: function (arg0) {
+  return this.noSuchMethod$2
+      ? this.noSuchMethod$2('set attackRadius', [arg0])
+      : $.Object.prototype.noSuchMethod$2.call(this, 'set attackRadius', [arg0])
 },
  set$position: function (arg0) {
   return this.noSuchMethod$2
@@ -7046,8 +7106,8 @@ $$.Game = {"":
   $.niceFactor = 0;
   $.rpatCount = $.toInt($.mul($.Math_random(), 64));
   $.classMap = $.makeLiteralMap(['spawn', new $.anon2(), 'avatar', new $.anon3(), 'node', new $.anon4(), 'arrow', new $.anon5(), 'floating_text', new $.anon6()]);
-  $.tagEvents = $.makeLiteralMap(['citizen', $.makeLiteralMap(['init', new $.anon7(), 'update', new $.anon8(), 'hit', new $.anon9(), 'die', new $.anon10(), 'collide', new $.anon11()]), 'player', $.makeLiteralMap(['init', new $.anon12(), 'die', new $.anon13(), 'decomposed', new $.anon14(this), 'update', new $.anon15()]), 'scared', $.makeLiteralMap(['init', new $.anon16(), 'update', new $.anon17()]), 'traveler', $.makeLiteralMap(['init', new $.anon18(), 'collide', new $.anon19(), 'update', new $.anon20()]), 'homebound', $.makeLiteralMap(['init', new $.anon21(), 'update', new $.anon22(), 'collide', new $.anon23()]), 'lost', $.makeLiteralMap(['update', new $.anon24()]), 'corpse', $.makeLiteralMap(['init', new $.anon25(), 'update', new $.anon26()]), 'following', $.makeLiteralMap(['update', new $.anon27()]), 'wander', $.makeLiteralMap(['collide', new $.anon28(), 'init', new $.anon29(), 'update', new $.anon30()]), 'nice', $.makeLiteralMap(['init', new $.anon31(), 'update', new $.anon32()]), 'mean', $.makeLiteralMap(['init', new $.anon33(), 'update', new $.anon34()]), 'salesman', $.makeLiteralMap(['update', new $.anon35()]), 'arrow', $.makeLiteralMap(['update', new $.anon36()]), 'zombie', $.makeLiteralMap(['init', new $.anon37(), 'die', new $.anon38()]), 'hostile-wander', $.makeLiteralMap(['init', new $.anon39(), 'update', new $.anon40(), 'collide', new $.anon41(), 'hit', new $.anon42()]), 'hostile', $.makeLiteralMap(['update', new $.anon43(), 'kill', new $.anon44(), 'hit', new $.anon45()]), 'nestbound', $.makeLiteralMap(['init', new $.anon46(), 'update', new $.anon47(), 'collide', new $.anon48()]), 'floating_text', $.makeLiteralMap(['update', new $.anon49()]), 'avatar', $.makeLiteralMap([]), 'actor', $.makeLiteralMap([]), 'ai', $.makeLiteralMap([]), 'friendly', $.makeLiteralMap([]), 'uninit', $.makeLiteralMap([]), 'house', $.makeLiteralMap([]), 'node', $.makeLiteralMap([]), 'zombie-spawn', $.makeLiteralMap([])]);
-  $.forEach(['init', 'update', 'collide', 'die', 'decompose', 'hit', 'kill'], new $.anon50());
+  $.tagEvents = $.makeLiteralMap(['citizen', $.makeLiteralMap(['init', new $.anon7(), 'update', new $.anon8(), 'hit', new $.anon9(), 'die', new $.anon10(), 'collide', new $.anon11()]), 'player', $.makeLiteralMap(['init', new $.anon12(), 'die', new $.anon13(), 'decomposed', new $.anon14(this), 'update', new $.anon15()]), 'scared', $.makeLiteralMap(['init', new $.anon16(), 'update', new $.anon17()]), 'traveler', $.makeLiteralMap(['init', new $.anon18(), 'collide', new $.anon19(), 'update', new $.anon20()]), 'guard-wander', $.makeLiteralMap(['init', new $.anon21(), 'update', new $.anon22(), 'collide', new $.anon23(), 'die', new $.anon24()]), 'guard-wait', $.makeLiteralMap(['update', new $.anon25()]), 'guard-attack', $.makeLiteralMap(['init', new $.anon26(), 'update', new $.anon27(), 'die', new $.anon28()]), 'guard', $.makeLiteralMap(['init', new $.anon29(), 'die', new $.anon30()]), 'homebound', $.makeLiteralMap(['init', new $.anon31(), 'update', new $.anon32(), 'collide', new $.anon33()]), 'lost', $.makeLiteralMap(['update', new $.anon34()]), 'corpse', $.makeLiteralMap(['init', new $.anon35(), 'update', new $.anon36()]), 'following', $.makeLiteralMap(['update', new $.anon37()]), 'wander', $.makeLiteralMap(['collide', new $.anon38(), 'init', new $.anon39(), 'update', new $.anon40()]), 'nice', $.makeLiteralMap(['init', new $.anon41(), 'update', new $.anon42()]), 'mean', $.makeLiteralMap(['init', new $.anon43(), 'update', new $.anon44()]), 'salesman', $.makeLiteralMap(['update', new $.anon45()]), 'arrow', $.makeLiteralMap(['update', new $.anon46()]), 'zombie', $.makeLiteralMap(['init', new $.anon47(), 'die', new $.anon48()]), 'hostile-wander', $.makeLiteralMap(['init', new $.anon49(), 'update', new $.anon50(), 'collide', new $.anon51(), 'hit', new $.anon52()]), 'hostile', $.makeLiteralMap(['update', new $.anon53(), 'kill', new $.anon54(), 'hit', new $.anon55()]), 'nestbound', $.makeLiteralMap(['init', new $.anon56(), 'update', new $.anon57(), 'collide', new $.anon58()]), 'floating_text', $.makeLiteralMap(['update', new $.anon59()]), 'avatar', $.makeLiteralMap([]), 'actor', $.makeLiteralMap([]), 'ai', $.makeLiteralMap([]), 'friendly', $.makeLiteralMap([]), 'uninit', $.makeLiteralMap([]), 'house', $.makeLiteralMap([]), 'node', $.makeLiteralMap([]), 'zombie-spawn', $.makeLiteralMap([])]);
+  $.forEach(['init', 'update', 'collide', 'die', 'decomposed', 'hit', 'kill'], new $.anon60());
   var t1 = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(t1, ({E: 'Notification'}));
   $.notifications = t1;
@@ -7091,7 +7151,7 @@ $$.Game = {"":
   $.RENDER_DISTANCE = $.toInt($.div($.mul($.add($.SCREEN_WIDTH, $.SCREEN_HEIGHT), 2), 4));
   $.world = $.World$();
   $.print('Loading World');
-  $.web_load('game.json', new $.anon51(this));
+  $.web_load('game.json', new $.anon61(this));
  }
 };
 
@@ -7559,7 +7619,7 @@ $$.SpawnPoint = {"":
 };
 
 $$.Avatar = {"":
- ["weaponAnimation!", "animation=", "attackRadius?", "speech", "sayTime=", "speaking=", "speed=", "alive?", "health=", "timeSinceHealthChange", "currentAttackTime=", "attackTime=", "attackType=", "armor=", "damage=", "attackDirection=", "_attacking", "velocity?", "currentFrame=", "currentOrientation!", "currentAnimation", "markedForRemoval", "type", "id", "prop", "tags", "y", "x"],
+ ["weaponAnimation!", "animation=", "attackRadius=", "speech", "sayTime=", "speaking=", "speed=", "alive?", "health=", "timeSinceHealthChange", "currentAttackTime=", "attackTime=", "attackType=", "armor=", "damage=", "attackDirection=", "_attacking", "velocity?", "currentFrame=", "currentOrientation!", "currentAnimation", "markedForRemoval", "type", "id", "prop", "tags", "y", "x"],
  super: "GameObject",
  render$1: function(c) {
   c.save$0();
@@ -7749,7 +7809,11 @@ $$.Avatar = {"":
  hurt$2: function(damage, direction) {
   this.fireTagEvent$1('hit');
   this.health = $.sub(this.health, $.mul(damage, this.armor));
-  $.gtB(damage, 10) && this.velocity.add$1(direction.multiplyScalar$1($.div(damage, 2)));
+  if ($.gtB(damage, 10)) {
+    var t1 = this.velocity;
+    t1.add$1(direction.multiplyScalar$1($.div(damage, 2)));
+    $.gtB(t1.lengthSq$0(), 64) && t1.normalize$0().multiplyScalar$1(8);
+  }
   this.timeSinceHealthChange = 120;
   if (this.alive && $.leB(this.health, 0)) {
     this.currentFrame = 0;
@@ -7762,7 +7826,7 @@ $$.Avatar = {"":
     $.index($.index($.tagEvents, 'corpse'), 'init').$call$1(this);
     this.alive = false;
     for (var i = this.tags.length - 1; i >= 0; --i) {
-      var t1 = this.tags;
+      t1 = this.tags;
       var t2 = t1.length;
       if (i < 0 || i >= t2) throw $.ioore(i);
       var tag = t1[i];
@@ -7792,7 +7856,11 @@ $$.Avatar = {"":
     case 0:
       this.fireTagEvent$1('hit');
       this.health = $.sub(this.health, $.mul(damage, this.armor));
-      $.gtB(damage, 10) && $.add$1(this.velocity, direction.multiplyScalar$1($.div(damage, 2)));
+      if ($.gtB(damage, 10)) {
+        var t1 = this.velocity;
+        $.add$1(t1, direction.multiplyScalar$1($.div(damage, 2)));
+        $.gtB(t1.lengthSq$0(), 64) && t1.normalize$0().multiplyScalar$1(8);
+      }
       this.timeSinceHealthChange = 120;
     case 1:
       if (state == 1 || (state == 0 && (this.alive === true && $.leB(this.health, 0)))) {
@@ -7813,7 +7881,7 @@ $$.Avatar = {"":
               switch (state) {
                 case 0:
                   if (!(i >= 0)) break L0;
-                  var t1 = this.tags;
+                  t1 = this.tags;
                   var t2 = t1.length;
                   if (i < 0 || i >= t2) throw $.ioore(i);
                   var tag = t1[i];
@@ -8115,14 +8183,14 @@ $$.UIManager = {"":
     if (i < 0 || i >= t3) throw $.ioore(i);
     t2[i] = 0;
   }
-  $.add$1($.window().get$on().get$keyDown(), new $.anon52(this));
-  $.add$1($.window().get$on().get$keyUp(), new $.anon53(this));
-  $.add$1($.window().get$on().get$mouseDown(), new $.anon54(this, t1));
-  $.add$1($.window().get$on().get$mouseUp(), new $.anon55(this, t1));
-  $.add$1($.window().get$on().get$mouseMove(), new $.anon56(this, t1));
-  $.add$1($.window().get$on().get$touchStart(), new $.anon57(this));
-  $.add$1($.window().get$on().get$touchMove(), new $.anon58(this, t1));
-  $.add$1($.window().get$on().get$touchEnd(), new $.anon59());
+  $.add$1($.window().get$on().get$keyDown(), new $.anon62(this));
+  $.add$1($.window().get$on().get$keyUp(), new $.anon63(this));
+  $.add$1($.window().get$on().get$mouseDown(), new $.anon64(this, t1));
+  $.add$1($.window().get$on().get$mouseUp(), new $.anon65(this, t1));
+  $.add$1($.window().get$on().get$mouseMove(), new $.anon66(this, t1));
+  $.add$1($.window().get$on().get$touchStart(), new $.anon67(this));
+  $.add$1($.window().get$on().get$touchMove(), new $.anon68(this, t1));
+  $.add$1($.window().get$on().get$touchEnd(), new $.anon69());
   var i;
  }
 };
@@ -8784,14 +8852,14 @@ $$.MenuInterface = {"":
       for (t1 = this.buttons, i = 0; $.ltB(i, $.get$length(options)); ++i) {
         $.add$1(t1, $.MenuButton$($.index($.index(options, i), 'name'), $.index($.index(options, i), 'func'), $.add($.div($.SCREEN_WIDTH, 8), $.mod(i, 2) * 200), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt(i / 2), 50))));
       }
-      $.add$1(t1, $.MenuButton$('Exit', new $.anon63(), $.add($.div($.SCREEN_WIDTH, 8), $.mul($.mod($.get$length(options), 2), 200)), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt($.div($.get$length(options), 2)), 50))));
+      $.add$1(t1, $.MenuButton$('Exit', new $.anon73(), $.add($.div($.SCREEN_WIDTH, 8), $.mul($.mod($.get$length(options), 2), 200)), $.add($.div($.SCREEN_HEIGHT, 8), $.mul($.toInt($.div($.get$length(options), 2)), 50))));
       break;
     case 'confirm':
       this.renderFunction = this.get$renderConfirmMenu();
       var cx = $.div($.SCREEN_WIDTH, 2);
       var cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon64(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon74(), $.sub(cx, 150), $.add(cy, 100)));
       $.add$1(t1, $.MenuButton$('Confirm', $.index(this.data, 'func'), $.add(cx, 150), $.add(cy, 100)));
       break;
     case 'broke':
@@ -8799,8 +8867,8 @@ $$.MenuInterface = {"":
       cx = $.div($.SCREEN_WIDTH, 2);
       cy = $.div($.SCREEN_HEIGHT, 2);
       t1 = this.buttons;
-      $.add$1(t1, $.MenuButton$('Cancel', new $.anon65(), $.sub(cx, 150), $.add(cy, 100)));
-      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon66(), $.add(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Cancel', new $.anon75(), $.sub(cx, 150), $.add(cy, 100)));
+      $.add$1(t1, $.MenuButton$('Not Enough Coin', new $.anon76(), $.add(cx, 150), $.add(cy, 100)));
       break;
   }
   var i;
@@ -8808,7 +8876,7 @@ $$.MenuInterface = {"":
 };
 
 $$.World = {"":
- ["lastSaved", "player?", "paused=", "slide_dir", "slidey_pos", "slidex_pos", "slides", "currentSlide", "slideTime", "intro!", "player_max_health=", "player_animation", "coin=", "weaponStartFrame", "weaponName?", "weaponCost2?", "weaponCost?", "weaponAttackRadius", "weaponAttackTypes?", "weaponAttackTime?", "weaponDamage?", "currentWeapon=", "playerWeapons?", "difficultyMode", "zombies_killed=", "zombie_out", "zombie_max=", "dayCount=", "awakePopulation=", "saved=", "totalPopulation=", "night_mode", "dayLength=", "time=", "pathnodes?", "paths?", "ZOMBIE_DAMAGE?", "ZOMBIE_ARMOR?", "ZOMBIE_SPEED?", "ZOMBIE_WANDER_DISTANCE", "AGRO_DISTANCE?", "uiImages=", "itemImages!", "collisionMap", "map_width", "offscene?", "onscene?", "objects?", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
+ ["lastSaved", "player?", "paused=", "slide_dir", "slidey_pos", "slidex_pos", "slides", "currentSlide", "slideTime", "intro!", "player_max_health=", "player_animation", "coin=", "max_multiplier_time", "multiplier_time", "multiplier", "weaponStartFrame", "weaponName?", "weaponCost2?", "weaponCost?", "weaponAttackRadius", "weaponAttackTypes?", "weaponAttackTime?", "weaponDamage?", "currentWeapon=", "playerWeapons?", "difficultyMode", "guard_price", "guard_total", "zombies_killed=", "zombie_out=", "zombie_max=", "dayCount=", "awakePopulation=", "saved=", "totalPopulation=", "night_mode", "dayLength=", "time=", "pathnodes?", "paths?", "ZOMBIE_DAMAGE?", "ZOMBIE_ARMOR?", "ZOMBIE_SPEED?", "ZOMBIE_WANDER_DISTANCE", "AGRO_DISTANCE?", "uiImages=", "itemImages!", "collisionMap", "map_width", "offscene?", "onscene?", "objects?", "camera", "overlay", "menuInterfaces?", "topTileManager", "bottomTileManager", "currentMapTree?", "mapsTree", "dataTree?"],
  super: "Object",
  render$1: function(c) {
   c.setTransform$6(1, 0, 0, 1, 0, 0);
@@ -8828,20 +8896,20 @@ $$.World = {"":
   if (typeof t4 !== 'number') return this.render$1$bailout(4, c, t2, t4, t1);
   if (t2 - t4 / 2 < 0) {
     t2 = $.SCREEN_WIDTH;
-    if (typeof t2 !== 'number') return this.render$1$bailout(5, c, t1, t2, 0);
+    if (typeof t2 !== 'number') return this.render$1$bailout(5, c, t2, t1, 0);
     t1.x = t2 / 2;
   } else {
-    if (typeof t2 !== 'number') return this.render$1$bailout(6, c, t1, t2, 0);
+    if (typeof t2 !== 'number') return this.render$1$bailout(6, c, t2, t1, 0);
     t4 = $.SCREEN_WIDTH;
-    if (typeof t4 !== 'number') return this.render$1$bailout(7, c, t1, t2, t4);
+    if (typeof t4 !== 'number') return this.render$1$bailout(7, c, t2, t1, t4);
     t2 += t4 / 2;
     var t6 = this.map_width;
-    if (typeof t6 !== 'number') return this.render$1$bailout(8, c, t2, t1, t6);
+    if (typeof t6 !== 'number') return this.render$1$bailout(8, c, t2, t6, t1);
     if (t2 > t6 * 32) {
       if (typeof t6 !== 'number') return this.render$1$bailout(9, c, t6, t1, 0);
       t6 *= 32;
       t3 = $.SCREEN_WIDTH;
-      if (typeof t3 !== 'number') return this.render$1$bailout(10, c, t1, t6, t3);
+      if (typeof t3 !== 'number') return this.render$1$bailout(10, c, t6, t1, t3);
       t1.x = t6 - t3 / 2;
     }
   }
@@ -8856,12 +8924,12 @@ $$.World = {"":
   } else {
     if (typeof t2 !== 'number') return this.render$1$bailout(14, c, t2, t1, 0);
     t4 = $.SCREEN_HEIGHT;
-    if (typeof t4 !== 'number') return this.render$1$bailout(15, c, t2, t1, t4);
+    if (typeof t4 !== 'number') return this.render$1$bailout(15, c, t2, t4, t1);
     t2 += t4 / 2;
     t6 = this.map_width;
-    if (typeof t6 !== 'number') return this.render$1$bailout(16, c, t1, t6, t2);
+    if (typeof t6 !== 'number') return this.render$1$bailout(16, c, t6, t1, t2);
     if (t2 > t6 * 32) {
-      if (typeof t6 !== 'number') return this.render$1$bailout(17, c, t1, t6, 0);
+      if (typeof t6 !== 'number') return this.render$1$bailout(17, c, t6, t1, 0);
       t6 *= 32;
       t3 = $.SCREEN_HEIGHT;
       if (typeof t3 !== 'number') return this.render$1$bailout(18, c, t6, t3, t1);
@@ -8887,6 +8955,7 @@ $$.World = {"":
   $.renderNotifications(c);
   this.renderSaved$1(c);
   this.renderCoins$1(c);
+  this.renderMultiplier$1(c);
   if (this.intro === true) {
     c.set$globalAlpha(1);
     c.set$fillStyle('#000');
@@ -8902,7 +8971,7 @@ $$.World = {"":
     if (t4 < 0 || t4 >= t5) throw $.ioore(t4);
     t4 = t3[t4];
     t3 = $.SCREEN_HEIGHT;
-    if (typeof t3 !== 'number') return this.render$1$bailout(22, c, t3, t4, 0);
+    if (typeof t3 !== 'number') return this.render$1$bailout(22, c, t4, t3, 0);
     c.fillText$3(t4, 50, t3 - 20);
     c.set$fillStyle('#000');
     c.set$globalAlpha($.Math_pow((this.slideTime - 150) / 150, 2));
@@ -8934,25 +9003,25 @@ $$.World = {"":
       break;
     case 5:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 6:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 7:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       t4 = env3;
       break;
     case 8:
       c = env0;
       t2 = env1;
-      t1 = env2;
-      t6 = env3;
+      t6 = env2;
+      t1 = env3;
       break;
     case 9:
       c = env0;
@@ -8961,8 +9030,8 @@ $$.World = {"":
       break;
     case 10:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       t4 = env3;
       break;
     case 11:
@@ -8989,19 +9058,19 @@ $$.World = {"":
     case 15:
       c = env0;
       t2 = env1;
-      t1 = env2;
-      t4 = env3;
+      t4 = env2;
+      t1 = env3;
       break;
     case 16:
       c = env0;
-      t1 = env1;
-      t6 = env2;
+      t6 = env1;
+      t1 = env2;
       t2 = env3;
       break;
     case 17:
       c = env0;
-      t1 = env1;
-      t2 = env2;
+      t2 = env1;
+      t1 = env2;
       break;
     case 18:
       c = env0;
@@ -9026,8 +9095,8 @@ $$.World = {"":
       break;
     case 22:
       c = env0;
-      t3 = env1;
-      t4 = env2;
+      t4 = env1;
+      t3 = env2;
       break;
   }
   switch (state) {
@@ -9159,6 +9228,7 @@ $$.World = {"":
       $.renderNotifications(c);
       this.renderSaved$1(c);
       this.renderCoins$1(c);
+      this.renderMultiplier$1(c);
     case 21:
     case 22:
       if (state == 21 || state == 22 || (state == 0 && this.intro === true)) {
@@ -9196,8 +9266,13 @@ $$.World = {"":
   $.forEach($.index($.tags, 'actor'), new $.World_damageBubble_anon(direction, attacked, radius, point, damage));
   return attacked;
  },
+ addMultiplier$0: function() {
+  this.multiplier = this.multiplier + 1;
+  this.multiplier_time = this.max_multiplier_time;
+ },
  giveCoin$2: function(at, amt) {
   if (typeof amt !== 'number') return this.giveCoin$2$bailout(1, at, amt, 0);
+  amt *= this.multiplier;
   var t1 = this.coin;
   if (typeof t1 !== 'number') return this.giveCoin$2$bailout(2, at, amt, t1);
   this.coin = t1 + amt;
@@ -9220,6 +9295,7 @@ $$.World = {"":
     case 0:
     case 1:
       state = 0;
+      amt = $.mul(amt, this.multiplier);
       var t1 = this.coin;
     case 2:
       state = 0;
@@ -9227,6 +9303,21 @@ $$.World = {"":
       this.spawnObject$2('floating_text', $.makeLiteralMap(['x', at.get$x(), 'y', at.get$y(), 'text', '+' + $.S(amt)]));
       $.audio.play$1('coin');
   }
+ },
+ renderMultiplier$1: function(c) {
+  c.save$0();
+  c.set$globalAlpha(0.5);
+  c.set$lineWidth(12);
+  c.set$strokeStyle('#f00');
+  c.beginPath$0();
+  var p = $.mul($.mul($.div(this.multiplier_time, this.max_multiplier_time), 3.141592653589793), 2);
+  $.gtB(p, 0) && c.arc$6($.sub($.SCREEN_WIDTH, 50), 50, 40, 0, p, false);
+  c.stroke$0();
+  c.closePath$0();
+  c.set$fillStyle('#f00');
+  c.set$font('bold 18px Arial');
+  c.fillText$3($.S(this.multiplier) + 'x', $.sub($.sub($.SCREEN_WIDTH, 50), 14), 56);
+  c.restore$0();
  },
  renderCoins$1: function(c) {
   c.set$fillStyle('yellow');
@@ -9249,34 +9340,47 @@ $$.World = {"":
   var t5 = $.toInt(t3 * 64);
   if (typeof t5 !== 'number') return this.update$0$bailout(3, t5, t1, 0, 0, 0);
   $.rpatCount = t1 + t5;
+  t1 = this.multiplier_time;
+  if (typeof t1 !== 'number') return this.update$0$bailout(4, t1, 0, 0, 0, 0);
+  if (t1 <= 0) {
+    t1 = this.multiplier;
+    if (t1 <= 1) this.multiplier = 1;
+    else {
+      this.multiplier = t1 - 1;
+      this.multiplier_time = this.max_multiplier_time;
+    }
+  } else {
+    if (typeof t1 !== 'number') return this.update$0$bailout(5, t1, 0, 0, 0, 0);
+    this.multiplier_time = t1 - 1;
+  }
   t1 = this.night_mode;
   if (t1) {
     var t2 = this.time;
-    if (typeof t2 !== 'number') return this.update$0$bailout(4, t2, 0, 0, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(6, t2, 0, 0, 0, 0);
     if (t2 > 6.5) {
-      if (typeof t2 !== 'number') return this.update$0$bailout(5, t2, 0, 0, 0, 0);
+      if (typeof t2 !== 'number') return this.update$0$bailout(7, t2, 0, 0, 0, 0);
       t2 = t2 < 21;
     } else t2 = false;
   } else t2 = false;
   if (t2) {
     this.night_mode = false;
     t1 = this.dayCount;
-    if (typeof t1 !== 'number') return this.update$0$bailout(6, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(8, t1, 0, 0, 0, 0);
     this.dayCount = t1 + 1;
     this.zombie_out = 0;
     $.notify('Day ' + $.S(this.dayCount));
     $.notify('Total Population : ' + $.S(this.totalPopulation));
     t1 = this.totalPopulation;
-    if (typeof t1 !== 'number') return this.update$0$bailout(7, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(9, t1, 0, 0, 0, 0);
     if (t1 < 100) {
-      if (typeof t1 !== 'number') return this.update$0$bailout(8, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(10, t1, 0, 0, 0, 0);
       if (t1 < 50) {
         $.notify('The population has fallen below 50');
         $.GameOver($.game.get$context());
       } else $.notify('WARNING! If your population falls below 50 you lose!');
     }
     t1 = this.dayCount;
-    if (typeof t1 !== 'number') return this.update$0$bailout(9, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(11, t1, 0, 0, 0, 0);
     t1 > 1 && this.increaseDifficulty$0();
     $.forEach($.index($.tags, 'lost'), new $.World_update_anon());
     $.forEach($.index($.tags, 'following'), new $.World_update_anon0());
@@ -9284,9 +9388,9 @@ $$.World = {"":
   } else {
     if (!t1) {
       t1 = this.time;
-      if (typeof t1 !== 'number') return this.update$0$bailout(10, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(12, t1, 0, 0, 0, 0);
       if (!(t1 > 21)) {
-        if (typeof t1 !== 'number') return this.update$0$bailout(11, t1, 0, 0, 0, 0);
+        if (typeof t1 !== 'number') return this.update$0$bailout(13, t1, 0, 0, 0, 0);
         t1 = t1 < 6.5;
       } else t1 = true;
     } else t1 = false;
@@ -9299,16 +9403,16 @@ $$.World = {"":
   }
   if (!this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(12, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(14, t1, 0, 0, 0, 0);
     t1 = t1 > 16 && $.rpat(5) === true;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'wander');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(13, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(15, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'wander'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(14, t1, t3, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(16, t3, t1, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(15, t1, t5, t3, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(17, t3, t1, t5, 0, 0);
     var t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     var t8 = t1.length;
@@ -9316,7 +9420,7 @@ $$.World = {"":
     var citizen = t1[t7];
     if (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)) {
       t1 = $.Math_random();
-      if (typeof t1 !== 'number') return this.update$0$bailout(16, t1, citizen, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(18, t1, citizen, 0, 0, 0);
       if (t1 < 0.9) {
         $.switchTag(citizen, 'wander', 'homebound');
         $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(citizen);
@@ -9328,72 +9432,78 @@ $$.World = {"":
   }
   if (!this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(17, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(19, t1, 0, 0, 0, 0);
     if (t1 < 12) {
       t1 = this.awakePopulation;
-      if (typeof t1 !== 'number') return this.update$0$bailout(18, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(20, t1, 0, 0, 0, 0);
       t3 = this.totalPopulation;
-      if (typeof t3 !== 'number') return this.update$0$bailout(19, t1, t3, 0, 0, 0);
+      if (typeof t3 !== 'number') return this.update$0$bailout(21, t1, t3, 0, 0, 0);
       t3 = t1 < t3;
       t1 = t3;
     } else t1 = false;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'house');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(20, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(22, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'house'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(21, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(23, t1, t3, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(22, t3, t1, t5, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(24, t1, t5, t3, 0, 0);
     t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     t8 = t1.length;
     if (t7 < 0 || t7 >= t8) throw $.ioore(t7);
     var house = t1[t7];
     t1 = $.Math_random();
-    if (typeof t1 !== 'number') return this.update$0$bailout(23, house, t1, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(25, t1, house, 0, 0, 0);
     this.spawnObject$2('citizen', $.makeLiteralMap(['tag', ['friendly', t1 < 0.5 ? 'wander' : 'traveler', 'ai'], 'x', house.get$x(), 'y', house.get$y(), 'home', house]));
     t1 = this.awakePopulation;
-    if (typeof t1 !== 'number') return this.update$0$bailout(24, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(26, t1, 0, 0, 0, 0);
     this.awakePopulation = t1 + 1;
   }
   if (this.night_mode) {
     t1 = this.time;
-    if (typeof t1 !== 'number') return this.update$0$bailout(25, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(27, t1, 0, 0, 0, 0);
     if (!(t1 < 4)) {
-      if (typeof t1 !== 'number') return this.update$0$bailout(26, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(28, t1, 0, 0, 0, 0);
       t1 = t1 > 21;
     } else t1 = true;
     if (t1) {
       t1 = this.zombie_out;
-      t2 = this.zombie_max;
-      if (typeof t2 !== 'number') return this.update$0$bailout(27, t1, t2, 0, 0, 0);
-      if (!(t1 < t2 - 50)) {
-        if (typeof t2 !== 'number') return this.update$0$bailout(28, t1, t2, 0, 0, 0);
-        t1 = t1 < t2 && $.rpat(32) === true;
+      if (typeof t1 !== 'number') return this.update$0$bailout(29, t1, 0, 0, 0, 0);
+      t3 = this.zombie_max;
+      if (typeof t3 !== 'number') return this.update$0$bailout(30, t1, t3, 0, 0, 0);
+      if (!(t1 < t3 - 50)) {
+        if (typeof t1 !== 'number') return this.update$0$bailout(31, t1, 0, 0, 0, 0);
+        if (typeof t3 !== 'number') return this.update$0$bailout(32, t1, t3, 0, 0, 0);
+        t1 = t1 < t3 && $.rpat(16) === true;
       } else t1 = true;
       if (t1) {
-        this.zombie_out = this.zombie_out + 1;
+        t1 = this.zombie_out;
+        if (typeof t1 !== 'number') return this.update$0$bailout(33, t1, 0, 0, 0, 0);
+        this.zombie_out = t1 + 1;
         var zs_list = $.index($.tags, 'zombie-spawn');
-        if (typeof zs_list !== 'string' && (typeof zs_list !== 'object' || zs_list === null || (zs_list.constructor !== Array && !zs_list.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(29, zs_list, 0, 0, 0, 0);
-        t2 = zs_list.length;
-        t3 = $.Math_random();
-        if (typeof t3 !== 'number') return this.update$0$bailout(30, zs_list, t2, t3, 0, 0);
-        t5 = $.toInt(t2 * t3);
-        if (t5 !== (t5 | 0)) throw $.iae(t5);
-        var t6 = zs_list.length;
-        if (t5 < 0 || t5 >= t6) throw $.ioore(t5);
-        var zs = zs_list[t5];
+        if (typeof zs_list !== 'string' && (typeof zs_list !== 'object' || zs_list === null || (zs_list.constructor !== Array && !zs_list.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(34, zs_list, 0, 0, 0, 0);
+        var t4 = zs_list.length;
+        t5 = $.Math_random();
+        if (typeof t5 !== 'number') return this.update$0$bailout(35, t5, zs_list, t4, 0, 0);
+        t7 = $.toInt(t4 * t5);
+        if (t7 !== (t7 | 0)) throw $.iae(t7);
+        t8 = zs_list.length;
+        if (t7 < 0 || t7 >= t8) throw $.ioore(t7);
+        var zs = zs_list[t7];
         this.spawnObject$2('zombie', $.makeLiteralMap(['x', zs.get$x(), 'y', zs.get$y()]));
       }
     } else {
-      if (this.zombie_out > 0 && $.rpat(16) === true) {
+      t1 = this.zombie_out;
+      if (typeof t1 !== 'number') return this.update$0$bailout(36, t1, 0, 0, 0, 0);
+      if (t1 > 0 && $.rpat(30) === true) {
         t1 = $.index($.tags, 'zombie');
-        if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(31, t1, 0, 0, 0, 0);
+        if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(37, t1, 0, 0, 0, 0);
         t3 = $.get$length($.index($.tags, 'zombie'));
-        if (typeof t3 !== 'number') return this.update$0$bailout(32, t3, t1, 0, 0, 0);
+        if (typeof t3 !== 'number') return this.update$0$bailout(38, t3, t1, 0, 0, 0);
         t5 = $.Math_random();
-        if (typeof t5 !== 'number') return this.update$0$bailout(33, t1, t3, t5, 0, 0);
+        if (typeof t5 !== 'number') return this.update$0$bailout(39, t3, t1, t5, 0, 0);
         t7 = $.toInt(t3 * t5);
         if (t7 !== (t7 | 0)) throw $.iae(t7);
         t8 = t1.length;
@@ -9412,30 +9522,30 @@ $$.World = {"":
     }
   }
   if ($.rpat(2000) === true) {
-    var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time', 'Press the SHIFT key to sprint'];
+    var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'Villagers will be nicer if you keep saving them', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time', 'Press the SHIFT key to sprint', 'You can purchase patrol guards to help keep villagers safe'];
     t1 = protips.length;
     t2 = $.Math_random();
     if (typeof t2 !== 'number') throw $.iae(t2);
     t3 = $.toInt(t1 * t2);
     if (t3 !== (t3 | 0)) throw $.iae(t3);
-    var t4 = protips.length;
+    t4 = protips.length;
     if (t3 < 0 || t3 >= t4) throw $.ioore(t3);
     $.notify('Tip : ' + $.S(protips[t3]));
   }
   if (this.night_mode) {
     if ($.rpat(60) === true) {
       t1 = $.get$length($.index($.tags, 'lost'));
-      if (typeof t1 !== 'number') return this.update$0$bailout(34, t1, 0, 0, 0, 0);
+      if (typeof t1 !== 'number') return this.update$0$bailout(40, t1, 0, 0, 0, 0);
       t1 = t1 > 0;
     } else t1 = false;
   } else t1 = false;
   if (t1) {
     t1 = $.index($.tags, 'lost');
-    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(35, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'string' && (typeof t1 !== 'object' || t1 === null || (t1.constructor !== Array && !t1.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(41, t1, 0, 0, 0, 0);
     t3 = $.get$length($.index($.tags, 'lost'));
-    if (typeof t3 !== 'number') return this.update$0$bailout(36, t3, t1, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(42, t1, t3, 0, 0, 0);
     t5 = $.Math_random();
-    if (typeof t5 !== 'number') return this.update$0$bailout(37, t3, t1, t5, 0, 0);
+    if (typeof t5 !== 'number') return this.update$0$bailout(43, t1, t5, t3, 0, 0);
     t7 = $.toInt(t3 * t5);
     if (t7 !== (t7 | 0)) throw $.iae(t7);
     t8 = t1.length;
@@ -9450,14 +9560,14 @@ $$.World = {"":
   }
   if (this.intro !== true) {
     t1 = $.event.key$1('d');
-    if (typeof t1 !== 'number') return this.update$0$bailout(38, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(44, t1, 0, 0, 0, 0);
     t3 = $.event.key$1('a');
-    if (typeof t3 !== 'number') return this.update$0$bailout(39, t1, t3, 0, 0, 0);
+    if (typeof t3 !== 'number') return this.update$0$bailout(45, t3, t1, 0, 0, 0);
     t3 = t1 - t3;
     t1 = $.event.key$1('s');
-    if (typeof t1 !== 'number') return this.update$0$bailout(40, t1, t3, 0, 0, 0);
-    t6 = $.event.key$1('w');
-    if (typeof t6 !== 'number') return this.update$0$bailout(41, t1, t6, t3, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(46, t3, t1, 0, 0, 0);
+    var t6 = $.event.key$1('w');
+    if (typeof t6 !== 'number') return this.update$0$bailout(47, t6, t3, t1, 0, 0);
     var inc = $.Vec2$(t3, t1 - t6);
     t3 = inc.normalize$0();
     t8 = $.event.key$1('shift');
@@ -9472,13 +9582,13 @@ $$.World = {"":
     t3 = t1.length;
     if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
     t1 = t1[t2];
-    if (typeof t1 !== 'number') return this.update$0$bailout(42, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(48, t1, 0, 0, 0, 0);
     t5 = this.slideTime;
     t6 = this.slide_dir;
     t7 = t6.length;
     if (t2 < 0 || t2 >= t7) throw $.ioore(t2);
     t2 = t6[t2];
-    if (typeof t2 !== 'number') return this.update$0$bailout(43, t5, t2, t1, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(49, t5, t2, t1, 0, 0);
     t1 += t5 * t2;
     t8 = this.camera;
     t8.x = t1;
@@ -9505,7 +9615,7 @@ $$.World = {"":
   }
   if ($.event.get$mouseDown() === true) {
     t1 = this.player.get$currentAttackTime();
-    if (typeof t1 !== 'number') return this.update$0$bailout(44, t1, 0, 0, 0, 0);
+    if (typeof t1 !== 'number') return this.update$0$bailout(50, t1, 0, 0, 0, 0);
     if (t1 === 0) {
       t1 = this.weaponStartFrame;
       t2 = this.currentWeapon;
@@ -9513,17 +9623,17 @@ $$.World = {"":
       t3 = t1.length;
       if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
       t2 = t1[t2];
-      if (typeof t2 !== 'number') return this.update$0$bailout(45, t2, 0, 0, 0, 0);
+      if (typeof t2 !== 'number') return this.update$0$bailout(51, t2, 0, 0, 0, 0);
       t2 *= 5;
       this.player.set$currentFrame(t2);
     }
     this.player.set$attacking(true);
     t1 = $.event.get$mouse_position().clone$0();
     t2 = $.SCREEN_WIDTH;
-    if (typeof t2 !== 'number') return this.update$0$bailout(46, t1, t2, 0, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(52, t1, t2, 0, 0, 0);
     t2 /= 2;
     t4 = $.SCREEN_HEIGHT;
-    if (typeof t4 !== 'number') return this.update$0$bailout(47, t1, t2, t4, 0, 0);
+    if (typeof t4 !== 'number') return this.update$0$bailout(53, t2, t4, t1, 0, 0);
     t6 = t1.subTo$2(t2, t4 / 2).normalize$0();
     this.player.set$attackDirection(t6);
   } else {
@@ -9532,28 +9642,28 @@ $$.World = {"":
   }
   t1 = this.camera;
   t2 = t1.x;
-  if (typeof t2 !== 'number') return this.update$0$bailout(48, t2, t1, 0, 0, 0);
-  if (typeof t2 !== 'number') return this.update$0$bailout(49, t2, t2, t1, 0, 0);
+  if (typeof t2 !== 'number') return this.update$0$bailout(54, t1, t2, 0, 0, 0);
+  if (typeof t2 !== 'number') return this.update$0$bailout(55, t1, t2, t2, 0, 0);
   t5 = this.player.get$x();
-  if (typeof t5 !== 'number') return this.update$0$bailout(50, t2, t2, t5, t1, 0);
+  if (typeof t5 !== 'number') return this.update$0$bailout(56, t1, t2, t5, t2, 0);
   t7 = this.player.get$velocity().get$x();
-  if (typeof t7 !== 'number') return this.update$0$bailout(51, t7, t2, t2, t5, t1);
+  if (typeof t7 !== 'number') return this.update$0$bailout(57, t2, t2, t5, t7, t1);
   t1.x = t2 - (t2 - (t5 + t7 * 5)) / 5;
   t9 = t1.y;
-  if (typeof t9 !== 'number') return this.update$0$bailout(52, t9, t1, 0, 0, 0);
-  if (typeof t9 !== 'number') return this.update$0$bailout(53, t9, t9, t1, 0, 0);
+  if (typeof t9 !== 'number') return this.update$0$bailout(58, t9, t1, 0, 0, 0);
+  if (typeof t9 !== 'number') return this.update$0$bailout(59, t9, t9, t1, 0, 0);
   var t12 = this.player.get$y();
-  if (typeof t12 !== 'number') return this.update$0$bailout(54, t9, t12, t9, t1, 0);
+  if (typeof t12 !== 'number') return this.update$0$bailout(60, t1, t9, t9, t12, 0);
   var t14 = this.player.get$velocity().get$y();
-  if (typeof t14 !== 'number') return this.update$0$bailout(55, t9, t12, t14, t9, t1);
+  if (typeof t14 !== 'number') return this.update$0$bailout(61, t1, t14, t9, t9, t12);
   t1.y = t9 - (t9 - (t12 + t14 * 5)) / 5;
   if ($.DEBUG === true) {
     t2 = t1.get$zoom();
-    if (typeof t2 !== 'number') return this.update$0$bailout(56, t2, t1, 0, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(62, t2, t1, 0, 0, 0);
     t4 = $.event.key$1('up');
-    if (typeof t4 !== 'number') return this.update$0$bailout(57, t4, t2, t1, 0, 0);
+    if (typeof t4 !== 'number') return this.update$0$bailout(63, t2, t4, t1, 0, 0);
     t6 = $.event.key$1('down');
-    if (typeof t6 !== 'number') return this.update$0$bailout(58, t4, t6, t2, t1, 0);
+    if (typeof t6 !== 'number') return this.update$0$bailout(64, t6, t2, t4, t1, 0);
     t1.set$zoom(t2 + (t4 - t6) / 10.0);
   }
   t1.update$0();
@@ -9565,16 +9675,16 @@ $$.World = {"":
   for (t1 = $.iterator($.tags.getKeys$0()); t1.hasNext$0() === true; ) {
     t2 = t1.next$0();
     t3 = $.tags;
-    if (typeof t3 !== 'string' && (typeof t3 !== 'object' || t3 === null || (t3.constructor !== Array && !t3.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(59, t2, t1, t3, 0, 0);
+    if (typeof t3 !== 'string' && (typeof t3 !== 'object' || t3 === null || (t3.constructor !== Array && !t3.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(65, t2, t1, t3, 0, 0);
     if (t2 !== (t2 | 0)) throw $.iae(t2);
     t5 = t3.length;
     if (t2 < 0 || t2 >= t5) throw $.ioore(t2);
     var lst = t3[t2];
-    if (typeof lst !== 'string' && (typeof lst !== 'object' || lst === null || (lst.constructor !== Array && !lst.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(60, lst, t1, 0, 0, 0);
+    if (typeof lst !== 'string' && (typeof lst !== 'object' || lst === null || (lst.constructor !== Array && !lst.is$JavaScriptIndexingBehavior()))) return this.update$0$bailout(66, t1, lst, 0, 0, 0);
     t2 = $.Math_random();
-    if (typeof t2 !== 'number') return this.update$0$bailout(61, lst, t2, t1, 0, 0);
+    if (typeof t2 !== 'number') return this.update$0$bailout(67, t2, t1, lst, 0, 0);
     var i = $.toInt(t2 * lst.length);
-    if (typeof i !== 'number') return this.update$0$bailout(62, lst, i, t1, 0, 0);
+    if (typeof i !== 'number') return this.update$0$bailout(68, t1, lst, i, 0, 0);
     var iter = 0;
     for (; t2 = lst.length, iter < t2 / 16; ++iter, ++i) {
       var index = $.mod(i, t2);
@@ -9586,9 +9696,9 @@ $$.World = {"":
   t1 = this.objects;
   t2 = t1.length;
   t3 = $.Math_random();
-  if (typeof t3 !== 'number') return this.update$0$bailout(63, t2, t1, t3, 0, 0);
+  if (typeof t3 !== 'number') return this.update$0$bailout(69, t1, t2, t3, 0, 0);
   i = $.toInt(t2 * t3);
-  if (typeof i !== 'number') return this.update$0$bailout(64, t1, i, 0, 0, 0);
+  if (typeof i !== 'number') return this.update$0$bailout(70, t1, i, 0, 0, 0);
   iter = 0;
   for (; t2 = t1.length, iter < t2 / 16; ++iter, ++i) {
     index = $.mod(i, t2);
@@ -9601,12 +9711,12 @@ $$.World = {"":
   $.forEach($.index($.tags, 'spawn'), new $.World_update_anon6());
   this.sortScreenObjects$0();
   t1 = this.time;
-  if (typeof t1 !== 'number') return this.update$0$bailout(65, t1, 0, 0, 0, 0);
+  if (typeof t1 !== 'number') return this.update$0$bailout(71, t1, 0, 0, 0, 0);
   t3 = this.dayLength;
   if (typeof t3 !== 'number') throw $.iae(t3);
   this.time = t1 + 24 / t3;
   t1 = this.time;
-  if (typeof t1 !== 'number') return this.update$0$bailout(66, t1, 0, 0, 0, 0);
+  if (typeof t1 !== 'number') return this.update$0$bailout(72, t1, 0, 0, 0, 0);
   if (t1 > 24) this.time = 0;
  },
  update$0$bailout: function(state, env0, env1, env2, env3, env4) {
@@ -9654,225 +9764,243 @@ $$.World = {"":
       break;
     case 14:
       t1 = env0;
-      t3 = env1;
       break;
     case 15:
       t1 = env0;
-      t5 = env1;
-      t3 = env2;
       break;
     case 16:
-      t1 = env0;
-      citizen = env1;
+      t3 = env0;
+      t1 = env1;
       break;
     case 17:
-      t1 = env0;
+      t3 = env0;
+      t1 = env1;
+      t5 = env2;
       break;
     case 18:
       t1 = env0;
+      citizen = env1;
       break;
     case 19:
       t1 = env0;
-      t3 = env1;
       break;
     case 20:
       t1 = env0;
       break;
     case 21:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
+      t3 = env1;
       break;
     case 22:
-      t3 = env0;
-      t1 = env1;
-      t5 = env2;
+      t1 = env0;
       break;
     case 23:
-      house = env0;
-      t1 = env1;
+      t1 = env0;
+      t3 = env1;
       break;
     case 24:
       t1 = env0;
+      t5 = env1;
+      t3 = env2;
       break;
     case 25:
       t1 = env0;
+      house = env1;
       break;
     case 26:
       t1 = env0;
       break;
     case 27:
       t1 = env0;
-      t2 = env1;
       break;
     case 28:
       t1 = env0;
-      t2 = env1;
       break;
     case 29:
-      zs_list = env0;
+      t1 = env0;
       break;
     case 30:
-      zs_list = env0;
-      t2 = env1;
-      t3 = env2;
+      t1 = env0;
+      t3 = env1;
       break;
     case 31:
       t1 = env0;
       break;
     case 32:
-      t3 = env0;
-      t1 = env1;
+      t1 = env0;
+      t3 = env1;
       break;
     case 33:
       t1 = env0;
-      t3 = env1;
-      t5 = env2;
       break;
     case 34:
-      t1 = env0;
+      zs_list = env0;
       break;
     case 35:
-      t1 = env0;
+      t5 = env0;
+      zs_list = env1;
+      t4 = env2;
       break;
     case 36:
+      t1 = env0;
+      break;
+    case 37:
+      t1 = env0;
+      break;
+    case 38:
       t3 = env0;
       t1 = env1;
       break;
-    case 37:
+    case 39:
       t3 = env0;
       t1 = env1;
       t5 = env2;
-      break;
-    case 38:
-      t1 = env0;
-      break;
-    case 39:
-      t1 = env0;
-      t3 = env1;
       break;
     case 40:
       t1 = env0;
-      t3 = env1;
       break;
     case 41:
       t1 = env0;
-      t6 = env1;
-      t3 = env2;
       break;
     case 42:
-      t2 = env0;
+      t1 = env0;
+      t3 = env1;
       break;
     case 43:
-      t4 = env0;
-      t6 = env1;
-      t2 = env2;
+      t1 = env0;
+      t5 = env1;
+      t3 = env2;
       break;
     case 44:
       t1 = env0;
       break;
     case 45:
-      t2 = env0;
+      t3 = env0;
+      t1 = env1;
       break;
     case 46:
-      t1 = env0;
-      t2 = env1;
+      t3 = env0;
+      t1 = env1;
       break;
     case 47:
-      t1 = env0;
-      t2 = env1;
-      t4 = env2;
+      t6 = env0;
+      t3 = env1;
+      t1 = env2;
       break;
     case 48:
       t2 = env0;
-      t1 = env1;
       break;
     case 49:
-      t2 = env0;
-      t4 = env1;
-      t1 = env2;
-      break;
-    case 50:
-      t2 = env0;
-      t4 = env1;
-      t6 = env2;
-      t1 = env3;
-      break;
-    case 51:
-      t8 = env0;
-      t2 = env1;
-      t4 = env2;
-      t6 = env3;
-      t1 = env4;
-      break;
-    case 52:
-      t10 = env0;
-      t1 = env1;
-      break;
-    case 53:
-      t12 = env0;
-      t10 = env1;
-      t1 = env2;
-      break;
-    case 54:
-      t12 = env0;
-      t14 = env1;
-      t10 = env2;
-      t1 = env3;
-      break;
-    case 55:
-      t12 = env0;
-      t14 = env1;
-      t16 = env2;
-      t10 = env3;
-      t1 = env4;
-      break;
-    case 56:
-      t2 = env0;
-      t1 = env1;
-      break;
-    case 57:
-      t4 = env0;
-      t2 = env1;
-      t1 = env2;
-      break;
-    case 58:
       t4 = env0;
       t6 = env1;
       t2 = env2;
-      t1 = env3;
+      break;
+    case 50:
+      t1 = env0;
+      break;
+    case 51:
+      t2 = env0;
+      break;
+    case 52:
+      t1 = env0;
+      t2 = env1;
+      break;
+    case 53:
+      t2 = env0;
+      t4 = env1;
+      t1 = env2;
+      break;
+    case 54:
+      t1 = env0;
+      t2 = env1;
+      break;
+    case 55:
+      t1 = env0;
+      t4 = env1;
+      t2 = env2;
+      break;
+    case 56:
+      t1 = env0;
+      t4 = env1;
+      t6 = env2;
+      t2 = env3;
+      break;
+    case 57:
+      t2 = env0;
+      t4 = env1;
+      t6 = env2;
+      t8 = env3;
+      t1 = env4;
+      break;
+    case 58:
+      t10 = env0;
+      t1 = env1;
       break;
     case 59:
-      t2 = env0;
-      t1 = env1;
-      t3 = env2;
+      t10 = env0;
+      t12 = env1;
+      t1 = env2;
       break;
     case 60:
-      lst = env0;
-      t1 = env1;
+      t1 = env0;
+      t10 = env1;
+      t12 = env2;
+      t14 = env3;
       break;
     case 61:
-      lst = env0;
-      t2 = env1;
-      t1 = env2;
+      t1 = env0;
+      t16 = env1;
+      t10 = env2;
+      t12 = env3;
+      t14 = env4;
       break;
     case 62:
-      lst = env0;
-      i = env1;
-      t1 = env2;
+      t2 = env0;
+      t1 = env1;
       break;
     case 63:
       t2 = env0;
+      t4 = env1;
+      t1 = env2;
+      break;
+    case 64:
+      t6 = env0;
+      t2 = env1;
+      t4 = env2;
+      t1 = env3;
+      break;
+    case 65:
+      t2 = env0;
       t1 = env1;
       t3 = env2;
       break;
-    case 64:
+    case 66:
+      t1 = env0;
+      lst = env1;
+      break;
+    case 67:
+      t2 = env0;
+      t1 = env1;
+      lst = env2;
+      break;
+    case 68:
+      t1 = env0;
+      lst = env1;
+      i = env2;
+      break;
+    case 69:
+      t1 = env0;
+      t2 = env1;
+      t3 = env2;
+      break;
+    case 70:
       t1 = env0;
       i = env1;
       break;
-    case 65:
+    case 71:
       t1 = env0;
       break;
-    case 66:
+    case 72:
       t1 = env0;
       break;
   }
@@ -9888,19 +10016,38 @@ $$.World = {"":
     case 3:
       state = 0;
       $.rpatCount = $.add(t1, t5);
+      t1 = this.multiplier_time;
+    case 4:
+      state = 0;
+    case 5:
+      if ((state == 0 && $.leB(t1, 0))) {
+        if (this.multiplier <= 1) this.multiplier = 1;
+        else {
+          this.multiplier = this.multiplier - 1;
+          this.multiplier_time = this.max_multiplier_time;
+        }
+      } else {
+        switch (state) {
+          case 0:
+            t1 = this.multiplier_time;
+          case 5:
+            state = 0;
+            this.multiplier_time = $.sub(t1, 1);
+        }
+      }
     default:
-      if (state == 4 || state == 5 || (state == 0 && this.night_mode === true)) {
+      if (state == 6 || state == 7 || (state == 0 && this.night_mode === true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 4:
+          case 6:
             state = 0;
-          case 5:
-            if (state == 5 || (state == 0 && $.gtB(t1, 6.5))) {
+          case 7:
+            if (state == 7 || (state == 0 && $.gtB(t1, 6.5))) {
               switch (state) {
                 case 0:
                   t1 = this.time;
-                case 5:
+                case 7:
                   state = 0;
                   t1 = $.ltB(t1, 21);
               }
@@ -9911,32 +10058,32 @@ $$.World = {"":
       } else {
         t1 = false;
       }
-    case 6:
-    case 7:
     case 8:
     case 9:
     case 10:
     case 11:
-      if (state == 6 || state == 7 || state == 8 || state == 9 || (state == 0 && t1)) {
+    case 12:
+    case 13:
+      if (state == 8 || state == 9 || state == 10 || state == 11 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             this.night_mode = false;
             t1 = this.dayCount;
-          case 6:
+          case 8:
             state = 0;
             this.dayCount = $.add(t1, 1);
             this.zombie_out = 0;
             $.notify('Day ' + $.S(this.dayCount));
             $.notify('Total Population : ' + $.S(this.totalPopulation));
             t1 = this.totalPopulation;
-          case 7:
+          case 9:
             state = 0;
-          case 8:
-            if (state == 8 || (state == 0 && $.ltB(t1, 100))) {
+          case 10:
+            if (state == 10 || (state == 0 && $.ltB(t1, 100))) {
               switch (state) {
                 case 0:
                   t1 = this.totalPopulation;
-                case 8:
+                case 10:
                   state = 0;
                   if ($.ltB(t1, 50)) {
                     $.notify('The population has fallen below 50');
@@ -9945,7 +10092,7 @@ $$.World = {"":
               }
             }
             t1 = this.dayCount;
-          case 9:
+          case 11:
             state = 0;
             $.gtB(t1, 1) && this.increaseDifficulty$0();
             $.forEach($.index($.tags, 'lost'), new $.World_update_anon());
@@ -9956,18 +10103,18 @@ $$.World = {"":
         switch (state) {
           case 0:
           default:
-            if (state == 10 || state == 11 || (state == 0 && this.night_mode !== true)) {
+            if (state == 12 || state == 13 || (state == 0 && this.night_mode !== true)) {
               switch (state) {
                 case 0:
                   t1 = this.time;
-                case 10:
+                case 12:
                   state = 0;
-                case 11:
-                  if (state == 11 || (state == 0 && !$.gtB(t1, 21))) {
+                case 13:
+                  if (state == 13 || (state == 0 && !$.gtB(t1, 21))) {
                     switch (state) {
                       case 0:
                         t1 = this.time;
-                      case 11:
+                      case 13:
                         state = 0;
                         t1 = $.ltB(t1, 6.5);
                     }
@@ -9986,41 +10133,41 @@ $$.World = {"":
             }
         }
       }
-    case 12:
-      if (state == 12 || (state == 0 && this.night_mode !== true)) {
+    case 14:
+      if (state == 14 || (state == 0 && this.night_mode !== true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 12:
+          case 14:
             state = 0;
             t1 = $.gtB(t1, 16) && $.rpat(5) === true;
         }
       } else {
         t1 = false;
       }
-    case 13:
-    case 14:
     case 15:
     case 16:
-      if (state == 13 || state == 14 || state == 15 || state == 16 || (state == 0 && t1)) {
+    case 17:
+    case 18:
+      if (state == 15 || state == 16 || state == 17 || state == 18 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'wander');
-          case 13:
-            state = 0;
-            t3 = $.get$length($.index($.tags, 'wander'));
-          case 14:
-            state = 0;
-            t5 = $.Math_random();
           case 15:
             state = 0;
-            var citizen = $.index(t1, $.toInt($.mul(t3, t5)));
+            t3 = $.get$length($.index($.tags, 'wander'));
           case 16:
-            if (state == 16 || (state == 0 && (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)))) {
+            state = 0;
+            t5 = $.Math_random();
+          case 17:
+            state = 0;
+            var citizen = $.index(t1, $.toInt($.mul(t3, t5)));
+          case 18:
+            if (state == 18 || (state == 0 && (citizen.hasTag$1('ai') === true && (citizen.hasTag$1('lost') !== true && citizen.hasTag$1('citizen') === true)))) {
               switch (state) {
                 case 0:
                   t1 = $.Math_random();
-                case 16:
+                case 18:
                   state = 0;
                   if ($.ltB(t1, 0.9)) {
                     $.switchTag(citizen, 'wander', 'homebound');
@@ -10033,24 +10180,24 @@ $$.World = {"":
             }
         }
       }
-    case 17:
-    case 18:
     case 19:
-      if (state == 17 || state == 18 || state == 19 || (state == 0 && this.night_mode !== true)) {
+    case 20:
+    case 21:
+      if (state == 19 || state == 20 || state == 21 || (state == 0 && this.night_mode !== true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 17:
+          case 19:
             state = 0;
           default:
-            if (state == 18 || state == 19 || (state == 0 && $.ltB(t1, 12))) {
+            if (state == 20 || state == 21 || (state == 0 && $.ltB(t1, 12))) {
               switch (state) {
                 case 0:
                   t1 = this.awakePopulation;
-                case 18:
+                case 20:
                   state = 0;
                   t3 = this.totalPopulation;
-                case 19:
+                case 21:
                   state = 0;
                   t3 = $.ltB(t1, t3);
                   t1 = t3;
@@ -10062,36 +10209,34 @@ $$.World = {"":
       } else {
         t1 = false;
       }
-    case 20:
-    case 21:
     case 22:
     case 23:
     case 24:
-      if (state == 20 || state == 21 || state == 22 || state == 23 || state == 24 || (state == 0 && t1)) {
+    case 25:
+    case 26:
+      if (state == 22 || state == 23 || state == 24 || state == 25 || state == 26 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'house');
-          case 20:
+          case 22:
             state = 0;
             t3 = $.get$length($.index($.tags, 'house'));
-          case 21:
+          case 23:
             state = 0;
             t5 = $.Math_random();
-          case 22:
+          case 24:
             state = 0;
             var house = $.index(t1, $.toInt($.mul(t3, t5)));
             t1 = $.Math_random();
-          case 23:
+          case 25:
             state = 0;
             this.spawnObject$2('citizen', $.makeLiteralMap(['tag', ['friendly', $.ltB(t1, 0.5) ? 'wander' : 'traveler', 'ai'], 'x', house.get$x(), 'y', house.get$y(), 'home', house]));
             t1 = this.awakePopulation;
-          case 24:
+          case 26:
             state = 0;
             this.awakePopulation = $.add(t1, 1);
         }
       }
-    case 25:
-    case 26:
     case 27:
     case 28:
     case 29:
@@ -10099,18 +10244,24 @@ $$.World = {"":
     case 31:
     case 32:
     case 33:
-      if (state == 25 || state == 26 || state == 27 || state == 28 || state == 29 || state == 30 || state == 31 || state == 32 || state == 33 || (state == 0 && this.night_mode === true)) {
+    case 34:
+    case 35:
+    case 36:
+    case 37:
+    case 38:
+    case 39:
+      if (state == 27 || state == 28 || state == 29 || state == 30 || state == 31 || state == 32 || state == 33 || state == 34 || state == 35 || state == 36 || state == 37 || state == 38 || state == 39 || (state == 0 && this.night_mode === true)) {
         switch (state) {
           case 0:
             t1 = this.time;
-          case 25:
+          case 27:
             state = 0;
-          case 26:
-            if (state == 26 || (state == 0 && !$.ltB(t1, 4))) {
+          case 28:
+            if (state == 28 || (state == 0 && !$.ltB(t1, 4))) {
               switch (state) {
                 case 0:
                   t1 = this.time;
-                case 26:
+                case 28:
                   state = 0;
                   t1 = $.gtB(t1, 21);
               }
@@ -10118,39 +10269,48 @@ $$.World = {"":
               t1 = true;
             }
           default:
-            if (state == 27 || state == 28 || state == 29 || state == 30 || (state == 0 && t1)) {
+            if (state == 29 || state == 30 || state == 31 || state == 32 || state == 33 || state == 34 || state == 35 || (state == 0 && t1)) {
               switch (state) {
                 case 0:
                   t1 = this.zombie_out;
-                  var t2 = this.zombie_max;
-                case 27:
+                case 29:
                   state = 0;
-                case 28:
-                  if (state == 28 || (state == 0 && !$.ltB(t1, $.sub(t2, 50)))) {
+                  t3 = this.zombie_max;
+                case 30:
+                  state = 0;
+                default:
+                  if (state == 31 || state == 32 || (state == 0 && !$.ltB(t1, $.sub(t3, 50)))) {
                     switch (state) {
                       case 0:
                         t1 = this.zombie_out;
-                        t2 = this.zombie_max;
-                      case 28:
+                      case 31:
                         state = 0;
-                        t1 = $.ltB(t1, t2) && $.rpat(32) === true;
+                        t3 = this.zombie_max;
+                      case 32:
+                        state = 0;
+                        t1 = $.ltB(t1, t3) && $.rpat(16) === true;
                     }
                   } else {
                     t1 = true;
                   }
-                default:
-                  if (state == 29 || state == 30 || (state == 0 && t1)) {
+                case 33:
+                case 34:
+                case 35:
+                  if (state == 33 || state == 34 || state == 35 || (state == 0 && t1)) {
                     switch (state) {
                       case 0:
-                        this.zombie_out = this.zombie_out + 1;
+                        t1 = this.zombie_out;
+                      case 33:
+                        state = 0;
+                        this.zombie_out = $.add(t1, 1);
                         var zs_list = $.index($.tags, 'zombie-spawn');
-                      case 29:
+                      case 34:
                         state = 0;
-                        t2 = $.get$length(zs_list);
-                        t3 = $.Math_random();
-                      case 30:
+                        var t4 = $.get$length(zs_list);
+                        t5 = $.Math_random();
+                      case 35:
                         state = 0;
-                        var zs = $.index(zs_list, $.toInt($.mul(t2, t3)));
+                        var zs = $.index(zs_list, $.toInt($.mul(t4, t5)));
                         this.spawnObject$2('zombie', $.makeLiteralMap(['x', zs.get$x(), 'y', zs.get$y()]));
                     }
                   }
@@ -10158,18 +10318,21 @@ $$.World = {"":
             } else {
               switch (state) {
                 case 0:
+                  t1 = this.zombie_out;
+                case 36:
+                  state = 0;
                 default:
-                  if (state == 31 || state == 32 || state == 33 || (state == 0 && (this.zombie_out > 0 && $.rpat(16) === true))) {
+                  if (state == 37 || state == 38 || state == 39 || (state == 0 && ($.gtB(t1, 0) && $.rpat(30) === true))) {
                     switch (state) {
                       case 0:
                         t1 = $.index($.tags, 'zombie');
-                      case 31:
+                      case 37:
                         state = 0;
                         t3 = $.get$length($.index($.tags, 'zombie'));
-                      case 32:
+                      case 38:
                         state = 0;
                         t5 = $.Math_random();
-                      case 33:
+                      case 39:
                         state = 0;
                         var zom = $.index(t1, $.toInt($.mul(t3, t5)));
                         if (zom.hasTag$1('nestbound') !== true) {
@@ -10188,26 +10351,26 @@ $$.World = {"":
         }
       }
       if ($.rpat(2000) === true) {
-        var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time', 'Press the SHIFT key to sprint'];
+        var protips = ['You can switch weapons with E', 'Villagers tend to be meaner when you kill them', 'Villagers will be nicer if you keep saving them', 'Upgrades can be purchased for all weapons', 'Zombies grow stronger every day, equip yourself accordingly', 'You can press T to speed up time', 'Press the SHIFT key to sprint', 'You can purchase patrol guards to help keep villagers safe'];
         t1 = protips.length;
-        t2 = $.Math_random();
+        var t2 = $.Math_random();
         if (typeof t2 !== 'number') throw $.iae(t2);
         t3 = $.toInt(t1 * t2);
         if (t3 !== (t3 | 0)) throw $.iae(t3);
-        var t4 = protips.length;
+        t4 = protips.length;
         if (t3 < 0 || t3 >= t4) throw $.ioore(t3);
         $.notify('Tip : ' + $.S(protips[t3]));
       }
-    case 34:
-      if (state == 34 || (state == 0 && this.night_mode === true)) {
+    case 40:
+      if (state == 40 || (state == 0 && this.night_mode === true)) {
         switch (state) {
           case 0:
-          case 34:
-            if (state == 34 || (state == 0 && $.rpat(60) === true)) {
+          case 40:
+            if (state == 40 || (state == 0 && $.rpat(60) === true)) {
               switch (state) {
                 case 0:
                   t1 = $.get$length($.index($.tags, 'lost'));
-                case 34:
+                case 40:
                   state = 0;
                   t1 = $.gtB(t1, 0);
               }
@@ -10218,20 +10381,20 @@ $$.World = {"":
       } else {
         t1 = false;
       }
-    case 35:
-    case 36:
-    case 37:
-      if (state == 35 || state == 36 || state == 37 || (state == 0 && t1)) {
+    case 41:
+    case 42:
+    case 43:
+      if (state == 41 || state == 42 || state == 43 || (state == 0 && t1)) {
         switch (state) {
           case 0:
             t1 = $.index($.tags, 'lost');
-          case 35:
+          case 41:
             state = 0;
             t3 = $.get$length($.index($.tags, 'lost'));
-          case 36:
+          case 42:
             state = 0;
             t5 = $.Math_random();
-          case 37:
+          case 43:
             state = 0;
             t1 = $.index(t1, $.toInt($.mul(t3, t5)));
             var t7 = $.Math_random();
@@ -10242,27 +10405,27 @@ $$.World = {"":
             t1.say$1($.CTC32[t8]);
         }
       }
-    case 38:
-    case 39:
-    case 40:
-    case 41:
-    case 42:
-    case 43:
-      if (state == 38 || state == 39 || state == 40 || state == 41 || (state == 0 && this.intro !== true)) {
+    case 44:
+    case 45:
+    case 46:
+    case 47:
+    case 48:
+    case 49:
+      if (state == 44 || state == 45 || state == 46 || state == 47 || (state == 0 && this.intro !== true)) {
         switch (state) {
           case 0:
             t1 = $.event.key$1('d');
-          case 38:
+          case 44:
             state = 0;
             t3 = $.event.key$1('a');
-          case 39:
+          case 45:
             state = 0;
             t3 = $.sub(t1, t3);
             t1 = $.event.key$1('s');
-          case 40:
+          case 46:
             state = 0;
             var t6 = $.event.key$1('w');
-          case 41:
+          case 47:
             state = 0;
             var inc = $.Vec2$(t3, $.sub(t1, t6));
             t3 = inc.normalize$0();
@@ -10281,7 +10444,7 @@ $$.World = {"":
             t3 = t1.length;
             if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
             t2 = t1[t2];
-          case 42:
+          case 48:
             state = 0;
             t4 = this.slideTime;
             t5 = this.slide_dir;
@@ -10290,7 +10453,7 @@ $$.World = {"":
             t7 = t5.length;
             if (t6 < 0 || t6 >= t7) throw $.ioore(t6);
             t6 = t5[t6];
-          case 43:
+          case 49:
             state = 0;
             if (typeof t6 !== 'number') throw $.iae(t6);
             t2 = $.add(t2, t4 * t6);
@@ -10318,18 +10481,18 @@ $$.World = {"":
             }
         }
       }
-    case 44:
-    case 45:
-    case 46:
-    case 47:
-      if (state == 44 || state == 45 || state == 46 || state == 47 || (state == 0 && $.event.get$mouseDown() === true)) {
+    case 50:
+    case 51:
+    case 52:
+    case 53:
+      if (state == 50 || state == 51 || state == 52 || state == 53 || (state == 0 && $.event.get$mouseDown() === true)) {
         switch (state) {
           case 0:
             t1 = this.player.get$currentAttackTime();
-          case 44:
+          case 50:
             state = 0;
-          case 45:
-            if (state == 45 || (state == 0 && $.eqB(t1, 0))) {
+          case 51:
+            if (state == 51 || (state == 0 && $.eqB(t1, 0))) {
               switch (state) {
                 case 0:
                   t1 = this.weaponStartFrame;
@@ -10338,7 +10501,7 @@ $$.World = {"":
                   t3 = t1.length;
                   if (t2 < 0 || t2 >= t3) throw $.ioore(t2);
                   t2 = t1[t2];
-                case 45:
+                case 51:
                   state = 0;
                   t2 = $.mul(t2, 5);
                   this.player.set$currentFrame(t2);
@@ -10347,11 +10510,11 @@ $$.World = {"":
             this.player.set$attacking(true);
             t1 = $.event.get$mouse_position().clone$0();
             t2 = $.SCREEN_WIDTH;
-          case 46:
+          case 52:
             state = 0;
             t2 = $.div(t2, 2);
             t4 = $.SCREEN_HEIGHT;
-          case 47:
+          case 53:
             state = 0;
             t6 = t1.subTo$2(t2, $.div(t4, 2)).normalize$0();
             this.player.set$attackDirection(t6);
@@ -10362,45 +10525,45 @@ $$.World = {"":
       }
       t1 = this.camera;
       t2 = t1.get$x();
-    case 48:
+    case 54:
       state = 0;
       t4 = t1.get$x();
-    case 49:
+    case 55:
       state = 0;
       t6 = this.player.get$x();
-    case 50:
+    case 56:
       state = 0;
       t8 = this.player.get$velocity().get$x();
-    case 51:
+    case 57:
       state = 0;
       t1.set$x($.sub(t2, $.div($.sub(t4, $.add(t6, $.mul(t8, 5))), 5)));
       t10 = t1.get$y();
-    case 52:
+    case 58:
       state = 0;
       var t12 = t1.get$y();
-    case 53:
+    case 59:
       state = 0;
       var t14 = this.player.get$y();
-    case 54:
+    case 60:
       state = 0;
       var t16 = this.player.get$velocity().get$y();
-    case 55:
+    case 61:
       state = 0;
       t1.set$y($.sub(t10, $.div($.sub(t12, $.add(t14, $.mul(t16, 5))), 5)));
-    case 56:
-    case 57:
-    case 58:
-      if (state == 56 || state == 57 || state == 58 || (state == 0 && $.DEBUG === true)) {
+    case 62:
+    case 63:
+    case 64:
+      if (state == 62 || state == 63 || state == 64 || (state == 0 && $.DEBUG === true)) {
         switch (state) {
           case 0:
             t2 = t1.get$zoom();
-          case 56:
+          case 62:
             state = 0;
             t4 = $.event.key$1('up');
-          case 57:
+          case 63:
             state = 0;
             t6 = $.event.key$1('down');
-          case 58:
+          case 64:
             state = 0;
             t1.set$zoom($.add(t2, $.div($.sub(t4, t6), 10.0)));
         }
@@ -10412,26 +10575,26 @@ $$.World = {"":
       $.setRuntimeTypeInfo(t2, ({E: 'GameObject'}));
       $.indexSet(t1, 'uninit', t2);
       t1 = $.iterator($.tags.getKeys$0());
-    case 59:
-    case 60:
-    case 61:
-    case 62:
+    case 65:
+    case 66:
+    case 67:
+    case 68:
       L0: while (true) {
         switch (state) {
           case 0:
             if (!(t1.hasNext$0() === true)) break L0;
             t2 = t1.next$0();
             t3 = $.tags;
-          case 59:
+          case 65:
             state = 0;
             var lst = $.index(t3, t2);
-          case 60:
+          case 66:
             state = 0;
             t2 = $.Math_random();
-          case 61:
+          case 67:
             state = 0;
             var i = $.toInt($.mul(t2, $.get$length(lst)));
-          case 62:
+          case 68:
             state = 0;
             var iter = 0;
             for (; $.ltB(iter, $.div($.get$length(lst), 16)); ++iter, i = $.add(i, 1)) {
@@ -10443,11 +10606,11 @@ $$.World = {"":
       t1 = this.objects;
       t2 = t1.length;
       t3 = $.Math_random();
-    case 63:
+    case 69:
       state = 0;
       if (typeof t3 !== 'number') throw $.iae(t3);
       i = $.toInt(t2 * t3);
-    case 64:
+    case 70:
       state = 0;
       iter = 0;
       for (; iter < t1.length / 16; ++iter, i = $.add(i, 1)) {
@@ -10462,13 +10625,13 @@ $$.World = {"":
       $.forEach($.index($.tags, 'spawn'), new $.World_update_anon6());
       this.sortScreenObjects$0();
       t1 = this.time;
-    case 65:
+    case 71:
       state = 0;
       t3 = this.dayLength;
       if (typeof t3 !== 'number') throw $.iae(t3);
       this.time = $.add(t1, 24 / t3);
       t1 = this.time;
-    case 66:
+    case 72:
       state = 0;
       if ($.gtB(t1, 24)) this.time = 0;
   }
@@ -10654,6 +10817,27 @@ $$.World = {"":
   if (!(t1 == null)) return $.index(t1, index);
   return $.BLANK_IMAGE;
  },
+ equipWeapon$2: function(avatar, weaponID) {
+  if (!$.eqB(weaponID, 0)) avatar.set$weaponAnimation($.index($.animationMap, 'weapon' + $.S(weaponID)));
+  else avatar.set$weaponAnimation(null);
+  var t1 = this.weaponDamage;
+  if (weaponID !== (weaponID | 0)) throw $.iae(weaponID);
+  var t2 = t1.length;
+  if (weaponID < 0 || weaponID >= t2) throw $.ioore(weaponID);
+  avatar.set$damage(t1[weaponID]);
+  var t3 = this.weaponAttackTime;
+  var t4 = t3.length;
+  if (weaponID < 0 || weaponID >= t4) throw $.ioore(weaponID);
+  avatar.set$attackTime(t3[weaponID]);
+  var t5 = this.weaponAttackTypes;
+  var t6 = t5.length;
+  if (weaponID < 0 || weaponID >= t6) throw $.ioore(weaponID);
+  avatar.set$attackType(t5[weaponID]);
+  var t7 = this.weaponAttackRadius;
+  var t8 = t7.length;
+  if (weaponID < 0 || weaponID >= t8) throw $.ioore(weaponID);
+  avatar.set$attackRadius($.div(t7[weaponID], 2));
+ },
  startCycle$1: function(context) {
   var t1 = ({});
   this.player = $.index($.index($.tags, 'player'), 0);
@@ -10663,6 +10847,9 @@ $$.World = {"":
     this.player_animation = this.player.get$animation();
     t2 = $.Animation$($.makeLiteralMap([]));
     this.player.set$animation(t2);
+  }
+  for (t2 = this.guard_total, i = 0; i < t2; ++i) {
+    this.spawnGuard$0();
   }
   this.player.removeTag$1('citizen');
   this.sortScreenObjects$0();
@@ -10677,9 +10864,45 @@ $$.World = {"":
   }
   $.add$1($.event.get$onClick(), new $.World_startCycle_anon1(this));
   $.add$1($.event.get$onKeyPress(), new $.World_startCycle_anon2(this));
-  t1 = new $.World_startCycle_cycle(context, this);
-  $.window().setInterval$2(new $.World_startCycle_anon3(this), $.toInt(16.666666666666668));
-  t1.$call$1(0);
+  t2 = new $.World_startCycle_cycle(context, this);
+  t1.interval_5 = null;
+  t1.interval_5 = $.window().setInterval$2(new $.World_startCycle_anon3(this, t1), $.toInt(16.666666666666668));
+  t2.$call$1(0);
+  var i;
+ },
+ setGuardPath$1: function(guard) {
+  var t1 = ({});
+  var cnodes = this.getClosePathNodes$1(guard);
+  if ($.eqB($.get$length(cnodes), 0)) {
+    t1.closest_1 = null;
+    $.forEach($.world.get$pathnodes(), new $.World_setGuardPath_anon(t1, 9999, guard));
+    var destinationNode = t1.closest_1;
+  } else destinationNode = $.index(cnodes, $.toInt($.mul($.Math_random(), $.get$length(cnodes))));
+  $.indexSet(guard, 'path', destinationNode.get$path());
+  $.indexSet(guard, 'destination', $.add$1(destinationNode.clone$0(), $.index(guard, 'positionOffset')));
+  $.indexSet(guard, 'pathDirection', destinationNode.get$start() === true ? 1 : -1);
+  $.indexSet(guard, 'pathIndex', destinationNode.get$start() === true ? 0 : $.sub($.get$length(destinationNode.get$path().get$points()), 1));
+ },
+ spawnGuard$0: function() {
+  var t1 = this.pathnodes;
+  var t2 = t1.length;
+  var t3 = $.Math_random();
+  if (typeof t3 !== 'number') return this.spawnGuard$0$bailout(1, t1, t3, t2);
+  var t5 = $.toInt(t2 * t3);
+  if (t5 !== (t5 | 0)) throw $.iae(t5);
+  var t6 = t1.length;
+  if (t5 < 0 || t5 >= t6) throw $.ioore(t5);
+  var pn = t1[t5];
+  this.spawnObject$2('guard', $.makeLiteralMap(['x', pn.get$x(), 'y', pn.get$y()]));
+ },
+ spawnGuard$0$bailout: function(state, t1, t3, t2) {
+  if (typeof t3 !== 'number') throw $.iae(t3);
+  var t5 = $.toInt(t2 * t3);
+  if (t5 !== (t5 | 0)) throw $.iae(t5);
+  var t6 = t1.length;
+  if (t5 < 0 || t5 >= t6) throw $.ioore(t5);
+  var pn = t1[t5];
+  this.spawnObject$2('guard', $.makeLiteralMap(['x', pn.get$x(), 'y', pn.get$y()]));
  },
  getClosePathNodes$1: function(v) {
   var cnodes = $.ListFactory_List(null);
@@ -11042,7 +11265,7 @@ $$.World = {"":
   this.weaponDamage = [25, 34, 20, 34, 75, 45, 70];
   this.weaponAttackTypes = [0, 0, 1, 2, 2, 0, 0];
   this.weaponAttackTime = [12, 10, 24, 15, 20, 12, 18];
-  this.weaponAttackRadius = [64, 64, 0, 128, 128, 128, 128];
+  this.weaponAttackRadius = [64, 64, 256, 64, 64, 64, 64];
   this.weaponCost = [0, 120, 240, 150, 400, 300, 500];
   this.weaponCost2 = [0, 120, 240, 150, 400, 300, 500];
   this.weaponStartFrame = [0, 0, 25, 0, 0, 0, 0];
@@ -11274,7 +11497,7 @@ $$.AudioManager = {"":
  AudioManager$0: function() {
   var soundList = ['bump', 'shoot1', 'hurt3', 'shoot', 'hurt2', 'hurt', 'hurt1', 'coin'];
   this.audioElements = $.HashMapImplementation$();
-  $.forEach(soundList, new $.anon61(this));
+  $.forEach(soundList, new $.anon71(this));
   this.audioGroup = $.HashMapImplementation$();
   var t1 = this.audioGroup;
   $.indexSet(t1, 'shoot', ['shoot', 'shoot1']);
@@ -12990,15 +13213,15 @@ $$.MainMenu_render_anon2 = {"":
   $.world.set$dayLength(432000);
   $.world.set$time(21);
   t1.interval_1 = null;
-  t1.interval_1 = $.window().setInterval$2(new $.MainMenu_render_anon3(t1, this.box_2), 500);
+  t1.interval_1 = $.window().setInterval$2(new $.MainMenu_render_anon3(20, t1, this.box_2), 500);
  }
 };
 
 $$.MainMenu_render_anon3 = {"":
- ["box_0", "box_2"],
+ ["seconds_difficulty_change_11", "box_0", "box_2"],
  super: "Closure",
  $call$0: function() {
-  if ($.eqB($.mod(this.box_2.count_3, 120), 0)) {
+  if ($.eqB($.mod(this.box_2.count_3, $.mul(this.seconds_difficulty_change_11, 2)), 0)) {
     var t1 = $.world;
     t1.set$dayCount($.add(t1.get$dayCount(), 1));
     $.world.increaseDifficulty$0();
@@ -13098,7 +13321,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon76(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon86(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13130,7 +13353,7 @@ $$.anon8 = {"":
         t1 = t2;
       } else t1 = false;
       if (t1) {
-        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon77(citizen));
+        $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon87(citizen));
         t1 = $.Math_random();
         if (typeof t1 !== 'number') throw $.iae(t1);
         t2 = $.toInt(5 * t1);
@@ -13186,7 +13409,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               var index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).get$alive() === true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon76(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon86(citizen));
                 var t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 var t2 = $.toInt(5 * t1);
@@ -13210,7 +13433,7 @@ $$.anon8 = {"":
             for (; $.ltB(iter, $.div($.get$length(zoms), 16)); ++iter, i = $.add(i, 1)) {
               index = $.mod(i, $.get$length(zoms));
               if ($.index(zoms, index).hasTag$1('zombie') !== true && $.ltB($.index(zoms, index).distanceTo$1(citizen), 96)) {
-                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon77(citizen));
+                $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound'], new $.anon87(citizen));
                 t1 = $.Math_random();
                 if (typeof t1 !== 'number') throw $.iae(t1);
                 t2 = $.toInt(5 * t1);
@@ -13230,7 +13453,7 @@ $$.anon8 = {"":
  }
 };
 
-$$.anon76 = {"":
+$$.anon86 = {"":
  ["citizen_2"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13241,7 +13464,7 @@ $$.anon76 = {"":
  }
 };
 
-$$.anon77 = {"":
+$$.anon87 = {"":
  ["citizen_3"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13259,7 +13482,7 @@ $$.anon9 = {"":
   $.ltB(citizen.distanceTo$1($.world.get$player()), 256) && $.audio.play$1('hurt');
   if ($.world.get$player().get$attacking() === true) {
     $.niceFactor = $.sub($.niceFactor, 0.005);
-    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon75(citizen));
+    $.forEach(['wander', 'traveler', 'lost', 'following', 'homebound', 'scared'], new $.anon85(citizen));
     var t1 = $.Math_random();
     if (typeof t1 !== 'number') throw $.iae(t1);
     var t2 = $.toInt(5 * t1);
@@ -13274,7 +13497,7 @@ $$.anon9 = {"":
  }
 };
 
-$$.anon75 = {"":
+$$.anon85 = {"":
  ["citizen_4"],
  super: "Closure",
  $call$1: function(tag) {
@@ -13413,7 +13636,7 @@ $$.anon18 = {"":
         t1 = cnodes.length;
         if (i < 0 || i >= t1) throw $.ioore(i);
         if (cnodes[i].get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon74(a));
+          $.some($.index($.tags, 'house'), new $.anon84(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13440,7 +13663,7 @@ $$.anon18 = {"":
     } else {
       for (var i = $.sub($.get$length(cnodes), 1); $.geB(i, 0); i = $.sub(i, 1)) {
         if ($.index(cnodes, i).get$house() === true) {
-          $.some($.index($.tags, 'house'), new $.anon74(a));
+          $.some($.index($.tags, 'house'), new $.anon84(a));
           $.switchTag(a, 'traveler', 'homebound');
           $.index($.index($.tagEvents, 'homebound'), 'init').$call$1(a);
           return;
@@ -13457,7 +13680,7 @@ $$.anon18 = {"":
  }
 };
 
-$$.anon74 = {"":
+$$.anon84 = {"":
  ["a_6"],
  super: "Closure",
  $call$1: function(house) {
@@ -13501,13 +13724,271 @@ $$.anon20 = {"":
 $$.anon21 = {"":
  [],
  super: "Closure",
+ $call$1: function(guard) {
+  $.indexSet(guard, 'positionOffset', $.Vec2$($.sub($.mul($.Math_random(), 64), 32), $.sub($.mul($.Math_random(), 64), 32)));
+  $.world.setGuardPath$1(guard);
+ }
+};
+
+$$.anon22 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  var zombies = $.index($.tags, 'zombie');
+  if (typeof zombies !== 'string' && (typeof zombies !== 'object' || zombies === null || (zombies.constructor !== Array && !zombies.is$JavaScriptIndexingBehavior()))) return this.$call$1$bailout(1, guard, zombies, 0);
+  if (zombies.length > 0) {
+    var i = $.sub($.toInt($.mul($.Math_random(), zombies.length)), 1);
+    if (typeof i !== 'number') return this.$call$1$bailout(2, guard, i, zombies);
+    var iter = 0;
+    for (; t1 = zombies.length, iter < t1 / 30 + 1; ++iter, ++i) {
+      var t2 = $.mod(i, t1);
+      if (t2 !== (t2 | 0)) throw $.iae(t2);
+      if (t2 < 0 || t2 >= t1) throw $.ioore(t2);
+      var zom = zombies[t2];
+      if ($.ltB(zom.distanceTo$1(guard), 256)) {
+        $.switchTag(guard, 'guard-wander', 'guard-attack');
+        $.indexSet(guard, 'target', zom);
+        return;
+      }
+    }
+  }
+  $.add$1(guard.get$velocity(), $.index(guard, 'destination').clone$0().sub$1(guard).normalize$0().multiplyScalar$1(guard.get$speed()));
+  if ($.ltB($.index(guard, 'destination').distanceTo$1(guard), 32)) {
+    t1 = $.index(guard, 'pathDirection');
+    $.indexSet(guard, 'pathIndex', $.add($.index(guard, 'pathIndex'), t1));
+    if ($.ltB($.index(guard, 'pathIndex'), 0) || $.geB($.index(guard, 'pathIndex'), $.get$length($.index(guard, 'path').get$points()))) {
+      if ($.rpat(2) === true) {
+        guard.set$currentFrame(0);
+        t1 = $.toInt($.mul($.Math_random(), 360));
+        if (typeof t1 !== 'number') throw $.iae(t1);
+        $.indexSet(guard, 'waitTime', 120 + t1);
+        $.switchTag(guard, 'guard-wander', 'guard-wait');
+        return;
+      }
+      $.world.setGuardPath$1(guard);
+      return;
+    }
+    $.indexSet(guard, 'destination', $.add$1($.index($.index(guard, 'path').get$points(), $.index(guard, 'pathIndex')).clone$0(), $.index(guard, 'positionOffset')));
+  }
+  $.ltB(guard.get$health(), 100) && guard.set$health($.add(guard.get$health(), 0.005));
+  var t1;
+ },
+ $call$1$bailout: function(state, env0, env1, env2) {
+  switch (state) {
+    case 1:
+      var guard = env0;
+      zombies = env1;
+      break;
+    case 2:
+      guard = env0;
+      i = env1;
+      zombies = env2;
+      break;
+  }
+  switch (state) {
+    case 0:
+      var zombies = $.index($.tags, 'zombie');
+    case 1:
+      state = 0;
+    case 2:
+      if (state == 2 || (state == 0 && $.gtB($.get$length(zombies), 0))) {
+        switch (state) {
+          case 0:
+            var i = $.sub($.toInt($.mul($.Math_random(), $.get$length(zombies))), 1);
+          case 2:
+            state = 0;
+            var iter = 0;
+            for (; $.ltB(iter, $.add($.div($.get$length(zombies), 30), 1)); ++iter, i = $.add(i, 1)) {
+              var zom = $.index(zombies, $.mod(i, $.get$length(zombies)));
+              if ($.ltB(zom.distanceTo$1(guard), 256)) {
+                $.switchTag(guard, 'guard-wander', 'guard-attack');
+                $.indexSet(guard, 'target', zom);
+                return;
+              }
+            }
+        }
+      }
+      $.add$1(guard.get$velocity(), $.index(guard, 'destination').clone$0().sub$1(guard).normalize$0().multiplyScalar$1(guard.get$speed()));
+      if ($.ltB($.index(guard, 'destination').distanceTo$1(guard), 32)) {
+        var t1 = $.index(guard, 'pathDirection');
+        $.indexSet(guard, 'pathIndex', $.add($.index(guard, 'pathIndex'), t1));
+        if ($.ltB($.index(guard, 'pathIndex'), 0) || $.geB($.index(guard, 'pathIndex'), $.get$length($.index(guard, 'path').get$points()))) {
+          if ($.rpat(2) === true) {
+            guard.set$currentFrame(0);
+            t1 = $.toInt($.mul($.Math_random(), 360));
+            if (typeof t1 !== 'number') throw $.iae(t1);
+            $.indexSet(guard, 'waitTime', 120 + t1);
+            $.switchTag(guard, 'guard-wander', 'guard-wait');
+            return;
+          }
+          $.world.setGuardPath$1(guard);
+          return;
+        }
+        $.indexSet(guard, 'destination', $.add$1($.index($.index(guard, 'path').get$points(), $.index(guard, 'pathIndex')).clone$0(), $.index(guard, 'positionOffset')));
+      }
+      $.ltB(guard.get$health(), 100) && guard.set$health($.add(guard.get$health(), 0.005));
+  }
+ }
+};
+
+$$.anon23 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  var t1 = $.index(guard, 'collideTime');
+  $.indexSet(guard, 'collideTime', $.add(t1, 1));
+  if ($.gtB(t1, 120)) {
+    $.indexSet(guard, 'collideTime', 0);
+    guard.set$2($.index(guard, 'destination').get$x(), $.index(guard, 'destination').get$y());
+  }
+ }
+};
+
+$$.anon24 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+ }
+};
+
+$$.anon25 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  var zombies = $.index($.tags, 'zombie');
+  if (typeof zombies !== 'string' && (typeof zombies !== 'object' || zombies === null || (zombies.constructor !== Array && !zombies.is$JavaScriptIndexingBehavior()))) return this.$call$1$bailout(1, guard, zombies, 0);
+  if (zombies.length > 0) {
+    var i = $.sub($.toInt($.mul($.Math_random(), zombies.length)), 1);
+    if (typeof i !== 'number') return this.$call$1$bailout(2, guard, i, zombies);
+    var iter = 0;
+    for (; t1 = zombies.length, iter < t1 / 30 + 1; ++iter, ++i) {
+      var t2 = $.mod(i, t1);
+      if (t2 !== (t2 | 0)) throw $.iae(t2);
+      if (t2 < 0 || t2 >= t1) throw $.ioore(t2);
+      var zom = zombies[t2];
+      if ($.ltB(zom.distanceTo$1(guard), 256)) {
+        $.switchTag(guard, 'guard-wait', 'guard-attack');
+        $.indexSet(guard, 'target', zom);
+        return;
+      }
+    }
+  }
+  $.indexSet(guard, 'waitTime', $.sub($.index(guard, 'waitTime'), 1));
+  if ($.leB($.index(guard, 'waitTime'), 0)) {
+    $.world.setGuardPath$1(guard);
+    $.switchTag(guard, 'guard-wait', 'guard-wander');
+  }
+  var t1;
+ },
+ $call$1$bailout: function(state, env0, env1, env2) {
+  switch (state) {
+    case 1:
+      var guard = env0;
+      zombies = env1;
+      break;
+    case 2:
+      guard = env0;
+      i = env1;
+      zombies = env2;
+      break;
+  }
+  switch (state) {
+    case 0:
+      var zombies = $.index($.tags, 'zombie');
+    case 1:
+      state = 0;
+    case 2:
+      if (state == 2 || (state == 0 && $.gtB($.get$length(zombies), 0))) {
+        switch (state) {
+          case 0:
+            var i = $.sub($.toInt($.mul($.Math_random(), $.get$length(zombies))), 1);
+          case 2:
+            state = 0;
+            var iter = 0;
+            for (; $.ltB(iter, $.add($.div($.get$length(zombies), 30), 1)); ++iter, i = $.add(i, 1)) {
+              var zom = $.index(zombies, $.mod(i, $.get$length(zombies)));
+              if ($.ltB(zom.distanceTo$1(guard), 256)) {
+                $.switchTag(guard, 'guard-wait', 'guard-attack');
+                $.indexSet(guard, 'target', zom);
+                return;
+              }
+            }
+        }
+      }
+      $.indexSet(guard, 'waitTime', $.sub($.index(guard, 'waitTime'), 1));
+      if ($.leB($.index(guard, 'waitTime'), 0)) {
+        $.world.setGuardPath$1(guard);
+        $.switchTag(guard, 'guard-wait', 'guard-wander');
+      }
+  }
+ }
+};
+
+$$.anon26 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+ }
+};
+
+$$.anon27 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  var zom = $.index(guard, 'target');
+  if (!(zom == null) && zom.get$alive() === true) {
+    if ($.gtB(guard.distanceTo$1(zom), guard.get$attackRadius())) {
+      $.add$1(guard.get$velocity(), zom.clone$0().sub$1(guard).normalize$0().multiplyScalar$1(guard.get$speed()));
+      guard.set$attacking(false);
+    } else {
+      guard.set$attacking(true);
+      guard.set$attackDirection(zom.clone$0().sub$1(guard).normalize$0());
+    }
+  } else {
+    guard.set$attacking(false);
+    $.switchTag(guard, 'guard-attack', 'guard-wander');
+  }
+ }
+};
+
+$$.anon28 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+ }
+};
+
+$$.anon29 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  $.indexSet(guard, 'collideTime', 0);
+  guard.set$armor(0.25);
+  var t1 = $.mul($.Math_random(), 1.2);
+  if (typeof t1 !== 'number') throw $.iae(t1);
+  guard.set$speed(0.8 + t1);
+  $.world.equipWeapon$2(guard, $.toInt($.mul($.Math_random(), $.get$length($.world.get$weaponName()))));
+ }
+};
+
+$$.anon30 = {"":
+ [],
+ super: "Closure",
+ $call$1: function(guard) {
+  $.world.spawnGuard$0();
+ }
+};
+
+$$.anon31 = {"":
+ [],
+ super: "Closure",
  $call$1: function(avatar) {
   $.indexSet(avatar, 'collisionCount', 0);
   $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
  }
 };
 
-$$.anon22 = {"":
+$$.anon32 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13517,7 +13998,7 @@ $$.anon22 = {"":
     var d = $.index(avatar, 'home').distanceTo$1(avatar);
     if ($.gtB(d, 256)) {
       t1.found_1 = false;
-      $.some($.index($.tags, 'house'), new $.anon73(t1, avatar));
+      $.some($.index($.tags, 'house'), new $.anon83(t1, avatar));
       if (t1.found_1 === true) {
         $.indexSet(avatar, 'collisionCount', 0);
         $.indexSet(avatar, 'homeboundDirection', $.index(avatar, 'home').clone$0().sub$1(avatar).normalize$0().multiplyScalar$1(avatar.get$speed()));
@@ -13537,7 +14018,7 @@ $$.anon22 = {"":
  }
 };
 
-$$.anon73 = {"":
+$$.anon83 = {"":
  ["box_0", "avatar_7"],
  super: "Closure",
  $call$1: function(house) {
@@ -13550,7 +14031,7 @@ $$.anon73 = {"":
  }
 };
 
-$$.anon23 = {"":
+$$.anon33 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13569,7 +14050,7 @@ $$.anon23 = {"":
  }
 };
 
-$$.anon24 = {"":
+$$.anon34 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13654,7 +14135,7 @@ $$.anon24 = {"":
  }
 };
 
-$$.anon25 = {"":
+$$.anon35 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13663,7 +14144,7 @@ $$.anon25 = {"":
  }
 };
 
-$$.anon26 = {"":
+$$.anon36 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13675,7 +14156,7 @@ $$.anon26 = {"":
  }
 };
 
-$$.anon27 = {"":
+$$.anon37 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13694,7 +14175,7 @@ $$.anon27 = {"":
     if ($.ltB($.index($.index($.tags, 'house'), index).distanceTo$1(avatar), 256)) {
       avatar.say$2($.rpat(2) === true ? 'Thank you!' : 'Thanks!', 100);
       $.indexSet(avatar, 'home', $.index($.index($.tags, 'house'), index));
-      $.world.giveCoin$2(avatar, $.toInt($.add($.mul($.Math_random(), 20), 5)));
+      $.world.giveCoin$2(avatar, $.toInt($.mul($.add($.mul($.Math_random(), 20), 5), $.world.get$dayCount())));
       $.niceFactor = $.add($.niceFactor, 0.05);
       t1 = $.world;
       t1.set$saved($.add(t1.get$saved(), 1));
@@ -13711,7 +14192,7 @@ $$.anon27 = {"":
     if ($.ltB($.index($.index($.tags, 'house'), index).distanceTo$1(avatar), 256)) {
       avatar.say$2($.rpat(2) === true ? 'Thank you!' : 'Thanks!', 100);
       $.indexSet(avatar, 'home', $.index($.index($.tags, 'house'), index));
-      $.world.giveCoin$2(avatar, $.toInt($.add($.mul($.Math_random(), 20), 5)));
+      $.world.giveCoin$2(avatar, $.toInt($.mul($.add($.mul($.Math_random(), 20), 5), $.world.get$dayCount())));
       $.niceFactor = $.add($.niceFactor, 0.05);
       var t1 = $.world;
       t1.set$saved($.add(t1.get$saved(), 1));
@@ -13723,7 +14204,7 @@ $$.anon27 = {"":
  }
 };
 
-$$.anon28 = {"":
+$$.anon38 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13731,7 +14212,7 @@ $$.anon28 = {"":
  }
 };
 
-$$.anon29 = {"":
+$$.anon39 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13740,7 +14221,7 @@ $$.anon29 = {"":
  }
 };
 
-$$.anon30 = {"":
+$$.anon40 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13764,7 +14245,7 @@ $$.anon30 = {"":
  }
 };
 
-$$.anon31 = {"":
+$$.anon41 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13772,19 +14253,19 @@ $$.anon31 = {"":
  }
 };
 
-$$.anon32 = {"":
+$$.anon42 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon72(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon82(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon72 = {"":
+$$.anon82 = {"":
  ["avatar_8"],
  super: "Closure",
  $call$1: function(player) {
@@ -13798,7 +14279,7 @@ $$.anon72 = {"":
  }
 };
 
-$$.anon33 = {"":
+$$.anon43 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13806,19 +14287,19 @@ $$.anon33 = {"":
  }
 };
 
-$$.anon34 = {"":
+$$.anon44 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
   if ($.ltB(avatar.get$sayTime(), 0)) {
     avatar.set$speaking(false);
-    $.forEach($.index($.tags, 'player'), new $.anon71(avatar));
+    $.forEach($.index($.tags, 'player'), new $.anon81(avatar));
     avatar.set$sayTime($.mul($.Math_random(), 500));
   } else avatar.set$sayTime($.sub(avatar.get$sayTime(), 1));
  }
 };
 
-$$.anon71 = {"":
+$$.anon81 = {"":
  ["avatar_9"],
  super: "Closure",
  $call$1: function(player) {
@@ -13832,7 +14313,7 @@ $$.anon71 = {"":
  }
 };
 
-$$.anon35 = {"":
+$$.anon45 = {"":
  [],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13847,7 +14328,7 @@ $$.anon35 = {"":
  }
 };
 
-$$.anon36 = {"":
+$$.anon46 = {"":
  [],
  super: "Closure",
  $call$1: function(arrow) {
@@ -13863,7 +14344,7 @@ $$.anon36 = {"":
  }
 };
 
-$$.anon37 = {"":
+$$.anon47 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13873,19 +14354,26 @@ $$.anon37 = {"":
  }
 };
 
-$$.anon38 = {"":
+$$.anon48 = {"":
  [],
  super: "Closure",
  $call$1: function(a) {
   if ($.ltB($.world.get$player().distanceTo$1(a), 256) && $.world.get$player().get$attacking() === true) {
     var t1 = $.world;
     t1.set$zombies_killed($.add(t1.get$zombies_killed(), 1));
-    $.world.giveCoin$2(a, $.toInt($.add($.mul($.Math_random(), 4), 1)));
+    t1 = $.world;
+    t1.set$zombie_out($.sub(t1.get$zombie_out(), 1));
+    $.world.addMultiplier$0();
+    t1 = $.world;
+    var t2 = $.add($.mul($.Math_random(), 7), 3);
+    var t3 = $.div($.world.get$dayCount(), 4);
+    if (typeof t3 !== 'number') throw $.iae(t3);
+    t1.giveCoin$2(a, $.toInt($.mul(t2, 1 + t3)));
   }
  }
 };
 
-$$.anon39 = {"":
+$$.anon49 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13896,34 +14384,32 @@ $$.anon39 = {"":
  }
 };
 
-$$.anon40 = {"":
+$$.anon50 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  if ($.rpat(20) === true) {
-    if ($.gtB($.index(zom.get$prop(), 'waitTime'), 0)) {
-      var t1 = zom.get$prop();
-      $.indexSet(t1, 'waitTime', $.sub($.index(t1, 'waitTime'), 1));
+  if ($.gtB($.index(zom.get$prop(), 'waitTime'), 0)) {
+    var t1 = zom.get$prop();
+    $.indexSet(t1, 'waitTime', $.sub($.index(t1, 'waitTime'), 1));
+  } else {
+    if ($.gtB($.index(zom.get$prop(), 'destination').distanceTo$1(zom), 2)) {
+      var destination = $.index(zom.get$prop(), 'destination');
+      $.add$1(zom.get$velocity(), destination.clone$0().sub$1(zom).normalize$0().multiplyScalar$1($.mul(zom.get$speed(), $.world.get$ZOMBIE_SPEED())));
     } else {
-      if ($.gtB($.index(zom.get$prop(), 'destination').distanceTo$1(zom), 2)) {
-        var destination = $.index(zom.get$prop(), 'destination');
-        $.add$1(zom.get$velocity(), destination.clone$0().sub$1(zom).normalize$0().multiplyScalar$1($.mul(zom.get$speed(), $.world.get$ZOMBIE_SPEED())));
-      } else {
-        if ($.ltB($.Math_random(), 0.75)) $.indexSet(zom.get$prop(), 'destination', zom.clone$0().addTo$2($.sub($.mul($.Math_random(), 400), 200), $.sub($.mul($.Math_random(), 400), 200)));
-        else {
-          $.indexSet(zom.get$prop(), 'destination', zom.clone$0());
-          $.indexSet(zom.get$prop(), 'waitTime', $.mul($.Math_random(), 200));
-          zom.set$currentFrame(0);
-          zom.get$velocity().zero$0();
-        }
+      if ($.ltB($.Math_random(), 0.75)) $.indexSet(zom.get$prop(), 'destination', zom.clone$0().addTo$2($.sub($.mul($.Math_random(), 400), 200), $.sub($.mul($.Math_random(), 400), 200)));
+      else {
+        $.indexSet(zom.get$prop(), 'destination', zom.clone$0());
+        $.indexSet(zom.get$prop(), 'waitTime', $.mul($.Math_random(), 200));
+        zom.set$currentFrame(0);
+        zom.get$velocity().zero$0();
       }
     }
-    $.some($.index($.tags, 'friendly'), new $.anon70(zom));
   }
+  $.some($.index($.tags, 'friendly'), new $.anon80(zom));
  }
 };
 
-$$.anon70 = {"":
+$$.anon80 = {"":
  ["zom_10"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13939,7 +14425,7 @@ $$.anon70 = {"":
  }
 };
 
-$$.anon41 = {"":
+$$.anon51 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13947,15 +14433,15 @@ $$.anon41 = {"":
  }
 };
 
-$$.anon42 = {"":
+$$.anon52 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon69(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon79(zom));
  }
 };
 
-$$.anon69 = {"":
+$$.anon79 = {"":
  ["zom_11"],
  super: "Closure",
  $call$1: function(avatar) {
@@ -13971,7 +14457,7 @@ $$.anon69 = {"":
  }
 };
 
-$$.anon43 = {"":
+$$.anon53 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -13981,7 +14467,6 @@ $$.anon43 = {"":
     if ($.ltB(distance, 32)) {
       zom.set$attacking(true);
       zom.set$attackDirection(target.clone$0().sub$1(zom).normalize$0());
-      zom.get$velocity().divideScalar$1(2);
     } else {
       if ($.ltB(distance, $.mul($.world.get$AGRO_DISTANCE(), 2))) {
         zom.set$attacking(false);
@@ -13995,7 +14480,7 @@ $$.anon43 = {"":
  }
 };
 
-$$.anon44 = {"":
+$$.anon54 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -14010,15 +14495,15 @@ $$.anon44 = {"":
  }
 };
 
-$$.anon45 = {"":
+$$.anon55 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
-  $.some($.index($.tags, 'friendly'), new $.anon68(zom));
+  $.some($.index($.tags, 'friendly'), new $.anon78(zom));
  }
 };
 
-$$.anon68 = {"":
+$$.anon78 = {"":
  ["zom_12"],
  super: "Closure",
  $call$1: function(friend) {
@@ -14030,7 +14515,7 @@ $$.anon68 = {"":
  }
 };
 
-$$.anon46 = {"":
+$$.anon56 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
@@ -14039,25 +14524,33 @@ $$.anon46 = {"":
  }
 };
 
-$$.anon47 = {"":
+$$.anon57 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
   $.add$1(zom.get$velocity(), $.index(zom, 'nestDirection'));
-  $.rpat(4) === true && $.ltB(zom.distanceTo$1($.index(zom, 'originalPosition')), 32) && zom.markForRemoval$0();
+  if ($.rpat(4) === true && $.ltB(zom.distanceTo$1($.index(zom, 'originalPosition')), 32)) {
+    var t1 = $.world;
+    t1.set$zombie_out($.sub(t1.get$zombie_out(), 1));
+    zom.markForRemoval$0();
+  }
  }
 };
 
-$$.anon48 = {"":
+$$.anon58 = {"":
  [],
  super: "Closure",
  $call$1: function(zom) {
   $.indexSet(zom, 'collisionCount', $.add($.index(zom, 'collisionCount'), 1));
-  $.gtB($.index(zom, 'collisionCount'), 120) && zom.markForRemoval$0();
+  if ($.gtB($.index(zom, 'collisionCount'), 120)) {
+    var t1 = $.world;
+    t1.set$zombie_out($.sub(t1.get$zombie_out(), 1));
+    zom.markForRemoval$0();
+  }
  }
 };
 
-$$.anon49 = {"":
+$$.anon59 = {"":
  [],
  super: "Closure",
  $call$1: function(ftext) {
@@ -14067,33 +14560,33 @@ $$.anon49 = {"":
  }
 };
 
-$$.anon50 = {"":
+$$.anon60 = {"":
  [],
  super: "Closure",
  $call$1: function(i) {
   for (var t1 = $.iterator($.tagEvents.getKeys$0()); t1.hasNext$0() === true; ) {
     var t2 = t1.next$0();
-    if ($.index($.tagEvents, t2).containsKey$1(i) !== true) $.indexSet($.index($.tagEvents, t2), i, new $.anon67());
+    if ($.index($.tagEvents, t2).containsKey$1(i) !== true) $.indexSet($.index($.tagEvents, t2), i, new $.anon77());
   }
  }
 };
 
-$$.anon67 = {"":
+$$.anon77 = {"":
  [],
  super: "Closure",
  $call$1: function(a) {
  }
 };
 
-$$.anon51 = {"":
+$$.anon61 = {"":
  ["this_13"],
  super: "Closure",
  $call$1: function(data) {
-  $.world.load$2(data, new $.anon62(this.this_13));
+  $.world.load$2(data, new $.anon72(this.this_13));
  }
 };
 
-$$.anon62 = {"":
+$$.anon72 = {"":
  ["this_14"],
  super: "Closure",
  $call$0: function() {
@@ -14391,7 +14884,7 @@ $$.ConstantMap_forEach_anon = {"":
  }
 };
 
-$$.anon52 = {"":
+$$.anon62 = {"":
  ["this_2"],
  super: "Closure",
  $call$1: function(e) {
@@ -14409,7 +14902,7 @@ $$.anon52 = {"":
  }
 };
 
-$$.anon53 = {"":
+$$.anon63 = {"":
  ["this_3"],
  super: "Closure",
  $call$1: function(e) {
@@ -14417,7 +14910,7 @@ $$.anon53 = {"":
  }
 };
 
-$$.anon54 = {"":
+$$.anon64 = {"":
  ["this_4", "box_0"],
  super: "Closure",
  $call$1: function(e) {
@@ -14456,7 +14949,7 @@ $$.anon54 = {"":
  }
 };
 
-$$.anon55 = {"":
+$$.anon65 = {"":
  ["this_5", "box_0"],
  super: "Closure",
  $call$1: function(e) {
@@ -14464,7 +14957,7 @@ $$.anon55 = {"":
  }
 };
 
-$$.anon56 = {"":
+$$.anon66 = {"":
  ["this_6", "box_0"],
  super: "Closure",
  $call$1: function(e) {
@@ -14472,16 +14965,16 @@ $$.anon56 = {"":
  }
 };
 
-$$.anon57 = {"":
+$$.anon67 = {"":
  ["this_7"],
  super: "Closure",
  $call$1: function(e) {
-  $.forEach(e.get$changedTouches(), new $.anon60(this.this_7));
+  $.forEach(e.get$changedTouches(), new $.anon70(this.this_7));
   e.preventDefault$0();
  }
 };
 
-$$.anon60 = {"":
+$$.anon70 = {"":
  ["this_8"],
  super: "Closure",
  $call$1: function(touch) {
@@ -14489,7 +14982,7 @@ $$.anon60 = {"":
  }
 };
 
-$$.anon58 = {"":
+$$.anon68 = {"":
  ["this_9", "box_0"],
  super: "Closure",
  $call$1: function(e) {
@@ -14500,7 +14993,7 @@ $$.anon58 = {"":
  }
 };
 
-$$.anon59 = {"":
+$$.anon69 = {"":
  [],
  super: "Closure",
  $call$1: function(e) {
@@ -14508,7 +15001,7 @@ $$.anon59 = {"":
  }
 };
 
-$$.anon61 = {"":
+$$.anon71 = {"":
  ["this_0"],
  super: "Closure",
  $call$1: function(soundName) {
@@ -14517,29 +15010,29 @@ $$.anon61 = {"":
 };
 
 $$.World_startCycle_anon = {"":
- ["this_5"],
+ ["this_6"],
  super: "Closure",
  $call$1: function(e) {
   if ($.eqB($.event.key$1('E'), 1) || $.eqB($.event.key$1('Q'), 1)) {
-    var t1 = $.mod($.sub($.add(this.this_5.get$currentWeapon(), $.event.key$1('E')), $.event.key$1('Q')), $.get$length(this.this_5.get$playerWeapons()));
-    this.this_5.set$currentWeapon(t1);
-    for (; $.index(this.this_5.get$playerWeapons(), this.this_5.get$currentWeapon()) !== true; ) {
-      t1 = $.mod($.add(this.this_5.get$currentWeapon(), 1), $.get$length(this.this_5.get$playerWeapons()));
-      this.this_5.set$currentWeapon(t1);
+    var t1 = $.mod($.sub($.add(this.this_6.get$currentWeapon(), $.event.key$1('E')), $.event.key$1('Q')), $.get$length(this.this_6.get$playerWeapons()));
+    this.this_6.set$currentWeapon(t1);
+    for (; $.index(this.this_6.get$playerWeapons(), this.this_6.get$currentWeapon()) !== true; ) {
+      t1 = $.mod($.add(this.this_6.get$currentWeapon(), 1), $.get$length(this.this_6.get$playerWeapons()));
+      this.this_6.set$currentWeapon(t1);
     }
-    t1 = !$.eqB(this.this_5.get$currentWeapon(), 0);
-    var t2 = this.this_5;
+    t1 = !$.eqB(this.this_6.get$currentWeapon(), 0);
+    var t2 = this.this_6;
     if (t1) {
       t1 = $.index($.animationMap, 'weapon' + $.S(t2.get$currentWeapon()));
-      this.this_5.get$player().set$weaponAnimation(t1);
+      this.this_6.get$player().set$weaponAnimation(t1);
     } else t2.get$player().set$weaponAnimation(null);
-    t1 = $.index(this.this_5.get$weaponDamage(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$damage(t1);
-    t1 = $.index(this.this_5.get$weaponAttackTime(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$attackTime(t1);
-    t1 = $.index(this.this_5.get$weaponAttackTypes(), this.this_5.get$currentWeapon());
-    this.this_5.get$player().set$attackType(t1);
-    $.notify('Using ' + $.S($.index(this.this_5.get$weaponName(), this.this_5.get$currentWeapon())));
+    t1 = $.index(this.this_6.get$weaponDamage(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$damage(t1);
+    t1 = $.index(this.this_6.get$weaponAttackTime(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$attackTime(t1);
+    t1 = $.index(this.this_6.get$weaponAttackTypes(), this.this_6.get$currentWeapon());
+    this.this_6.get$player().set$attackType(t1);
+    $.notify('Using ' + $.S($.index(this.this_6.get$weaponName(), this.this_6.get$currentWeapon())));
   } else {
     if ($.eqB($.event.key$1('F'), 1)) {
       if ($.document().get$webkitIsFullScreen() !== true) $.document().get$body().webkitRequestFullscreen$0();
@@ -14550,12 +15043,12 @@ $$.World_startCycle_anon = {"":
 };
 
 $$.World_startCycle_anon0 = {"":
- ["this_6", "box_3"],
+ ["this_7", "box_3"],
  super: "Closure",
  $call$1: function(e) {
-  if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_6.get$menuInterfaces()), 0)) {
+  if ($.eqB($.event.key$1('space'), 1) && $.eqB($.get$length(this.this_7.get$menuInterfaces()), 0)) {
     var t1 = new $.World_startCycle_prompt();
-    $.add$1(this.this_6.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon6(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon7(this.this_6, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon8(this.this_6, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon9(this.this_6)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon10()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon11(this.this_6)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon12(this.this_6)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon13()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon14(this.this_6)]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon15(this.this_6)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon16(this.this_6)])]])));
+    $.add$1(this.this_7.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Place Spawn', 'func', new $.World_startCycle_anon6(this.this_7, t1)]), $.makeLiteralMap(['name', 'Place Object', 'func', new $.World_startCycle_anon7(this.this_7, t1)]), $.makeLiteralMap(['name', 'Place Node', 'func', new $.World_startCycle_anon8(this.this_7, this.box_3)]), $.makeLiteralMap(['name', 'Advance time one hour', 'func', new $.World_startCycle_anon9(this.this_7)]), $.makeLiteralMap(['name', 'Toggle Debug Mode', 'func', new $.World_startCycle_anon10()]), $.makeLiteralMap(['name', 'Simulate 2 hours', 'func', new $.World_startCycle_anon11(this.this_7)]), $.makeLiteralMap(['name', 'Dump Trace', 'func', new $.World_startCycle_anon12(this.this_7)]), $.makeLiteralMap(['name', 'Game Over', 'func', new $.World_startCycle_anon13()]), $.makeLiteralMap(['name', 'Prosperity', 'func', new $.World_startCycle_anon14(this.this_7)]), $.makeLiteralMap(['name', 'Test Menu', 'func', new $.World_startCycle_anon15(this.this_7)]), $.makeLiteralMap(['name', 'Get JSON', 'func', new $.World_startCycle_anon16(this.this_7)])]])));
   }
  }
 };
@@ -14572,75 +15065,75 @@ $$.World_startCycle_prompt = {"":
 };
 
 $$.World_startCycle_anon6 = {"":
- ["this_8", "prompt_7"],
+ ["this_9", "prompt_8"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_8.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon24(this.this_8)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon25(this.this_8, this.prompt_7)])]])));
+  $.add$1(this.this_9.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Zombie Node', 'func', new $.World_startCycle_anon24(this.this_9)]), $.makeLiteralMap(['name', 'Custom Emitter', 'func', new $.World_startCycle_anon25(this.this_9, this.prompt_8)])]])));
  }
 };
 
 $$.World_startCycle_anon24 = {"":
- ["this_9"],
+ ["this_10"],
  super: "Closure",
  $call$0: function() {
-  $.add$1($.index(this.this_9.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['zombie-spawn'], 'x', this.this_9.get$player().get$x(), 'y', this.this_9.get$player().get$y()]));
+  $.add$1($.index(this.this_10.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['zombie-spawn'], 'x', this.this_10.get$player().get$x(), 'y', this.this_10.get$player().get$y()]));
  }
 };
 
 $$.World_startCycle_anon25 = {"":
- ["this_11", "prompt_10"],
+ ["this_12", "prompt_11"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_11.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', this.prompt_10.$call$1('Emit Type'), 'emit-properties', $.makeLiteralMap(['tag', $.split(this.prompt_10.$call$1('Emit Properties (\',\' delimited)'), ',')]), 'freq', $.Math_parseInt(this.prompt_10.$call$1('Freq (60 = 1 second)')), 'limit', $.Math_parseInt(this.prompt_10.$call$1('Limit')), 'x', $.toInt(this.this_11.get$player().get$x()), 'y', $.toInt(this.this_11.get$player().get$y())]));
+  return $.add$1($.index(this.this_12.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'spawn', 'emit', this.prompt_11.$call$1('Emit Type'), 'emit-properties', $.makeLiteralMap(['tag', $.split(this.prompt_11.$call$1('Emit Properties (\',\' delimited)'), ',')]), 'freq', $.Math_parseInt(this.prompt_11.$call$1('Freq (60 = 1 second)')), 'limit', $.Math_parseInt(this.prompt_11.$call$1('Limit')), 'x', $.toInt(this.this_12.get$player().get$x()), 'y', $.toInt(this.this_12.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon7 = {"":
- ["this_13", "prompt_12"],
+ ["this_14", "prompt_13"],
  super: "Closure",
  $call$0: function() {
-  $.add$1(this.this_13.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon23(this.this_13, this.prompt_12)])]])));
+  $.add$1(this.this_14.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'Custom Object', 'func', new $.World_startCycle_anon23(this.this_14, this.prompt_13)])]])));
  }
 };
 
 $$.World_startCycle_anon23 = {"":
- ["this_15", "prompt_14"],
+ ["this_16", "prompt_15"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_15.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', this.prompt_14.$call$1('Type'), 'tag', $.split(this.prompt_14.$call$1('Tags, delimit with \',\''), ','), 'x', $.toInt(this.this_15.get$player().get$x()), 'y', $.toInt(this.this_15.get$player().get$y())]));
+  return $.add$1($.index(this.this_16.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', this.prompt_15.$call$1('Type'), 'tag', $.split(this.prompt_15.$call$1('Tags, delimit with \',\''), ','), 'x', $.toInt(this.this_16.get$player().get$x()), 'y', $.toInt(this.this_16.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon8 = {"":
- ["this_16", "box_3"],
+ ["this_17", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_16.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon18(this.this_16)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon19(this.this_16, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon20(this.this_16, this.box_3)])]])));
+  return $.add$1(this.this_17.get$menuInterfaces(), $.MenuInterface$('options', $.makeLiteralMap(['options', [$.makeLiteralMap(['name', 'House Node', 'func', new $.World_startCycle_anon18(this.this_17)]), $.makeLiteralMap(['name', 'Path Node', 'func', new $.World_startCycle_anon19(this.this_17, this.box_3)]), $.makeLiteralMap(['name', 'End Path Node', 'func', new $.World_startCycle_anon20(this.this_17, this.box_3)])]])));
  }
 };
 
 $$.World_startCycle_anon18 = {"":
- ["this_17"],
+ ["this_18"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1($.index(this.this_17.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['house'], 'x', $.toInt(this.this_17.get$player().get$x()), 'y', $.toInt(this.this_17.get$player().get$y())]));
+  return $.add$1($.index(this.this_18.get$currentMapTree(), 'objects'), $.makeLiteralMap(['type', 'node', 'tag', ['house'], 'x', $.toInt(this.this_18.get$player().get$x()), 'y', $.toInt(this.this_18.get$player().get$y())]));
  }
 };
 
 $$.World_startCycle_anon19 = {"":
- ["this_18", "box_3"],
+ ["this_19", "box_3"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.box_3.debugPathNodes_4, this.this_18.get$player().clone$0());
+  return $.add$1(this.box_3.debugPathNodes_4, this.this_19.get$player().clone$0());
  }
 };
 
 $$.World_startCycle_anon20 = {"":
- ["this_19", "box_3"],
+ ["this_20", "box_3"],
  super: "Closure",
  $call$0: function() {
   var t1 = ({});
-  $.add$1(this.box_3.debugPathNodes_4, this.this_19.get$player().clone$0());
+  $.add$1(this.box_3.debugPathNodes_4, this.this_20.get$player().clone$0());
   var ax = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(ax, ({E: 'int'}));
   var ay = $.ListFactory_List(null);
@@ -14652,7 +15145,7 @@ $$.World_startCycle_anon20 = {"":
   t1.endHouse_1 = false;
   t1.startHouse_2 = false;
   $.forEach($.index($.tags, 'house'), new $.World_startCycle_anon22(start, t1, end));
-  $.add$1($.index(this.this_19.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
+  $.add$1($.index(this.this_20.get$currentMapTree(), 'paths'), $.makeLiteralMap(['type', 'path', 'point_x', ax, 'point_y', ay, 'endHouse', t1.endHouse_1, 'startHouse', t1.startHouse_2]));
   var debugPathNodes = $.ListFactory_List(null);
   $.setRuntimeTypeInfo(debugPathNodes, ({E: 'Vec2'}));
   this.box_3.debugPathNodes_4 = debugPathNodes;
@@ -14660,28 +15153,28 @@ $$.World_startCycle_anon20 = {"":
 };
 
 $$.World_startCycle_anon21 = {"":
- ["ay_21", "ax_20"],
+ ["ay_22", "ax_21"],
  super: "Closure",
  $call$1: function(node) {
-  $.add$1(this.ax_20, $.toInt(node.get$x()));
-  $.add$1(this.ay_21, $.toInt(node.get$y()));
+  $.add$1(this.ax_21, $.toInt(node.get$x()));
+  $.add$1(this.ay_22, $.toInt(node.get$y()));
  }
 };
 
 $$.World_startCycle_anon22 = {"":
- ["start_23", "box_0", "end_22"],
+ ["start_24", "box_0", "end_23"],
  super: "Closure",
  $call$1: function(house) {
-  if ($.ltB(house.distanceTo$1(this.end_22), 256)) this.box_0.endHouse_1 = true;
-  if ($.ltB(house.distanceTo$1(this.start_23), 256)) this.box_0.startHouse_2 = true;
+  if ($.ltB(house.distanceTo$1(this.end_23), 256)) this.box_0.endHouse_1 = true;
+  if ($.ltB(house.distanceTo$1(this.start_24), 256)) this.box_0.startHouse_2 = true;
  }
 };
 
 $$.World_startCycle_anon9 = {"":
- ["this_24"],
+ ["this_25"],
  super: "Closure",
  $call$0: function() {
-  var t1 = this.this_24;
+  var t1 = this.this_25;
   var t2 = $.add(t1.get$time(), 1);
   t1.set$time(t2);
   return t2;
@@ -14697,20 +15190,20 @@ $$.World_startCycle_anon10 = {"":
 };
 
 $$.World_startCycle_anon11 = {"":
- ["this_25"],
+ ["this_26"],
  super: "Closure",
  $call$0: function() {
-  for (var i = 0; $.ltB(i, $.div(this.this_25.get$dayLength(), 12)); ++i) {
-    this.this_25.update$0();
+  for (var i = 0; $.ltB(i, $.div(this.this_26.get$dayLength(), 12)); ++i) {
+    this.this_26.update$0();
   }
  }
 };
 
 $$.World_startCycle_anon12 = {"":
- ["this_26"],
+ ["this_27"],
  super: "Closure",
  $call$0: function() {
-  $.print('Player : Health : ' + $.S(this.this_26.get$player().get$health()) + ' : Damage : ' + $.S(this.this_26.get$player().get$damage()) + ' : Armor : ' + $.S(this.this_26.get$player().get$armor()));
+  $.print('Player : Health : ' + $.S(this.this_27.get$player().get$health()) + ' : Damage : ' + $.S(this.this_27.get$player().get$damage()) + ' : Armor : ' + $.S(this.this_27.get$player().get$armor()));
   $.print('Mouse : ' + $.S($.toString($.event.get$mouse_position())));
  }
 };
@@ -14724,21 +15217,21 @@ $$.World_startCycle_anon13 = {"":
 };
 
 $$.World_startCycle_anon14 = {"":
- ["this_27"],
+ ["this_28"],
  super: "Closure",
  $call$0: function() {
-  var t1 = this.this_27;
+  var t1 = this.this_28;
   t1.giveCoin$2(t1.get$player(), 2000);
-  t1 = this.this_27;
+  t1 = this.this_28;
   t1.set$totalPopulation($.add(t1.get$totalPopulation(), 200));
  }
 };
 
 $$.World_startCycle_anon15 = {"":
- ["this_28"],
+ ["this_29"],
  super: "Closure",
  $call$0: function() {
-  return $.add$1(this.this_28.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon17()])));
+  return $.add$1(this.this_29.get$menuInterfaces(), $.MenuInterface$('confirm', $.makeLiteralMap(['text', 'Would you like to confirm?', 'func', new $.World_startCycle_anon17()])));
  }
 };
 
@@ -14751,41 +15244,41 @@ $$.World_startCycle_anon17 = {"":
 };
 
 $$.World_startCycle_anon16 = {"":
- ["this_29"],
+ ["this_30"],
  super: "Closure",
  $call$0: function() {
-  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_29.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
+  return $.print($.window().open$3('javascript:document.body.innerHTML=\'' + $.S($.JSON_stringify(this.this_30.get$dataTree())) + '\';', 'JSON Data', 'height=300,width=300'));
  }
 };
 
 $$.World_startCycle_anon1 = {"":
- ["this_30"],
+ ["this_31"],
  super: "Closure",
  $call$1: function(e) {
-  !$.eqB($.get$length(this.this_30.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
-  var i = $.sub($.get$length(this.this_30.get$menuInterfaces()), 1);
+  !$.eqB($.get$length(this.this_31.get$menuInterfaces()), 0) && $.event.set$mouseDown(false);
+  var i = $.sub($.get$length(this.this_31.get$menuInterfaces()), 1);
   if (typeof i !== 'number') return this.$call$1$bailout(1, i);
   for (; i >= 0; --i) {
-    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
+    $.index(this.this_31.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_31.get$menuInterfaces(), i, 1);
   }
-  $.some($.index($.tags, 'item'), new $.World_startCycle_anon5(this.this_30));
+  $.some($.index($.tags, 'item'), new $.World_startCycle_anon5(this.this_31));
  },
  $call$1$bailout: function(state, i) {
   for (; $.geB(i, 0); i = $.sub(i, 1)) {
-    $.index(this.this_30.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_30.get$menuInterfaces(), i, 1);
+    $.index(this.this_31.get$menuInterfaces(), i).clickAt$2($.event.get$mouse_position().get$x(), $.event.get$mouse_position().get$y()) === true && $.removeRange(this.this_31.get$menuInterfaces(), i, 1);
   }
-  $.some($.index($.tags, 'item'), new $.World_startCycle_anon5(this.this_30));
+  $.some($.index($.tags, 'item'), new $.World_startCycle_anon5(this.this_31));
  }
 };
 
 $$.World_startCycle_anon5 = {"":
- ["this_31"],
+ ["this_32"],
  super: "Closure",
  $call$1: function(item) {
-  if ($.ltB(this.this_31.get$player().distanceTo$1(item), 32)) {
+  if ($.ltB(this.this_32.get$player().distanceTo$1(item), 32)) {
     $.event.set$mouseDown(false);
     $.notify('You found ' + $.S(item.get$prop().containsKey$1('properName') === true ? $.index(item, 'properName') : item.get$type()));
-    this.this_31.pickUpItem$1(item);
+    this.this_32.pickUpItem$1(item);
     return true;
   }
   return false;
@@ -14793,42 +15286,44 @@ $$.World_startCycle_anon5 = {"":
 };
 
 $$.World_startCycle_anon2 = {"":
- ["this_32"],
+ ["this_33"],
  super: "Closure",
  $call$1: function(e) {
-  $.eqB($.event.key$1('space'), 1) && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon4(this.this_32));
+  $.eqB($.event.key$1('space'), 1) && $.forEach($.index($.tags, 'salesman'), new $.World_startCycle_anon4(this.this_33));
  }
 };
 
 $$.World_startCycle_anon4 = {"":
- ["this_33"],
+ ["this_34"],
  super: "Closure",
  $call$1: function(a) {
-  $.ltB(a.distanceTo$1(this.this_33.get$player()), 128) && this.this_33.openMenu$1($.index(a, 'menu'));
+  $.ltB(a.distanceTo$1(this.this_34.get$player()), 128) && this.this_34.openMenu$1($.index(a, 'menu'));
  }
 };
 
 $$.World_startCycle_cycle = {"":
- ["context_35", "this_34"],
+ ["context_36", "this_35"],
  super: "Closure",
  $call$1: function(a) {
-  if (this.this_34.get$paused() !== true) {
+  if (this.this_35.get$paused() !== true) {
     $.window().requestAnimationFrame$1(this);
-    this.this_34.render$1(this.context_35);
+    this.this_35.render$1(this.context_36);
   }
  }
 };
 
 $$.World_startCycle_anon3 = {"":
- ["this_36"],
+ ["this_37", "box_3"],
  super: "Closure",
  $call$0: function() {
-  this.this_36.update$0();
-  if ($.eqB($.event.key$1('T'), 1)) {
-    this.this_36.update$0();
-    this.this_36.update$0();
-    this.this_36.update$0();
-  }
+  if (this.this_37.get$paused() !== true) {
+    this.this_37.update$0();
+    if ($.eqB($.event.key$1('T'), 1)) {
+      this.this_37.update$0();
+      this.this_37.update$0();
+      this.this_37.update$0();
+    }
+  } else $.window().clearInterval$1(this.box_3.interval_5);
  }
 };
 
@@ -15113,7 +15608,7 @@ $$.GameOver_rcycle = {"":
   t1.ypos_1 = 160;
   $.forEach([['Village Population', $.S($.world.get$totalPopulation())], ['Zombie Population', $.S($.world.get$zombie_max())], ['Zombies Killed', $.S($.world.get$zombies_killed())], ['Villagers Saved', $.S($.world.get$saved())], ['Days Survived', $.S($.world.get$dayCount())]], new $.GameOver_rcycle_anon(t1, this.c_4));
   this.c_4.set$textAlign('center');
-  this.c_4.fillText$3('Click anywhere to play again', 200, $.add(t1.ypos_1, 50));
+  this.c_4.fillText$3('Click anywhere to play again', 200, t1.ypos_1);
   this.c_4.fillText$3('Game by Severin Ibarluzea', 200, $.sub($.SCREEN_HEIGHT, 50));
   this.c_4.fillText$3('For the Liberated Pixel Cup (2012)', 200, $.sub($.SCREEN_HEIGHT, 25));
   this.c_4.restore$0();
@@ -15225,6 +15720,7 @@ $$.World_render_anon2 = {"":
  super: "Closure",
  $call$1: function(point) {
   this.c_2.lineTo$2(point.get$x(), point.get$y());
+  this.c_2.fillText$3($.toString(point), point.get$x(), point.get$y());
  }
 };
 
@@ -15301,28 +15797,28 @@ $$.World_openMenu_anon2 = {"":
  }
 };
 
-$$.anon63 = {"":
+$$.anon73 = {"":
  [],
  super: "Closure",
  $call$0: function() {
  }
 };
 
-$$.anon64 = {"":
+$$.anon74 = {"":
  [],
  super: "Closure",
  $call$0: function() {
  }
 };
 
-$$.anon65 = {"":
+$$.anon75 = {"":
  [],
  super: "Closure",
  $call$0: function() {
  }
 };
 
-$$.anon66 = {"":
+$$.anon76 = {"":
  [],
  super: "Closure",
  $call$0: function() {
@@ -15394,6 +15890,14 @@ $$.JsonStringifier__stringify_anon = {"":
   $.add$1(this.this_2.get$_sb(), '":');
   this.this_2._stringify$1(value);
   this.box_0.first_10 = false;
+ }
+};
+
+$$.World_setGuardPath_anon = {"":
+ ["box_0", "closestDistance_3", "guard_2"],
+ super: "Closure",
+ $call$1: function(node) {
+  if ($.ltB(node.distanceTo$1(this.guard_2), this.closestDistance_3)) this.box_0.closest_1 = node;
  }
 };
 
@@ -17371,7 +17875,7 @@ $._ElementEventsImpl$ = function(_ptr) {
 };
 
 $.World$ = function() {
-  var t1 = new $.World(0, null, null, $.CTC3, $.CTC4, $.CTC5, $.CTC6, 0, 0, true, 100, null, 0, null, null, null, null, null, null, null, null, 0, null, 0, 0, 0, 50, 1, 0, 0, 200, false, 14400, 7, null, null, 25, 1, 0.6, 256, 256, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  var t1 = new $.World(0, null, null, $.CTC3, $.CTC4, $.CTC5, $.CTC6, 0, 0, true, 100, null, 0, 120, 0, 1, null, null, null, null, null, null, null, null, 0, null, 0, 100, 2, 0, 0, 100, 1, 0, 0, 200, false, 10800, 7, null, null, 25, 1, 0.6, 256, 256, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   t1.World$0();
   return t1;
 };
@@ -17864,7 +18368,6 @@ $.CTC14 = Isolate.makeConstantList([0, 1, 0, 0]);
 $.CTC34 = Isolate.makeConstantList([6, 12, 8]);
 $.CTC10 = Isolate.makeConstantList([0, 0, 0, 0]);
 $.CTC17 = Isolate.makeConstantList([0, 1, 1, 1]);
-$.CTC43 = Isolate.makeConstantList(['Ahhhh!', 'Look out!', 'Run!', 'AHHHH!', 'Woah!']);
 $.CTC31 = new Isolate.$isolateProperties._DeletedKeySentinel();
 $.CTC15 = Isolate.makeConstantList([0, 1, 0, 1]);
 $.CTC18 = Isolate.makeConstantList([1, 0, 0, 0]);
@@ -17881,14 +18384,15 @@ $.CTC23 = Isolate.makeConstantList([1, 1, 0, 1]);
 $.CTC24 = Isolate.makeConstantList([1, 1, 1, 0]);
 $.CTC25 = Isolate.makeConstantList([1, 1, 1, 1]);
 $.CTC27 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC26, {'0': Isolate.$isolateProperties.CTC10, '1': Isolate.$isolateProperties.CTC11, '2': Isolate.$isolateProperties.CTC12, '3': Isolate.$isolateProperties.CTC13, '4': Isolate.$isolateProperties.CTC14, '5': Isolate.$isolateProperties.CTC15, '6': Isolate.$isolateProperties.CTC16, '7': Isolate.$isolateProperties.CTC17, '8': Isolate.$isolateProperties.CTC18, '9': Isolate.$isolateProperties.CTC19, 'a': Isolate.$isolateProperties.CTC20, 'b': Isolate.$isolateProperties.CTC21, 'c': Isolate.$isolateProperties.CTC22, 'd': Isolate.$isolateProperties.CTC23, 'e': Isolate.$isolateProperties.CTC24, 'f': Isolate.$isolateProperties.CTC25}, 16);
-$.CTC35 = Isolate.makeConstantList(['wander', 'nice', 'hostile', 'hostile-wander', 'mean', 'scared', 'citizen']);
+$.CTC44 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
 $.CTC33 = Isolate.makeConstantList([2, 4, 5]);
 $.CTC2 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, '^#[_a-zA-Z]\\w*$');
 $.CTC29 = Isolate.makeConstantList(['backspace', 'enter', 'shift', 'ctrl', 'alt', 'capslock', 'esc', 'space', '_0', 'zero', '_1', 'one', '_2', 'two', '_3', 'three', '_4', 'four', '_5', 'five', '_6', 'six', '_7', 'seven', '_8', 'eight', '_9', 'nine', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'semicolon', 'equal', 'comma', 'hyphen', 'dash', 'minus', 'period', 'dot', 'slash', 'forwardslash', 'grave', 'backtick', 'bracketleft', 'backslash', 'bracketright', 'singlequote', 'exclamation', 'at', 'ampersat', 'pound', 'dollar', 'mod', 'modulo', 'percent', 'caret', 'ampersand', 'asterisk', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'colon', 'plus', 'pointbracketleft', 'trianglebracketleft', 'underscore', 'pointbracketright', 'trianglebracketright', 'question', 'questionmark', 'approx', 'tilde', 'curleybraceleft', 'pipe', 'curleybraceright', 'doublequote', 'left', 'up', 'right', 'down', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
-$.CTC44 = new Isolate.$isolateProperties.JSSyntaxRegExp(false, false, 'Chrome|DumpRenderTree');
+$.CTC35 = Isolate.makeConstantList(['wander', 'nice', 'hostile', 'hostile-wander', 'mean', 'scared', 'citizen', 'guard-attack', 'guard-wander', 'guard']);
 $.CTC40 = Isolate.makeConstantList(['Why don\'t you just go?', 'Get outta here!', 'Get out!', 'Why won\'t you help us?', 'It\'s outsiders like you that caused this!']);
 $.CTC7 = Isolate.makeConstantList(['#ebddcb', '#d3b7b2', '#bb98ad', '#806593']);
 $.CTC5 = Isolate.makeConstantList([2400, 4581, 4329, 2324, 8221]);
+$.CTC36 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC35, {'wander': true, 'nice': true, 'hostile': true, 'hostile-wander': true, 'mean': true, 'scared': true, 'citizen': true, 'guard-attack': true, 'guard-wander': true, 'guard': true}, 10);
 $.CTC6 = Isolate.makeConstantList(['This is Big Island', 'At day, all is peaceful', 'But come night, horrific monsters of the black appear', 'The ever-curious villagers often stray into the darkness', 'Do you have what it takes to defend them?']);
 $.CTC42 = Isolate.makeConstantList(['Can you take me somewhere safe?', 'Please help me!', 'Please take me home!']);
 $.CTC45 = new Isolate.$isolateProperties.Object();
@@ -17897,8 +18401,8 @@ $.CTC39 = new Isolate.$isolateProperties.JsonUnsupportedObjectType();
 $.CTC30 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC29, {'backspace': 8, 'enter': 13, 'shift': 16, 'ctrl': 17, 'alt': 18, 'capslock': 20, 'esc': 27, 'space': 32, '_0': 48, 'zero': 48, '_1': 49, 'one': 49, '_2': 50, 'two': 50, '_3': 51, 'three': 51, '_4': 52, 'four': 52, '_5': 53, 'five': 53, '_6': 54, 'six': 54, '_7': 55, 'seven': 55, '_8': 56, 'eight': 56, '_9': 57, 'nine': 57, 'a': 65, 'b': 66, 'c': 67, 'd': 68, 'e': 69, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74, 'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87, 'x': 88, 'y': 89, 'z': 90, 'semicolon': 186, 'equal': 187, 'comma': 188, 'hyphen': 189, 'dash': 189, 'minus': 189, 'period': 190, 'dot': 190, 'slash': 191, 'forwardslash': 191, 'grave': 192, 'backtick': 192, 'bracketleft': 219, 'backslash': 220, 'bracketright': 221, 'singlequote': 222, 'exclamation': 49, 'at': 50, 'ampersat': 50, 'pound': 51, 'dollar': 52, 'mod': 53, 'modulo': 53, 'percent': 53, 'caret': 54, 'ampersand': 55, 'asterisk': 56, 'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72, 'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80, 'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88, 'Y': 89, 'Z': 90, 'colon': 186, 'plus': 187, 'pointbracketleft': 188, 'trianglebracketleft': 188, 'underscore': 189, 'pointbracketright': 190, 'trianglebracketright': 190, 'question': 191, 'questionmark': 191, 'approx': 192, 'tilde': 192, 'curleybraceleft': 219, 'pipe': 220, 'curleybraceright': 221, 'doublequote': 222, 'left': 37, 'up': 38, 'right': 39, 'down': 40, 'F1': 112, 'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118, 'F8': 119, 'F9': 120, 'F10': 121, 'F11': 122, 'F12': 123}, 138);
 $.CTC28 = new Isolate.$isolateProperties.IllegalAccessException();
 $.CTC4 = Isolate.makeConstantList([1000, 5251, 6819, 8114, 6860]);
-$.CTC36 = new Isolate.$isolateProperties.ConstantMap(Isolate.$isolateProperties.CTC35, {'wander': true, 'nice': true, 'hostile': true, 'hostile-wander': true, 'mean': true, 'scared': true, 'citizen': true}, 7);
 $.CTC41 = Isolate.makeConstantList(['Hi!', 'Hiya!', 'Hello!', 'It\'s not so scary with you around!', 'Thanks for the help!']);
+$.CTC43 = Isolate.makeConstantList(['Ahhhh!', 'Look out!', 'Run!', 'AHHHH!', 'Woah!']);
 $.CTC0 = new Isolate.$isolateProperties.NullPointerException(Isolate.$isolateProperties.CTC, null);
 $.CTC38 = new Isolate.$isolateProperties.EmptyElementRect(Isolate.$isolateProperties.CTC, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37, Isolate.$isolateProperties.CTC37);
 $.CTC1 = new Isolate.$isolateProperties.NoMoreElementsException();
@@ -18224,6 +18728,9 @@ $.$defineNativeClass('CanvasRenderingContext2D', ["textAlign!", "strokeStyle!", 
  },
  beginPath$0: function() {
   return this.beginPath();
+ },
+ arc$6: function(x, y, radius, startAngle, endAngle, anticlockwise) {
+  return this.arc(x,y,radius,startAngle,endAngle,anticlockwise);
  }
 });
 

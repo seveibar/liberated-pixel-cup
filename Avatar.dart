@@ -103,7 +103,7 @@ class Avatar extends GameObject {
   void say(String text,[int time = 300]){
     speaking = true;
     speech = text;
-    sayTime = 600;
+    sayTime = time;
   }
   void render(html.CanvasRenderingContext2D c){
     c.save();

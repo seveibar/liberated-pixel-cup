@@ -326,6 +326,18 @@
         {
           "type": "salesman",
           "calls": [
+            "Buy patrol guards!",
+            "Helps keep the villagers safe!",
+            "Cheap guards here!",
+            "Hire guards!"
+          ],
+          "menu": "guards",
+          "x": 4508,
+          "y": 4823
+        },
+        {
+          "type": "salesman",
+          "calls": [
             "Health Upgrades!",
             "Get health here!",
             "Helps prevent death!",
@@ -1374,14 +1386,6 @@
           ],
           "x": 5173,
           "y": 4820
-        },
-        {
-          "type": "node",
-          "tag": [
-            "house"
-          ],
-          "x": 4592,
-          "y": 4690
         },
         {
           "type": "node",

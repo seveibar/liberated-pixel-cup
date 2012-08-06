@@ -644,7 +644,7 @@ class Game {
               }
             }
             if (rpat(8) && avatar.distanceTo(world.player) < 64){
-              avatar.say(foundSpeech[(foundSpeech.length * Math.random()).toInt()]);
+              avatar.say(foundSpeech[(foundSpeech.length * Math.random()).toInt()],120);
               switchTag(avatar,"lost","following");
               avatar.removeTag("wander");
               rmTag(avatar,"wander");
@@ -948,7 +948,7 @@ class Game {
     BLANK_IMAGE = new html.ImageElement();
     
     tags = {"zombie":new List<Avatar>(),"corpse":new List<Avatar>(),"wander":new List<Avatar>(),"lost":new List<Avatar>(),
-            "item":new List<Item>(),"salesman":new List<Avatar>(),"lost":new List<Avatar>(),"zombie":new List<Avatar>(),
+            "item":new List<Item>(),"salesman":new List<Avatar>(),"zombie":new List<Avatar>(),
             "uninit":new List<GameObject>(),"actor":new List<Avatar>(),"spawn":new List<SpawnPoint>(),"following":new List<Avatar>()};
     tagMap = tags;
     

@@ -55,6 +55,9 @@ class World {
   
   int difficultyMode = 0;
   
+  bool controlsOpen = true;
+  html.ImageElement controlsImage;
+  
   List<bool> playerWeapons;
   int currentWeapon = 0;
   List<num> weaponDamage;
@@ -68,7 +71,7 @@ class World {
   
   int multiplier = 1;
   num multiplier_time = 0;
-  final num max_multiplier_time = 120;
+  final List<int> max_multiplier_time = const [120,120,120,100,80,60,50,40,35,30,25,20,20,20,20,20,10,5,5,5,5];
   
   int coin = 0;//Player Money
   
@@ -131,8 +134,11 @@ class World {
       print("items loaded");
       res.loadSplitImage("ui.png",(List<html.ImageElement> ui_imgs){
         uiImages = ui_imgs;
-        print("Loading 'test' map");
-        loadMap("test",callback); //TODO remove
+        res.loadImage("controls.png",(html.ImageElement img){
+          controlsImage = img;
+          print("Loading 'test' map");
+          loadMap("test",callback); //TODO 'test' should be variable
+        });
       });
     });
   }
@@ -303,6 +309,23 @@ class World {
          }));
        }
         break;
+     case "guards":
+       if (coin >= guard_price){
+         menuInterfaces.add(new MenuInterface("confirm",{
+           "text":"Would you like to buy an additional patrol guard for ${guard_price}c?",
+           "func":(){
+             guard_total ++;
+             spawnGuard();
+             coin-=guard_price;
+             guard_price += 50;
+           }
+         }));
+      }else{
+        menuInterfaces.add(new MenuInterface("broke",{
+          "text":"You cannot afford an additional guard."
+        }));
+      }
+       break;
     }
   }
   void purchaseWeapon(int weaponID){
@@ -406,6 +429,23 @@ class World {
         }else{
           html.document.webkitCancelFullScreen();
         }
+      }else if (event.key("Y") == 1 && (time > 7 && time < 21) ){
+        notify("Skipping right to night...");
+        final int max_iter = 10;
+        var interval;
+        interval = html.window.setInterval((){
+          int i = 0;
+          while(time < 20 && i < max_iter){
+            update();
+            i++;
+          }
+          if (time > 20){
+            html.window.clearInterval(interval);
+          }
+        },16);
+      }else if (event.key("C") == 1){
+        //Open controls menu
+        controlsOpen = !controlsOpen;
       }
     });
     
@@ -578,6 +618,9 @@ class World {
       });
     }
     event.onClick.add((e){
+      if (!intro){
+        controlsOpen = false;
+      }
       //Do menu stuff
       if (menuInterfaces.length != 0){
         event.mouseDown = false;
@@ -705,11 +748,11 @@ class World {
     rpatCount += (Math.random() * 64).toInt();
     
     if (multiplier_time <= 0){
-      if (multiplier <= 1){
+      if (multiplier <= 2){
         multiplier = 1;
       }else{
         multiplier --;
-        multiplier_time = max_multiplier_time;
+        multiplier_time = max_multiplier_time[multiplier];
       }
     }else{
       multiplier_time --;
@@ -941,7 +984,9 @@ class World {
                 "y":actor.y + actor.attackDirection.y * 32,
                 "damage":actor.damage
               });
-              audio.play("shoot");
+              if (actor.distanceTo(player) < 256){
+                audio.play("shoot");
+              }
             }else if (actor.attackType == 2){
               //Thrusting attack
               List<Avatar> attacked = damageBubble(actor.clone().add(actor.attackDirection.clone().multiplyScalar(actor.attackRadius)),actor.attackRadius/2,actor.damage,actor.attackDirection.clone().multiplyScalar(1.5));
@@ -1031,16 +1076,21 @@ class World {
     c.globalAlpha = .5;
     c.lineWidth = 12;
     c.strokeStyle = "#f00";
+    c.save();
     c.beginPath();
-    num p =  multiplier_time / max_multiplier_time * Math.PI * 2;
+    final num pi2 = Math.PI*2;
+    num p =  multiplier_time / max_multiplier_time[multiplier] * pi2;
     if (p > 0){
-      c.arc(SCREEN_WIDTH - distanceFromEdge, distanceFromEdge, radius, 0,p, false);
+      c.translate(SCREEN_WIDTH - distanceFromEdge,distanceFromEdge);
+      c.rotate(p * p / pi2);
+      c.arc(0, 0 , radius, 0,p, false);
     }
     c.stroke();
     c.closePath();
+    c.restore();
     c.fillStyle = "#f00";
     c.font = "bold 18px Arial";
-    c.fillText("${multiplier}x", SCREEN_WIDTH - distanceFromEdge - 14, distanceFromEdge+6);
+    c.fillText("${multiplier}x", SCREEN_WIDTH - distanceFromEdge - 11, distanceFromEdge+6);
     c.restore();
   }
   void giveCoin(Vec2 at,int amt){
@@ -1051,7 +1101,7 @@ class World {
   }
   void addMultiplier(){
     multiplier ++;
-    multiplier_time = max_multiplier_time;
+    multiplier_time = max_multiplier_time[multiplier];
   }
   List<Avatar> damageBubble(Vec2 point,num radius,num damage,Vec2 direction){
     List<Avatar> attacked = new List<Avatar>();
@@ -1124,6 +1174,10 @@ class World {
       c.fillStyle = "#000";
       c.globalAlpha = Math.pow((slideTime - 150)/150,2);
       c.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+      c.globalAlpha = 1;
+    }else if (controlsOpen){
+      c.globalAlpha =.9;
+      c.drawImage(controlsImage, (SCREEN_WIDTH - controlsImage.width)/2, (SCREEN_HEIGHT - controlsImage.height)/2);
       c.globalAlpha = 1;
     }
   }

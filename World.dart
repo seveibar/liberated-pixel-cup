@@ -50,6 +50,8 @@ class World {
   int zombie_out = 0;
   int zombies_killed = 0;
   
+  int rapid_clicks = 0;
+  
   int guard_total = 2;//2
   int guard_price = 100;
   
@@ -618,6 +620,10 @@ class World {
       });
     }
     event.onClick.add((e){
+      rapid_clicks ++;
+      if (rapid_clicks>5){
+        notify("HOLD the mouse button to attack");
+      }
       if (!intro){
         controlsOpen = false;
       }
@@ -747,6 +753,10 @@ class World {
   void update(){
     rpatCount += (Math.random() * 64).toInt();
     
+    if (rapid_clicks > 0 && rpat(30)){
+      rapid_clicks --;
+    }
+    
     if (multiplier_time <= 0){
       if (multiplier <= 2){
         multiplier = 1;
@@ -870,7 +880,11 @@ class World {
           "Zombies grow stronger every day, equip yourself accordingly",
           "You can press T to speed up time",
           "Press the SHIFT key to sprint",
-          "You can purchase patrol guards to help keep villagers safe"
+          "You can purchase patrol guards to help keep villagers safe",
+          "Health upgrades can be found in the bottom left region of the map",
+          "Weapons can be purchased in the bottom right region of the map",
+          "All vendors are located in towns",
+          "Weapon upgrades are in the top right region of the map"
       ];
       notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
     }

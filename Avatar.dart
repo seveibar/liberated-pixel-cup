@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -57,7 +57,7 @@ class Avatar extends GameObject {
     _attacking = b;
     currentAnimation = b ? Animation.AnimationTypes[attackType] : Animation.WALK;
   }
-  bool get attacking() => _attacking;
+  bool get attacking => _attacking;
   Animation animation;
   Animation weaponAnimation;
   Avatar(properties):super(properties,0,0){

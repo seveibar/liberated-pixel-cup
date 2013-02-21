@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -17,11 +17,11 @@
 
 class web {
   static load(String url,callback){
-    html.XMLHttpRequest req = new html.XMLHttpRequest();
+    html.HttpRequest req = new html.HttpRequest();
     req.open("GET",url);
     req.setRequestHeader("Content-type","text/plain");
-    req.on.readyStateChange.add((e){
-      if (req.readyState == html.XMLHttpRequest.DONE && req.status == 200){
+    req.onReadyStateChange.listen((e){
+      if (req.readyState == html.HttpRequest.DONE && req.status == 200){
         callback(req.responseText);
       }
     });

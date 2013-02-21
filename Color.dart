@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -35,15 +35,15 @@ class Color {
   void set r(int x){
     _r = (x > 255) ? 255 : (x < 0) ? 0 : x;
   }
-  int get r() => _r;
+  int get r => _r;
   void set g(int x){
     _g = (x > 255) ? 255 : (x < 0) ? 0 : x;
   }
-  int get g() => _g;
+  int get g => _g;
   void set b(int x){
     _b = (x > 255) ? 255 : (x < 0) ? 0 : x;
   }
-  int get b() => _b;
+  int get b => _b;
   Color(r,g,b){
     this.r = r;
     this.g = g;
@@ -52,16 +52,16 @@ class Color {
   Color.fromString(String s){
     List ar = s.splitChars();
     if (s.length == 4){
-      r = Math.parseInt("0x${ar[1]}");
+      r = int.parse("0x${ar[1]}");
       r = (r<<4) + r;
-      g = Math.parseInt("0x${ar[2]}");
+      g = int.parse("0x${ar[2]}");
       g = (g<<4) + g;
-      b = Math.parseInt("0x${ar[3]}");
+      b = int.parse("0x${ar[3]}");
       b = (b<<4) + b;
     }else if (s.length == 7){
-      r = Math.parseInt("0x${ar[1]}${ar[2]}");
-      g = Math.parseInt("0x${ar[3]}${ar[4]}");
-      b = Math.parseInt("0x${ar[5]}${ar[6]}");
+      r = int.parse("0x${ar[1]}${ar[2]}");
+      g = int.parse("0x${ar[3]}${ar[4]}");
+      b = int.parse("0x${ar[5]}${ar[6]}");
     }
   }
   String toString(){

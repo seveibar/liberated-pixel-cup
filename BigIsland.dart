@@ -15,44 +15,46 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import('dart:html',prefix:"html");
-#import('dart:json');
+import 'dart:html' as html;
+import 'dart:json' as JSON;
+import 'dart:math';
+import 'dart:async';
 
-#source("web.dart");
-#source("res.dart");
+part "web.dart";
+part "res.dart";
 
-#source("MainMenu.dart");
+part "MainMenu.dart";
 
-#source("PathNode.dart");
-#source("Path.dart");
-#source("GameObject.dart");
-#source("FloatingText.dart");
-#source("Arrow.dart");
-#source("SpawnPoint.dart");
-#source("Avatar.dart");
-#source("Item.dart");
+part "PathNode.dart";
+part "Path.dart";
+part "GameObject.dart";
+part "FloatingText.dart";
+part "Arrow.dart";
+part "SpawnPoint.dart";
+part "Avatar.dart";
+part "Item.dart";
 
-#source("HiddenCanvas.dart");
-#source("Vec2.dart");
-#source("Camera.dart");
-#source("UIManager.dart");
+part "HiddenCanvas.dart";
+part "Vec2.dart";
+part "Camera.dart";
+part "UIManager.dart";
 
-#source("Color.dart");
+part "Color.dart";
 
-#source("TileManager.dart");
-#source("OverlayManager.dart");
-#source("MenuButton.dart");
-#source("MenuInterface.dart");
-#source("World.dart");
+part "TileManager.dart";
+part "OverlayManager.dart";
+part "MenuButton.dart";
+part "MenuInterface.dart";
+part "World.dart";
 
-#source("FrameMap.dart");
-#source("Animation.dart");
+part "FrameMap.dart";
+part "Animation.dart";
 
-#source("Notification.dart");
+part "Notification.dart";
 
-#source("AudioManager.dart");
+part "AudioManager.dart";
 
-#resource('main.css');
+//#resource('main.css');
 
 final int GRAPHIC_BLOCK_SIZE = 32;
 final int CHUNK_SIZE = 8;
@@ -66,6 +68,11 @@ int patch_size;
 num niceFactor;
 
 html.ImageElement BLANK_IMAGE;
+
+var random_number_generator = new Random();
+num rng() => random_number_generator.nextDouble();
+
+const pi = PI;
 
 final Map binaryHexMap = const{
   "0":const[0,0,0,0],"1":const[0,0,0,1],"2":const[0,0,1,0],"3":const[0,0,1,1],
@@ -157,7 +164,7 @@ void GameOver(html.CanvasRenderingContext2D c){
   world.paused = true;
   Vec2 menu_pos = new Vec2(SCREEN_WIDTH,0);
   html.ImageElement img = new html.ImageElement();
-  img.src = game.canvas.toDataURL('image/png');
+  img.src = game.canvas.toDataUrl('image/png');
   game = null;
   int timePass = 0;
   bool rcycle(int a){
@@ -247,10 +254,10 @@ void main() {
   if (CANVAS_OFFSETY<0){
     CANVAS_OFFSETY = 0;
   }
-  html.document.query("#canvas").style.position = "absolute";
+  //html.document.query("#canvas").style.position = "absolute";
   html.document.query("#canvas").style.left = "${CANVAS_OFFSETX}px";
   html.document.query("#canvas").style.top = "${CANVAS_OFFSETY}px";
-  html.window.on.load.add((e){
+  html.window.onLoad.listen((e){
    openMainMenu();
   });
 }
@@ -267,7 +274,7 @@ class Game {
   
   Game(){
     niceFactor = 0;
-    rpatCount = (Math.random() * 64).toInt();
+    rpatCount = (rng() * 64).toInt();
     classMap = {
         "spawn":(p)=>new SpawnPoint(p),
         "avatar":(p)=>new Avatar(p),
@@ -282,10 +289,10 @@ class Game {
               avatar.armor = 1;
               avatar.damage = 0;
             }
-            avatar.speed = .5 + Math.random() * 1.5;
+            avatar.speed = .5 + rng() * 1.5;
             avatar["destination"] = avatar.clone();//DIRTY FIX
             avatar["waitTime"] = 0;
-            num r = Math.random() + niceFactor;
+            num r = rng() + niceFactor;
             if (r<.1){
               avatar.tags.add("mean");
               addTag(avatar,"mean");
@@ -293,12 +300,12 @@ class Game {
               avatar.tags.add("nice");
               addTag(avatar,"nice");
             }
-            avatar["followOffset"] = new Vec2(Math.random() * 128 - 64,Math.random() * 128 - 64);
+            avatar["followOffset"] = new Vec2(rng() * 128 - 64,rng() * 128 - 64);
           },
           "update":(Avatar citizen){
             if (!citizen.hasTag("scared")){
               List<Avatar> zoms =  tags["zombie"];
-              for (int i = (Math.random() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
+              for (int i = (rng() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
                 int index = i%zoms.length;
                 if (zoms[index].alive && zoms[index].distanceTo(citizen) < 96){
                   ["wander","traveler","lost","following","homebound"].forEach((String tag){
@@ -307,7 +314,7 @@ class Game {
                       rmTag(citizen,tag);
                     }
                   });
-                  citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()],100);
+                  citizen.say(scaredSpeech[(scaredSpeech.length * rng()).toInt()],100);
                   citizen.tags.add("scared");
                   addTag(citizen,"scared");
                   citizen["scaredOf"] = zoms[index];
@@ -318,7 +325,7 @@ class Game {
               }
               //Basically the exact same thing with corpses
               zoms = tags["corpse"];
-              for (int i = (Math.random() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
+              for (int i = (rng() * zoms.length).toInt(),iter = 0;iter<zoms.length / 16;iter++,i++){
                 int index = i%zoms.length;
                 if (!zoms[index].hasTag("zombie") && zoms[index].distanceTo(citizen) < 96){
                   ["wander","traveler","lost","following","homebound"].forEach((String tag){
@@ -327,7 +334,7 @@ class Game {
                       rmTag(citizen,tag);
                     }
                   });
-                  citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()]);
+                  citizen.say(scaredSpeech[(scaredSpeech.length * rng()).toInt()]);
                   citizen.tags.add("scared");
                   addTag(citizen,"scared");
                   citizen["scaredOf"] = zoms[index];
@@ -350,7 +357,7 @@ class Game {
                   rmTag(citizen,tag);
                 }
               });
-              citizen.say(scaredSpeech[(scaredSpeech.length * Math.random()).toInt()]);
+              citizen.say(scaredSpeech[(scaredSpeech.length * rng()).toInt()]);
               citizen.tags.add("scared");
               addTag(citizen,"scared");
               citizen["scaredOf"] = world.player;
@@ -364,7 +371,7 @@ class Game {
             niceFactor -= .01;
             if (world.player.attacking && world.player.distanceTo(avatar)<256){
               niceFactor -= .05;
-              world.giveCoin(avatar,(10 * Math.random() + 2).toInt());
+              world.giveCoin(avatar,(10 * rng() + 2).toInt());
             }
           },
           "collide":(Avatar citizen){
@@ -415,7 +422,7 @@ class Game {
             if (cnodes.length > 0){
               int ni;
               if (world.time < 16){
-                ni = (cnodes.length * Math.random()).toInt();
+                ni = (cnodes.length * rng()).toInt();
                 a["path"] = cnodes[ni].path;
                 a["pathDirection"] = cnodes[ni].start ? 1 : -1;
                 a["pathIndex"] = cnodes[ni].start ? 0 : cnodes[ni].path.points.length - 1;
@@ -424,7 +431,7 @@ class Game {
               }else{
                 for (int i = cnodes.length-1;i>=0;i--){
                   if (cnodes[i].house){
-                    tags["house"].some((GameObject house){
+                    tags["house"].any((GameObject house){
                       if (house.distanceTo(a) < 256){
                         a["home"] = house;
                         return true;
@@ -459,7 +466,7 @@ class Game {
               }else{
                 a["pathPoint"] = a["path"].points[a["pathIndex"]].clone();
                 num d = a.distanceTo(a["pathPoint"])/4;
-                a["pathPoint"].addTo(Math.random() * d - d/2,Math.random() * d - d/2);
+                a["pathPoint"].addTo(rng() * d - d/2,rng() * d - d/2);
                 a["pathMove"] = a["pathPoint"].clone().sub(a).normalize().multiplyScalar(a.speed);
               }
             }
@@ -468,7 +475,7 @@ class Game {
         "guard-wander":{
           //A guard will walk around and attack any hostile creatures he sees
           "init":(Avatar guard){
-            guard["positionOffset"] = new Vec2(Math.random() * 64-32,Math.random() * 64-32);
+            guard["positionOffset"] = new Vec2(rng() * 64-32,rng() * 64-32);
             world.setGuardPath(guard);
           },
           "update":(Avatar guard){
@@ -476,7 +483,7 @@ class Game {
             //TODO if there are other enemies change to evil
             List<Avatar> zombies = tags["zombie"];
             if (zombies.length > 0){
-              for (int i = (Math.random() * zombies.length).toInt()-1,iter = 0;iter < zombies.length/30 + 1;iter++,i++){
+              for (int i = (rng() * zombies.length).toInt()-1,iter = 0;iter < zombies.length/30 + 1;iter++,i++){
                 Avatar zom = zombies[i%zombies.length];
                 if (zom.distanceTo(guard) < GUARD_VIEW_DISTANCE){
                   switchTag(guard,"guard-wander","guard-attack");
@@ -491,7 +498,7 @@ class Game {
               if (guard["pathIndex"] < 0 || guard["pathIndex"] >= guard["path"].points.length){
                 if (rpat(2)){
                   guard.currentFrame = 0;
-                  guard["waitTime"] = 120 + (Math.random() * 360).toInt();
+                  guard["waitTime"] = 120 + (rng() * 360).toInt();
                   switchTag(guard,"guard-wander","guard-wait");
                   return;
                 }else{
@@ -521,7 +528,7 @@ class Game {
           "update":(Avatar guard){
             List<Avatar> zombies = tags["zombie"];
             if (zombies.length > 0){
-              for (int i = (Math.random() * zombies.length).toInt()-1,iter = 0;iter < zombies.length/30 + 1;iter++,i++){
+              for (int i = (rng() * zombies.length).toInt()-1,iter = 0;iter < zombies.length/30 + 1;iter++,i++){
                 Avatar zom = zombies[i%zombies.length];
                 if (zom.distanceTo(guard) < GUARD_VIEW_DISTANCE){
                   switchTag(guard,"guard-wait","guard-attack");
@@ -563,8 +570,8 @@ class Game {
           "init":(Avatar guard){
             guard["collideTime"] = 0;
             guard.armor = .25;
-            guard.speed = .8 + Math.random() * 1.2;
-            world.equipWeapon(guard,(Math.random() * world.weaponName.length).toInt());
+            guard.speed = .8 + rng() * 1.2;
+            world.equipWeapon(guard,(rng() * world.weaponName.length).toInt());
           },
           "die":(Avatar guard){
             world.spawnGuard();
@@ -583,7 +590,7 @@ class Game {
               num d = avatar["home"].distanceTo(avatar);
               if (d>256){
                 bool found = false;
-                tags["house"].some((GameObject house){
+                tags["house"].any((GameObject house){
                   if (house.distanceTo(avatar)<256){
                     avatar["home"] = house;
                     found = true;
@@ -619,7 +626,7 @@ class Game {
               avatar.markForRemoval();
               world.awakePopulation --;
             }else{
-              tags["house"].some((GameObject house){
+              tags["house"].any((GameObject house){
                 if (house.distanceTo(avatar) < 256){
                   avatar.markForRemoval();
                   world.awakePopulation --;
@@ -644,12 +651,12 @@ class Game {
               }
             }
             if (rpat(8) && avatar.distanceTo(world.player) < 64){
-              avatar.say(foundSpeech[(foundSpeech.length * Math.random()).toInt()],120);
+              avatar.say(foundSpeech[(foundSpeech.length * rng()).toInt()],120);
               switchTag(avatar,"lost","following");
               avatar.removeTag("wander");
               rmTag(avatar,"wander");
             }else{
-              for (int i = (Math.random() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
+              for (int i = (rng() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
                 int index = i%tags["house"].length;
                 if (tags["house"][index].distanceTo(avatar) < 256){
                   avatar["home"] = tags["house"][index];
@@ -688,12 +695,12 @@ class Game {
               avatar.velocity.add(world.player.clone().add(avatar["followOffset"]).sub(avatar).normalize().multiplyScalar(2));
             }
             //Check if avatar is near any houses
-            for (int i = (Math.random() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
+            for (int i = (rng() * tags["house"].length).toInt(),iter = 0;iter<4;iter++,i++){
               int index = i%tags["house"].length;
               if (tags["house"][index].distanceTo(avatar) < 256){
                 avatar.say(rpat(2) ? "Thank you!" : "Thanks!",100 );
                 avatar["home"] = tags["house"][index];
-                world.giveCoin(avatar,((Math.random() * 20 + 5) * world.dayCount).toInt());
+                world.giveCoin(avatar,((rng() * 20 + 5) * world.dayCount).toInt());
                 iter = 9999;
                 niceFactor += .05;
                 world.saved ++;
@@ -705,7 +712,7 @@ class Game {
         },
         "wander":{
           "collide":(Avatar avatar){
-            avatar.prop["destination"] = avatar.clone().addTo(Math.random() * 100 - 50,Math.random() * 100 - 50);
+            avatar.prop["destination"] = avatar.clone().addTo(rng() * 100 - 50,rng() * 100 - 50);
           },
           "init":(Avatar avatar){
             avatar.prop["destination"] = avatar.clone();
@@ -718,11 +725,11 @@ class Game {
               Vec2 destination = avatar.prop["destination"];
               avatar.velocity.add(destination.clone().sub(avatar).normalize().multiplyScalar(avatar.speed));
             }else{
-              if (Math.random() < .75){
-                avatar.prop["destination"] = avatar.clone().addTo(Math.random() * 400 - 200,Math.random() * 400 - 200);
+              if (rng() < .75){
+                avatar.prop["destination"] = avatar.clone().addTo(rng() * 400 - 200,rng() * 400 - 200);
               }else{
                 avatar.prop["destination"] = avatar.clone();
-                avatar.prop["waitTime"] = Math.random() * 200;
+                avatar.prop["waitTime"] = rng() * 200;
                 avatar.currentFrame = 0;
                 avatar.velocity.zero();
               }
@@ -731,17 +738,17 @@ class Game {
         },
         "nice":{
           "init":(Avatar avatar){
-            avatar.sayTime = Math.random() * 500;
+            avatar.sayTime = rng() * 500;
           },
           "update":(Avatar avatar){
             if (avatar.sayTime<0){
               avatar.speaking = false;
               tags["player"].forEach((Avatar player){
                 if (player.distanceTo(avatar) < 80){
-                  avatar.say(friendlySpeech[(Math.random() * friendlySpeech.length).toInt()]);
+                  avatar.say(friendlySpeech[(rng() * friendlySpeech.length).toInt()]);
                 }
               });
-              avatar.sayTime = Math.random() * 500;
+              avatar.sayTime = rng() * 500;
             }else{
               avatar.sayTime --;
             }
@@ -749,17 +756,17 @@ class Game {
         },
         "mean":{
           "init":(Avatar avatar){
-            avatar.sayTime = Math.random() * 500;
+            avatar.sayTime = rng() * 500;
           },
           "update":(Avatar avatar){
             if (avatar.sayTime<0){
               avatar.speaking = false;
               tags["player"].forEach((Avatar player){
                 if (player.distanceTo(avatar) < 80){
-                  avatar.say(meanSpeech[(Math.random() * meanSpeech.length).toInt()]);
+                  avatar.say(meanSpeech[(rng() * meanSpeech.length).toInt()]);
                 }
               });
-              avatar.sayTime = Math.random() * 500;
+              avatar.sayTime = rng() * 500;
             }else{
               avatar.sayTime --;
             }
@@ -770,9 +777,9 @@ class Game {
             if (avatar.sayTime<0){
               avatar.speaking = false;
               if (rpat(2)){
-                avatar.say(avatar["calls"][(avatar["calls"].length * Math.random()).toInt()]);
+                avatar.say(avatar["calls"][(avatar["calls"].length * rng()).toInt()]);
               }
-              avatar.sayTime = 100+Math.random() * 200;
+              avatar.sayTime = 100+rng() * 200;
             }else{
               avatar.sayTime --;
             }
@@ -791,14 +798,14 @@ class Game {
         },
         "zombie":{
           "init":(Avatar zom){
-            zom.speed = .5 + Math.random();
+            zom.speed = .5 + rng();
           },
           "die":(Avatar a){
             if (world.player.distanceTo(a) < 256 && world.player.attacking){
               world.zombies_killed ++;
               world.zombie_out --;
               world.addMultiplier();
-              world.giveCoin(a,((Math.random() * 7 + 3) * (1 + world.dayCount/4)).toInt());
+              world.giveCoin(a,((rng() * 7 + 3) * (1 + world.dayCount/4)).toInt());
             }
           }
         },
@@ -817,16 +824,16 @@ class Game {
               Vec2 destination = zom.prop["destination"];
               zom.velocity.add(destination.clone().sub(zom).normalize().multiplyScalar(zom.speed * world.ZOMBIE_SPEED));
             }else{
-              if (Math.random() < .75){
-                zom.prop["destination"] = zom.clone().addTo(Math.random() * 400 - 200,Math.random() * 400 - 200);
+              if (rng() < .75){
+                zom.prop["destination"] = zom.clone().addTo(rng() * 400 - 200,rng() * 400 - 200);
               }else{
                 zom.prop["destination"] = zom.clone();
-                zom.prop["waitTime"] = Math.random() * 200;
+                zom.prop["waitTime"] = rng() * 200;
                 zom.currentFrame = 0;
                 zom.velocity.zero();
               }
             }
-            tags["friendly"].some((Avatar avatar){
+            tags["friendly"].any((Avatar avatar){
               if (avatar.alive && avatar.distanceTo(zom) < world.AGRO_DISTANCE){
                 rmTag(zom,"hostile-wander");
                 zom.removeTag("hostile-wander");
@@ -839,10 +846,10 @@ class Game {
             });
           },
           "collide":(Avatar zom){
-            zom.prop["destination"] = zom.clone().addTo(Math.random() * 100 - 50,Math.random() * 100 - 50);
+            zom.prop["destination"] = zom.clone().addTo(rng() * 100 - 50,rng() * 100 - 50);
           },
           "hit":(Avatar zom){
-            tags["friendly"].some((Avatar avatar){
+            tags["friendly"].any((Avatar avatar){
               if (avatar.alive && avatar.attacking && avatar.distanceTo(zom) < world.AGRO_DISTANCE*2 ){
                 rmTag(zom,"hostile-wander");
                 zom.removeTag("hostile-wander");
@@ -886,7 +893,7 @@ class Game {
             }
           },
           "hit":(Avatar zom){
-            tags["friendly"].some((Avatar friend){
+            tags["friendly"].any((Avatar friend){
               if (friend.attacking && friend.distanceTo(zom) < 96){
                 zom["target"] = friend;
                 return true;
@@ -936,7 +943,7 @@ class Game {
     
     List<String> tagEventIndex = ["init","update","collide","die","decomposed","hit","kill"];
     tagEventIndex.forEach((String i){
-      for (String key in tagEvents.getKeys()){
+      for (String key in tagEvents.keys){
         if (!tagEvents[key].containsKey(i)){
           tagEvents[key][i] = (a){};
         }

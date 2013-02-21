@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -89,7 +89,7 @@ class Vec2 {
     return x*x+y*y;
   }
   num length(){
-    return Math.sqrt(lengthSq()); 
+    return sqrt(lengthSq()); 
   }
   Vec2 normalize(){
     return divideScalar(length());
@@ -99,7 +99,7 @@ class Vec2 {
     return dx*dx+dy*dy;
   }
   num distanceTo(Vec2 v){
-    return Math.sqrt(distanceToSquared(v));
+    return sqrt(distanceToSquared(v));
   }
   Vec2 setLength(num a){
     return normalize().multiplyScalar(a);

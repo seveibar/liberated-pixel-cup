@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -20,10 +20,10 @@ class res {
   static loadImage(name,[callback=null]){
     name = "resources/$name";
     html.ImageElement img = new html.Element.tag("img");
-    img.on.load.add((e){
+    img.onLoad.listen((e){
       callback(img);
     });
-    img.on.error.add((e){
+    img.onError.listen((e){
       //img.src = "resources/error.png";
       callback(new html.ImageElement());
     });
@@ -36,10 +36,10 @@ class res {
     callback = (callback == null)?(a){}:callback;
     web.load(name,callback);
   }
-  static List<html.ImageElement> loadSplitImage(name,callback,[int px = 32,int py = 32]){
+  static List<html.ImageElement> loadSplitImage(name,callback,{int px : 32,int py : 32}){
     name = "resources/$name";
     html.ImageElement img = new html.Element.tag("img");
-    img.on.load.add((e){
+    img.onLoad.listen((e){
       HiddenCanvas.split(img,px,py,callback);
     });
     img.src = name;

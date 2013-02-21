@@ -1,4 +1,6 @@
 
+part of BigIsland;
+
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -31,13 +33,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 class Animation {
-  static final int WALK = 1;
-  static final int SLASH = 2;
-  static final int DEATH = 3;
-  static final int SHOOT = 4;
-  static final int THRUST = 5;
-  static final AnimationTypes = const[SLASH,SHOOT,THRUST];
-  static final AnimationTime = const[6,12,8];
+  static const int WALK = 1;
+  static const int SLASH = 2;
+  static const int DEATH = 3;
+  static const int SHOOT = 4;
+  static const int THRUST = 5;
+  static const AnimationTypes = const[SLASH,SHOOT,THRUST];
+  static const AnimationTime = const[6,12,8];
   List<FrameMap> frameMapIndex;
   int size,mid;
   Animation(properties){

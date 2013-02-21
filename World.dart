@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -227,7 +227,7 @@ class World {
         collisionMap.add((hexMap[bseq] == 1)?true:false);
       }
     }
-    map_width = Math.sqrt(collisionMap.length).ceil().toInt();
+    map_width = sqrt(collisionMap.length).ceil().toInt();
     print("Collision Map Loaded, Size : ${collisionMap.length}");
   }
   bool collisionAt(num x,num y){
@@ -366,7 +366,7 @@ class World {
     return cnodes;
   }
   void spawnGuard(){
-    PathNode pn = pathnodes[(pathnodes.length * Math.random()).toInt()];
+    PathNode pn = pathnodes[(pathnodes.length * rng()).toInt()];
     spawnObject("guard",{"x":pn.x,"y":pn.y});
   }
   void setGuardPath(Avatar guard){
@@ -384,7 +384,7 @@ class World {
       });
       destinationNode = closest;
     }else{
-      destinationNode = cnodes[(Math.random() * cnodes.length).toInt()];
+      destinationNode = cnodes[(rng() * cnodes.length).toInt()];
     }
     guard["path"] = destinationNode.path;
     guard["destination"] = destinationNode.clone().add(guard["positionOffset"]);
@@ -435,16 +435,16 @@ class World {
         notify("Skipping right to night...");
         final int max_iter = 10;
         var interval;
-        interval = html.window.setInterval((){
+        interval = new Timer.repeating(new Duration(milliseconds:16),(Timer timer){
           int i = 0;
           while(time < 20 && i < max_iter){
             update();
             i++;
           }
           if (time > 20){
-            html.window.clearInterval(interval);
+            interval.cancel();
           }
-        },16);
+        });
       }else if (event.key("C") == 1){
         //Open controls menu
         controlsOpen = !controlsOpen;
@@ -482,8 +482,8 @@ class World {
                                  "emit-properties":{
                                    "tag":prompt("Emit Properties (',' delimited)").split(",")
                                  },
-                                 "freq":Math.parseInt(prompt("Freq (60 = 1 second)")),
-                                 "limit":Math.parseInt(prompt("Limit")),
+                                 "freq":int.parse(prompt("Freq (60 = 1 second)")),
+                                 "limit":int.parse(prompt("Limit")),
                                  "x":player.x.toInt(),
                                  "y":player.y.toInt()
                                  
@@ -638,7 +638,7 @@ class World {
       }
       //Check if player is near items
       //TODO permatags
-      tags["item"].some((Item item){
+      tags["item"].any((Item item){
         if (player.distanceTo(item) < 32){
           event.mouseDown = false;
           notify("You found ${item.prop.containsKey('properName')?item['properName']:item.type}");
@@ -664,7 +664,7 @@ class World {
       }
     }
     var interval;
-    interval = html.window.setInterval((){
+    interval = new Timer.repeating(new Duration(milliseconds:16),(Timer timer){
       if (!paused){
         update();
         if (event.key("T")==1){
@@ -673,9 +673,9 @@ class World {
           update();
         }
       }else{
-        html.window.clearInterval(interval);
+        interval.cancel();
       }
-    },(1000/60).toInt());
+    });
     cycle(0);
   }
   void equipWeapon(Avatar avatar,int weaponID){
@@ -702,7 +702,7 @@ class World {
   void sortScreenObjects(){
     //Find objects that are onscreen in offscene and switch
     if (offscene.length >= 1){
-      for (int iter = (Math.random() * offscene.length).toInt(),times = 0;times < offscene.length/16+1;iter++,times++){
+      for (int iter = (rng() * offscene.length).toInt(),times = 0;times < offscene.length/16+1;iter++,times++){
         int i = iter%offscene.length;
         if (offscene[i].distanceTo(player) < RENDER_DISTANCE){
           onscene.add(offscene[i]);
@@ -713,7 +713,7 @@ class World {
       }
     }
     //Find objects that are offscreen in onscene and switch
-    for (int iter = (Math.random() * onscene.length).toInt(),times = 0;times < onscene.length/16;iter++,times++){
+    for (int iter = (rng() * onscene.length).toInt(),times = 0;times < onscene.length/16;iter++,times++){
       int i = iter%onscene.length;
       if (onscene[i].distanceTo(player) > RENDER_DISTANCE){
         offscene.add(onscene[i]);
@@ -730,9 +730,9 @@ class World {
     //TODO revise this, maybe have a grid-based system
     if (onscene.length >= 1){
       for (int iter = 0;iter < 1 + onscene.length / 4;iter++){
-        int i0 = (Math.random() * onscene.length).toInt();
+        int i0 = (rng() * onscene.length).toInt();
         //It's more likely to switch places if i1 is near i0
-        int i1 = (i0 + Math.random() * 6 - 3).toInt() % onscene.length;
+        int i1 = (i0 + rng() * 6 - 3).toInt() % onscene.length;
         
         if (i0 > i1){
           int a = i0;
@@ -751,7 +751,7 @@ class World {
     }
   }
   void update(){
-    rpatCount += (Math.random() * 64).toInt();
+    rpatCount += (rng() * 64).toInt();
     
     if (rapid_clicks > 0 && rpat(30)){
       rapid_clicks --;
@@ -810,7 +810,7 @@ class World {
       //Send citizens into their houses
       tags["wander"].forEach((Avatar citizen){
         if (citizen.hasTag("ai") && !citizen.hasTag("lost") && citizen.hasTag("citizen")){
-          if (Math.random() < .9){
+          if (rng() < .9){
             switchTag(citizen,"wander","homebound");
             tagEvents["homebound"]["init"](citizen);
           }else{
@@ -823,9 +823,9 @@ class World {
       notify("Save as many as possible!");
     }
     if (!night_mode && time > 16 && rpat(5)){
-      Avatar citizen = tags["wander"][(tags["wander"].length * Math.random()).toInt()];
+      Avatar citizen = tags["wander"][(tags["wander"].length * rng()).toInt()];
       if (citizen.hasTag("ai") && !citizen.hasTag("lost") && citizen.hasTag("citizen")){
-        if (Math.random() < .9){
+        if (rng() < .9){
           switchTag(citizen,"wander","homebound");
           tagEvents["homebound"]["init"](citizen);
         }else{
@@ -836,10 +836,10 @@ class World {
     }
     if(!night_mode && time < 12 && awakePopulation < totalPopulation){
       //Get a random house
-      GameObject house = tags["house"][(tags["house"].length * Math.random()).toInt()];
+      GameObject house = tags["house"][(tags["house"].length * rng()).toInt()];
       //Spawn a citizen at the house
       spawnObject("citizen",{
-        "tag":["friendly",(Math.random()<.5)?"wander":"traveler","ai"],
+        "tag":["friendly",(rng()<.5)?"wander":"traveler","ai"],
         "x":house.x,
         "y":house.y,
         "home":house
@@ -853,11 +853,11 @@ class World {
         if (zombie_out < zombie_max - 50 || (zombie_out < zombie_max && rpat(16))){
           zombie_out ++;
           List<GameObject> zs_list = tags["zombie-spawn"];
-          GameObject zs = zs_list[(zs_list.length * Math.random()).toInt()];
+          GameObject zs = zs_list[(zs_list.length * rng()).toInt()];
           Avatar a = spawnObject("zombie",{"x":zs.x,"y":zs.y});
         }
       }else if (zombie_out > 0 && rpat(30)){
-        Avatar zom = tags["zombie"][(tags["zombie"].length * Math.random()).toInt()];
+        Avatar zom = tags["zombie"][(tags["zombie"].length * rng()).toInt()];
         if (!zom.hasTag("nestbound")){
           zom.removeTag("hostile");
           rmTag(zom,"hostile");
@@ -886,14 +886,14 @@ class World {
           "All vendors are located in towns",
           "Weapon upgrades are in the top right region of the map"
       ];
-      notify("Tip : ${protips[(protips.length * Math.random()).toInt()]}");
+      notify("Tip : ${protips[(protips.length * rng()).toInt()]}");
     }
     
     //Tag events
     
     //The Lost
     if (night_mode && rpat(60) && tags["lost"].length>0){
-      tags["lost"][(tags["lost"].length * Math.random()).toInt()].say(lostSpeech[(lostSpeech.length * Math.random()).toInt()]);
+      tags["lost"][(tags["lost"].length * rng()).toInt()].say(lostSpeech[(lostSpeech.length * rng()).toInt()]);
     }
     
     if (!intro){
@@ -950,9 +950,9 @@ class World {
     
     //Update All Tags
     
-    for (String tag in tags.getKeys()){
+    for (String tag in tags.keys){
       List<GameObject> lst = tags[tag];
-      for (int i = (Math.random() * lst.length).toInt(),iter = 0;iter<lst.length/16;iter++,i++){
+      for (int i = (rng() * lst.length).toInt(),iter = 0;iter<lst.length/16;iter++,i++){
         int index = i%lst.length;
         if (lst[index].markedForRemoval){
           lst.removeRange(index, 1);
@@ -960,7 +960,7 @@ class World {
       }
     }
     
-    for (int i = (objects.length * Math.random()).toInt(),iter = 0;iter<objects.length/16;iter++,i++){
+    for (int i = (objects.length * rng()).toInt(),iter = 0;iter<objects.length/16;iter++,i++){
       int index = i%objects.length;
       if (objects[index].markedForRemoval){
         objects.removeRange(index,1);
@@ -1092,7 +1092,7 @@ class World {
     c.strokeStyle = "#f00";
     c.save();
     c.beginPath();
-    final num pi2 = Math.PI*2;
+    final num pi2 = pi*2;
     num p =  multiplier_time / max_multiplier_time[multiplier] * pi2;
     if (p > 0){
       c.translate(SCREEN_WIDTH - distanceFromEdge,distanceFromEdge);
@@ -1186,7 +1186,7 @@ class World {
       c.font = "24px Arial";
       c.fillText(slides[currentSlide], 50, SCREEN_HEIGHT - 20);
       c.fillStyle = "#000";
-      c.globalAlpha = Math.pow((slideTime - 150)/150,2);
+      c.globalAlpha = pow((slideTime - 150)/150,2);
       c.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
       c.globalAlpha = 1;
     }else if (controlsOpen){

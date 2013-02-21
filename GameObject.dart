@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -51,10 +51,10 @@ class GameObject extends Vec2 {
           
           List<String> nparts = vparts[1].split("-");
           
-          int lowest = Math.parseInt(nparts[0]);
-          int highest = Math.parseInt(nparts[1].substring(0,nparts[1].length-1))+1;
+          int lowest = int.parse(nparts[0]);
+          int highest = int.parse(nparts[1].substring(0,nparts[1].length-1))+1;
           
-          v = "${vparts[0]}${(Math.random() * (highest - lowest) + lowest).toInt()}";
+          v = "${vparts[0]}${(rng() * (highest - lowest) + lowest).toInt()}";
           
         }
         animation = animationMap[v];
@@ -114,7 +114,7 @@ class GameObject extends Vec2 {
   GameObject findNearest(String tag){
     num d = 9999;
     GameObject w;
-    tagMap[tag].some((GameObject o){
+    tagMap[tag].any((GameObject o){
       num a = o.distanceTo(this);
       if (a < d){
         w = o;
@@ -124,9 +124,9 @@ class GameObject extends Vec2 {
     return w;
   }
   void fireTagEvent(String event){
-    this.tags.forEach((tag){
-      tagEvents[tag][event](this);
-    });
+    for (int i = 0;i<tags.length;i++){
+      tagEvents[tags[i]][event](this);
+    };
   }
   void markForRemoval(){
     this.markedForRemoval = true;

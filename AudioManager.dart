@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -30,7 +30,7 @@ class AudioManager {
   }
   void play(String soundName){
     if (audioGroup.containsKey(soundName)){
-      audioElements[audioGroup[soundName][(audioGroup[soundName].length * Math.random()).toInt()]].play();
+      audioElements[audioGroup[soundName][(audioGroup[soundName].length * rng()).toInt()]].play();
     }else{
       audioElements[soundName].play();
     }

@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -42,8 +42,8 @@ class Camera extends Vec2{
   set zoom(value){
     _targetZoom = value;
   }
-  get zoom() => _targetZoom;
-  get animatedZoom() => _actualZoom;
+  get zoom => _targetZoom;
+  get animatedZoom => _actualZoom;
   void update(){
     _actualZoom -= (_actualZoom - _targetZoom)/tweenSpeed;
   }

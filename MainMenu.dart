@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -124,17 +124,17 @@ class MainMenu {
                 world.time = 21;
                 var interval;
                 final int seconds_difficulty_change = 20;
-                interval = html.window.setInterval((){
+                interval = new Timer(new Duration(milliseconds:500),(Timer timer){
                   if (count % (seconds_difficulty_change * 2) == 0){
                     world.dayCount ++;
                     world.increaseDifficulty();
                     notify("Difficulty Increased (Night ${world.dayCount})");
                     if (game == null || world.paused){
-                      html.window.clearInterval(interval);
+                      interval.cancel();
                     }
                   }
                   count++;
-                }, 500);
+                });
               };
               break;
           }

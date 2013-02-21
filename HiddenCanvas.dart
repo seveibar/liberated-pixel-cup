@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -27,8 +27,8 @@ class HiddenCanvas {
   //Get image from canvas
   html.ImageElement getImage(callback){
     html.ImageElement img = new html.Element.tag("img");
-    String dataURL = canvas.toDataURL("image/png");
-    img.on.load.add((e){
+    String dataURL = canvas.toDataUrl("image/png");
+    img.onLoad.listen((e){
       callback(img);    
     });
     img.src = dataURL;

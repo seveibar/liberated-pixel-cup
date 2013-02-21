@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -54,7 +54,7 @@ class MenuInterface {
   }
   bool clickAt(num x,num y){
     bool returner = false;
-    buttons.some((MenuButton button){
+    buttons.any((MenuButton button){
       if (button.clickAt(x,y)){
         returner = true;
         button.action();

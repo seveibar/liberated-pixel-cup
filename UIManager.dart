@@ -1,4 +1,4 @@
-
+part of BigIsland;
 // Big Island video game source code file
 // Copyright (C) 2012  Severin Ibarluzea
 // 
@@ -34,7 +34,7 @@ class UIManager {
     }
     
     //if (!MOBILE){
-    html.window.on.keyDown.add((e){
+    html.window.onKeyDown.listen((e){
       setKey(e.keyCode,1);
       for (int i = onKeyPress.length-1;i>=0;i--){
         if (onKeyPress[i](e) == true){
@@ -42,12 +42,12 @@ class UIManager {
         }
       }
     });
-    html.window.on.keyUp.add((e){
+    html.window.onKeyUp.listen((e){
       setKey(e.keyCode,0);
     });
     
     //TODO track mouse position
-    html.window.on.mouseDown.add((e){
+    html.window.onMouseDown.listen((e){
       if (touches == null){
         mouseDownAt((e.pageX - CANVAS_OFFSETX) / RESOLUTION,(e.pageY - CANVAS_OFFSETY)/RESOLUTION);
         for (int i = onClick.length-1;i>=0;i--){
@@ -58,30 +58,30 @@ class UIManager {
         }
       }
     });
-    html.window.on.mouseUp.add((e){
+    html.window.onMouseUp.listen((e){
       if (touches == null){
         mouseUpAt((e.pageX - CANVAS_OFFSETX) / RESOLUTION,(e.pageY - CANVAS_OFFSETY)/RESOLUTION);
       }
     });
-    html.window.on.mouseMove.add((e){
+    html.window.onMouseMove.listen((e){
       if (touches == null){
         mouseAt((e.pageX - CANVAS_OFFSETX) / RESOLUTION,(e.pageY - CANVAS_OFFSETY)/RESOLUTION);
       }
     });
     //}else{
-    html.window.on.touchStart.add((e){
+    html.window.onTouchStart.listen((e){
       var ctc = e.changedTouches;
       ctc.forEach((touch){
         mouseDownAt((touch.pageX - CANVAS_OFFSETX) / RESOLUTION,(touch.pageY - CANVAS_OFFSETY) / RESOLUTION);
       });
       e.preventDefault();
     });
-    html.window.on.touchMove.add((e){
+    html.window.onTouchMove.listen((e){
       touches = e.touches;
       mouseAt((touches[0].pageX - CANVAS_OFFSETX) / RESOLUTION,(touches[0].pageY - CANVAS_OFFSETY) / RESOLUTION);
       e.preventDefault();
     });
-    html.window.on.touchEnd.add((e){
+    html.window.onTouchEnd.listen((e){
       e.preventDefault();
     });
     //}

@@ -14,7 +14,7 @@ HOW TO RUN
 
 1. [Download dart sdk](http://www.dartlang.org/docs/sdk/#contents)
 
-2. Run this command `$DART_SDK/bin/dart2js lpc0.dart -olpc0.dart.js`2
+2. Run this command `$DART_SDK/bin/dart2js BigIsland.dart -olpc0.dart.js`
 
 3. Run a webserver in the directory, with python 2.7 you can just type `python -m SimpleHTTPServer`
 

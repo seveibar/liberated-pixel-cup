@@ -8,7 +8,7 @@ HOW TO RUN
 
 ### Easy Way
 
-[Don't Miss](http://seveibar.github.com/liberated-pixel-cup/)
+[Don't Miss](https://www.seveibar.com/liberated-pixel-cup/)
 
 ### Medium Way
 
